@@ -12,29 +12,10 @@ import SwiftUI
 final class IntentionViewModel: ObservableObject {
         
     var mindfulMinutes = "20"
-    @Published var intendedMinutes: Double = 0 {
-        willSet {
-            UserDefaults.standard.set(newValue, forKey: "intention")
-        }
-    }
     
-    private let store: HKHealthStore?
+    private weak var store: Store?
     
-    init(store: HKHealthStore?) {
+    init(store: Store?) {
         self.store = store
-        
-        permission()
-    }
-    
-    private func permission() {
-        guard let mindfulType = HKObjectType.categoryType(forIdentifier: .mindfulSession) else {
-            return
-        }
-        let mindfulSession = Set([mindfulType])
-        store?.requestAuthorization(toShare: mindfulSession, read: mindfulSession, completion: { success, error in
-            if success {
-                print("GRANTED")
-            }
-        })
     }
 }

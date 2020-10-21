@@ -11,7 +11,8 @@ import WatchKit
 
 struct IntentionView: View {
     
-    private let viewModel: IntentionViewModel
+    @ObservedObject private var viewModel: IntentionViewModel
+    @EnvironmentObject var intention: Intention
         
     init(viewModel: IntentionViewModel) {
         self.viewModel = viewModel
@@ -21,35 +22,29 @@ struct IntentionView: View {
         NavigationView {
             ZStack {
                 Circle()
-                    .strokeBorder(lineWidth: 7)
+                    .strokeBorder(lineWidth: 8)
                     .foregroundColor(.yellow)
-                Text("\(viewModel.mindfulMinutes)")
+                    .padding(4)
+                Text("\(intention.minutes)")
                     .font(.largeTitle)
                     .foregroundColor(.yellow)
             }
             .navigationTitle("Intention")
+        }.onAppear {
+            print("refreshMe")
         }
     }
 }
 
-struct EditView: View {
+struct ProgressBar: View {
+    @Binding var progress: Float
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("20")
-                    .font(.largeTitle)
-                    .foregroundColor(.yellow)
-                HStack {
-                    Button("-", action: {
-    //                    viewModel.intendedMinutes -= 5
-                    })
-                
-                    Button("+", action: {
-    //                    viewModel.intendedMinutes += 5
-                    })
-                }
-            }
+        ZStack {
+            Circle()
+                .stroke(lineWidth: 20.0)
+                .opacity(0.3)
+                .foregroundColor(Color.red)
         }
     }
 }

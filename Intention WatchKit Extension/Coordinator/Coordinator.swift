@@ -13,13 +13,14 @@ final class Coordinator {
     
     enum Destination {
         case intentionView
-        case editView
+        case editIntentionView
+        case errorState(Error)
     }
     
     struct DestinationView: View {
             
         let destination: Destination
-        weak var store: HKHealthStore?
+        weak var store: Store?
         
         var body: some View {
             switch destination {
@@ -28,13 +29,20 @@ final class Coordinator {
                 let viewModel = IntentionViewModel(store: store)
                 IntentionView(viewModel: viewModel)
                 
-            case .editView:
-                EditView()
+            case .editIntentionView:
+                EditIntentionView()
+                
+            case .errorState:
+                Text("Error")
             }
         }
     }
     
-    private let store = HKHealthStore()
+    private weak var store: Store?
+    
+    init(store: Store) {
+        self.store = store
+    }
     
     func navigate(to destination: Destination) -> DestinationView {
         return DestinationView(destination: destination, store: store)
