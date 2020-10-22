@@ -11,12 +11,11 @@ import Foundation
 final class Intention: ObservableObject {
     
     @Published var minutes: Double = UserDefaults.standard.double(forKey: "intention") {
-        willSet {
-            if newValue >= 0 {
-                print(minutes)
-                UserDefaults.standard.set(newValue, forKey: "intention")
+        didSet {
+            if minutes < 0 {
+                minutes = 0
             }
+            UserDefaults.standard.set(minutes, forKey: "intention")
         }
     }
-    
 }

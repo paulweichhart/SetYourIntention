@@ -20,18 +20,12 @@ struct IntentionApp: App {
             TabView {
                 let coordinator = Coordinator(store: store)
                 
-                switch store.state {
-                case let .error(error):
-                    coordinator.navigate(to: .errorState(error))
-                default:
-                    coordinator.navigate(to: .intentionView)
-                    coordinator.navigate(to: .editIntentionView)
-                }
+                coordinator.navigate(to: .intentionView)
+                coordinator.navigate(to: .editIntentionView)
             }
             .tabViewStyle(PageTabViewStyle())
             .environmentObject(intention)
         }
-
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }
 }

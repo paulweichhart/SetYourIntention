@@ -21,30 +21,53 @@ struct IntentionView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Circle()
-                    .strokeBorder(lineWidth: 8)
-                    .foregroundColor(.yellow)
-                    .padding(4)
-                Text("\(intention.minutes)")
-                    .font(.largeTitle)
-                    .foregroundColor(.yellow)
+                switch viewModel.state {
+                
+                case .initial, .loading:
+                    Text("Loading Data")
+                    
+                case let .mindfulMinutes(mindfulMinutes):
+                    ProgressBar(mindfulMinutes: mindfulMinutes, intention: intention.minutes)
+                
+                case let .error(error):
+                    ErrorView(error: error)
+                }
             }
             .navigationTitle("Intention")
-        }.onAppear {
-            print("refreshMe")
+        }
+        .onAppear() {
+            viewModel.mindfulMinutes()
         }
     }
 }
 
 struct ProgressBar: View {
-    @Binding var progress: Float
+    
+    let mindfulMinutes: Double
+    let intention: Double
+    
+    private let lineWidth: CGFloat = 12.0
+    private var progress: CGFloat {
+        return CGFloat(mindfulMinutes / intention)
+    }
     
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 20.0)
+                .strokeBorder(lineWidth: lineWidth)
+                .foregroundColor(.yellow)
                 .opacity(0.3)
-                .foregroundColor(Color.red)
+            Circle()
+                .trim(from: 0.0, to: progress)
+                .stroke(style: StrokeStyle(lineWidth: 12.0, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
+                .foregroundColor(.yellow)
+                .rotationEffect(Angle(degrees: 270.0))
+                .padding(lineWidth/2)
+                .animation(.easeInOut)
+            Text("\(Int(mindfulMinutes))")
+                .font(.largeTitle)
+                .foregroundColor(.yellow)
+                .animation(.default)
         }
     }
 }

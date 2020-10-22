@@ -14,7 +14,6 @@ final class Coordinator {
     enum Destination {
         case intentionView
         case editIntentionView
-        case errorState(Error)
     }
     
     struct DestinationView: View {
@@ -31,9 +30,6 @@ final class Coordinator {
                 
             case .editIntentionView:
                 EditIntentionView()
-                
-            case .errorState:
-                Text("Error")
             }
         }
     }

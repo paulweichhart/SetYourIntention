@@ -8,21 +8,21 @@
 import Foundation
 import HealthKit
 
+enum StoreError: Error {
+    case permissionDenied
+    case unavailable
+    case noDataAvailable
+}
 
-final class Store {
-
-    enum StoreError: Error {
-        case permissionDenied
-        case unavailable
-    }
+final class Store: ObservableObject {
     
-    enum State {
+    private enum State: Equatable {
         case initial
-        case available(Double? = nil)
+        case available
         case error(StoreError)
     }
     
-    private(set) var state: State = .initial {
+    private var state: State = .initial {
         didSet {
             if case .error = state {
                 store = nil
@@ -31,6 +31,9 @@ final class Store {
     }
     
     private var store: HKHealthStore?
+    private var mindfulSession: HKSampleType? {
+        return HKObjectType.categoryType(forIdentifier: .mindfulSession)
+    }
     
     init() {
         guard HKHealthStore.isHealthDataAvailable() else {
@@ -38,9 +41,22 @@ final class Store {
             return
         }
         self.store = HKHealthStore()
-        
-        askForPermission(completion: { [weak self] state in
-            self?.state = state
+    }
+    
+    func permission(completion: @escaping ((Result<Void, StoreError>) -> Void)) {
+        guard let mindfulSession = mindfulSession else {
+            state = .error(.unavailable)
+            completion(.failure(.unavailable))
+            return
+        }
+        store?.requestAuthorization(toShare: nil, read: Set([mindfulSession]), completion: { [weak self] success, error in
+            if success {
+                self?.state = .available
+                completion(.success(()))
+            } else if let _ = error {
+                self?.state = .error(.permissionDenied)
+                completion(.failure(.permissionDenied))
+            }
         })
     }
     
@@ -50,20 +66,25 @@ final class Store {
             return
         }
         
-        // fetch mindful minutes
-    }
-    
-    private func askForPermission(completion: @escaping ((State) -> Void)) {
-        guard let mindfulType = HKObjectType.categoryType(forIdentifier: .mindfulSession) else {
-            completion(.error(.unavailable))
+        guard let mindfulSession = mindfulSession else {
+            completion(.failure(.unavailable))
             return
         }
-        store?.requestAuthorization(toShare: nil, read: Set([mindfulType]), completion: { success, error in
-            if success {
-                completion(.available())
-            } else if let _ = error {
-                completion(.error(.permissionDenied))
+        
+        let startDate = Calendar.current.startOfDay(for: Date())
+        let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { _, samples, error in
+            if let _ = error {
+                completion(.failure(.noDataAvailable))
+                return
             }
+            let mindfulSeconds = samples?.reduce(0, { seconds, sample in
+                return seconds + sample.endDate.timeIntervalSince(sample.startDate)
+            }) ?? 0
+            completion(.success(mindfulSeconds / 60))
         })
+        store?.execute(query)
     }
 }

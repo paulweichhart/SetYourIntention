@@ -15,7 +15,7 @@ struct EditIntentionView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("\(intention.minutes)")
+                Text("\(Int(intention.minutes))")
                     .font(.largeTitle)
                     .foregroundColor(.yellow)
                 HStack {
@@ -28,6 +28,7 @@ struct EditIntentionView: View {
                     })
                 }
             }
+            .navigationTitle("Intention")
         }
     }
 }

@@ -23,6 +23,7 @@
 		FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD0253CD3D30061F499 /* IntentionView.swift */; };
 		FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */; };
 		FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF547FDF253CD4480061F499 /* HealthKit.framework */; };
+		FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE10BF92541B8B4008209AC /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionViewModel.swift; sourceTree = "<group>"; };
 		FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intention WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		FF547FDF253CD4480061F499 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		FFE10BF92541B8B4008209AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				FF547FCF253CD3BF0061F499 /* Intention */,
 				FF218783253E346F004C85CC /* Model */,
 				FF5382512540961F00FE08E6 /* Store */,
+				FFE10BF82541B8A2008209AC /* View */,
 				FF547FCE253CD3A80061F499 /* Complication */,
 				FF547FCD253CD3990061F499 /* Notification */,
 				FF547FB3253CCDF80061F499 /* Assets.xcassets */,
@@ -224,6 +227,14 @@
 				FF547FDF253CD4480061F499 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFE10BF82541B8A2008209AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10BF92541B8B4008209AC /* ErrorView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +373,7 @@
 				FF547FB0253CCDF70061F499 /* NotificationView.swift in Sources */,
 				FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */,
 				FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */,
+				FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
