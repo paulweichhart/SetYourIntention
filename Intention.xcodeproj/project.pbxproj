@@ -7,16 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF21877A253E26DD004C85CC /* EditIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218779253E26DD004C85CC /* EditIntentionView.swift */; };
+		FF218785253E3482004C85CC /* Intention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218784253E3482004C85CC /* Intention.swift */; };
+		FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D871A253D01C600E10C02 /* Coordinator.swift */; };
+		FF5382532540963400FE08E6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5382522540963400FE08E6 /* Store.swift */; };
 		FF547F99253CCDF70061F499 /* Intention WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF547F98253CCDF70061F499 /* Intention WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF547F9E253CCDF70061F499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547F9D253CCDF70061F499 /* Assets.xcassets */; };
 		FF547FA5253CCDF70061F499 /* Intention WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF547FA4253CCDF70061F499 /* Intention WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FA9253CCDF70061F499 /* IntentionApp.swift */; };
-		FF547FAC253CCDF70061F499 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FAB253CCDF70061F499 /* ContentView.swift */; };
 		FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FAD253CCDF70061F499 /* NotificationController.swift */; };
 		FF547FB0253CCDF70061F499 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FAF253CCDF70061F499 /* NotificationView.swift */; };
 		FF547FB2253CCDF70061F499 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FB1253CCDF70061F499 /* ComplicationController.swift */; };
 		FF547FB4253CCDF80061F499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547FB3253CCDF80061F499 /* Assets.xcassets */; };
 		FF547FB7253CCDF80061F499 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547FB6253CCDF80061F499 /* Preview Assets.xcassets */; };
+		FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD0253CD3D30061F499 /* IntentionView.swift */; };
+		FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */; };
+		FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF547FDF253CD4480061F499 /* HealthKit.framework */; };
+		FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE10BF92541B8B4008209AC /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,13 +69,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF218779253E26DD004C85CC /* EditIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIntentionView.swift; sourceTree = "<group>"; };
+		FF218784253E3482004C85CC /* Intention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intention.swift; sourceTree = "<group>"; };
+		FF3D871A253D01C600E10C02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FF5382522540963400FE08E6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FF547F94253CCDF70061F499 /* Intention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intention.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF547F98253CCDF70061F499 /* Intention WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intention WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF547F9D253CCDF70061F499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF547F9F253CCDF70061F499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF547FA4253CCDF70061F499 /* Intention WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Intention WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF547FA9253CCDF70061F499 /* IntentionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionApp.swift; sourceTree = "<group>"; };
-		FF547FAB253CCDF70061F499 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FF547FAD253CCDF70061F499 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		FF547FAF253CCDF70061F499 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		FF547FB1253CCDF70061F499 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -76,6 +86,11 @@
 		FF547FB6253CCDF80061F499 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FF547FB8253CCDF80061F499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF547FB9253CCDF80061F499 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		FF547FD0253CD3D30061F499 /* IntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionView.swift; sourceTree = "<group>"; };
+		FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionViewModel.swift; sourceTree = "<group>"; };
+		FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intention WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		FF547FDF253CD4480061F499 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		FFE10BF92541B8B4008209AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,18 +98,52 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF218783253E346F004C85CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF218784253E3482004C85CC /* Intention.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF3D8715253D00F700E10C02 /* EditIntention */ = {
+			isa = PBXGroup;
+			children = (
+				FF218779253E26DD004C85CC /* EditIntentionView.swift */,
+			);
+			path = EditIntention;
+			sourceTree = "<group>";
+		};
+		FF3D8719253D01A000E10C02 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D871A253D01C600E10C02 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		FF5382512540961F00FE08E6 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				FF5382522540963400FE08E6 /* Store.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		FF547F8D253CCDF60061F499 = {
 			isa = PBXGroup;
 			children = (
 				FF547F9C253CCDF70061F499 /* Intention WatchKit App */,
 				FF547FA8253CCDF70061F499 /* Intention WatchKit Extension */,
 				FF547F95253CCDF70061F499 /* Products */,
+				FF547FDE253CD4480061F499 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,11 +169,16 @@
 		FF547FA8253CCDF70061F499 /* Intention WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */,
 				FF547FA9253CCDF70061F499 /* IntentionApp.swift */,
-				FF547FAB253CCDF70061F499 /* ContentView.swift */,
-				FF547FAD253CCDF70061F499 /* NotificationController.swift */,
-				FF547FAF253CCDF70061F499 /* NotificationView.swift */,
-				FF547FB1253CCDF70061F499 /* ComplicationController.swift */,
+				FF3D8719253D01A000E10C02 /* Coordinator */,
+				FF3D8715253D00F700E10C02 /* EditIntention */,
+				FF547FCF253CD3BF0061F499 /* Intention */,
+				FF218783253E346F004C85CC /* Model */,
+				FF5382512540961F00FE08E6 /* Store */,
+				FFE10BF82541B8A2008209AC /* View */,
+				FF547FCE253CD3A80061F499 /* Complication */,
+				FF547FCD253CD3990061F499 /* Notification */,
 				FF547FB3253CCDF80061F499 /* Assets.xcassets */,
 				FF547FB8253CCDF80061F499 /* Info.plist */,
 				FF547FB9253CCDF80061F499 /* PushNotificationPayload.apns */,
@@ -139,6 +193,48 @@
 				FF547FB6253CCDF80061F499 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF547FCD253CD3990061F499 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				FF547FAD253CCDF70061F499 /* NotificationController.swift */,
+				FF547FAF253CCDF70061F499 /* NotificationView.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		FF547FCE253CD3A80061F499 /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				FF547FB1253CCDF70061F499 /* ComplicationController.swift */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
+		FF547FCF253CD3BF0061F499 /* Intention */ = {
+			isa = PBXGroup;
+			children = (
+				FF547FD0253CD3D30061F499 /* IntentionView.swift */,
+				FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */,
+			);
+			path = Intention;
+			sourceTree = "<group>";
+		};
+		FF547FDE253CD4480061F499 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF547FDF253CD4480061F499 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFE10BF82541B8A2008209AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10BF92541B8B4008209AC /* ErrorView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,11 +363,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF218785253E3482004C85CC /* Intention.swift in Sources */,
+				FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */,
 				FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */,
-				FF547FAC253CCDF70061F499 /* ContentView.swift in Sources */,
 				FF547FB2253CCDF70061F499 /* ComplicationController.swift in Sources */,
+				FF21877A253E26DD004C85CC /* EditIntentionView.swift in Sources */,
+				FF5382532540963400FE08E6 /* Store.swift in Sources */,
 				FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */,
 				FF547FB0253CCDF70061F499 /* NotificationView.swift in Sources */,
+				FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */,
+				FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */,
+				FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Intention WatchKit Extension/Intention WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Intention WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = M5E86B9E63;
@@ -433,6 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Intention WatchKit Extension/Intention WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Intention WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = M5E86B9E63;
