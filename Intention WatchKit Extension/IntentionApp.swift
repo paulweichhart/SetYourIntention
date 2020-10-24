@@ -5,20 +5,20 @@
 //  Created by Paul Weichhart on 18.10.20.
 //
 
-import HealthKit
 import SwiftUI
 import WatchKit
 
 @main
 struct IntentionApp: App {
     
-    private let store = Store()
+    @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
+    
     private let intention = Intention()
     
     @SceneBuilder var body: some Scene {
         WindowGroup {
             TabView {
-                let coordinator = Coordinator(store: store)
+                let coordinator = Coordinator()
                 
                 coordinator.navigate(to: .intentionView)
                 coordinator.navigate(to: .editIntentionView)
