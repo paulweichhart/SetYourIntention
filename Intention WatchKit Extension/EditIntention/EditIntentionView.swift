@@ -15,16 +15,16 @@ struct EditIntentionView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("\(Int(intention.minutes))")
+                Text("\(Int(intention.mindfulMinutes))")
                     .font(.largeTitle)
                     .foregroundColor(.yellow)
                 HStack {
                     Button("-", action: {
-                        intention.minutes -= 5
+                        intention.decrement()
                     })
                 
                     Button("+", action: {
-                        intention.minutes += 5
+                        intention.increment()
                     })
                 }
             }

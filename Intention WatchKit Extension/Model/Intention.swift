@@ -10,12 +10,27 @@ import Foundation
 
 final class Intention: ObservableObject {
     
-    @Published var minutes: Double = UserDefaults.standard.double(forKey: "intention") {
+    private let defaultMinutes: Double = 5
+    
+    @Published var mindfulMinutes: Double = UserDefaults.standard.double(forKey: "intention") {
         didSet {
-            if minutes < 0 {
-                minutes = 0
-            }
-            UserDefaults.standard.set(minutes, forKey: "intention")
+            UserDefaults.standard.set(mindfulMinutes, forKey: "intention")
+        }
+    }
+    
+    init() {
+        if mindfulMinutes == 0 {
+            mindfulMinutes = defaultMinutes
+        }
+    }
+    
+    func increment() {
+        mindfulMinutes += defaultMinutes
+    }
+    
+    func decrement() {
+        if mindfulMinutes > defaultMinutes {
+            mindfulMinutes -= defaultMinutes
         }
     }
 }

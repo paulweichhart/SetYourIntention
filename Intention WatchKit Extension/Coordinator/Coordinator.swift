@@ -19,13 +19,12 @@ final class Coordinator {
     struct DestinationView: View {
             
         let destination: Destination
-        weak var store: Store?
         
         var body: some View {
             switch destination {
             
             case .intentionView:
-                let viewModel = IntentionViewModel(store: store)
+                let viewModel = IntentionViewModel()
                 IntentionView(viewModel: viewModel)
                 
             case .editIntentionView:
@@ -34,13 +33,7 @@ final class Coordinator {
         }
     }
     
-    private weak var store: Store?
-    
-    init(store: Store) {
-        self.store = store
-    }
-    
     func navigate(to destination: Destination) -> DestinationView {
-        return DestinationView(destination: destination, store: store)
+        return DestinationView(destination: destination)
     }
 }

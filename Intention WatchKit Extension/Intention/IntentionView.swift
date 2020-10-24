@@ -23,20 +23,17 @@ struct IntentionView: View {
             ZStack {
                 switch viewModel.state {
                 
-                case .initial, .loading:
+                case .loading:
                     Text("Loading Data")
                     
                 case let .mindfulMinutes(mindfulMinutes):
-                    ProgressBar(mindfulMinutes: mindfulMinutes, intention: intention.minutes)
+                    ProgressBar(mindfulMinutes: mindfulMinutes, intention: intention.mindfulMinutes)
                 
                 case let .error(error):
                     ErrorView(error: error)
                 }
             }
             .navigationTitle("Intention")
-        }
-        .onAppear() {
-            viewModel.mindfulMinutes()
         }
     }
 }

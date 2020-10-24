@@ -5,6 +5,7 @@
 //  Created by Paul Weichhart on 21.10.20.
 //
 
+import Combine
 import Foundation
 import HealthKit
 
@@ -15,17 +16,20 @@ enum StoreError: Error {
 }
 
 final class Store: ObservableObject {
-    
-    private enum State: Equatable {
+
+    enum State: Equatable {
         case initial
         case available
+        case mindfulMinutes(Double)
         case error(StoreError)
     }
     
-    private var state: State = .initial {
+    static let shared = Store()
+    
+    @Published private(set) var state: State = .initial {
         didSet {
-            if case .error = state {
-                store = nil
+            if state == .available {
+                mindfulMinutes()
             }
         }
     }
@@ -35,39 +39,32 @@ final class Store: ObservableObject {
         return HKObjectType.categoryType(forIdentifier: .mindfulSession)
     }
     
-    init() {
+    private init() {
         guard HKHealthStore.isHealthDataAvailable() else {
             self.state = .error(.unavailable)
             return
         }
         self.store = HKHealthStore()
+        permission()
     }
     
-    func permission(completion: @escaping ((Result<Void, StoreError>) -> Void)) {
+    private func permission() {
         guard let mindfulSession = mindfulSession else {
             state = .error(.unavailable)
-            completion(.failure(.unavailable))
             return
         }
         store?.requestAuthorization(toShare: nil, read: Set([mindfulSession]), completion: { [weak self] success, error in
             if success {
                 self?.state = .available
-                completion(.success(()))
             } else if let _ = error {
                 self?.state = .error(.permissionDenied)
-                completion(.failure(.permissionDenied))
             }
         })
     }
     
-    func mindfulMinutes(completion: @escaping ((Result<Double, StoreError>) -> Void)) {
-        if case let .error(error) = state {
-            completion(.failure(error))
-            return
-        }
-        
-        guard let mindfulSession = mindfulSession else {
-            completion(.failure(.unavailable))
+    func mindfulMinutes(completion: (() -> Void)? = nil) {
+        guard let mindfulSession = mindfulSession, state != .initial else {
+            state = .error(.unavailable)
             return
         }
         
@@ -75,15 +72,16 @@ final class Store: ObservableObject {
         let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-        let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { _, samples, error in
+        let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { [weak self] _, samples, error in
             if let _ = error {
-                completion(.failure(.noDataAvailable))
+                self?.state = .error(.noDataAvailable)
                 return
             }
             let mindfulSeconds = samples?.reduce(0, { seconds, sample in
                 return seconds + sample.endDate.timeIntervalSince(sample.startDate)
             }) ?? 0
-            completion(.success(mindfulSeconds / 60))
+            self?.state = .mindfulMinutes(mindfulSeconds / 60)
+            completion?()
         })
         store?.execute(query)
     }

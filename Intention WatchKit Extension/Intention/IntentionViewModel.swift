@@ -5,49 +5,40 @@
 //  Created by Paul Weichhart on 18.10.20.
 //
 
-import HealthKit
+import Combine
 import Foundation
 import SwiftUI
 
 final class IntentionViewModel: ObservableObject {
         
     enum State: Equatable {
-        case initial
         case loading
         case mindfulMinutes(Double)
         case error(StoreError)
     }
     
-    @Published var state: State = .initial
+    @Published var state: State = .loading
+    @ObservedObject private var store = Store.shared
     
-    private weak var store: Store?
+    private var cancellables = Set<AnyCancellable>()
     
-    init(store: Store?) {
-        self.store = store
-        
-        store?.permission(completion: { [weak self] granted in
-            switch granted {
-            case .success:
-                self?.state = .loading
-                self?.mindfulMinutes()
-            case let .failure(error):
-                self?.state = .error(error)
-            }
-        })
+    init() {
+        subscribe()
     }
     
-    func mindfulMinutes() {
-        if state == .initial {
-            return
-        }
-        
-        store?.mindfulMinutes(completion: { [weak self] result in
-            switch result {
-            case let .success(minutes):
-                self?.state = .mindfulMinutes(minutes)
-            case let .failure(error):
-                self?.state = .error(error)
-            }
-        })
+    private func subscribe() {
+        store.$state
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] storeState in
+                switch storeState {
+                case .available, .initial:
+                    self?.state = .loading
+                case let .mindfulMinutes(mindfulMinutes):
+                    self?.state = .mindfulMinutes(mindfulMinutes)
+                case let .error(error):
+                    self?.state = .error(error)
+                }
+            })
+            .store(in: &cancellables)
     }
 }
