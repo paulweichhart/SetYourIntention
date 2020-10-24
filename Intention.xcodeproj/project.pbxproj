@@ -23,6 +23,8 @@
 		FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD0253CD3D30061F499 /* IntentionView.swift */; };
 		FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */; };
 		FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF547FDF253CD4480061F499 /* HealthKit.framework */; };
+		FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C425449FEE00DE7E6B /* WatchKit.framework */; };
+		FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C625449FFB00DE7E6B /* ClockKit.framework */; };
 		FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B94542544485600DCF314 /* ExtensionDelegate.swift */; };
 		FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE10BF92541B8B4008209AC /* ErrorView.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +93,8 @@
 		FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionViewModel.swift; sourceTree = "<group>"; };
 		FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intention WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		FF547FDF253CD4480061F499 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		FF8190C425449FEE00DE7E6B /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
+		FF8190C625449FFB00DE7E6B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/ClockKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8B94542544485600DCF314 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		FFE10BF92541B8B4008209AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +105,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */,
+				FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */,
+				FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +233,8 @@
 		FF547FDE253CD4480061F499 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF8190C625449FFB00DE7E6B /* ClockKit.framework */,
+				FF8190C425449FEE00DE7E6B /* WatchKit.framework */,
 				FF547FDF253CD4480061F499 /* HealthKit.framework */,
 			);
 			name = Frameworks;
