@@ -10,17 +10,7 @@ import ClockKit
 
 final class ComplicationController: NSObject, CLKComplicationDataSource {
     
-    // MARK: - Complication Configuration
-
-//    func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
-//        let descriptors = [
-//            CLKComplicationDescriptor(identifier: "complication", displayName: "Intention", supportedFamilies: [.circularSmall, .graphicCircular])
-//        ]
-//        handler(descriptors)
-//    }
-
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
-        // Call the handler with your desired behavior when the device is locked
         handler(.hideOnLockScreen)
     }
     
@@ -29,15 +19,16 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
         switch complication.family {
         case .circularSmall, .graphicCircular:
             
-            let minutes: Double
+            let intention = Intention()
+            let mindfulMinutes: Double
             switch Store.shared.state {
             case .available, .initial, .error:
-                minutes = 0
-            case let .mindfulMinutes(mindfulMinutes):
-                minutes = mindfulMinutes
+                mindfulMinutes = 0
+            case let .mindfulMinutes(minutes):
+                mindfulMinutes = minutes
             }
-            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .yellow, fillFraction: Float(minutes / UserDefaults.standard.double(forKey: "intention")))
-            let activeMinutes = CLKSimpleTextProvider(text: "\(Int(minutes))")
+            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .yellow, fillFraction: Float(mindfulMinutes / intention.mindfulMinutes))
+            let activeMinutes = CLKSimpleTextProvider(text: "\(Int(mindfulMinutes))")
             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: provider, centerTextProvider: activeMinutes)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
         default:

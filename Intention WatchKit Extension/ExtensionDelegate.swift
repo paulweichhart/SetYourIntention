@@ -11,7 +11,7 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
-    func applicationDidFinishLaunching() {
+    func applicationDidEnterBackground() {
         scheduleBackgroundRefresh()
         Store.shared.mindfulMinutes(completion: { [weak self] in
             self?.updateActiveComplications()
