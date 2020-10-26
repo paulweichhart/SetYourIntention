@@ -11,11 +11,13 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
+    func applicationDidBecomeActive() {
+        Store.shared.mindfulMinutes()
+    }
+    
     func applicationDidEnterBackground() {
         scheduleBackgroundRefresh()
-        Store.shared.mindfulMinutes(completion: { [weak self] in
-            self?.updateActiveComplications()
-        })
+        updateActiveComplications()
     }
     
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {

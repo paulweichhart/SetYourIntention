@@ -17,15 +17,20 @@ struct EditIntentionView: View {
             VStack {
                 Text("\(Int(intention.mindfulMinutes))")
                     .font(.largeTitle)
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Colors().foregroundColor)
                 HStack {
-                    Button("-", action: {
+                    Button(action: {
                         intention.decrement()
-                    })
+                    }, label: {
+                        Image(systemName: "minus")
+                    }).foregroundColor(Colors().foregroundColor)
                 
-                    Button("+", action: {
+                    Button(action: {
                         intention.increment()
-                    })
+                    }, label: {
+                        Image(systemName: "plus")
+                    }).foregroundColor(Colors().foregroundColor)
+                    
                 }
             }
             .navigationTitle("Intention")

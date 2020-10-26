@@ -7,7 +7,6 @@
 
 import ClockKit
 
-
 final class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
