@@ -18,7 +18,6 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
         switch complication.family {
         case .circularSmall, .graphicCircular:
             
-            let intention = Intention()
             let mindfulMinutes: Double
             switch Store.shared.state {
             case .available, .initial, .error:
@@ -26,7 +25,7 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
             case let .mindfulMinutes(minutes):
                 mindfulMinutes = minutes
             }
-            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .yellow, fillFraction: Float(mindfulMinutes / intention.mindfulMinutes))
+            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .yellow, fillFraction: Float(mindfulMinutes / UserDefaults.standard.double(forKey: "intention")))
             let activeMinutes = CLKSimpleTextProvider(text: "\(Int(mindfulMinutes))")
             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: provider, centerTextProvider: activeMinutes)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))

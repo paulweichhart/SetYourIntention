@@ -15,9 +15,21 @@ struct EditIntentionView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("\(Int(intention.mindfulMinutes))")
-                    .font(.largeTitle)
-                    .foregroundColor(Colors().foregroundColor)
+                HStack {
+                    Text("Your Daily Intention")
+                        .font(.system(size: 16))
+                        .fontWeight(.light)
+                    Spacer()
+                }.padding(EdgeInsets(top: 0, leading: 0, bottom: -8, trailing: 0))
+                HStack {
+                    Text("\(Int(intention.mindfulMinutes))")
+                        .font(.system(size: 32))
+                        .fontWeight(.bold)
+                    Text("Minutes")
+                        .font(.system(size: 32))
+                        .fontWeight(.light)
+                    Spacer()
+                }
                 HStack {
                     Button(action: {
                         intention.decrement()
@@ -32,8 +44,8 @@ struct EditIntentionView: View {
                     }).foregroundColor(Colors().foregroundColor)
                     
                 }
+                Spacer()
             }
-            .navigationTitle("Intention")
         }
     }
 }
