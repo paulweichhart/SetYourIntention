@@ -31,21 +31,33 @@ struct EditIntentionView: View {
                     Spacer()
                 }
                 HStack {
-                    Button(action: {
-                        intention.decrement()
-                    }, label: {
-                        Image(systemName: "minus")
-                    }).foregroundColor(Colors().foregroundColor)
-                
-                    Button(action: {
-                        intention.increment()
-                    }, label: {
-                        Image(systemName: "plus")
-                    }).foregroundColor(Colors().foregroundColor)
-                    
+                    IntentionButton(systemName: "minus", action: intention.decrement)
+                    IntentionButton(systemName: "plus", action: intention.increment)
                 }
                 Spacer()
             }
+        }
+    }
+}
+
+struct IntentionButton: View {
+    
+    let systemName: String
+    let action: () -> Void
+    
+    var body: some View {
+        GeometryReader { reader in
+            Button(action: {
+                action()
+            }, label: {
+                Image(systemName: systemName)
+                    .font(.system(size: 32))
+                    .foregroundColor(Colors().foregroundColor)
+                    .background(Color.clear)
+                    .frame(width: reader.size.width, height: reader.size.width, alignment: .center)
+                    .contentShape(Rectangle())
+            })
+            .buttonStyle(PlainButtonStyle())
         }
     }
 }

@@ -10,7 +10,10 @@ import SwiftUI
 
 struct Colors {
     
-    let darkerForegroundColor = Color(.displayP3, red: 11/255, green: 223/255, blue: 255/255, opacity: 1)
     let foregroundColor = Color(.displayP3, red: 11/255, green: 223/255, blue: 224/255, opacity: 1)
-    let backgroundColor = Color(.displayP3, red: 68/255, green: 68/255, blue: 72/255, opacity: 1)
+    var foregoundUIColor : UIColor {
+        return UIColor(foregroundColor)
+    }
+    let backgroundColor = Color(.displayP3, red: 1, green: 1, blue: 1, opacity: 0.2)
+    let shadowColor = Color(.displayP3, red: 0, green: 0, blue: 0, opacity: 0.9)
 }

@@ -9,6 +9,13 @@ import ClockKit
 
 final class ComplicationController: NSObject, CLKComplicationDataSource {
     
+    func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
+         let descriptors = [
+             CLKComplicationDescriptor(identifier: "complication", displayName: "Intention", supportedFamilies: [.circularSmall, .graphicCircular])
+         ]
+         handler(descriptors)
+     }
+    
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
         handler(.hideOnLockScreen)
     }
@@ -25,7 +32,8 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
             case let .mindfulMinutes(minutes):
                 mindfulMinutes = minutes
             }
-            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .yellow, fillFraction: Float(mindfulMinutes / UserDefaults.standard.double(forKey: "intention")))
+            let fraction = min(Float(mindfulMinutes / UserDefaults.standard.double(forKey: "intention")), 1)
+            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: Colors().foregoundUIColor, fillFraction: fraction)
             let activeMinutes = CLKSimpleTextProvider(text: "\(Int(mindfulMinutes))")
             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: provider, centerTextProvider: activeMinutes)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
