@@ -27,11 +27,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 Store.shared.mindfulMinutes(completion: { [weak self] in
                     self?.updateActiveComplications()
                     self?.scheduleBackgroundRefresh()
-                    backgroundTask.setTaskCompletedWithSnapshot(false)
+                    backgroundTask.setTaskCompletedWithSnapshot(true)
                 })
-                
+            case let snapshotTask as WKSnapshotRefreshBackgroundTask:
+                snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)
             default:
-                break
+                task.setTaskCompletedWithSnapshot(false)
             }
         }
     }
@@ -52,6 +53,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 print("oh noes")
             }
         })
-        
     }
 }
+
