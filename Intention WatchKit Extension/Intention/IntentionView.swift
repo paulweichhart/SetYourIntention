@@ -50,7 +50,7 @@ struct ProgressBar: View {
     private var progress: CGFloat {
         let progress = CGFloat(mindfulMinutes / intention)
         if belowIntention {
-            return progress
+            return progress == 0 ? 0.001 : progress
         }
         let remainder = progress.truncatingRemainder(dividingBy: 1)
         return remainder == 0 ? 0.99 : remainder
@@ -62,15 +62,13 @@ struct ProgressBar: View {
                 Circle()
                     .strokeBorder(lineWidth: lineWidth)
                     .foregroundColor(belowIntention ? Colors().backgroundColor : Colors().foregroundColor)
-                if !belowIntention {
-                    Circle()
-                        .trim(from: progress - 0.01, to: progress + 0.01)
-                        .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
-                        .foregroundColor(Colors().shadowColor)
-                        .rotationEffect(Angle(degrees: 270.0))
-                        .padding(lineWidth/2)
-                        .blur(radius: 3)
-                }
+                Circle()
+                    .trim(from: progress - 0.01, to: progress + 0.01)
+                    .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
+                    .foregroundColor(Colors().shadowColor)
+                    .rotationEffect(Angle(degrees: 270.0))
+                    .padding(lineWidth/2)
+                    .blur(radius: 3)
                 Circle()
                     .trim(from: belowIntention ? 0 : (progress - 0.1), to: progress)
                     .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))

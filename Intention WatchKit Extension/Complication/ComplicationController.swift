@@ -21,19 +21,19 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        
+        let store = Store.shared
         switch complication.family {
         case .circularSmall, .graphicCircular:
             
             let mindfulMinutes: Double
-            switch Store.shared.state {
+            switch store.state {
             case .available, .initial, .error:
                 mindfulMinutes = 0
             case let .mindfulMinutes(minutes):
                 mindfulMinutes = minutes
             }
             let fraction = min(Float(mindfulMinutes / UserDefaults.standard.double(forKey: "intention")), 1)
-            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: Colors().foregoundUIColor, fillFraction: fraction)
+            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: UIColor(Colors().foregroundColor), fillFraction: fraction)
             let activeMinutes = CLKSimpleTextProvider(text: "\(Int(mindfulMinutes))")
             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: provider, centerTextProvider: activeMinutes)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
