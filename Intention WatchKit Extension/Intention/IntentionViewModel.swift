@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import SwiftUI
 
 final class IntentionViewModel: ObservableObject {
         
@@ -18,7 +17,6 @@ final class IntentionViewModel: ObservableObject {
     }
     
     @Published var state: State = .loading
-    @ObservedObject private var store = Store.shared
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -27,14 +25,24 @@ final class IntentionViewModel: ObservableObject {
     }
     
     private func subscribe() {
-        store.$state
+        Store.shared.$state
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] storeState in
                 switch storeState {
-                case .available, .initial:
+                case .initial:
                     self?.state = .loading
-                case let .mindfulMinutes(mindfulMinutes):
-                    self?.state = .mindfulMinutes(mindfulMinutes)
+                    
+                case .available:
+                    self?.state = .loading
+                    Store.shared.mindfulMinutes(completion: { result in
+                        switch result {
+                        case let .success(mindfulMinutes):
+                            self?.state = .mindfulMinutes(mindfulMinutes)
+                        case let .failure(error):
+                            self?.state = .error(error)
+                        }
+                    })
+                    
                 case let .error(error):
                     self?.state = .error(error)
                 }
