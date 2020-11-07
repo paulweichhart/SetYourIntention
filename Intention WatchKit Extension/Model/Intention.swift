@@ -20,7 +20,7 @@ final class Intention: ObservableObject {
     
     init() {
         if mindfulMinutes == 0 {
-            mindfulMinutes = defaultMinutes
+            mindfulMinutes = 2 * defaultMinutes
         }
     }
     

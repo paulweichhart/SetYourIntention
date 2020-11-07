@@ -11,24 +11,28 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
-    func applicationDidBecomeActive() {
-        Store.shared.mindfulMinutes()
-    }
-    
     func applicationDidEnterBackground() {
-        scheduleBackgroundRefresh()
         updateActiveComplications()
+        scheduleBackgroundRefresh()
     }
     
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         for task in backgroundTasks {
             switch task {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
-                Store.shared.mindfulMinutes(completion: { [weak self] in
-                    self?.updateActiveComplications()
-                    self?.scheduleBackgroundRefresh()
-                    backgroundTask.setTaskCompletedWithSnapshot(true)
+                let store = Store.shared
+                store.permission(completion: { [weak self] granted in
+                    guard granted else {
+                        return
+                    }
+                    store.mindfulMinutes(completion: { _ in
+                        self?.updateActiveComplications()
+                        self?.scheduleBackgroundRefresh()
+                        // TODO: Update UI
+                        backgroundTask.setTaskCompletedWithSnapshot(true)
+                    })
                 })
+                
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:
                 snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)
             default:

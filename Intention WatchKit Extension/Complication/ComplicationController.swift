@@ -6,8 +6,9 @@
 //
 
 import ClockKit
+import Foundation
 
-final class ComplicationController: NSObject, CLKComplicationDataSource {
+class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
          let descriptors = [
@@ -22,23 +23,44 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         
+        let store = Store.shared
+        
         switch complication.family {
         case .circularSmall, .graphicCircular:
             
-            let mindfulMinutes: Double
-            switch Store.shared.state {
-            case .available, .initial, .error:
-                mindfulMinutes = 0
-            case let .mindfulMinutes(minutes):
-                mindfulMinutes = minutes
+            if case .error = store.state {
+                handler(createTimelineEntry(mindfulMinutes: 0))
+                return
             }
-            let fraction = min(Float(mindfulMinutes / UserDefaults.standard.double(forKey: "intention")), 1)
-            let provider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: Colors().foregoundUIColor, fillFraction: fraction)
-            let activeMinutes = CLKSimpleTextProvider(text: "\(Int(mindfulMinutes))")
-            let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: provider, centerTextProvider: activeMinutes)
-            handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
+            store.permission(completion: { [weak self] granted in
+                guard granted else {
+                    handler(self?.createTimelineEntry(mindfulMinutes: 0))
+                    return
+                }
+                store.mindfulMinutes(completion: { result in
+                    switch result {
+                    case .failure:
+                        handler(self?.createTimelineEntry(mindfulMinutes: 0))
+                    case let .success(mindfulMinutes):
+                        handler(self?.createTimelineEntry(mindfulMinutes: mindfulMinutes))
+                    }
+                })
+            })
+            
         default:
             handler(nil)
         }
+    }
+    
+    private func createTimelineEntry(mindfulMinutes: Double) -> CLKComplicationTimelineEntry {
+        let fraction = min(Float(mindfulMinutes / UserDefaults.standard.double(forKey: "intention")), 1)
+        let provider = CLKSimpleGaugeProvider(style: .fill,
+                                              gaugeColor: UIColor(Colors().foregroundColor),
+                                              fillFraction: fraction)
+        let activeMinutes = CLKSimpleTextProvider(text: "\(Int(mindfulMinutes))")
+        let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: provider,
+                                                                             centerTextProvider: activeMinutes)
+        return CLKComplicationTimelineEntry(date: Date(),
+                                            complicationTemplate: template)
     }
 }
