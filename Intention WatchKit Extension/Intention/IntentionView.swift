@@ -24,7 +24,7 @@ struct IntentionView: View {
                 switch viewModel.state {
                 
                 case .loading:
-                    Text("Loading Data")
+                    ProgressBar(mindfulMinutes: 0, intention: intention.mindfulMinutes)
                     
                 case let .mindfulMinutes(mindfulMinutes):
                     ProgressBar(mindfulMinutes: mindfulMinutes, intention: intention.mindfulMinutes)
