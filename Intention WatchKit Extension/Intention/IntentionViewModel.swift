@@ -24,6 +24,17 @@ final class IntentionViewModel: ObservableObject {
         subscribe()
     }
     
+    func mindfulMinutes() {
+        Store.shared.mindfulMinutes(completion: { [weak self] result in
+            switch result {
+            case let .success(mindfulMinutes):
+                self?.state = .mindfulMinutes(mindfulMinutes)
+            case let .failure(error):
+                self?.state = .error(error)
+            }
+        })
+    }
+    
     private func subscribe() {
         Store.shared.$state
             .receive(on: RunLoop.main)
@@ -34,14 +45,7 @@ final class IntentionViewModel: ObservableObject {
                     
                 case .available:
                     self?.state = .loading
-                    Store.shared.mindfulMinutes(completion: { result in
-                        switch result {
-                        case let .success(mindfulMinutes):
-                            self?.state = .mindfulMinutes(mindfulMinutes)
-                        case let .failure(error):
-                            self?.state = .error(error)
-                        }
-                    })
+                    self?.mindfulMinutes()
                     
                 case let .error(error):
                     self?.state = .error(error)

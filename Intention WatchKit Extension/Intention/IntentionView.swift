@@ -33,6 +33,8 @@ struct IntentionView: View {
                     ErrorView(error: error)
                 }
             }
+        }.onAppear() {
+            viewModel.mindfulMinutes()
         }
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 final class Intention: ObservableObject {
     
     private let defaultMinutes: Double = 5
+    private let maxMinutes: Double = 90
     
     @Published var mindfulMinutes: Double = UserDefaults.standard.double(forKey: "intention") {
         didSet {
@@ -25,7 +26,9 @@ final class Intention: ObservableObject {
     }
     
     func increment() {
-        mindfulMinutes += defaultMinutes
+        if mindfulMinutes < maxMinutes {
+            mindfulMinutes += defaultMinutes
+        }
     }
     
     func decrement() {
