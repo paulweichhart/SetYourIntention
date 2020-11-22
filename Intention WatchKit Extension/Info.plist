@@ -4,8 +4,6 @@
 <dict>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Intention would like to help you track your Mindful Minutes</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Intention would like to access your Mindful Minutes</string>
 	<key>CFBundleDevelopmentRegion</key>

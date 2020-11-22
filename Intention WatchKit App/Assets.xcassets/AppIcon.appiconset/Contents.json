@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "Intention-48.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -8,6 +9,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "Intention-55.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -15,12 +17,14 @@
       "subtype" : "42mm"
     },
     {
+      "filename" : "Intention-58.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "Intention-87.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "3x",
@@ -51,6 +55,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "Intention-172.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -58,6 +63,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "Intention-196.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -65,6 +71,7 @@
       "subtype" : "42mm"
     },
     {
+      "filename" : "Intention-216.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
