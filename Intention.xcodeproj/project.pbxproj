@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF21877A253E26DD004C85CC /* EditIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218779253E26DD004C85CC /* EditIntentionView.swift */; };
+		FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218779253E26DD004C85CC /* SetIntentionView.swift */; };
 		FF218785253E3482004C85CC /* Intention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218784253E3482004C85CC /* Intention.swift */; };
 		FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D871A253D01C600E10C02 /* Coordinator.swift */; };
 		FF5382532540963400FE08E6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5382522540963400FE08E6 /* Store.swift */; };
@@ -73,7 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF218779253E26DD004C85CC /* EditIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIntentionView.swift; sourceTree = "<group>"; };
+		FF218779253E26DD004C85CC /* SetIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetIntentionView.swift; sourceTree = "<group>"; };
 		FF218784253E3482004C85CC /* Intention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intention.swift; sourceTree = "<group>"; };
 		FF3D871A253D01C600E10C02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FF5382522540963400FE08E6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		FF3D8715253D00F700E10C02 /* EditIntention */ = {
 			isa = PBXGroup;
 			children = (
-				FF218779253E26DD004C85CC /* EditIntentionView.swift */,
+				FF218779253E26DD004C85CC /* SetIntentionView.swift */,
 			);
 			path = EditIntention;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 				FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */,
 				FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */,
 				FF547FB2253CCDF70061F499 /* ComplicationController.swift in Sources */,
-				FF21877A253E26DD004C85CC /* EditIntentionView.swift in Sources */,
+				FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */,
 				FF5382532540963400FE08E6 /* Store.swift in Sources */,
 				FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */,
 				FF562E242546374C00D92C4B /* Colors.swift in Sources */,

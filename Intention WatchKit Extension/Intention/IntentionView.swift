@@ -80,19 +80,19 @@ struct ProgressBar: View {
             }.padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
             HStack() {
                 Text("Mindful Minutes")
-                    .font(.system(size: 16))
+                    .font(.system(size: 15))
                     .fontWeight(.light)
                 Text("\(Int(mindfulMinutes))")
-                    .font(.system(size: 16))
+                    .font(.system(size: 15))
                     .fontWeight(.bold)
                 Spacer()
             }
             HStack() {
                 Text("Intention")
-                    .font(.system(size: 16))
+                    .font(.system(size: 15))
                     .fontWeight(.light)
                 Text("\(Int(intention))")
-                    .font(.system(size: 16))
+                    .font(.system(size: 15))
                     .fontWeight(.bold)
                 Spacer()
             }

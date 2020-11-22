@@ -28,7 +28,7 @@ final class Coordinator {
                 IntentionView(viewModel: viewModel)
                 
             case .editIntentionView:
-                EditIntentionView()
+                SetIntentionView()
             }
         }
     }
