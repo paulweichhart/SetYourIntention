@@ -55,8 +55,10 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "32">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Intention">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF547F97253CCDF70061F499"
@@ -64,7 +66,7 @@
             BlueprintName = "Intention WatchKit App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -73,8 +75,10 @@
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "32">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Intention">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF547F97253CCDF70061F499"
@@ -82,7 +86,16 @@
             BlueprintName = "Intention WatchKit App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FF547F97253CCDF70061F499"
+            BuildableName = "Intention WatchKit App.app"
+            BlueprintName = "Intention WatchKit App"
+            ReferencedContainer = "container:Intention.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
