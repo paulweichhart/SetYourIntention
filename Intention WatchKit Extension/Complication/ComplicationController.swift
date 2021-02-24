@@ -23,30 +23,15 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         
-        let store = Store.shared
-        
         switch complication.family {
         case .circularSmall, .graphicCircular:
             
-            if case .error = store.state {
+            switch Store.shared.state {
+            case .error, .initial, .available:
                 handler(createTimelineEntry(mindfulMinutes: 0))
-                return
+            case let .mindfulMinutes(minutes):
+                handler(createTimelineEntry(mindfulMinutes: minutes))
             }
-            store.permission(completion: { [weak self] granted in
-                guard granted else {
-                    handler(self?.createTimelineEntry(mindfulMinutes: 0))
-                    return
-                }
-                store.mindfulMinutes(completion: { result in
-                    switch result {
-                    case .failure:
-                        handler(self?.createTimelineEntry(mindfulMinutes: 0))
-                    case let .success(mindfulMinutes):
-                        handler(self?.createTimelineEntry(mindfulMinutes: mindfulMinutes))
-                    }
-                })
-            })
-            
         default:
             handler(nil)
         }

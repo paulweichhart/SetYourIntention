@@ -12,28 +12,39 @@ import SwiftUI
 final class Coordinator {
     
     enum Destination {
+        case onboarding
         case intentionView
-        case editIntentionView
+        case setIntentionView
     }
     
     struct DestinationView: View {
             
         let destination: Destination
+        let intention: Intention
         
         var body: some View {
             switch destination {
             
+            case .onboarding:
+                OnboardingView(intention: intention)
+            
             case .intentionView:
-                let viewModel = IntentionViewModel()
+                let viewModel = IntentionViewModel(intention: intention)
                 IntentionView(viewModel: viewModel)
                 
-            case .editIntentionView:
-                SetIntentionView()
+            case .setIntentionView:
+                SetIntentionView(intention: intention)
             }
         }
     }
     
+    private let intention: Intention
+    
+    init(intention: Intention) {
+        self.intention = intention
+    }
+    
     func navigate(to destination: Destination) -> DestinationView {
-        return DestinationView(destination: destination)
+        return DestinationView(destination: destination, intention: intention)
     }
 }

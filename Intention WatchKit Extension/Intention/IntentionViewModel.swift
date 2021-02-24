@@ -12,41 +12,40 @@ final class IntentionViewModel: ObservableObject {
         
     enum State: Equatable {
         case loading
-        case mindfulMinutes(Double)
+        case minutes(_ mindful: Double, _ intention: Double)
         case error(StoreError)
     }
     
-    @Published var state: State = .loading
+    @Published private(set) var state: State = .loading
     
+    private let intention: Intention
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(intention: Intention) {
+        self.intention = intention
+        
         subscribe()
     }
     
     func mindfulMinutes() {
-        Store.shared.mindfulMinutes(completion: { [weak self] result in
-            switch result {
-            case let .success(mindfulMinutes):
-                self?.state = .mindfulMinutes(mindfulMinutes)
-            case let .failure(error):
-                self?.state = .error(error)
-            }
-        })
+        Store.shared.mindfulMinutes()
     }
     
     private func subscribe() {
-        Store.shared.$state
+        Publishers.CombineLatest(Store.shared.$state, intention.$minutes)
             .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] storeState in
+            .sink(receiveValue: { [weak self] storeState, intentionMinutes in
                 switch storeState {
                 case .initial:
                     self?.state = .loading
-                    
+
                 case .available:
                     self?.state = .loading
                     self?.mindfulMinutes()
-                    
+
+                case let .mindfulMinutes(mindfulMinutes):
+                    self?.state = .minutes(mindfulMinutes, intentionMinutes)
+
                 case let .error(error):
                     self?.state = .error(error)
                 }

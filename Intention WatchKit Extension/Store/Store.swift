@@ -20,6 +20,7 @@ final class Store: ObservableObject {
     enum State: Equatable {
         case initial
         case available
+        case mindfulMinutes(Double)
         case error(StoreError)
     }
     
@@ -30,6 +31,16 @@ final class Store: ObservableObject {
     private var store: HKHealthStore?
     private var mindfulSession: HKSampleType? {
         return HKObjectType.categoryType(forIdentifier: .mindfulSession)
+    }
+    private var isStoreAccessible: Bool {
+        switch state {
+        case .available, .mindfulMinutes:
+            return true
+        case let .error(error) where error == .noDataAvailable:
+            return true
+        default:
+            return false
+        }
     }
     
     private init() {
@@ -57,10 +68,11 @@ final class Store: ObservableObject {
         })
     }
     
-    func mindfulMinutes(completion: @escaping (Result<Double,StoreError>) -> Void) {
+    func mindfulMinutes(completion: ((Result<Double, StoreError>) -> Void)? = nil) {
         
-        guard let mindfulSession = mindfulSession, state == .available else {
-            completion(.failure(.unavailable))
+        guard let mindfulSession = mindfulSession, isStoreAccessible else {
+            completion?(.failure(.unavailable))
+            state = .error(.unavailable)
             return
         }
             
@@ -68,17 +80,17 @@ final class Store: ObservableObject {
         let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-        let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { _, samples, error in
+        let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { [weak self] _, samples, error in
             if let _ = error {
-                completion(.failure(.noDataAvailable))
+                self?.state = .error(.noDataAvailable)
+                completion?(.failure(.noDataAvailable))
                 return
             }
             let mindfulSeconds = samples?.reduce(0, { seconds, sample in
                 return seconds + sample.endDate.timeIntervalSince(sample.startDate)
             }) ?? 0
-            DispatchQueue.main.async {
-                completion(.success(mindfulSeconds / 60))
-            }
+            self?.state = .mindfulMinutes(mindfulSeconds / 60)
+            completion?(.success(mindfulSeconds / 60))
         })
         store?.execute(query)
     }

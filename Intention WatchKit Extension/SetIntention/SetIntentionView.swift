@@ -10,7 +10,11 @@ import SwiftUI
 
 struct SetIntentionView: View {
     
-    @EnvironmentObject var intention: Intention
+    @ObservedObject private var intention: Intention
+    
+    init(intention: Intention) {
+        self.intention = intention
+    }
     
     var body: some View {
         NavigationView {
@@ -22,7 +26,7 @@ struct SetIntentionView: View {
                     Spacer()
                 }.padding(EdgeInsets(top: 0, leading: 0, bottom: -8, trailing: 0))
                 HStack {
-                    Text("\(Int(intention.mindfulMinutes))")
+                    Text("\(Int(intention.minutes))")
                         .font(.system(size: 28))
                         .fontWeight(.bold)
                     Text("Minutes")
@@ -43,7 +47,7 @@ struct SetIntentionView: View {
 struct IntentionButton: View {
     
     let systemName: String
-    let action: () -> Void
+    let action: (() -> Void)
     
     var body: some View {
         GeometryReader { reader in

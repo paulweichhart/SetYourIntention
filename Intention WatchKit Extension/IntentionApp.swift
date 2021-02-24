@@ -5,6 +5,8 @@
 //  Created by Paul Weichhart on 18.10.20.
 //
 
+import Combine
+import Foundation
 import SwiftUI
 import WatchKit
 
@@ -12,20 +14,23 @@ import WatchKit
 struct IntentionApp: App {
     
     @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
-    
-    private let intention = Intention()
+    @ObservedObject private var intention = Intention()
     
     @SceneBuilder var body: some Scene {
+        
+        let coordinator = Coordinator(intention: intention)
+        
         WindowGroup {
-            TabView {
-                let coordinator = Coordinator()
-                
-                coordinator.navigate(to: .intentionView)
-                coordinator.navigate(to: .editIntentionView)
+            switch intention.onboardingCompleted {
+            case true:
+                TabView {
+                    coordinator.navigate(to: .intentionView)
+                    coordinator.navigate(to: .setIntentionView)
+                }
+                .tabViewStyle(PageTabViewStyle())
+            case false:
+                coordinator.navigate(to: .onboarding)
             }
-            .tabViewStyle(PageTabViewStyle())
-            .environmentObject(intention)
         }
-        WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }
 }
