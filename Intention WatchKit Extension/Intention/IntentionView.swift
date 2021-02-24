@@ -12,7 +12,6 @@ import WatchKit
 struct IntentionView: View {
     
     @ObservedObject private var viewModel: IntentionViewModel
-    @EnvironmentObject var intention: Intention
         
     init(viewModel: IntentionViewModel) {
         self.viewModel = viewModel
@@ -20,18 +19,17 @@ struct IntentionView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                switch viewModel.state {
+            
+            switch viewModel.state {
+            
+            case .loading:
+                ProgressBar(mindfulMinutes: 0, intention: 0)
                 
-                case .loading:
-                    ProgressBar(mindfulMinutes: 0, intention: intention.mindfulMinutes)
-                    
-                case let .mindfulMinutes(mindfulMinutes):
-                    ProgressBar(mindfulMinutes: mindfulMinutes, intention: intention.mindfulMinutes)
-                
-                case let .error(error):
-                    ErrorView(error: error)
-                }
+            case let .minutes(mindful, intention):
+                ProgressBar(mindfulMinutes: mindful, intention: intention)
+            
+            case let .error(error):
+                ErrorView(error: error)
             }
         }.onAppear() {
             viewModel.mindfulMinutes()
@@ -44,12 +42,20 @@ struct ProgressBar: View {
     let mindfulMinutes: Double
     let intention: Double
     
-    private let lineWidth: CGFloat = 9.0
+    private let lineWidth: CGFloat = 14.0
+    
     private var belowIntention: Bool {
+        guard mindfulMinutes > 0 && intention > 0 else {
+            return true
+        }
         return (mindfulMinutes / intention) < 1
     }
     
     private var progress: CGFloat {
+        guard mindfulMinutes > 0 && intention > 0 else {
+            return 0
+        }
+
         let progress = CGFloat(mindfulMinutes / intention)
         if belowIntention {
             return progress
@@ -80,22 +86,22 @@ struct ProgressBar: View {
             }.padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
             HStack() {
                 Text("Mindful Minutes")
-                    .font(.system(size: 15))
+                    .font(.system(size: 14))
                     .fontWeight(.light)
                 Text("\(Int(mindfulMinutes))")
-                    .font(.system(size: 15))
+                    .font(.system(size: 14))
                     .fontWeight(.bold)
                 Spacer()
             }
             HStack() {
                 Text("Intention")
-                    .font(.system(size: 15))
+                    .font(.system(size: 14))
                     .fontWeight(.light)
                 Text("\(Int(intention))")
-                    .font(.system(size: 15))
+                    .font(.system(size: 14))
                     .fontWeight(.bold)
                 Spacer()
-            }
+            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
         }
     }
 }
