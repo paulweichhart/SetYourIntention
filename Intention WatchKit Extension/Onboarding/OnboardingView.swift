@@ -30,7 +30,7 @@ struct WelcomeView: View {
             Text("Set Your Intention")
                 .font(.system(size: 15))
                 .fontWeight(.bold)
-            Text("Use your preferred Meditation App with support for Apple Health and keep track of your Mindful Minutes")
+            Text("Use your preferred Meditation App with support for Apple Health and mind your mental well being")
             Spacer()
         }.padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
     }
@@ -40,9 +40,9 @@ struct InfoView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Mind your mental well being with the supported Complication on your  Watch")
+            Text("Keep track of your daily Mindful Minutes with the supported Complication on your  Watch")
             Spacer()
-        }
+        }.padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
