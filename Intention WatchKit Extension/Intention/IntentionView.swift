@@ -42,7 +42,7 @@ struct ProgressBar: View {
     let mindfulMinutes: Double
     let intention: Double
     
-    private let lineWidth: CGFloat = 14.0
+    private let lineWidth: CGFloat = 9.0
     
     private var belowIntention: Bool {
         guard mindfulMinutes > 0 && intention > 0 else {
