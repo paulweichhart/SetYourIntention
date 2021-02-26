@@ -15,6 +15,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         case mindfulMinutes = "mindfulMinutes"
     }
     
+    func applicationDidBecomeActive() {
+        if UserDefaults.standard.bool(forKey: "onboardingCompleted") {
+            Store.shared.mindfulMinutes()
+        }
+    }
+    
     func applicationDidEnterBackground() {
         updateActiveComplications(shouldReload: true)
         if case let .mindfulMinutes(minutes) = Store.shared.state {
