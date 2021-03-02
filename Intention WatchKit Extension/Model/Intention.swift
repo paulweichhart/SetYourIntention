@@ -10,15 +10,20 @@ import Foundation
 
 final class Intention: ObservableObject {
     
-    @Published var minutes: Double = UserDefaults.standard.double(forKey: "intention") {
+    private enum Keys: String {
+        case intention = "intention"
+        case onboardingCompleted = "onboardingCompleted"
+    }
+    
+    @Published var minutes: Double = UserDefaults.standard.double(forKey: Keys.intention.rawValue) {
         didSet {
-            UserDefaults.standard.set(minutes, forKey: "intention")
+            UserDefaults.standard.set(minutes, forKey: Keys.intention.rawValue)
         }
     }
     
-    @Published var onboardingCompleted: Bool = UserDefaults.standard.bool(forKey: "onboardingCompleted") {
+    @Published var onboardingCompleted: Bool = UserDefaults.standard.bool(forKey: Keys.onboardingCompleted.rawValue) {
         didSet {
-            UserDefaults.standard.set(onboardingCompleted, forKey: "onboardingCompleted")
+            UserDefaults.standard.set(onboardingCompleted, forKey: Keys.onboardingCompleted.rawValue)
         }
     }
     

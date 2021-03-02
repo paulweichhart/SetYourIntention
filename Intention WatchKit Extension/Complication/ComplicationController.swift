@@ -12,7 +12,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
          let descriptors = [
-             CLKComplicationDescriptor(identifier: "complication", displayName: "Intention", supportedFamilies: [.circularSmall, .graphicCircular])
+             CLKComplicationDescriptor(identifier: "complication",
+                                       displayName: "Intention",
+                                       supportedFamilies: [.circularSmall, .graphicCircular])
          ]
          handler(descriptors)
      }
@@ -38,7 +40,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     private func createTimelineEntry(mindfulMinutes: Double) -> CLKComplicationTimelineEntry {
-        let fraction = min(Float(mindfulMinutes / UserDefaults.standard.double(forKey: "intention")), 1)
+        let fraction = min(Float(mindfulMinutes / Intention().minutes), 1)
         let provider = CLKSimpleGaugeProvider(style: .fill,
                                               gaugeColor: UIColor(Colors().foregroundColor),
                                               fillFraction: fraction)

@@ -11,12 +11,10 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
-    private enum UserInfoKey: String {
-        case mindfulMinutes = "mindfulMinutes"
-    }
+    private static let mindfulMinutesKey = "mindfulMinutes"
     
     func applicationDidBecomeActive() {
-        if UserDefaults.standard.bool(forKey: "onboardingCompleted") {
+        if Intention().onboardingCompleted {
             Store.shared.mindfulMinutes()
         }
     }
@@ -41,7 +39,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                     }
                     Store.shared.mindfulMinutes(completion: { result in
                         let userInfo = backgroundTask.userInfo as? NSDictionary
-                        let cachedMinutes = userInfo?[UserInfoKey.mindfulMinutes.rawValue] as? Double ?? 0
+                        let cachedMinutes = userInfo?[Self.mindfulMinutesKey] as? Double ?? 0
                         switch result {
                         case let .success(minutes):
                             let shouldReload = minutes != cachedMinutes
@@ -80,12 +78,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     private func scheduleBackgroundRefresh(minutes: Double) {
         let scheduledDate = Date().addingTimeInterval(15 * 60)
-        let userInfo: NSDictionary = [UserInfoKey.mindfulMinutes.rawValue: minutes]
-        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: scheduledDate, userInfo: userInfo, scheduledCompletion: { error in
-            if error != nil {
-                print("oh noes")
-            }
-        })
+        let userInfo: NSDictionary = [Self.mindfulMinutesKey: minutes]
+        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: scheduledDate,
+                                                       userInfo: userInfo,
+                                                       scheduledCompletion: { _ in })
     }
 }
 

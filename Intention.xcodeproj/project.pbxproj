@@ -100,6 +100,7 @@
 		FF8190C425449FEE00DE7E6B /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8190C625449FFB00DE7E6B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/ClockKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8B94542544485600DCF314 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		FFAAABDB25ED90DB00534B21 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFE10BF92541B8B4008209AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +154,7 @@
 		FF547F8D253CCDF60061F499 = {
 			isa = PBXGroup;
 			children = (
+				FFAAABDB25ED90DB00534B21 /* README.md */,
 				FF0ED240256B13D4008BAA0E /* Info.plist */,
 				FF547F9C253CCDF70061F499 /* Intention WatchKit App */,
 				FF547FA8253CCDF70061F499 /* Intention WatchKit Extension */,
