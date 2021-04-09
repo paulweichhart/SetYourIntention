@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Intention-48.png",
+      "filename" : "SetYourIntention48.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -9,7 +9,7 @@
       "subtype" : "38mm"
     },
     {
-      "filename" : "Intention-55.png",
+      "filename" : "SetYourIntention55.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -17,21 +17,21 @@
       "subtype" : "42mm"
     },
     {
-      "filename" : "Intention-58.png",
+      "filename" : "SetYourIntention58.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Intention-87.png",
+      "filename" : "SetYourIntention87.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "Intention-80.png",
+      "filename" : "SetYourIntention80.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -39,7 +39,7 @@
       "subtype" : "38mm"
     },
     {
-      "filename" : "Intention-88.png",
+      "filename" : "SetYourIntention88.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -47,7 +47,7 @@
       "subtype" : "40mm"
     },
     {
-      "filename" : "Intention-100.png",
+      "filename" : "SetYourIntention100.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -55,7 +55,7 @@
       "subtype" : "44mm"
     },
     {
-      "filename" : "Intention-172.png",
+      "filename" : "SetYourIntention172.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -63,7 +63,7 @@
       "subtype" : "38mm"
     },
     {
-      "filename" : "Intention-196.png",
+      "filename" : "SetYourIntention196.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -71,7 +71,7 @@
       "subtype" : "42mm"
     },
     {
-      "filename" : "Intention-216.png",
+      "filename" : "SetYourIntention216.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -79,7 +79,7 @@
       "subtype" : "44mm"
     },
     {
-      "filename" : "Intention.png",
+      "filename" : "SetYourIntention.png",
       "idiom" : "watch-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
