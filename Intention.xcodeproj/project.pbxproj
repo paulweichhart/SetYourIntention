@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1ED83B2622E43F00BF727B /* Minutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1ED83A2622E43F00BF727B /* Minutes.swift */; };
 		FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218779253E26DD004C85CC /* SetIntentionView.swift */; };
 		FF218785253E3482004C85CC /* Intention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218784253E3482004C85CC /* Intention.swift */; };
 		FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D871A253D01C600E10C02 /* Coordinator.swift */; };
@@ -24,9 +25,12 @@
 		FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */; };
 		FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF547FDF253CD4480061F499 /* HealthKit.framework */; };
 		FF562E242546374C00D92C4B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF562E232546374C00D92C4B /* Colors.swift */; };
+		FF5A20CF2623AFC900C4B2B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */; };
 		FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C425449FEE00DE7E6B /* WatchKit.framework */; };
 		FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C625449FFB00DE7E6B /* ClockKit.framework */; };
 		FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B94542544485600DCF314 /* ExtensionDelegate.swift */; };
+		FFDBA5B126068E53003F076F /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBA5B026068E53003F076F /* Texts.swift */; };
+		FFDBA5BE260691B9003F076F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFDBA5C0260691B9003F076F /* Localizable.strings */; };
 		FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE10BF92541B8B4008209AC /* ErrorView.swift */; };
 		FFFB33C3256C4F4700932CD8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		FF0ED240256B13D4008BAA0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF1ED83A2622E43F00BF727B /* Minutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minutes.swift; sourceTree = "<group>"; };
 		FF218779253E26DD004C85CC /* SetIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetIntentionView.swift; sourceTree = "<group>"; };
 		FF218784253E3482004C85CC /* Intention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intention.swift; sourceTree = "<group>"; };
 		FF3D871A253D01C600E10C02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -97,10 +102,15 @@
 		FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intention WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		FF547FDF253CD4480061F499 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF562E232546374C00D92C4B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FF5A20D02623AFC900C4B2B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF5A20D52623AFCE00C4B2B0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF8190C425449FEE00DE7E6B /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8190C625449FFB00DE7E6B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/ClockKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8B94542544485600DCF314 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		FFAAABDB25ED90DB00534B21 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FFDBA5B026068E53003F076F /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
+		FFDBA5BF260691B9003F076F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFDBA5C4260691BF003F076F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FFE10BF92541B8B4008209AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				FF218784253E3482004C85CC /* Intention.swift */,
+				FF1ED83A2622E43F00BF727B /* Minutes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +199,7 @@
 				FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */,
 				FF547FA9253CCDF70061F499 /* IntentionApp.swift */,
 				FF8B94542544485600DCF314 /* ExtensionDelegate.swift */,
+				FF547FCE253CD3A80061F499 /* Complication */,
 				FF3D8719253D01A000E10C02 /* Coordinator */,
 				FF3D8715253D00F700E10C02 /* SetIntention */,
 				FF547FCF253CD3BF0061F499 /* Intention */,
@@ -195,8 +207,8 @@
 				FFFB33C1256C4F2A00932CD8 /* Onboarding */,
 				FF5382512540961F00FE08E6 /* Store */,
 				FFE10BF82541B8A2008209AC /* View */,
-				FF547FCE253CD3A80061F499 /* Complication */,
 				FF547FCD253CD3990061F499 /* Notification */,
+				FFDBA5B526069114003F076F /* Localization */,
 				FF547FB3253CCDF80061F499 /* Assets.xcassets */,
 				FF547FB8253CCDF80061F499 /* Info.plist */,
 				FF547FB9253CCDF80061F499 /* PushNotificationPayload.apns */,
@@ -249,11 +261,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FFDBA5B526069114003F076F /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				FFDBA5C0260691B9003F076F /* Localizable.strings */,
+				FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		FFE10BF82541B8A2008209AC /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FFE10BF92541B8B4008209AC /* ErrorView.swift */,
 				FF562E232546374C00D92C4B /* Colors.swift */,
+				FFDBA5B026068E53003F076F /* Texts.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,7 +349,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					FF547F93253CCDF70061F499 = {
 						CreatedOnToolsVersion = 12.0;
@@ -347,6 +369,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = FF547F8D253CCDF60061F499;
 			productRefGroup = FF547F95253CCDF70061F499 /* Products */;
@@ -381,6 +404,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF547FB7253CCDF80061F499 /* Preview Assets.xcassets in Resources */,
+				FF5A20CF2623AFC900C4B2B0 /* InfoPlist.strings in Resources */,
+				FFDBA5BE260691B9003F076F /* Localizable.strings in Resources */,
 				FF547FB4253CCDF80061F499 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +420,7 @@
 				FF218785253E3482004C85CC /* Intention.swift in Sources */,
 				FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */,
 				FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */,
+				FFDBA5B126068E53003F076F /* Texts.swift in Sources */,
 				FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */,
 				FF547FB2253CCDF70061F499 /* ComplicationController.swift in Sources */,
 				FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */,
@@ -405,6 +431,7 @@
 				FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */,
 				FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */,
 				FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */,
+				FF1ED83B2622E43F00BF727B /* Minutes.swift in Sources */,
 				FFFB33C3256C4F4700932CD8 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,11 +451,33 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF5A20D02623AFC900C4B2B0 /* en */,
+				FF5A20D52623AFCE00C4B2B0 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FFDBA5C0260691B9003F076F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFDBA5BF260691B9003F076F /* en */,
+				FFDBA5C4260691BF003F076F /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		FF547FBA253CCDF80061F499 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -490,6 +539,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  Intention
+
+  Created by Paul Weichhart on 20.03.21.
+  
+*/
+
+"Progress in percentage" = "Fortschritt in Prozent";
+
+"Intention in Minutes" = "Intention in Minuten";
+
+"Increase Intention" = "Intention erhöhen";
+
+"Decrease Intention" = "Intention verringern";
+
+"Use your preferred Meditation App with support for Apple Health and mind your mental well being" = "Meditiere mit deiner Lieblings App — die Apple Health unterstüzt — und schenke so deiner mentalen Gesundheit mehr Aufmerksamkeit";
+
+"Keep track of your daily Mindful Minutes with the supported Complication on your Apple Watch" = "Behalte täglichen den Überblick über deine Achtsamen Minuten mit Hilfe der Komplikation auf deiner Apple Watch";
+
+"Please allow the App to access your Mindful Minutes from Apple Health" = "Bitte erlaube der App Zugriff auf deine Achtsamen Minuten";
+
+"Review" = "Überprüfen";
+
+"Your Daily Intention" = "Tägliche Intention";
+
+"Minutes" = "Minuten";
+
+"Mindful Minutes" = "Achtsame Minuten";
+
+"Intention" = "Intention";
+
+"Set Your Intention" = "Set Your Intention";
+
+"Your Device doesn't support Apple Health :(" = "Apple Health wird nicht unterstüzt :(";
+
+"Couldn't load Data from Apple Health :(" = "Apple Health Daten konnten nicht gelesen werden :(";
+
+"Please allow Intention to access your mindful Session in the Settings" = "Bitte erlaube der App den Zugriff auf deine Apple Health in den Einstellungen";
