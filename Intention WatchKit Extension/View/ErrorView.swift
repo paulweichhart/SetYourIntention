@@ -15,15 +15,14 @@ struct ErrorView: View {
     var body: some View {
         
         switch error {
-        case .permissionDenied, .noDataAvailable:
-            VStack {
-                Text("Please allow Intention to access your mindful Session in the Settings")
-                Button("Open Settings", action: {
-                    
-                })
-            }
+        case .permissionDenied:
+            Text(Texts.ctaOpenSettings.localization)
+
         case .unavailable:
-            Text("Sorry — your Device doesn't support Apple Health")
+            Text(Texts.unavailable.localization)
+
+        case .noDataAvailable:
+            Text(Texts.noDataAvailable.localization)
         }
     }
 }
