@@ -14,7 +14,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
          let descriptors = [
              CLKComplicationDescriptor(identifier: "complication",
                                        displayName: "Intention",
-                                       supportedFamilies: [.circularSmall, .graphicCircular])
+                                       supportedFamilies: [.graphicCircular])
          ]
          handler(descriptors)
      }
@@ -26,7 +26,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         
         switch complication.family {
-        case .circularSmall, .graphicCircular:
+        case .graphicCircular:
             
             switch Store.shared.state {
             case .error, .initial, .available:
@@ -42,11 +42,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     private func createTimelineEntry(mindfulMinutes: Double) -> CLKComplicationTimelineEntry {
         let fraction = min(Float(mindfulMinutes / Intention().minutes), 1)
         let provider = CLKSimpleGaugeProvider(style: .fill,
-                                              gaugeColor: UIColor(Colors().foregroundColor),
+                                              gaugeColor: UIColor(Colors.foreground.value),
                                               fillFraction: fraction)
-        let activeMinutes = CLKSimpleTextProvider(text: "\(Int(mindfulMinutes))")
-        let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: provider,
-                                                                             centerTextProvider: activeMinutes)
+        let image = UIImage(named: "Complication/Graphic Circular") ?? UIImage()
+        let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
+        let template = CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: provider,
+                                                                              imageProvider: imageProvider)
         return CLKComplicationTimelineEntry(date: Date(),
                                             complicationTemplate: template)
     }
