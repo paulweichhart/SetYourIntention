@@ -19,14 +19,34 @@ struct IntentionView: View {
     
     var body: some View {
         NavigationView {
-            
             switch viewModel.state {
             
             case .loading:
-                ProgressBar(mindfulMinutes: 0, intention: 0)
+                VStack {
+                    ProgressBar(progress: 0, percentage: 0)
+                    Group {
+                        ProgressLabel(minutes: 0,
+                                      text: Texts.mindfulMinutes.localization,
+                                      accessibilityText: Texts.mindfulMinutes.localization)
+                        ProgressLabel(minutes: 0,
+                                      text: Texts.intention.localization,
+                                      accessibilityText: Texts.intentionInMinutes.localization)
+                    }.accessibility(addTraits: .isHeader)
+                }
                 
-            case let .minutes(mindful, intention):
-                ProgressBar(mindfulMinutes: mindful, intention: intention)
+            case let .minutes(minutes):
+                VStack {
+                    ProgressBar(progress: minutes.progress,
+                                percentage: minutes.percentage)
+                    Group {
+                        ProgressLabel(minutes: minutes.mindful,
+                                      text: Texts.mindfulMinutes.localization,
+                                      accessibilityText: Texts.mindfulMinutes.localization)
+                        ProgressLabel(minutes: minutes.intention,
+                                      text: Texts.intention.localization,
+                                      accessibilityText: Texts.intentionInMinutes.localization)
+                    }.accessibility(addTraits: .isHeader)
+                }
             
             case let .error(error):
                 ErrorView(error: error)
@@ -38,70 +58,81 @@ struct IntentionView: View {
 }
 
 struct ProgressBar: View {
-    
-    let mindfulMinutes: Double
-    let intention: Double
-    
+
+    let progress: Double
+    let percentage: Int
+
     private let lineWidth: CGFloat = 9.0
-    
-    private var belowIntention: Bool {
-        guard mindfulMinutes > 0 && intention > 0 else {
-            return true
-        }
-        return (mindfulMinutes / intention) < 1
+
+    private var strokeStyle: StrokeStyle {
+        return StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0)
     }
-    
-    private var progress: CGFloat {
-        guard mindfulMinutes > 0 && intention > 0 else {
+
+    private var visualProgress: CGFloat {
+        guard progress > 0 else {
             return 0
         }
 
-        let progress = CGFloat(mindfulMinutes / intention)
-        if belowIntention {
-            return progress
-        }
         let remainder = progress.truncatingRemainder(dividingBy: 1)
-        return remainder == 0 ? 0.99 : remainder
+        let progress = remainder == 0 ? 0.99 : remainder
+        return CGFloat(progress)
+    }
+
+    private var belowIntention: Bool {
+        return progress < 1
     }
     
     var body: some View {
-        VStack {
-            ZStack{
-                Circle()
-                    .strokeBorder(lineWidth: lineWidth)
-                    .foregroundColor(belowIntention ? Colors().backgroundColor : Colors().foregroundColor)
-                Circle()
-                    .trim(from: progress > 0 ? (progress - 0.01) : 0, to: progress > 0 ? (progress + 0.01) : 0)
-                    .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
-                    .foregroundColor(Colors().shadowColor)
-                    .rotationEffect(Angle(degrees: 270.0))
-                    .padding(lineWidth/2)
-                    .blur(radius: 3)
-                Circle()
-                    .trim(from: belowIntention ? 0 : (progress - 0.1), to: progress)
-                    .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
-                    .foregroundColor(Colors().foregroundColor)
-                    .rotationEffect(Angle(degrees: 270.0))
-                    .padding(lineWidth/2)
-            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
-            HStack() {
-                Text("Mindful Minutes")
-                    .font(.system(size: 14))
-                    .fontWeight(.light)
-                Text("\(Int(mindfulMinutes))")
-                    .font(.system(size: 14))
-                    .fontWeight(.bold)
-                Spacer()
-            }
-            HStack() {
-                Text("Intention")
-                    .font(.system(size: 14))
-                    .fontWeight(.light)
-                Text("\(Int(intention))")
-                    .font(.system(size: 14))
-                    .fontWeight(.bold)
-                Spacer()
-            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+        ZStack{
+            // Background Color
+            Circle()
+                .strokeBorder(lineWidth: lineWidth)
+                .foregroundColor(belowIntention ? Colors.background.value : Colors.foreground.value)
+
+            // Shadow
+            Circle()
+                .trim(from: visualProgress > 0 ? (visualProgress - 0.01) : 0,
+                      to: visualProgress > 0 ? (visualProgress + 0.01) : 0)
+                .stroke(style: strokeStyle)
+                .foregroundColor(Colors.shadow.value)
+                .rotationEffect(Angle(degrees: 270.0))
+                .padding(lineWidth/2)
+                .blur(radius: 3)
+            
+            // Progress
+            Circle()
+                .trim(from: belowIntention ? 0 : (visualProgress - 0.1),
+                      to: visualProgress)
+                .stroke(style: strokeStyle)
+                .foregroundColor(Colors.foreground.value)
+                .rotationEffect(Angle(degrees: 270.0))
+                .padding(lineWidth/2)
         }
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
+        .accessibility(label: Text(Texts.progressInMinutes.localization))
+        .accessibility(value: Text("\(percentage)"))
+        .accessibility(addTraits: .isHeader)
+    }
+}
+
+struct ProgressLabel: View {
+
+    let minutes: Double
+    let text: LocalizedStringKey
+    let accessibilityText: LocalizedStringKey
+
+    var body: some View {
+        HStack() {
+            Text(text)
+                .fontWeight(.light)
+                .font(.body) +
+            Text(" ") +
+            Text("\(Int(minutes))")
+                .fontWeight(.bold)
+                .font(.body)
+            Spacer()
+        }
+        .accessibility(label: Text(accessibilityText))
+        .accessibility(value: Text("\(Int(minutes))"))
     }
 }

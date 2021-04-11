@@ -12,7 +12,7 @@ final class IntentionViewModel: ObservableObject {
         
     enum State: Equatable {
         case loading
-        case minutes(_ mindful: Double, _ intention: Double)
+        case minutes(_ minutes: Minutes)
         case error(StoreError)
     }
     
@@ -30,7 +30,7 @@ final class IntentionViewModel: ObservableObject {
     func mindfulMinutes() {
         Store.shared.mindfulMinutes()
     }
-    
+
     private func subscribe() {
         Publishers.CombineLatest(Store.shared.$state, intention.$minutes)
             .receive(on: RunLoop.main)
@@ -44,7 +44,9 @@ final class IntentionViewModel: ObservableObject {
                     self?.mindfulMinutes()
 
                 case let .mindfulMinutes(mindfulMinutes):
-                    self?.state = .minutes(mindfulMinutes, intentionMinutes)
+                    let minutes = Minutes(mindful: mindfulMinutes,
+                                          intention: intentionMinutes)
+                    self?.state = .minutes(minutes)
 
                 case let .error(error):
                     self?.state = .error(error)
