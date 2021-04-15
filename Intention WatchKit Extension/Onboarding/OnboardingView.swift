@@ -26,23 +26,32 @@ struct OnboardingView: View {
 struct WelcomeView: View {
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Set Your Intention")
-                .font(.system(size: 15))
-                .fontWeight(.bold)
-            Text("Use your preferred Meditation App with support for Apple Health and mind your mental well being")
-            Spacer()
-        }.padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text(Texts.setYourIntention.localization)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(Texts.welcome.localization)
+                    .font(.body)
+                    .fixedSize(horizontal: false, vertical: true)
+                Spacer()
+            }
+        }
     }
 }
 
 struct InfoView: View {
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Keep track of your daily Mindful Minutes with the supported Complication on your  Watch")
-            Spacer()
-        }.padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text(Texts.info.localization)
+                    .font(.body)
+                    .fixedSize(horizontal: false, vertical: true)
+                Spacer()
+            }
+        }
     }
 }
 
@@ -51,20 +60,25 @@ struct PermissionView: View {
     let intention: Intention
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Please allow the App to access your Mindful Minutes from Apple Health")
-            Spacer()
-            Button(action: {
-                Store.shared.permission(completion: { result in
-                    if result {
-                        DispatchQueue.main.async {
-                            intention.onboardingCompleted = true
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text(Texts.permission.localization)
+                    .font(.body)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                Button(action: {
+                    Store.shared.permission(completion: { result in
+                        if result {
+                            DispatchQueue.main.async {
+                                intention.onboardingCompleted = true
+                            }
                         }
-                    }
+                    })
+                }, label: {
+                    Text(Texts.review.localization)
+                        .font(.body)
                 })
-            }, label: {
-                Text("Review")
-            }).padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+            }
         }
     }
 }

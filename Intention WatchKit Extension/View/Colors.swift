@@ -5,13 +5,22 @@
 //  Created by Paul Weichhart on 25.10.20.
 //
 
-import Foundation
 import SwiftUI
 
-struct Colors {
+enum Colors {
+
+    case background
+    case foreground
+    case shadow
     
-    let backgroundColor = Color(.displayP3, red: 0.5, green: 0.5, blue: 0.5, opacity: 0.3)
-    let foregroundColor = Color(.displayP3, red: 11/255, green: 223/255, blue: 224/255, opacity: 1)
-    let shadowColor = Color(.displayP3, red: 0, green: 0, blue: 0, opacity: 0.9)
-   
+    var value: Color {
+        switch self {
+        case .background:
+            return Color(.displayP3, red: 0.5, green: 0.5, blue: 0.5, opacity: 0.3)
+        case .foreground:
+            return Color(.displayP3, red: 94/255, green: 204/255, blue: 204/255, opacity: 1)
+        case .shadow:
+            return Color(.displayP3, red: 0, green: 0, blue: 0, opacity: 0.9)
+        }
+    }
 }

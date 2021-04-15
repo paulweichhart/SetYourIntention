@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Intention would like to access your Mindful Minutes</string>
+	<string>Set Your Intention would like to access your Mindful Minutes</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Intention would like to access your Mindful Minutes</string>
+	<string>Set Your Intention would like to access your Mindful Minutes</string>
 </dict>
 </plist>
