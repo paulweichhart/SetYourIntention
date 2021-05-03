@@ -16,13 +16,13 @@ struct ErrorView: View {
         
         switch error {
         case .permissionDenied:
-            Text(Texts.ctaOpenSettings.localization)
+            Text(Texts.ctaOpenSettings.localisation)
 
         case .unavailable:
-            Text(Texts.unavailable.localization)
+            Text(Texts.unavailable.localisation)
 
         case .noDataAvailable:
-            Text(Texts.noDataAvailable.localization)
+            Text(Texts.noDataAvailable.localisation)
         }
     }
 }

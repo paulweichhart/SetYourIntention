@@ -26,11 +26,11 @@ struct IntentionView: View {
                     ProgressBar(progress: 0, percentage: 0)
                     Group {
                         ProgressLabel(minutes: 0,
-                                      text: Texts.mindfulMinutes.localization,
-                                      accessibilityText: Texts.mindfulMinutes.localization)
+                                      text: Texts.mindfulMinutes.localisation,
+                                      accessibilityText: Texts.mindfulMinutes.localisation)
                         ProgressLabel(minutes: 0,
-                                      text: Texts.intention.localization,
-                                      accessibilityText: Texts.intentionInMinutes.localization)
+                                      text: Texts.intention.localisation,
+                                      accessibilityText: Texts.intentionInMinutes.localisation)
                     }.accessibility(addTraits: .isHeader)
                 }
                 
@@ -40,11 +40,11 @@ struct IntentionView: View {
                                 percentage: minutes.percentage)
                     Group {
                         ProgressLabel(minutes: minutes.mindful,
-                                      text: Texts.mindfulMinutes.localization,
-                                      accessibilityText: Texts.mindfulMinutes.localization)
+                                      text: Texts.mindfulMinutes.localisation,
+                                      accessibilityText: Texts.mindfulMinutes.localisation)
                         ProgressLabel(minutes: minutes.intention,
-                                      text: Texts.intention.localization,
-                                      accessibilityText: Texts.intentionInMinutes.localization)
+                                      text: Texts.intention.localisation,
+                                      accessibilityText: Texts.intentionInMinutes.localisation)
                     }.accessibility(addTraits: .isHeader)
                 }
             
@@ -109,7 +109,7 @@ struct ProgressBar: View {
                 .padding(lineWidth/2)
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
-        .accessibility(label: Text(Texts.progressInMinutes.localization))
+        .accessibility(label: Text(Texts.progressInMinutes.localisation))
         .accessibility(value: Text("\(percentage)"))
         .accessibility(addTraits: .isHeader)
     }

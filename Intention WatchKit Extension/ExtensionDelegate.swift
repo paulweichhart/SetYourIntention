@@ -12,19 +12,20 @@ import WatchKit
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     private static let mindfulMinutesKey = "mindfulMinutes"
-    
+
     func applicationDidBecomeActive() {
         if Intention().onboardingCompleted {
-            Store.shared.mindfulMinutes()
+            Store.shared.fetchMindfulMinutes()
         }
     }
     
     func applicationDidEnterBackground() {
         updateActiveComplications(shouldReload: true)
-        if case let .mindfulMinutes(minutes) = Store.shared.state {
-            scheduleBackgroundRefresh(minutes: minutes)
-        } else {
+        switch Store.shared.mindfulMinutes {
+        case .failure, .none:
             scheduleBackgroundRefresh(minutes: 0)
+        case let .success(minutes):
+            scheduleBackgroundRefresh(minutes: minutes)
         }
     }
     
@@ -33,27 +34,20 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             switch task {
             
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
-                Store.shared.permission(completion: { [weak self] granted in
-                     guard granted else {
-                        return
-                    }
-                    Store.shared.mindfulMinutes(completion: { result in
-                        let userInfo = backgroundTask.userInfo as? NSDictionary
-                        let cachedMinutes = userInfo?[Self.mindfulMinutesKey] as? Double ?? 0
-                        switch result {
-                        case let .success(minutes):
-                            let shouldReload = minutes != cachedMinutes
-                            self?.updateActiveComplications(shouldReload: shouldReload)
-                            self?.scheduleBackgroundRefresh(minutes: minutes)
-                            backgroundTask.setTaskCompletedWithSnapshot(shouldReload)
-                        
-                        case .failure:
-                            self?.updateActiveComplications(shouldReload: false)
-                            self?.scheduleBackgroundRefresh(minutes: cachedMinutes)
-                            backgroundTask.setTaskCompletedWithSnapshot(false)
-                        }
-                    })
-                })
+                let userInfo = backgroundTask.userInfo as? NSDictionary
+                let cachedMinutes = userInfo?[Self.mindfulMinutesKey] as? Double ?? 0
+
+                switch Store.shared.mindfulMinutes {
+                case .failure, .none:
+                    updateActiveComplications(shouldReload: false)
+                    scheduleBackgroundRefresh(minutes: cachedMinutes)
+                    backgroundTask.setTaskCompletedWithSnapshot(false)
+                case let .success(minutes):
+                    let shouldReload = minutes != cachedMinutes
+                    updateActiveComplications(shouldReload: shouldReload)
+                    scheduleBackgroundRefresh(minutes: minutes)
+                    backgroundTask.setTaskCompletedWithSnapshot(shouldReload)
+                }
                 
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:
                 snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)

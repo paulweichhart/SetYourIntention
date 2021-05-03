@@ -22,16 +22,16 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
         handler(.hideOnLockScreen)
     }
-    
+
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        
+
         switch complication.family {
         case .graphicCircular:
-            
-            switch Store.shared.state {
-            case .error, .initial, .available:
+
+            switch Store.shared.mindfulMinutes {
+            case .failure, .none:
                 handler(createTimelineEntry(mindfulMinutes: 0))
-            case let .mindfulMinutes(minutes):
+            case let .success(minutes):
                 handler(createTimelineEntry(mindfulMinutes: minutes))
             }
         default:

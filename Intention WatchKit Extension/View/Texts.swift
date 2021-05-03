@@ -34,7 +34,7 @@ enum Texts: LocalizedStringKey {
     case noDataAvailable = "Couldn't load Data from Apple Health :("
     case ctaOpenSettings = "Please allow Intention to access your mindful Session in the Settings"
     
-    var localization: LocalizedStringKey {
+    var localisation: LocalizedStringKey {
         return self.rawValue
     }
 }
