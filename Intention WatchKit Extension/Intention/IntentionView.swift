@@ -11,6 +11,7 @@ import WatchKit
 
 struct IntentionView: View {
     
+    @Environment(\.scenePhase) var scenePhase
     @ObservedObject private var viewModel: IntentionViewModel
         
     init(viewModel: IntentionViewModel) {
@@ -53,6 +54,10 @@ struct IntentionView: View {
             }
         }.onAppear() {
             viewModel.mindfulMinutes()
+        }.onChange(of: scenePhase) { newScenePhase in
+            if case .active = newScenePhase {
+                viewModel.mindfulMinutes()
+            }
         }
     }
 }

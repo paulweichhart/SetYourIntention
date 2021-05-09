@@ -27,8 +27,6 @@ final class IntentionViewModel: ObservableObject {
         subscribe()
     }
 
-    // TODO: Fetch on AppDidOpen
-
     func mindfulMinutes() {
         Publishers.CombineLatest(intention.$minutes.setFailureType(to: StoreError.self),
                                  Store.shared.mindfulMinutes())
