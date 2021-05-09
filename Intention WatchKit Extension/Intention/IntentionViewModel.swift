@@ -26,9 +26,23 @@ final class IntentionViewModel: ObservableObject {
         
         subscribe()
     }
-    
+
+    // TODO: Fetch on AppDidOpen
+
     func mindfulMinutes() {
-        Store.shared.fetchMindfulMinutes()
+        Publishers.CombineLatest(intention.$minutes.setFailureType(to: StoreError.self),
+                                 Store.shared.mindfulMinutes())
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [weak self] state in
+                if case let .failure(error) = state {
+                    self?.state = .error(error)
+                }
+            }, receiveValue: { [weak self] intention, mindfulMinutes in
+                let minutes = Minutes(mindful: mindfulMinutes,
+                                      intention: intention)
+                self?.state = .minutes(minutes)
+            })
+            .store(in: &cancellable)
     }
 
     private func subscribe() {
@@ -41,28 +55,10 @@ final class IntentionViewModel: ObservableObject {
 
                 case .available:
                     self?.state = .loading
-                    Store.shared.fetchMindfulMinutes()
+                    self?.mindfulMinutes()
 
                 case let .error(error):
                     self?.state = .error(error)
-                }
-            })
-            .store(in: &cancellable)
-
-        Publishers.CombineLatest(intention.$minutes, Store.shared.$mindfulMinutes)
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] intention, mindfulResult in
-                switch mindfulResult {
-                case let .failure(storeError):
-                    self?.state = .error(storeError)
-
-                case let .success(mindfulMinutes):
-                    let minutes = Minutes(mindful: mindfulMinutes,
-                                          intention: intention)
-                    self?.state = .minutes(minutes)
-
-                case .none:
-                    self?.state = .error(.noDataAvailable)
                 }
             })
             .store(in: &cancellable)

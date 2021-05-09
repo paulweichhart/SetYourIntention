@@ -11,14 +11,18 @@ import SwiftUI
 import WatchKit
 
 struct OnboardingView: View {
+
+    private let viewModel: PermissionViewModel
     
-    let intention: Intention
+    init(viewModel: PermissionViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         TabView {
             WelcomeView()
             InfoView()
-            PermissionView(viewModel: PermissionViewModel(intention: intention))
+            PermissionView(viewModel: viewModel)
         }
         .tabViewStyle(PageTabViewStyle())
     }

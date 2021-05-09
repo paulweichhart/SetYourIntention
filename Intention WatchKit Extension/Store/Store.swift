@@ -26,7 +26,6 @@ final class Store: ObservableObject {
     static let shared = Store()
     
     @Published private(set) var state: State = .initial
-    @Published private(set) var mindfulMinutes: Result<Double, StoreError>?
     
     private var store: HKHealthStore?
     private var mindfulSession: HKSampleType? {
@@ -56,29 +55,31 @@ final class Store: ObservableObject {
         })
     }
 
-    func fetchMindfulMinutes() {
-        guard let mindfulSession = mindfulSession, state == .available else {
-            mindfulMinutes = .failure(.unavailable)
-            return
-        }
-
-        let startDate = Calendar.current.startOfDay(for: Date())
-        let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
-
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-
-        let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { [weak self] _, samples, error in
-            if let _ = error {
-                self?.mindfulMinutes = .failure(.noDataAvailable)
+    func mindfulMinutes() -> Future<Double, StoreError> {
+        return Future { [weak self] promise in
+            guard let mindfulSession = self?.mindfulSession, self?.state == .available else {
+                promise(.failure(.unavailable))
                 return
-
             }
-            let mindfulSeconds = samples?.reduce(0, { seconds, sample in
-                return seconds + sample.endDate.timeIntervalSince(sample.startDate)
-            }) ?? 0
-            self?.mindfulMinutes = .success(mindfulSeconds / 60)
-        })
-        store?.execute(query)
+
+            let startDate = Calendar.current.startOfDay(for: Date())
+            let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
+
+            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+
+            let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { _, samples, error in
+                if let _ = error {
+                    promise(.failure(.noDataAvailable))
+                    return
+
+                }
+                let mindfulSeconds = samples?.reduce(0, { seconds, sample in
+                    return seconds + sample.endDate.timeIntervalSince(sample.startDate)
+                }) ?? 0
+                promise(.success(mindfulSeconds / 60))
+            })
+            self?.store?.execute(query)
+        }
     }
 }

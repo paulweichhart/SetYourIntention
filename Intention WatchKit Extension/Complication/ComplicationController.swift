@@ -6,9 +6,12 @@
 //
 
 import ClockKit
+import Combine
 import Foundation
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
+
+    private var cancellable = Set<AnyCancellable>()
     
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
          let descriptors = [
@@ -28,12 +31,16 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         switch complication.family {
         case .graphicCircular:
 
-            switch Store.shared.mindfulMinutes {
-            case .failure, .none:
-                handler(createTimelineEntry(mindfulMinutes: 0))
-            case let .success(minutes):
-                handler(createTimelineEntry(mindfulMinutes: minutes))
-            }
+            Store.shared.mindfulMinutes()
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { [weak self] storeState in
+                    if case .failure = storeState {
+                        handler(self?.createTimelineEntry(mindfulMinutes: 0))
+                    }
+                }, receiveValue: { [weak self] mindfulMinutes in
+                    handler(self?.createTimelineEntry(mindfulMinutes: mindfulMinutes))
+                })
+                .store(in: &cancellable)
         default:
             handler(nil)
         }
