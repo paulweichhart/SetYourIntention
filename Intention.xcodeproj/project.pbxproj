@@ -26,6 +26,7 @@
 		FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF547FDF253CD4480061F499 /* HealthKit.framework */; };
 		FF562E242546374C00D92C4B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF562E232546374C00D92C4B /* Colors.swift */; };
 		FF5A20CF2623AFC900C4B2B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */; };
+		FF6CB09B263FEB1700D2E39B /* PermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CB09A263FEB1700D2E39B /* PermissionViewModel.swift */; };
 		FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C425449FEE00DE7E6B /* WatchKit.framework */; };
 		FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C625449FFB00DE7E6B /* ClockKit.framework */; };
 		FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B94542544485600DCF314 /* ExtensionDelegate.swift */; };
@@ -104,6 +105,7 @@
 		FF562E232546374C00D92C4B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FF5A20D02623AFC900C4B2B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF5A20D52623AFCE00C4B2B0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF6CB09A263FEB1700D2E39B /* PermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModel.swift; sourceTree = "<group>"; };
 		FF8190C425449FEE00DE7E6B /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8190C625449FFB00DE7E6B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/ClockKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8B94542544485600DCF314 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */,
+				FF6CB09A263FEB1700D2E39B /* PermissionViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */,
 				FF562E242546374C00D92C4B /* Colors.swift in Sources */,
 				FF547FB0253CCDF70061F499 /* NotificationView.swift in Sources */,
+				FF6CB09B263FEB1700D2E39B /* PermissionViewModel.swift in Sources */,
 				FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */,
 				FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */,
 				FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */,

@@ -26,7 +26,8 @@ final class Coordinator {
             switch destination {
             
             case .onboarding:
-                OnboardingView(intention: intention)
+                let viewModel = PermissionViewModel(intention: intention)
+                OnboardingView(viewModel: viewModel)
             
             case .intentionView:
                 let viewModel = IntentionViewModel(intention: intention)

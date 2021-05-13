@@ -19,22 +19,34 @@ final class IntentionViewModel: ObservableObject {
     @Published private(set) var state: State = .loading
     
     private let intention: Intention
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellable = Set<AnyCancellable>()
     
     init(intention: Intention) {
         self.intention = intention
         
         subscribe()
     }
-    
+
     func mindfulMinutes() {
-        Store.shared.mindfulMinutes()
+        Publishers.CombineLatest(intention.$minutes.setFailureType(to: StoreError.self),
+                                 Store.shared.mindfulMinutes())
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [weak self] state in
+                if case let .failure(error) = state {
+                    self?.state = .error(error)
+                }
+            }, receiveValue: { [weak self] intention, mindfulMinutes in
+                let minutes = Minutes(mindful: mindfulMinutes,
+                                      intention: intention)
+                self?.state = .minutes(minutes)
+            })
+            .store(in: &cancellable)
     }
 
     private func subscribe() {
-        Publishers.CombineLatest(Store.shared.$state, intention.$minutes)
+        Store.shared.$state
             .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] storeState, intentionMinutes in
+            .sink(receiveValue: { [weak self] storeState in
                 switch storeState {
                 case .initial:
                     self?.state = .loading
@@ -43,15 +55,10 @@ final class IntentionViewModel: ObservableObject {
                     self?.state = .loading
                     self?.mindfulMinutes()
 
-                case let .mindfulMinutes(mindfulMinutes):
-                    let minutes = Minutes(mindful: mindfulMinutes,
-                                          intention: intentionMinutes)
-                    self?.state = .minutes(minutes)
-
                 case let .error(error):
                     self?.state = .error(error)
                 }
             })
-            .store(in: &cancellables)
+            .store(in: &cancellable)
     }
 }

@@ -22,7 +22,7 @@ struct SetIntentionView: View {
                 VStack {
                     Group {
                         HStack {
-                            Text(Texts.dailyIntention.localization)
+                            Text(Texts.dailyIntention.localisation)
                                 .font(.body)
                                 .fontWeight(.light)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -36,9 +36,9 @@ struct SetIntentionView: View {
                     }.accessibility(addTraits: .isHeader)
                     HStack {
                         IntentionButton(systemName: "minus", action: intention.decrement)
-                            .accessibility(label: Text(Texts.decreaseIntention.localization))
+                            .accessibility(label: Text(Texts.decreaseIntention.localisation))
                         IntentionButton(systemName: "plus", action: intention.increment)
-                            .accessibility(label: Text(Texts.increaseIntention.localization))
+                            .accessibility(label: Text(Texts.increaseIntention.localisation))
                     }
                 }
             }
@@ -52,9 +52,9 @@ struct MinutesView: View {
     
     var body: some View {
         Group {
-            Text("\(Int(minutes))").font(.title2).fontWeight(.bold) + Text(" ") + Text(Texts.minutes.localization).font(.title2).fontWeight(.light)
+            Text("\(Int(minutes))").font(.title2).fontWeight(.bold) + Text(" ") + Text(Texts.minutes.localisation).font(.title2).fontWeight(.light)
         }
-        .accessibility(label: Text(Texts.intentionInMinutes.localization))
+        .accessibility(label: Text(Texts.intentionInMinutes.localisation))
         .accessibility(value: Text("\(Int(minutes))"))
 
     }

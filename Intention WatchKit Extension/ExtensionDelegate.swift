@@ -5,6 +5,7 @@
 //  Created by Paul Weichhart on 24.10.20.
 //
 
+import Combine
 import ClockKit
 import Foundation
 import WatchKit
@@ -12,20 +13,19 @@ import WatchKit
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     private static let mindfulMinutesKey = "mindfulMinutes"
-    
-    func applicationDidBecomeActive() {
-        if Intention().onboardingCompleted {
-            Store.shared.mindfulMinutes()
-        }
-    }
+    private var cancellable = Set<AnyCancellable>()
     
     func applicationDidEnterBackground() {
         updateActiveComplications(shouldReload: true)
-        if case let .mindfulMinutes(minutes) = Store.shared.state {
-            scheduleBackgroundRefresh(minutes: minutes)
-        } else {
-            scheduleBackgroundRefresh(minutes: 0)
-        }
+        Store.shared.mindfulMinutes()
+            .sink(receiveCompletion: { [weak self] storeState in
+                if case .failure = storeState {
+                    self?.scheduleBackgroundRefresh(minutes: 0)
+                }
+            }, receiveValue: { [weak self] mindfulMinutes in
+                self?.scheduleBackgroundRefresh(minutes: mindfulMinutes)
+            })
+            .store(in: &cancellable)
     }
     
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
@@ -33,27 +33,23 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             switch task {
             
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
-                Store.shared.permission(completion: { [weak self] granted in
-                     guard granted else {
-                        return
-                    }
-                    Store.shared.mindfulMinutes(completion: { result in
-                        let userInfo = backgroundTask.userInfo as? NSDictionary
-                        let cachedMinutes = userInfo?[Self.mindfulMinutesKey] as? Double ?? 0
-                        switch result {
-                        case let .success(minutes):
-                            let shouldReload = minutes != cachedMinutes
-                            self?.updateActiveComplications(shouldReload: shouldReload)
-                            self?.scheduleBackgroundRefresh(minutes: minutes)
-                            backgroundTask.setTaskCompletedWithSnapshot(shouldReload)
-                        
-                        case .failure:
+                let userInfo = backgroundTask.userInfo as? NSDictionary
+                let cachedMinutes = userInfo?[Self.mindfulMinutesKey] as? Double ?? 0
+
+                Store.shared.mindfulMinutes()
+                    .sink(receiveCompletion: { [weak self] storeState in
+                        if case .failure = storeState {
                             self?.updateActiveComplications(shouldReload: false)
                             self?.scheduleBackgroundRefresh(minutes: cachedMinutes)
                             backgroundTask.setTaskCompletedWithSnapshot(false)
                         }
+                    }, receiveValue: { [weak self] mindfulMinutes in
+                        let shouldReload = mindfulMinutes != cachedMinutes
+                        self?.updateActiveComplications(shouldReload: shouldReload)
+                        self?.scheduleBackgroundRefresh(minutes: mindfulMinutes)
+                        backgroundTask.setTaskCompletedWithSnapshot(shouldReload)
                     })
-                })
+                    .store(in: &cancellable)
                 
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:
                 snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)
