@@ -23,6 +23,7 @@ enum Texts: LocalizedStringKey {
     case review = "Review"
     
     // Intention
+    case mindful = "Mindful"
     case dailyIntention = "Your Daily Intention"
     case minutes = "Minutes"
     case mindfulMinutes = "Mindful Minutes"
