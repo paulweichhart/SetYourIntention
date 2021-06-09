@@ -40,7 +40,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] storeState in
                 if case .failure = storeState {
-                    if let template = self?.complicationTemplate(mindfulMinutes: 0, intention: intention, family: complication.family) {
+                    let minutes = Minutes(mindful: 0, intention: intention)
+                    if let template = self?.complicationTemplate(minutes: minutes, family: complication.family) {
                         handler(CLKComplicationTimelineEntry(date: Date(),
                                                              complicationTemplate: template))
                     } else {
@@ -48,7 +49,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                     }
                 }
             }, receiveValue: { [weak self] mindfulMinutes in
-                if let template = self?.complicationTemplate(mindfulMinutes: mindfulMinutes, intention: intention, family: complication.family) {
+                let minutes = Minutes(mindful: mindfulMinutes, intention: intention)
+                if let template = self?.complicationTemplate(minutes: minutes, family: complication.family) {
                     handler(CLKComplicationTimelineEntry(date: Date(),
                                                         complicationTemplate: template))
                 } else {
@@ -58,49 +60,47 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             .store(in: &cancellable)
     }
 
-    private func complicationTemplate(mindfulMinutes: Double, intention: Double, family: CLKComplicationFamily) -> CLKComplicationTemplate? {
-        let fraction = min(Float(mindfulMinutes / intention), 1)
+    private func complicationTemplate(minutes: Minutes, family: CLKComplicationFamily) -> CLKComplicationTemplate? {
         let image = family.asset ?? UIImage()
-
-        let provider = CLKSimpleGaugeProvider(style: .fill,
+        let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
                                               gaugeColor: UIColor(Colors.foreground.value),
-                                              fillFraction: fraction)
+                                              fillFraction: minutes.fraction)
         let imageProvider = CLKImageProvider(onePieceImage: image)
         let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: image)
 
         switch family {
         case .circularSmall:
             return CLKComplicationTemplateCircularSmallRingImage(imageProvider: imageProvider,
-                                                                 fillFraction: fraction,
+                                                                 fillFraction: minutes.fraction,
                                                                  ringStyle: .closed)
         case .extraLarge:
             return CLKComplicationTemplateExtraLargeRingImage(imageProvider: imageProvider,
-                                                              fillFraction: fraction,
+                                                              fillFraction: minutes.fraction,
                                                               ringStyle: .closed)
         case .graphicBezel:
-            let template = CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: provider,
+            let template = CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
                                                                                   imageProvider: fullColorImageProvider)
             let localizedIntention = NSLocalizedString("Intention", comment: "")
             let localizedMindful = NSLocalizedString("Mindful", comment: "")
-            let textProvider = CLKTextProvider(format: "\(localizedMindful) %dMin • \(localizedIntention) %dMin", Int(mindfulMinutes), Int(intention))
+            let textProvider = CLKTextProvider(format: "\(localizedMindful) %dMin • \(localizedIntention) %dMin", Int(minutes.mindful), Int(minutes.intention))
             return CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: template,
                                                                    textProvider: textProvider)
         case .graphicCircular:
-            return CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: provider,
+            return CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
                                                                           imageProvider: fullColorImageProvider)
         case .graphicCorner:
-            return CLKComplicationTemplateGraphicCornerGaugeImage(gaugeProvider: provider,
+            return CLKComplicationTemplateGraphicCornerGaugeImage(gaugeProvider: gaugeProvider,
                                                                   imageProvider: fullColorImageProvider)
         case .graphicExtraLarge:
-            return CLKComplicationTemplateGraphicExtraLargeCircularClosedGaugeImage(gaugeProvider: provider,
+            return CLKComplicationTemplateGraphicExtraLargeCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
                                                                                     imageProvider: fullColorImageProvider)
         case .modularSmall:
             return CLKComplicationTemplateModularSmallRingImage(imageProvider: imageProvider,
-                                                                fillFraction: fraction,
+                                                                fillFraction: minutes.fraction,
                                                                 ringStyle: .closed)
         case .utilitarianSmall:
             return CLKComplicationTemplateUtilitarianSmallRingImage(imageProvider: imageProvider,
-                                                                    fillFraction: fraction,
+                                                                    fillFraction: minutes.fraction,
                                                                     ringStyle: .closed)
         default:
             return nil
