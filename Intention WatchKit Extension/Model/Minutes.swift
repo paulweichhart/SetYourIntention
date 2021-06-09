@@ -22,4 +22,8 @@ struct Minutes: Equatable {
     var percentage: Int {
         return Int(progress * 100)
     }
+
+    var fraction: Float {
+        return min(Float(mindful / intention), 1)
+    }
 }
