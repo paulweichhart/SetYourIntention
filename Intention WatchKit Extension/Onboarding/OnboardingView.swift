@@ -83,7 +83,7 @@ struct PermissionView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     Button(action: {
-                        viewModel.initialiseStore()
+                        viewModel.initialiseHealthStore()
                     }, label: {
                         Text(Texts.review.localisation)
                             .font(.body)

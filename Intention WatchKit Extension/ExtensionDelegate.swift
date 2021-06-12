@@ -17,7 +17,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     func applicationDidEnterBackground() {
         updateActiveComplications(shouldReload: true)
-        Store.shared.mindfulMinutes()
+        HealthStore.shared.mindfulMinutes()
             .sink(receiveCompletion: { [weak self] storeState in
                 if case .failure = storeState {
                     self?.scheduleBackgroundRefresh(minutes: 0)
@@ -36,7 +36,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 let userInfo = backgroundTask.userInfo as? NSDictionary
                 let cachedMinutes = userInfo?[Self.mindfulMinutesKey] as? Double ?? 0
 
-                Store.shared.mindfulMinutes()
+                HealthStore.shared.mindfulMinutes()
                     .sink(receiveCompletion: { [weak self] storeState in
                         if case .failure = storeState {
                             self?.updateActiveComplications(shouldReload: false)

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ErrorView: View {
     
-    let error: StoreError
+    let error: HealthStoreError
     
     var body: some View {
         

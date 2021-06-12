@@ -1,5 +1,5 @@
 //
-//  Store.swift
+//  HealthStore.swift
 //  Intention WatchKit Extension
 //
 //  Created by Paul Weichhart on 21.10.20.
@@ -9,21 +9,21 @@ import Combine
 import Foundation
 import HealthKit
 
-enum StoreError: Error {
+enum HealthStoreError: Error {
     case permissionDenied
     case unavailable
     case noDataAvailable
 }
 
-final class Store: ObservableObject {
+final class HealthStore: ObservableObject {
 
     enum State: Equatable {
         case initial
         case available
-        case error(StoreError)
+        case error(HealthStoreError)
     }
     
-    static let shared = Store()
+    static let shared = HealthStore()
     
     @Published private(set) var state: State = .initial
     
@@ -55,7 +55,7 @@ final class Store: ObservableObject {
         })
     }
 
-    func mindfulMinutes() -> Future<Double, StoreError> {
+    func mindfulMinutes() -> Future<Double, HealthStoreError> {
         return Future { [weak self] promise in
             guard let mindfulSession = self?.mindfulSession, self?.state == .available else {
                 promise(.failure(.unavailable))

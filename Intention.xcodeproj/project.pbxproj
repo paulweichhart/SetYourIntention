@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0A182126753AED00B45A2C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A182026753AED00B45A2C /* Store.swift */; };
 		FF1ED83B2622E43F00BF727B /* Minutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1ED83A2622E43F00BF727B /* Minutes.swift */; };
 		FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218779253E26DD004C85CC /* SetIntentionView.swift */; };
 		FF218785253E3482004C85CC /* Intention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218784253E3482004C85CC /* Intention.swift */; };
 		FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D871A253D01C600E10C02 /* Coordinator.swift */; };
-		FF5382532540963400FE08E6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5382522540963400FE08E6 /* Store.swift */; };
+		FF5382532540963400FE08E6 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5382522540963400FE08E6 /* HealthStore.swift */; };
 		FF547F99253CCDF70061F499 /* Intention WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF547F98253CCDF70061F499 /* Intention WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF547F9E253CCDF70061F499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547F9D253CCDF70061F499 /* Assets.xcassets */; };
 		FF547FA5253CCDF70061F499 /* Intention WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF547FA4253CCDF70061F499 /* Intention WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -79,12 +80,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF0A182026753AED00B45A2C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FF0ED240256B13D4008BAA0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF1ED83A2622E43F00BF727B /* Minutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minutes.swift; sourceTree = "<group>"; };
 		FF218779253E26DD004C85CC /* SetIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetIntentionView.swift; sourceTree = "<group>"; };
 		FF218784253E3482004C85CC /* Intention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intention.swift; sourceTree = "<group>"; };
 		FF3D871A253D01C600E10C02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		FF5382522540963400FE08E6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FF5382522540963400FE08E6 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		FF547F94253CCDF70061F499 /* Intention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intention.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF547F98253CCDF70061F499 /* Intention WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intention WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF547F9D253CCDF70061F499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF0A181B26753A3B00B45A2C /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
+		FF0A181C26753A4800B45A2C /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				FF0A181B26753A3B00B45A2C /* Reducer */,
+				FF0A181E26753A6500B45A2C /* State */,
+				FF0A181D26753A5800B45A2C /* Store */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		FF0A181D26753A5800B45A2C /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				FF0A182026753AED00B45A2C /* Store.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		FF0A181E26753A6500B45A2C /* State */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		FF0A181F26753A8200B45A2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FF218783253E346F004C85CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +200,7 @@
 		FF5382512540961F00FE08E6 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				FF5382522540963400FE08E6 /* Store.swift */,
+				FF5382522540963400FE08E6 /* HealthStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -206,6 +247,8 @@
 				FF3D8715253D00F700E10C02 /* SetIntention */,
 				FF547FCF253CD3BF0061F499 /* Intention */,
 				FF218783253E346F004C85CC /* Model */,
+				FF0A181C26753A4800B45A2C /* Redux */,
+				FF0A181F26753A8200B45A2C /* Views */,
 				FFFB33C1256C4F2A00932CD8 /* Onboarding */,
 				FF5382512540961F00FE08E6 /* Store */,
 				FFE10BF82541B8A2008209AC /* View */,
@@ -423,11 +466,12 @@
 				FF218785253E3482004C85CC /* Intention.swift in Sources */,
 				FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */,
 				FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */,
+				FF0A182126753AED00B45A2C /* Store.swift in Sources */,
 				FFDBA5B126068E53003F076F /* Texts.swift in Sources */,
 				FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */,
 				FF547FB2253CCDF70061F499 /* ComplicationController.swift in Sources */,
 				FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */,
-				FF5382532540963400FE08E6 /* Store.swift in Sources */,
+				FF5382532540963400FE08E6 /* HealthStore.swift in Sources */,
 				FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */,
 				FF562E242546374C00D92C4B /* Colors.swift in Sources */,
 				FF547FB0253CCDF70061F499 /* NotificationView.swift in Sources */,

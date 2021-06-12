@@ -17,8 +17,8 @@ final class PermissionViewModel: ObservableObject {
         self.intention = intention
     }
 
-    func initialiseStore() {
-        let store = Store.shared
+    func initialiseHealthStore() {
+        let store = HealthStore.shared
         store.$state
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] storeState in

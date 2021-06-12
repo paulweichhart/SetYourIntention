@@ -36,7 +36,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
 
         let intention = Intention().minutes
-        Store.shared.mindfulMinutes()
+        HealthStore.shared.mindfulMinutes()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] storeState in
                 if case .failure = storeState {

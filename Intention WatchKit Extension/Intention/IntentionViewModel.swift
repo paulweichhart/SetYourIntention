@@ -13,7 +13,7 @@ final class IntentionViewModel: ObservableObject {
     enum State: Equatable {
         case loading
         case minutes(_ minutes: Minutes)
-        case error(StoreError)
+        case error(HealthStoreError)
     }
     
     @Published private(set) var state: State = .loading
@@ -28,8 +28,8 @@ final class IntentionViewModel: ObservableObject {
     }
 
     func mindfulMinutes() {
-        Publishers.CombineLatest(intention.$minutes.setFailureType(to: StoreError.self),
-                                 Store.shared.mindfulMinutes())
+        Publishers.CombineLatest(intention.$minutes.setFailureType(to: HealthStoreError.self),
+                                 HealthStore.shared.mindfulMinutes())
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] state in
                 if case let .failure(error) = state {
@@ -44,7 +44,7 @@ final class IntentionViewModel: ObservableObject {
     }
 
     private func subscribe() {
-        Store.shared.$state
+        HealthStore.shared.$state
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] storeState in
                 switch storeState {
