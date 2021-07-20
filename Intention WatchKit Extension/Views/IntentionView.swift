@@ -7,56 +7,42 @@
 
 import Foundation
 import SwiftUI
-import WatchKit
 
 struct IntentionView: View {
-    
-    @Environment(\.scenePhase) var scenePhase
-    @ObservedObject private var viewModel: IntentionViewModel
+
+    @Environment(\.scenePhase) private var scenePhase
+    @EnvironmentObject private var store: Store
         
-    init(viewModel: IntentionViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         NavigationView {
-            switch viewModel.state {
-            
-            case .loading:
+            switch store.state.mindfulTimeInterval {
+
+            case let .success(mindfulTimeInterval):
                 VStack {
-                    ProgressBar(progress: 0, percentage: 0)
+                    ProgressBar(progress: store.state.progress,
+                                percentage: store.state.percentage)
                     Group {
-                        ProgressLabel(minutes: 0,
+                        ProgressLabel(timeInterval: mindfulTimeInterval,
                                       text: Texts.mindfulMinutes.localisation,
                                       accessibilityText: Texts.mindfulMinutes.localisation)
-                        ProgressLabel(minutes: 0,
+                        ProgressLabel(timeInterval: store.state.intention,
                                       text: Texts.intention.localisation,
                                       accessibilityText: Texts.intentionInMinutes.localisation)
                     }.accessibility(addTraits: .isHeader)
                 }
-                
-            case let .minutes(minutes):
-                VStack {
-                    ProgressBar(progress: minutes.progress,
-                                percentage: minutes.percentage)
-                    Group {
-                        ProgressLabel(minutes: minutes.mindful,
-                                      text: Texts.mindfulMinutes.localisation,
-                                      accessibilityText: Texts.mindfulMinutes.localisation)
-                        ProgressLabel(minutes: minutes.intention,
-                                      text: Texts.intention.localisation,
-                                      accessibilityText: Texts.intentionInMinutes.localisation)
-                    }.accessibility(addTraits: .isHeader)
-                }
-            
-            case let .error(error):
+
+            case let .failure(error):
                 ErrorView(error: error)
             }
         }.onAppear() {
-            viewModel.mindfulMinutes()
+            Task {
+                await store.dispatch(action: .fetchMindfulTimeInterval)
+            }
         }.onChange(of: scenePhase) { newScenePhase in
             if case .active = newScenePhase {
-                viewModel.mindfulMinutes()
+                Task {
+                    await store.dispatch(action: .fetchMindfulTimeInterval)
+                }
             }
         }
     }
@@ -122,7 +108,7 @@ struct ProgressBar: View {
 
 struct ProgressLabel: View {
 
-    let minutes: Double
+    let timeInterval: TimeInterval
     let text: LocalizedStringKey
     let accessibilityText: LocalizedStringKey
 
@@ -132,12 +118,12 @@ struct ProgressLabel: View {
                 .fontWeight(.light)
                 .font(.body) +
             Text(" ") +
-            Text("\(Int(minutes))")
+            Text("\(Converter.minutes(from: timeInterval))")
                 .fontWeight(.bold)
                 .font(.body)
             Spacer()
         }
         .accessibility(label: Text(accessibilityText))
-        .accessibility(value: Text("\(Int(minutes))"))
+        .accessibility(value: Text("\(Converter.minutes(from: timeInterval))"))
     }
 }

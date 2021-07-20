@@ -5,24 +5,17 @@
 //  Created by Paul Weichhart on 23.11.20.
 //
 
-import Combine
 import Foundation
 import SwiftUI
 import WatchKit
 
 struct OnboardingView: View {
 
-    private let viewModel: PermissionViewModel
-    
-    init(viewModel: PermissionViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         TabView {
             WelcomeView()
             InfoView()
-            PermissionView(viewModel: viewModel)
+            PermissionView()
         }
         .tabViewStyle(PageTabViewStyle())
     }
@@ -58,6 +51,7 @@ struct InfoView: View {
                         .font(.body)
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer()
+
                 }
             }
         }
@@ -66,14 +60,8 @@ struct InfoView: View {
 
 struct PermissionView: View {
     
-    @ObservedObject private var viewModel: PermissionViewModel
+    @EnvironmentObject private var store: Store
 
-    init(viewModel: PermissionViewModel) {
-        self.viewModel = viewModel
-    }
-
-    private var cancellable = Set<AnyCancellable>()
-    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -83,7 +71,11 @@ struct PermissionView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     Button(action: {
-                        viewModel.initialiseHealthStore()
+                        Task {
+                            await store.dispatch(action: .requestHealthStorePermission)
+                            await store.dispatch(action: .setupInitialState)
+                            await store.dispatch(action: .versionTwoOnboardingCompleted)
+                        }
                     }, label: {
                         Text(Texts.review.localisation)
                             .font(.body)

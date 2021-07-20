@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FF0A182126753AED00B45A2C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A182026753AED00B45A2C /* Store.swift */; };
-		FF1ED83B2622E43F00BF727B /* Minutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1ED83A2622E43F00BF727B /* Minutes.swift */; };
+		FF0A18232675409E00B45A2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A18222675409E00B45A2C /* AppState.swift */; };
+		FF0A18252675420500B45A2C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A18242675420500B45A2C /* Action.swift */; };
+		FF0A18272675437900B45A2C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A18262675437900B45A2C /* Reducer.swift */; };
 		FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218779253E26DD004C85CC /* SetIntentionView.swift */; };
-		FF218785253E3482004C85CC /* Intention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218784253E3482004C85CC /* Intention.swift */; };
-		FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D871A253D01C600E10C02 /* Coordinator.swift */; };
+		FF263CD926A3715800C56B2F /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF263CD826A3715800C56B2F /* Converter.swift */; };
+		FF263CE126A3732200C56B2F /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF263CE026A3732200C56B2F /* UnitTests.swift */; };
+		FF263CE726A3740B00C56B2F /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF263CD826A3715800C56B2F /* Converter.swift */; };
 		FF5382532540963400FE08E6 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5382522540963400FE08E6 /* HealthStore.swift */; };
 		FF547F99253CCDF70061F499 /* Intention WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF547F98253CCDF70061F499 /* Intention WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF547F9E253CCDF70061F499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547F9D253CCDF70061F499 /* Assets.xcassets */; };
@@ -23,11 +26,9 @@
 		FF547FB4253CCDF80061F499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547FB3253CCDF80061F499 /* Assets.xcassets */; };
 		FF547FB7253CCDF80061F499 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547FB6253CCDF80061F499 /* Preview Assets.xcassets */; };
 		FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD0253CD3D30061F499 /* IntentionView.swift */; };
-		FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */; };
 		FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF547FDF253CD4480061F499 /* HealthKit.framework */; };
 		FF562E242546374C00D92C4B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF562E232546374C00D92C4B /* Colors.swift */; };
 		FF5A20CF2623AFC900C4B2B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */; };
-		FF6CB09B263FEB1700D2E39B /* PermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6CB09A263FEB1700D2E39B /* PermissionViewModel.swift */; };
 		FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C425449FEE00DE7E6B /* WatchKit.framework */; };
 		FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C625449FFB00DE7E6B /* ClockKit.framework */; };
 		FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B94542544485600DCF314 /* ExtensionDelegate.swift */; };
@@ -38,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FF263CE226A3732200C56B2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF547F8E253CCDF60061F499 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF547FA3253CCDF70061F499;
+			remoteInfo = "Intention WatchKit Extension";
+		};
 		FF547F9A253CCDF70061F499 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF547F8E253CCDF60061F499 /* Project object */;
@@ -81,11 +89,14 @@
 
 /* Begin PBXFileReference section */
 		FF0A182026753AED00B45A2C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FF0A18222675409E00B45A2C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		FF0A18242675420500B45A2C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		FF0A18262675437900B45A2C /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		FF0ED240256B13D4008BAA0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF1ED83A2622E43F00BF727B /* Minutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minutes.swift; sourceTree = "<group>"; };
 		FF218779253E26DD004C85CC /* SetIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetIntentionView.swift; sourceTree = "<group>"; };
-		FF218784253E3482004C85CC /* Intention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intention.swift; sourceTree = "<group>"; };
-		FF3D871A253D01C600E10C02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FF263CD826A3715800C56B2F /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		FF263CDE26A3732200C56B2F /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF263CE026A3732200C56B2F /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		FF5382522540963400FE08E6 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		FF547F94253CCDF70061F499 /* Intention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intention.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF547F98253CCDF70061F499 /* Intention WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intention WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,13 +112,11 @@
 		FF547FB8253CCDF80061F499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF547FB9253CCDF80061F499 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		FF547FD0253CD3D30061F499 /* IntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionView.swift; sourceTree = "<group>"; };
-		FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionViewModel.swift; sourceTree = "<group>"; };
 		FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intention WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		FF547FDF253CD4480061F499 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF562E232546374C00D92C4B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FF5A20D02623AFC900C4B2B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF5A20D52623AFCE00C4B2B0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FF6CB09A263FEB1700D2E39B /* PermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModel.swift; sourceTree = "<group>"; };
 		FF8190C425449FEE00DE7E6B /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8190C625449FFB00DE7E6B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/ClockKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8B94542544485600DCF314 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +129,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FF263CDB26A3732200C56B2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF547FA1253CCDF70061F499 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,31 +152,26 @@
 		FF0A181B26753A3B00B45A2C /* Reducer */ = {
 			isa = PBXGroup;
 			children = (
+				FF0A18242675420500B45A2C /* Action.swift */,
+				FF0A18262675437900B45A2C /* Reducer.swift */,
 			);
 			path = Reducer;
-			sourceTree = "<group>";
-		};
-		FF0A181C26753A4800B45A2C /* Redux */ = {
-			isa = PBXGroup;
-			children = (
-				FF0A181B26753A3B00B45A2C /* Reducer */,
-				FF0A181E26753A6500B45A2C /* State */,
-				FF0A181D26753A5800B45A2C /* Store */,
-			);
-			path = Redux;
 			sourceTree = "<group>";
 		};
 		FF0A181D26753A5800B45A2C /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				FF5382522540963400FE08E6 /* HealthStore.swift */,
 				FF0A182026753AED00B45A2C /* Store.swift */,
 			);
-			path = Store;
+			name = Store;
+			path = Redux/Store;
 			sourceTree = "<group>";
 		};
 		FF0A181E26753A6500B45A2C /* State */ = {
 			isa = PBXGroup;
 			children = (
+				FF0A18222675409E00B45A2C /* AppState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -168,41 +179,38 @@
 		FF0A181F26753A8200B45A2C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF562E232546374C00D92C4B /* Colors.swift */,
+				FFE10BF92541B8B4008209AC /* ErrorView.swift */,
+				FF547FD0253CD3D30061F499 /* IntentionView.swift */,
+				FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */,
+				FF218779253E26DD004C85CC /* SetIntentionView.swift */,
+				FFDBA5B026068E53003F076F /* Texts.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FF218783253E346F004C85CC /* Model */ = {
+		FF263CD726A3713600C56B2F /* Converter */ = {
 			isa = PBXGroup;
 			children = (
-				FF218784253E3482004C85CC /* Intention.swift */,
-				FF1ED83A2622E43F00BF727B /* Minutes.swift */,
+				FF263CD826A3715800C56B2F /* Converter.swift */,
 			);
-			path = Model;
+			path = Converter;
 			sourceTree = "<group>";
 		};
-		FF3D8715253D00F700E10C02 /* SetIntention */ = {
+		FF263CDF26A3732200C56B2F /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				FF218779253E26DD004C85CC /* SetIntentionView.swift */,
+				FF263CE026A3732200C56B2F /* UnitTests.swift */,
 			);
-			path = SetIntention;
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
-		FF3D8719253D01A000E10C02 /* Coordinator */ = {
+		FF308E492677FDCD00378A09 /* ExtensionDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				FF3D871A253D01C600E10C02 /* Coordinator.swift */,
+				FF8B94542544485600DCF314 /* ExtensionDelegate.swift */,
 			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		FF5382512540961F00FE08E6 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				FF5382522540963400FE08E6 /* HealthStore.swift */,
-			);
-			path = Store;
+			path = ExtensionDelegate;
 			sourceTree = "<group>";
 		};
 		FF547F8D253CCDF60061F499 = {
@@ -212,6 +220,7 @@
 				FF0ED240256B13D4008BAA0E /* Info.plist */,
 				FF547F9C253CCDF70061F499 /* Intention WatchKit App */,
 				FF547FA8253CCDF70061F499 /* Intention WatchKit Extension */,
+				FF263CDF26A3732200C56B2F /* UnitTests */,
 				FF547F95253CCDF70061F499 /* Products */,
 				FF547FDE253CD4480061F499 /* Frameworks */,
 			);
@@ -223,6 +232,7 @@
 				FF547F94253CCDF70061F499 /* Intention.app */,
 				FF547F98253CCDF70061F499 /* Intention WatchKit App.app */,
 				FF547FA4253CCDF70061F499 /* Intention WatchKit Extension.appex */,
+				FF263CDE26A3732200C56B2F /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,17 +251,13 @@
 			children = (
 				FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */,
 				FF547FA9253CCDF70061F499 /* IntentionApp.swift */,
-				FF8B94542544485600DCF314 /* ExtensionDelegate.swift */,
 				FF547FCE253CD3A80061F499 /* Complication */,
-				FF3D8719253D01A000E10C02 /* Coordinator */,
-				FF3D8715253D00F700E10C02 /* SetIntention */,
-				FF547FCF253CD3BF0061F499 /* Intention */,
-				FF218783253E346F004C85CC /* Model */,
-				FF0A181C26753A4800B45A2C /* Redux */,
+				FF263CD726A3713600C56B2F /* Converter */,
+				FF308E492677FDCD00378A09 /* ExtensionDelegate */,
+				FF0A181B26753A3B00B45A2C /* Reducer */,
+				FF0A181E26753A6500B45A2C /* State */,
+				FF0A181D26753A5800B45A2C /* Store */,
 				FF0A181F26753A8200B45A2C /* Views */,
-				FFFB33C1256C4F2A00932CD8 /* Onboarding */,
-				FF5382512540961F00FE08E6 /* Store */,
-				FFE10BF82541B8A2008209AC /* View */,
 				FF547FCD253CD3990061F499 /* Notification */,
 				FFDBA5B526069114003F076F /* Localization */,
 				FF547FB3253CCDF80061F499 /* Assets.xcassets */,
@@ -287,15 +293,6 @@
 			path = Complication;
 			sourceTree = "<group>";
 		};
-		FF547FCF253CD3BF0061F499 /* Intention */ = {
-			isa = PBXGroup;
-			children = (
-				FF547FD0253CD3D30061F499 /* IntentionView.swift */,
-				FF547FD8253CD3E50061F499 /* IntentionViewModel.swift */,
-			);
-			path = Intention;
-			sourceTree = "<group>";
-		};
 		FF547FDE253CD4480061F499 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,28 +312,27 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		FFE10BF82541B8A2008209AC /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FFE10BF92541B8B4008209AC /* ErrorView.swift */,
-				FF562E232546374C00D92C4B /* Colors.swift */,
-				FFDBA5B026068E53003F076F /* Texts.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FFFB33C1256C4F2A00932CD8 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */,
-				FF6CB09A263FEB1700D2E39B /* PermissionViewModel.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FF263CDD26A3732200C56B2F /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF263CE426A3732200C56B2F /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				FF263CDA26A3732200C56B2F /* Sources */,
+				FF263CDB26A3732200C56B2F /* Frameworks */,
+				FF263CDC26A3732200C56B2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF263CE326A3732200C56B2F /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = FF263CDE26A3732200C56B2F /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FF547F93253CCDF70061F499 /* Intention */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF547FC4253CCDF80061F499 /* Build configuration list for PBXNativeTarget "Intention" */;
@@ -394,9 +390,13 @@
 		FF547F8E253CCDF60061F499 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					FF263CDD26A3732200C56B2F = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = FF547FA3253CCDF70061F499;
+					};
 					FF547F93253CCDF70061F499 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -425,11 +425,19 @@
 				FF547F93253CCDF70061F499 /* Intention */,
 				FF547F97253CCDF70061F499 /* Intention WatchKit App */,
 				FF547FA3253CCDF70061F499 /* Intention WatchKit Extension */,
+				FF263CDD26A3732200C56B2F /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FF263CDC26A3732200C56B2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF547F92253CCDF70061F499 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,27 +467,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FF263CDA26A3732200C56B2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF263CE726A3740B00C56B2F /* Converter.swift in Sources */,
+				FF263CE126A3732200C56B2F /* UnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF547FA0253CCDF70061F499 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF218785253E3482004C85CC /* Intention.swift in Sources */,
 				FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */,
+				FF0A18232675409E00B45A2C /* AppState.swift in Sources */,
 				FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */,
 				FF0A182126753AED00B45A2C /* Store.swift in Sources */,
 				FFDBA5B126068E53003F076F /* Texts.swift in Sources */,
+				FF263CD926A3715800C56B2F /* Converter.swift in Sources */,
 				FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */,
 				FF547FB2253CCDF70061F499 /* ComplicationController.swift in Sources */,
 				FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */,
 				FF5382532540963400FE08E6 /* HealthStore.swift in Sources */,
 				FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */,
+				FF0A18272675437900B45A2C /* Reducer.swift in Sources */,
 				FF562E242546374C00D92C4B /* Colors.swift in Sources */,
 				FF547FB0253CCDF70061F499 /* NotificationView.swift in Sources */,
-				FF6CB09B263FEB1700D2E39B /* PermissionViewModel.swift in Sources */,
-				FF547FD9253CD3E50061F499 /* IntentionViewModel.swift in Sources */,
-				FF3D871B253D01C600E10C02 /* Coordinator.swift in Sources */,
+				FF0A18252675420500B45A2C /* Action.swift in Sources */,
 				FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */,
-				FF1ED83B2622E43F00BF727B /* Minutes.swift in Sources */,
 				FFFB33C3256C4F4700932CD8 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +503,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FF263CE326A3732200C56B2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF547FA3253CCDF70061F499 /* Intention WatchKit Extension */;
+			targetProxy = FF263CE226A3732200C56B2F /* PBXContainerItemProxy */;
+		};
 		FF547F9B253CCDF70061F499 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FF547F97253CCDF70061F499 /* Intention WatchKit App */;
@@ -521,6 +542,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FF263CE526A3732200C56B2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intention WatchKit Extension.appex/Intention WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		FF263CE626A3732200C56B2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intention WatchKit Extension.appex/Intention WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
 		FF547FBA253CCDF80061F499 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -574,6 +647,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -630,6 +704,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -662,7 +737,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -689,7 +764,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -711,7 +786,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -733,7 +808,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -768,6 +843,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FF263CE426A3732200C56B2F /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF263CE526A3732200C56B2F /* Debug */,
+				FF263CE626A3732200C56B2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FF547F91253CCDF60061F499 /* Build configuration list for PBXProject "Intention" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
