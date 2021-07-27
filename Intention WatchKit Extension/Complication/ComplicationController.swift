@@ -10,31 +10,36 @@ import Combine
 import Foundation
 
 final class ComplicationController: NSObject, CLKComplicationDataSource {
-    
+
+    private let healthStore = HealthStore()
+    private let mindfulTimeIntervalKey = "mindfulTimeInterval"
+
+    private var intention: TimeInterval {
+        return AppState().intention
+    }
+
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
-         let descriptors = [
-             CLKComplicationDescriptor(identifier: "complication",
-                                       displayName: "Intention",
-                                       supportedFamilies: [.circularSmall,
-                                                           .extraLarge,
-                                                           .graphicBezel,
-                                                           .graphicCircular,
-                                                           .graphicCorner,
-                                                           .graphicExtraLarge,
-                                                           .modularSmall,
-                                                           .utilitarianSmall])
-         ]
-         handler(descriptors)
-     }
+        let descriptors = [
+            CLKComplicationDescriptor(identifier: "complication",
+                                      displayName: "Intention",
+                                      supportedFamilies: [.circularSmall,
+                                                          .extraLarge,
+                                                          .graphicBezel,
+                                                          .graphicCircular,
+                                                          .graphicCorner,
+                                                          .graphicExtraLarge,
+                                                          .modularSmall,
+                                                          .utilitarianSmall])
+        ]
+        handler(descriptors)
+    }
     
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
         handler(.hideOnLockScreen)
     }
 
-
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        let healthStore = HealthStore()
-        let intention = AppState().intention
+
         Task {
             do {
                 try await healthStore.requestPermission()
@@ -63,12 +68,12 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
         switch family {
         case .circularSmall:
             template = CLKComplicationTemplateCircularSmallRingImage(imageProvider: imageProvider,
-                                                                         fillFraction: fraction,
-                                                                         ringStyle: .closed)
+                                                                     fillFraction: fraction,
+                                                                     ringStyle: .closed)
         case .extraLarge:
             template = CLKComplicationTemplateExtraLargeRingImage(imageProvider: imageProvider,
-                                                                      fillFraction: fraction,
-                                                                      ringStyle: .closed)
+                                                                  fillFraction: fraction,
+                                                                  ringStyle: .closed)
         case .graphicBezel:
             let gaugeImage = CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
                                                                                     imageProvider: fullColorImageProvider)
@@ -126,7 +131,7 @@ extension CLKComplicationFamily {
         case .modularSmall:
             asset = "Modular"
         case .utilitarianSmall,
-             .utilitarianSmallFlat:
+                .utilitarianSmallFlat:
             asset = "Utilitarian"
         default:
             return nil

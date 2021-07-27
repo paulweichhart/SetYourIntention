@@ -26,7 +26,7 @@ struct HealthStore {
         }
         return HKHealthStore()
     }()
-    
+
     func requestPermission() async throws {
         guard let store = store, let mindfulSession = mindfulSession else {
             throw HealthStoreError.unavailable
@@ -38,6 +38,28 @@ struct HealthStore {
         } catch {
             throw HealthStoreError.permissionDenied
         }
+    }
+
+    func registerMindfulObserver(handler: @escaping () -> Void) async throws {
+        guard let store = store, let mindfulSession = mindfulSession else {
+            throw HealthStoreError.unavailable
+        }
+
+        do {
+            try await store.enableBackgroundDelivery(for: mindfulSession, frequency: .hourly)
+        } catch {
+            throw HealthStoreError.noDataAvailable
+        }
+
+        let query = HKObserverQuery(sampleType: mindfulSession, predicate: nil, updateHandler: { _, completionHandler, error in
+
+            guard error == nil else {
+                return
+            }
+            handler()
+            completionHandler()
+        })
+        store.execute(query)
     }
 
     func fetchMindfulTimeInterval() async throws -> TimeInterval {

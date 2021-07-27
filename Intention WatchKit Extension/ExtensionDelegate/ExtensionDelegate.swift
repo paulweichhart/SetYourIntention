@@ -8,29 +8,30 @@
 import ClockKit
 import Foundation
 import WatchKit
+import HealthKit
 
 final class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     private let mindfulTimeIntervalKey = "mindfulTimeInterval"
     private let healthStore = HealthStore()
+
+    private var mindfulMinuteState: TimeInterval = 0
     
     func applicationDidEnterBackground() {
         updateActiveComplications(shouldReload: true)
         Task {
-            do {
-                try await healthStore.requestPermission()
-                let mindfulTimeInterval = try await healthStore.fetchMindfulTimeInterval()
-                scheduleBackgroundRefresh(mindfulTimeInterval: mindfulTimeInterval)
-            } catch {
-                scheduleBackgroundRefresh(mindfulTimeInterval: 0)
-            }
+            try await healthStore.requestPermission()
+            let mindfulTimeInterval = await fetchMindfulTimeInterval()
+            scheduleBackgroundRefresh(mindfulTimeInterval: mindfulTimeInterval)
+            
+            await observeMindfulStoreChanges()
         }
     }
     
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         for task in backgroundTasks {
             switch task {
-            
+
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
                 let userInfo = backgroundTask.userInfo as? NSDictionary
                 let cachedTimeInterval = userInfo?[mindfulTimeIntervalKey] as? TimeInterval ?? 0
@@ -53,7 +54,6 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 snapshotTask.setTaskCompleted(restoredDefaultState: true,
                                               estimatedSnapshotExpiration: Date.distantFuture,
                                               userInfo: nil)
-                
             default:
                 task.setTaskCompletedWithSnapshot(false)
             }
@@ -73,12 +73,30 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
     
+    private func fetchMindfulTimeInterval() async -> TimeInterval {
+        do {
+            return try await healthStore.fetchMindfulTimeInterval()
+        } catch {
+            return 0
+        }
+    }
+
     private func scheduleBackgroundRefresh(mindfulTimeInterval: TimeInterval) {
         let scheduledDate = Date().addingTimeInterval(Converter.timeInterval(from: 15))
         let userInfo: NSDictionary = [mindfulTimeIntervalKey: mindfulTimeInterval]
         WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: scheduledDate,
                                                        userInfo: userInfo,
                                                        scheduledCompletion: { _ in })
+    }
+
+    private func observeMindfulStoreChanges() async {
+        do {
+            try await healthStore.registerMindfulObserver(handler: { [weak self] in
+                self?.updateActiveComplications(shouldReload: true)
+            })
+        } catch {
+            // Fail silently
+        }
     }
 }
 
