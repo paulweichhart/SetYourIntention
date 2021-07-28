@@ -15,12 +15,26 @@ struct IntentionView: View {
         
     var body: some View {
         NavigationView {
-            switch store.state.mindfulTimeInterval {
+            switch store.state.mindfulState {
 
-            case let .success(mindfulTimeInterval):
+            case .loading:
                 VStack {
-                    ProgressBar(progress: store.state.progress,
-                                percentage: store.state.percentage)
+                    ProgressBar(progress: 0,
+                                percentage: 0)
+                    Group {
+                        ProgressLabel(timeInterval: 0,
+                                      text: Texts.mindfulMinutes.localisation,
+                                      accessibilityText: Texts.mindfulMinutes.localisation)
+                        ProgressLabel(timeInterval: 0,
+                                      text: Texts.intention.localisation,
+                                      accessibilityText: Texts.intentionInMinutes.localisation)
+                    }.accessibility(addTraits: .isHeader)
+                }
+
+            case let .loaded(mindfulTimeInterval):
+                VStack {
+                    ProgressBar(progress: store.state.progress ?? 0,
+                                percentage: store.state.percentage ?? 0)
                     Group {
                         ProgressLabel(timeInterval: mindfulTimeInterval,
                                       text: Texts.mindfulMinutes.localisation,
@@ -31,7 +45,7 @@ struct IntentionView: View {
                     }.accessibility(addTraits: .isHeader)
                 }
 
-            case let .failure(error):
+            case let .error(error):
                 ErrorView(error: error)
             }
         }.onAppear() {

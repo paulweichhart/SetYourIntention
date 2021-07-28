@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum ViewState<State: Equatable, StateError: Error> {
+    case loading
+    case loaded(State)
+    case error(StateError)
+}
+
 struct AppState {
 
     private enum Keys: String {
@@ -24,7 +30,7 @@ struct AppState {
         }
     }
 
-    var mindfulTimeInterval: Result<TimeInterval, HealthStoreError> = .success(0)
+    var mindfulState: ViewState<TimeInterval, HealthStoreError> = .loading
 
     var versionOneOnboardingCompleted: Bool {
         return UserDefaults.standard.bool(forKey: Keys.versionOneOnboardingCompleted.rawValue)
@@ -39,19 +45,22 @@ struct AppState {
         }
     }
 
-    var progress: Double {
-        switch mindfulTimeInterval {
-        case let .success(timeInterval):
+    var progress: Double? {
+        switch mindfulState {
+        case .loading, .error:
+            return nil
+        case let .loaded(timeInterval):
             guard timeInterval > 0 && intention > 0 else {
                 return 0
             }
             return timeInterval / intention
-        case .failure:
-            return 0
         }
     }
 
-    var percentage: Int {
+    var percentage: Int? {
+        guard let progress = progress else {
+            return nil
+        }
         return Int(progress * 100)
     }
 }

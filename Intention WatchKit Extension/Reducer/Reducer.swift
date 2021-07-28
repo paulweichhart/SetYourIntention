@@ -33,20 +33,20 @@ struct Reducer {
             do {
                 try await healthStore.requestPermission()
                 let timeInterval = try await healthStore.fetchMindfulTimeInterval()
-                state.mindfulTimeInterval = .success(timeInterval)
+                state.mindfulState = .loaded(timeInterval)
             } catch HealthStoreError.noDataAvailable {
-                state.mindfulTimeInterval = .failure(.noDataAvailable)
+                state.mindfulState = .error(.noDataAvailable)
             } catch HealthStoreError.permissionDenied {
-                state.mindfulTimeInterval = .failure(.permissionDenied)
+                state.mindfulState = .error(.permissionDenied)
             } catch {
-                state.mindfulTimeInterval = .failure(.unavailable)
+                state.mindfulState = .error(.unavailable)
             }
 
         case .requestHealthStorePermission:
             do {
                 try await healthStore.requestPermission()
             } catch {
-                state.mindfulTimeInterval = .failure(.permissionDenied)
+                state.mindfulState = .error(.permissionDenied)
             }
 
         case .setupInitialState:
