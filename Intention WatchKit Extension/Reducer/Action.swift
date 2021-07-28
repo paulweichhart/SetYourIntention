@@ -16,4 +16,7 @@ enum Action {
     case fetchMindfulTimeInterval
     case requestHealthStorePermission
     case versionTwoOnboardingCompleted
+
+    case startMeditating
+    case stopMeditating
 }

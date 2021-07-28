@@ -59,6 +59,12 @@ struct Reducer {
 
         case .versionTwoOnboardingCompleted:
             state.versionTwoOnboardingCompleted = true
+
+        case .startMeditating:
+            state.isMeditating = true
+            
+        case .stopMeditating:
+            state.isMeditating = false
         }
 
         return state

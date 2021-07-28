@@ -40,6 +40,7 @@ struct RootView: View {
         case true:
             TabView {
                 IntentionView()
+                PracticeView()
                 SetIntentionView()
             }
             .tabViewStyle(PageTabViewStyle())

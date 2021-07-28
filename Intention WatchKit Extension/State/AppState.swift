@@ -32,6 +32,8 @@ struct AppState {
 
     var mindfulState: ViewState<TimeInterval, HealthStoreError> = .loading
 
+    var isMeditating: Bool = false
+
     var versionOneOnboardingCompleted: Bool {
         return UserDefaults.standard.bool(forKey: Keys.versionOneOnboardingCompleted.rawValue)
     }
