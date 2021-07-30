@@ -14,14 +14,12 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     private let mindfulTimeIntervalKey = "mindfulTimeInterval"
     private let healthStore = HealthStore()
-
-    private var mindfulMinuteState: TimeInterval = 0
     
     func applicationDidEnterBackground() {
         updateActiveComplications(shouldReload: true)
         Task {
             try await healthStore.requestPermission()
-            let mindfulTimeInterval = await fetchMindfulTimeInterval()
+            let mindfulTimeInterval = (try? await healthStore.fetchMindfulTimeInterval()) ?? 0
             scheduleBackgroundRefresh(mindfulTimeInterval: mindfulTimeInterval)
             
             await observeMindfulStoreChanges()
@@ -72,14 +70,6 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
-    
-    private func fetchMindfulTimeInterval() async -> TimeInterval {
-        do {
-            return try await healthStore.fetchMindfulTimeInterval()
-        } catch {
-            return 0
-        }
-    }
 
     private func scheduleBackgroundRefresh(mindfulTimeInterval: TimeInterval) {
         let scheduledDate = Date().addingTimeInterval(Converter.timeInterval(from: 15))
@@ -90,13 +80,10 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 
     private func observeMindfulStoreChanges() async {
-        do {
-            try await healthStore.registerMindfulObserver(handler: { [weak self] in
-                self?.updateActiveComplications(shouldReload: true)
-            })
-        } catch {
-            // Fail silently
-        }
+        // Fail silently
+        try? await healthStore.registerMindfulObserver(handler: { [weak self] in
+            self?.updateActiveComplications(shouldReload: true)
+        })
     }
 }
 

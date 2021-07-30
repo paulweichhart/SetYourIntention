@@ -34,12 +34,9 @@ struct Reducer {
                 try await healthStore.requestPermission()
                 let timeInterval = try await healthStore.fetchMindfulTimeInterval()
                 state.mindfulState = .loaded(timeInterval)
-            } catch HealthStoreError.noDataAvailable {
-                state.mindfulState = .error(.noDataAvailable)
-            } catch HealthStoreError.permissionDenied {
-                state.mindfulState = .error(.permissionDenied)
             } catch {
-                state.mindfulState = .error(.unavailable)
+                let healthStoreError = error as? HealthStoreError ?? .unavailable
+                state.mindfulState = .error(healthStoreError)
             }
 
         case .requestHealthStorePermission:
