@@ -23,7 +23,7 @@ struct PracticeView: View {
         NavigationView {
             VStack {
                 HStack {
-                    Text(Texts.practice.localisation)
+                    Text(Texts.unguided.localisation)
                         .font(.body)
                         .fontWeight(.light)
                         .fixedSize(horizontal: false, vertical: true)
@@ -48,6 +48,7 @@ struct PracticeView: View {
             }
         }
         .sheet(isPresented: $isMeditating, content: {
+            // Extract View https://www.swiftbysundell.com/articles/dismissing-swiftui-modal-and-detail-views/
             VStack {
                 ProgressBar(progress: 0.5, percentage: 50)
             }

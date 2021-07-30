@@ -31,7 +31,7 @@ enum Texts: LocalizedStringKey {
     case setYourIntention = "Set Your Intention"
 
     // Meditation
-    case practice = "Practice"
+    case unguided = "Unguided"
     case meditation = "Meditation"
     case start = "Start"
     case done = "Done"
