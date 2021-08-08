@@ -7,8 +7,9 @@
 
 import Foundation
 import HealthKit
+import UIKit
 
-enum HealthStoreError: Error {
+enum HealthStoreError: Error, Equatable {
     case permissionDenied
     case unavailable
     case noDataAvailable
@@ -40,11 +41,12 @@ struct HealthStore {
         }
     }
 
-    func registerMindfulObserver(handler: @escaping () -> Void) async throws {
+    func registerMindfulObserver(storeDidChange: @escaping AsyncClosure) async throws {
         guard let store = store, let mindfulSession = mindfulSession else {
             throw HealthStoreError.unavailable
         }
 
+        var task: Task<Void, Never>?
         do {
             try await store.enableBackgroundDelivery(for: mindfulSession, frequency: .hourly)
             let query = HKObserverQuery(sampleType: mindfulSession, predicate: nil, updateHandler: { _, completionHandler, error in
@@ -52,8 +54,12 @@ struct HealthStore {
                 guard error == nil else {
                     return
                 }
-                handler()
-                completionHandler()
+                
+                task?.cancel()
+                task = Task.detached {
+                    await storeDidChange()
+                    completionHandler()
+                }
             })
             store.execute(query)
         } catch {

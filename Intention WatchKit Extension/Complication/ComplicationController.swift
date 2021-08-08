@@ -11,47 +11,43 @@ import Foundation
 
 final class ComplicationController: NSObject, CLKComplicationDataSource {
 
-    private let healthStore = HealthStore()
+    private let store = Store.shared
     private let mindfulTimeIntervalKey = "mindfulTimeInterval"
 
     private var intention: TimeInterval {
-        return AppState().intention
+        return store.state.intention
     }
 
-    func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
-        let descriptors = [
-            CLKComplicationDescriptor(identifier: "complication",
-                                      displayName: "Intention",
-                                      supportedFamilies: [.circularSmall,
-                                                          .extraLarge,
-                                                          .graphicBezel,
-                                                          .graphicCircular,
-                                                          .graphicCorner,
-                                                          .graphicExtraLarge,
-                                                          .modularSmall,
-                                                          .utilitarianSmall])
-        ]
-        handler(descriptors)
-    }
-    
-    func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
-        handler(.hideOnLockScreen)
+    func complicationDescriptors() async -> [CLKComplicationDescriptor] {
+        return [CLKComplicationDescriptor(identifier: "complication",
+                                          displayName: "Intention",
+                                          supportedFamilies: [.circularSmall,
+                                                              .extraLarge,
+                                                              .graphicBezel,
+                                                              .graphicCircular,
+                                                              .graphicCorner,
+                                                              .graphicExtraLarge,
+                                                              .modularSmall,
+                                                              .utilitarianSmall])]
     }
 
-    func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
+    func privacyBehavior(for complication: CLKComplication) async -> CLKComplicationPrivacyBehavior {
+        return .hideOnLockScreen
+    }
 
-        Task {
-            do {
-                try await healthStore.requestPermission()
-                let timeInterval = try await healthStore.fetchMindfulTimeInterval()
-                handler(complicationTimelineEntry(mindfulTimeInterval: timeInterval,
-                                                  intention: intention,
-                                                  family: complication.family))
-            } catch {
-                handler(complicationTimelineEntry(mindfulTimeInterval: 0,
-                                                  intention: intention,
-                                                  family: complication.family))
-            }
+    func currentTimelineEntry(for complication: CLKComplication) async -> CLKComplicationTimelineEntry? {
+        await store.dispatch(action: .requestHealthStorePermission)
+        await store.dispatch(action: .fetchMindfulTimeInterval)
+
+        switch store.state.mindfulState {
+        case let .loaded(timeInterval):
+            return complicationTimelineEntry(mindfulTimeInterval: timeInterval,
+                                             intention: intention,
+                                             family: complication.family)
+        case .loading, .error:
+            return complicationTimelineEntry(mindfulTimeInterval: 0,
+                                             intention: intention,
+                                             family: complication.family)
         }
     }
 

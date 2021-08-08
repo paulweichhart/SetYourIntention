@@ -8,15 +8,19 @@
 import Combine
 import Foundation
 
+@MainActor
 final class Store: ObservableObject {
 
-    @Published private(set) var state: AppState
-    private let reducer: Reducer
+    static let shared = Store()
 
-    init(initialAppState: AppState, reducer: Reducer) {
-        self.state = initialAppState
-        self.reducer = reducer
-    }
+    @Published private(set) var state = AppState()
+
+    private var reducer: Reducer = {
+        let healthStore = HealthStore()
+        return Reducer(healthStore: healthStore)
+    }()
+
+    private init() { }
 
     func dispatch(action: Action) async {
         state = await reducer.apply(action: action, to: state)

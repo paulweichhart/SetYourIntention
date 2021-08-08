@@ -14,13 +14,7 @@ import WatchKit
 struct IntentionApp: App {
 
     @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
-    
-    @StateObject private var store: Store = {
-        let state = AppState()
-        let healthStore = HealthStore()
-        let reducer = Reducer(healthStore: healthStore)
-        return Store(initialAppState: state, reducer: reducer)
-    }()
+    private let store = Store.shared
 
     var body: some Scene {
 

@@ -7,6 +7,9 @@
 
 import Foundation
 
+typealias Closure = () -> Void
+typealias AsyncClosure = () async -> Void
+
 enum Action {
 
     case incrementIntention
@@ -15,6 +18,7 @@ enum Action {
     case setupInitialState
     case fetchMindfulTimeInterval
     case requestHealthStorePermission
+    case startObservingMindfulStoreChanges(AsyncClosure)
     case versionTwoOnboardingCompleted
 
     case startMeditating

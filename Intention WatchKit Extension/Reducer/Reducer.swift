@@ -11,7 +11,7 @@ struct Reducer {
 
     private let defaultTimeInterval: TimeInterval = Converter.timeInterval(from: 5)
     private let healthStore: HealthStore
-    
+
     init(healthStore: HealthStore) {
         self.healthStore = healthStore
     }
@@ -45,6 +45,9 @@ struct Reducer {
             } catch {
                 state.mindfulState = .error(.permissionDenied)
             }
+
+        case let .startObservingMindfulStoreChanges(storeDidChange):
+            try? await healthStore.registerMindfulObserver(storeDidChange: storeDidChange)
 
         case .setupInitialState:
             if state.versionOneOnboardingCompleted && !state.versionTwoOnboardingCompleted {
