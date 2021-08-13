@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HealthKit
 
 struct Reducer {
 
@@ -61,10 +62,28 @@ struct Reducer {
             state.versionTwoOnboardingCompleted = true
 
         case .startMeditating:
-            state.isMeditating = true
-            
+            let configuration = HKWorkoutConfiguration()
+            configuration.activityType = .mindAndBody
+            configuration.locationType = .indoor
+
+            do {
+                state.session = try HKWorkoutSession(healthStore: healthStore.store!, configuration: configuration)
+//                state.builder = state.session?.associatedWorkoutBuilder()
+//                state.builder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore.store!,
+//                                                                    workoutConfiguration: configuration)
+                let startDate = Date()
+                state.session?.startActivity(with: startDate)
+                try await state.builder?.beginCollection(at: startDate)
+                state.isMeditating = true
+            } catch {
+                // Use View State
+            }
+
         case .stopMeditating:
+            state.session?.end()
             state.isMeditating = false
+            state.builder = nil
+            state.session = nil
         }
 
         return state

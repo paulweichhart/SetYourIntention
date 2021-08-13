@@ -10,9 +10,10 @@ import HealthKit
 import UIKit
 
 enum HealthStoreError: Error, Equatable {
-    case permissionDenied
-    case unavailable
     case noDataAvailable
+    case permissionDenied
+    case savingFailed
+    case unavailable
 }
 
 struct HealthStore {
@@ -21,7 +22,7 @@ struct HealthStore {
         return HKObjectType.categoryType(forIdentifier: .mindfulSession)
     }
 
-    private var store: HKHealthStore? = {
+    private(set) var store: HKHealthStore? = {
         guard HKHealthStore.isHealthDataAvailable() else {
             return nil
         }
@@ -88,6 +89,23 @@ struct HealthStore {
                 continuation.resume(returning: mindfulTimeInterval)
             })
             store.execute(query)
+        }
+    }
+
+    func storeMindfulTimeInterval(startDate: Date, endDate: Date) async throws {
+        guard let store = store, let mindfulSession = mindfulSession as? HKCategoryType else {
+            throw HealthStoreError.unavailable
+        }
+
+        let value = Int(endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970)
+        let mindfulSample = HKCategorySample(type: mindfulSession,
+                                             value: value,
+                                             start: startDate,
+                                             end: endDate)
+        do {
+            try await store.save(mindfulSample)
+        } catch {
+            throw HealthStoreError.savingFailed
         }
     }
 }
