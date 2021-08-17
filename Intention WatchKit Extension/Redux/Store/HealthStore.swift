@@ -46,7 +46,6 @@ struct HealthStore {
             throw HealthStoreError.unavailable
         }
 
-        var task: Task<Void, Never>?
         do {
             try await store.enableBackgroundDelivery(for: mindfulSession, frequency: .hourly)
             let query = HKObserverQuery(sampleType: mindfulSession, predicate: nil, updateHandler: { _, completionHandler, error in
@@ -54,9 +53,8 @@ struct HealthStore {
                 guard error == nil else {
                     return
                 }
-                
-                task?.cancel()
-                task = Task.detached {
+
+                Task {
                     await storeDidChange()
                     completionHandler()
                 }
