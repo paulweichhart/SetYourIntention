@@ -47,7 +47,6 @@ struct HealthStore {
             throw HealthStoreError.unavailable
         }
 
-        var task: Task<Void, Never>?
         do {
             try await store.enableBackgroundDelivery(for: mindfulSession, frequency: .hourly)
             let query = HKObserverQuery(sampleType: mindfulSession, predicate: nil, updateHandler: { _, completionHandler, error in
@@ -56,8 +55,7 @@ struct HealthStore {
                     return
                 }
                 
-                task?.cancel()
-                task = Task.detached {
+                Task {
                     await storeDidChange()
                     completionHandler()
                 }
@@ -92,14 +90,15 @@ struct HealthStore {
         }
     }
 
-    func storeMindfulTimeInterval(startDate: Date, endDate: Date) async throws {
-        guard let store = store, let mindfulSession = mindfulSession as? HKCategoryType else {
+    func storeMindfulTimeInterval(startDate: Date?, endDate: Date?) async throws {
+        guard let startDate = startDate,
+              let endDate = endDate,
+              let store = store,
+              let mindfulSession = mindfulSession as? HKCategoryType else {
             throw HealthStoreError.unavailable
         }
-
-        let value = Int(endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970)
         let mindfulSample = HKCategorySample(type: mindfulSession,
-                                             value: value,
+                                             value: 0 ,
                                              start: startDate,
                                              end: endDate)
         do {

@@ -34,6 +34,7 @@
 		FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B94542544485600DCF314 /* ExtensionDelegate.swift */; };
 		FF90ED8626C709340010C721 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED8526C709340010C721 /* ViewState.swift */; };
 		FFC0C1AE26B0B1A6002DA8F5 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0C1AD26B0B1A6002DA8F5 /* PracticeView.swift */; };
+		FFC83E2126CEF77C0062A1D2 /* MindfulSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */; };
 		FFDBA5B126068E53003F076F /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBA5B026068E53003F076F /* Texts.swift */; };
 		FFDBA5BE260691B9003F076F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFDBA5C0260691B9003F076F /* Localizable.strings */; };
 		FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE10BF92541B8B4008209AC /* ErrorView.swift */; };
@@ -125,6 +126,7 @@
 		FF90ED8526C709340010C721 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		FFAAABDB25ED90DB00534B21 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFC0C1AD26B0B1A6002DA8F5 /* PracticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulSession.swift; sourceTree = "<group>"; };
 		FFDBA5B026068E53003F076F /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		FFDBA5BF260691B9003F076F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FFDBA5C4260691BF003F076F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				FF0A18222675409E00B45A2C /* AppState.swift */,
+				FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				FF0A18232675409E00B45A2C /* AppState.swift in Sources */,
 				FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */,
 				FF0A182126753AED00B45A2C /* Store.swift in Sources */,
+				FFC83E2126CEF77C0062A1D2 /* MindfulSession.swift in Sources */,
 				FFDBA5B126068E53003F076F /* Texts.swift in Sources */,
 				FF263CD926A3715800C56B2F /* Converter.swift in Sources */,
 				FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */,

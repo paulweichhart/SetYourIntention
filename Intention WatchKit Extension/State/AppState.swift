@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import HealthKit
 
 struct AppState {
 
@@ -27,10 +26,7 @@ struct AppState {
 
     var mindfulState: ViewState<TimeInterval, HealthStoreError> = .loading
 
-    var isMeditating: Bool = false
-
-    var session: HKWorkoutSession?
-    var builder: HKLiveWorkoutBuilder?
+    var mindfulSessionState: ViewState<TimeInterval, HealthStoreError> = .loading
 
     var versionOneOnboardingCompleted: Bool {
         return UserDefaults.standard.bool(forKey: Keys.versionOneOnboardingCompleted.rawValue)

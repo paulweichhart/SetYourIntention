@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import HealthKit
+import WatchKit
 
-struct Reducer {
+final class Reducer {
 
     private let defaultTimeInterval: TimeInterval = Converter.timeInterval(from: 5)
     private let healthStore: HealthStore
@@ -62,30 +62,28 @@ struct Reducer {
             state.versionTwoOnboardingCompleted = true
 
         case .startMeditating:
-            let configuration = HKWorkoutConfiguration()
-            configuration.activityType = .mindAndBody
-            configuration.locationType = .indoor
-
-            do {
-                state.session = try HKWorkoutSession(healthStore: healthStore.store!, configuration: configuration)
-//                state.builder = state.session?.associatedWorkoutBuilder()
-//                state.builder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore.store!,
-//                                                                    workoutConfiguration: configuration)
-                let startDate = Date()
-                state.session?.startActivity(with: startDate)
-                try await state.builder?.beginCollection(at: startDate)
-                state.isMeditating = true
-            } catch {
-                // Use View State
-            }
+//            state.mindfulSession?.session = WKExtendedRuntimeSession()
+//            state.mindfulSession?.startDate = Date()
+//            state.mindfulSession?.session?.delegate = self
+            break
 
         case .stopMeditating:
-            state.session?.end()
-            state.isMeditating = false
-            state.builder = nil
-            state.session = nil
+//            do {
+//                let startDate = state.mindfulSession?.startDate ?? Date()
+//                let endDate = Date()
+//                state.mindfulSession?.session?.invalidate()
+//                try await healthStore.storeMindfulTimeInterval(startDate: startDate,
+//                                                               endDate: endDate)
+//                state.mindfulSessionState = .loaded(endDate.timeIntervalSince(startDate))
+//                state.mindfulSession = nil
+//            } catch {
+//                state.mindfulSessionState = .error(.savingFailed)
+//            }
+            break
         }
 
         return state
     }
+
+    
 }

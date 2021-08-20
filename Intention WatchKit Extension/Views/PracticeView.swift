@@ -11,13 +11,7 @@ import SwiftUI
 struct PracticeView: View {
 
     @EnvironmentObject private var store: Store
-    @State private var isMeditating = false {
-        didSet {
-            Task {
-                await store.dispatch(action: isMeditating ? .stopMeditating : .startMeditating)
-            }
-        }
-    }
+    @State private var isMeditating = false
 
     var body: some View {
         NavigationView {
@@ -39,6 +33,9 @@ struct PracticeView: View {
                 Spacer()
                 Button(Texts.start.localisation, action: {
                     isMeditating.toggle()
+                    Task {
+                        await store.dispatch(action: .startMeditating)
+                    }
                 })
                 .foregroundColor(.black)
                 .buttonStyle(PlainButtonStyle())
@@ -49,13 +46,19 @@ struct PracticeView: View {
         }
         .sheet(isPresented: $isMeditating, content: {
             // Extract View https://www.swiftbysundell.com/articles/dismissing-swiftui-modal-and-detail-views/
-            VStack {
-                ProgressBar(progress: 0.5, percentage: 50)
+            let startDate = Date()
+            TimelineView(.periodic(from: startDate, by: 1)) { context in
+                let timeInterval = Date().timeIntervalSince(startDate)
+                let progress = timeInterval / store.state.intention
+                ProgressBar(progress: progress, percentage: 50)
             }
             .toolbar(content: {
                 ToolbarItem(placement: .cancellationAction, content: {
                     Button(Texts.done.localisation, action: {
                         isMeditating.toggle()
+                        Task {
+                            await store.dispatch(action: .stopMeditating)
+                        }
                     })
                 })
             })
