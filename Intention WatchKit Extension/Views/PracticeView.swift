@@ -11,7 +11,11 @@ import SwiftUI
 struct PracticeView: View {
 
     @EnvironmentObject private var store: Store
-    @State private var isMeditating = false
+    @State private var isMeditating = false {
+        didSet {
+            print("isMeditating: \(isMeditating)")
+        }
+    }
 
     var body: some View {
         NavigationView {
@@ -32,9 +36,9 @@ struct PracticeView: View {
                 }
                 Spacer()
                 Button(Texts.start.localisation, action: {
-                    isMeditating.toggle()
                     Task {
                         await store.dispatch(action: .startMeditating)
+                        isMeditating.toggle()
                     }
                 })
                 .foregroundColor(.black)
@@ -55,9 +59,10 @@ struct PracticeView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .cancellationAction, content: {
                     Button(Texts.done.localisation, action: {
-                        isMeditating.toggle()
                         Task {
                             await store.dispatch(action: .stopMeditating)
+                            await store.dispatch(action: .fetchMindfulTimeInterval)
+                            isMeditating.toggle()
                         }
                     })
                 })

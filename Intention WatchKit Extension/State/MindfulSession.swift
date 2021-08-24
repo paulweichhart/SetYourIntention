@@ -8,9 +8,45 @@
 import Foundation
 import WatchKit
 
-struct MindfulSession {
+enum MindfulSessionState {
+    case initial
+    case meditating(Date)
+    case error(HealthStoreError)
+}
 
-    var session: WKExtendedRuntimeSession?
+final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
 
-    var startDate: Date?
+    private let session: WKExtendedRuntimeSession
+
+    override init() {
+        self.session = WKExtendedRuntimeSession()
+        super.init()
+
+        session.delegate = self
+    }
+
+    func startSession() -> Date {
+        session.start()
+        return Date()
+    }
+
+    func stopSession() -> Date {
+        session.invalidate()
+        return Date()
+    }
+
+    func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
+        Task {
+            await Store.shared.dispatch(action: .failedStoringMeditatingSession)
+        }
+    }
+
+    func extendedRuntimeSessionDidStart(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+
+    }
+
+    func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        session.notifyUser(hapticType: .failure,
+                           repeatHandler: nil)
+    }
 }

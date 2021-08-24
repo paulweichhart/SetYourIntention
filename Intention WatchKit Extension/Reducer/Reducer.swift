@@ -12,9 +12,11 @@ final class Reducer {
 
     private let defaultTimeInterval: TimeInterval = Converter.timeInterval(from: 5)
     private let healthStore: HealthStore
+    private let mindfulSession: MindfulSession
 
-    init(healthStore: HealthStore) {
+    init(healthStore: HealthStore, mindfulSession: MindfulSession) {
         self.healthStore = healthStore
+        self.mindfulSession = mindfulSession
     }
 
     func apply(action: Action, to state: AppState) async -> AppState {
@@ -62,24 +64,25 @@ final class Reducer {
             state.versionTwoOnboardingCompleted = true
 
         case .startMeditating:
-//            state.mindfulSession?.session = WKExtendedRuntimeSession()
-//            state.mindfulSession?.startDate = Date()
-//            state.mindfulSession?.session?.delegate = self
+            let startDate = mindfulSession.startSession()
+            state.mindfulSessionState = .meditating(startDate)
             break
 
         case .stopMeditating:
-//            do {
-//                let startDate = state.mindfulSession?.startDate ?? Date()
-//                let endDate = Date()
-//                state.mindfulSession?.session?.invalidate()
-//                try await healthStore.storeMindfulTimeInterval(startDate: startDate,
-//                                                               endDate: endDate)
-//                state.mindfulSessionState = .loaded(endDate.timeIntervalSince(startDate))
-//                state.mindfulSession = nil
-//            } catch {
-//                state.mindfulSessionState = .error(.savingFailed)
-//            }
-            break
+            if case let .meditating(startDate) = state.mindfulSessionState {
+                do {
+                    let endDate = mindfulSession.stopSession()
+                    try await healthStore.storeMindfulTimeInterval(startDate: startDate,
+                                                                   endDate: endDate)
+                    state.mindfulSessionState = .initial
+                } catch {
+                    state.mindfulSessionState = .error(.savingFailed)
+                }
+            }
+
+        case .failedStoringMeditatingSession:
+            state.mindfulSessionState = .error(.savingFailed)
+            
         }
 
         return state

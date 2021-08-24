@@ -23,4 +23,5 @@ enum Action {
 
     case startMeditating
     case stopMeditating
+    case failedStoringMeditatingSession
 }

@@ -90,10 +90,8 @@ struct HealthStore {
         }
     }
 
-    func storeMindfulTimeInterval(startDate: Date?, endDate: Date?) async throws {
-        guard let startDate = startDate,
-              let endDate = endDate,
-              let store = store,
+    func storeMindfulTimeInterval(startDate: Date, endDate: Date) async throws {
+        guard let store = store,
               let mindfulSession = mindfulSession as? HKCategoryType else {
             throw HealthStoreError.unavailable
         }

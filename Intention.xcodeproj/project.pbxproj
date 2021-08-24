@@ -179,6 +179,7 @@
 			children = (
 				FF0A18222675409E00B45A2C /* AppState.swift */,
 				FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */,
+				FF90ED8526C709340010C721 /* ViewState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -193,7 +194,6 @@
 				FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */,
 				FF218779253E26DD004C85CC /* SetIntentionView.swift */,
 				FFDBA5B026068E53003F076F /* Texts.swift */,
-				FF90ED8526C709340010C721 /* ViewState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

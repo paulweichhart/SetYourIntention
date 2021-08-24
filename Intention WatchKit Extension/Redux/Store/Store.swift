@@ -17,7 +17,9 @@ final class Store: ObservableObject {
 
     private var reducer: Reducer = {
         let healthStore = HealthStore()
-        return Reducer(healthStore: healthStore)
+        let mindfulSession = MindfulSession()
+        return Reducer(healthStore: healthStore,
+                       mindfulSession: mindfulSession)
     }()
 
     private init() { }
