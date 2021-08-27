@@ -11,11 +11,7 @@ import SwiftUI
 struct PracticeView: View {
 
     @EnvironmentObject private var store: Store
-    @State private var isMeditating = false {
-        didSet {
-            print("isMeditating: \(isMeditating)")
-        }
-    }
+    @State private var isMeditating = false
 
     var body: some View {
         NavigationView {
@@ -49,24 +45,30 @@ struct PracticeView: View {
             }
         }
         .sheet(isPresented: $isMeditating, content: {
+
             // Extract View https://www.swiftbysundell.com/articles/dismissing-swiftui-modal-and-detail-views/
-            let startDate = Date()
-            TimelineView(.periodic(from: startDate, by: 1)) { context in
-                let timeInterval = Date().timeIntervalSince(startDate)
-                let progress = timeInterval / store.state.intention
-                ProgressBar(progress: progress, percentage: 50)
-            }
-            .toolbar(content: {
-                ToolbarItem(placement: .cancellationAction, content: {
-                    Button(Texts.done.localisation, action: {
-                        Task {
-                            await store.dispatch(action: .stopMeditating)
-                            await store.dispatch(action: .fetchMindfulTimeInterval)
-                            isMeditating.toggle()
-                        }
+            if case let .meditating(startDate) = store.state.mindfulSessionState {
+                TimelineView(.periodic(from: startDate, by: 1)) { context in
+                    VStack {
+                        Spacer()
+                        ProgressBar(progress: store.state.mindfulSessionProgress ?? 0,
+                                    percentage: store.state.mindfulSessionPercentage ?? 0)
+                        Spacer()
+                    }
+                }
+                .toolbar(content: {
+                    ToolbarItem(placement: .cancellationAction, content: {
+                        Button(Texts.done.localisation, action: {
+                            Task {
+                                await store.dispatch(action: .stopMeditating)
+                                await store.dispatch(action: .fetchMindfulTimeInterval)
+                                isMeditating.toggle()
+                            }
+                        })
+                            .foregroundColor(Colors.foreground.value)
                     })
                 })
-            })
+            }
         })
     }
 }

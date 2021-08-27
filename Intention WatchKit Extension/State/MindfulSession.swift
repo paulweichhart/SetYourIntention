@@ -16,10 +16,9 @@ enum MindfulSessionState {
 
 final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
 
-    private let session: WKExtendedRuntimeSession
+    private let session = WKExtendedRuntimeSession()
 
     override init() {
-        self.session = WKExtendedRuntimeSession()
         super.init()
 
         session.delegate = self
