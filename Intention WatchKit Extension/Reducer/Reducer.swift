@@ -51,7 +51,10 @@ final class Reducer {
             }
 
         case let .startObservingMindfulStoreChanges(storeDidChange):
-            try? await healthStore.registerMindfulObserver(storeDidChange: storeDidChange)
+            if !state.didRegisterBackgroundDelivery && state.versionTwoOnboardingCompleted {
+                try? await healthStore.registerMindfulObserver(storeDidChange: storeDidChange)
+                state.didRegisterBackgroundDelivery = true
+            }
 
         case .setupInitialState:
             if state.versionOneOnboardingCompleted && !state.versionTwoOnboardingCompleted {

@@ -54,7 +54,7 @@ struct HealthStore {
                 guard error == nil else {
                     return
                 }
-                
+
                 Task {
                     await storeDidChange()
                     completionHandler()

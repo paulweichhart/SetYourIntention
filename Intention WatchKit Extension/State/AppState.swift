@@ -17,6 +17,8 @@ struct AppState {
 
     // Version State
 
+    var didRegisterBackgroundDelivery: Bool = false
+
     var versionOneOnboardingCompleted: Bool {
         return UserDefaults.standard.bool(forKey: Keys.versionOneOnboardingCompleted.rawValue)
     }

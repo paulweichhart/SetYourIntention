@@ -15,20 +15,17 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
     private let mindfulTimeIntervalKey = "mindfulTimeInterval"
     private let store = Store.shared
 
-    func applicationDidEnterBackground() {
-        updateActiveComplications(shouldReload: true)
+    func applicationDidBecomeActive() {
         Task {
-            await store.dispatch(action: .requestHealthStorePermission)
-            await store.dispatch(action: .fetchMindfulTimeInterval)
-            switch store.state.mindfulState {
-            case let .loaded(timeInterval):
-                scheduleBackgroundRefresh(mindfulTimeInterval: timeInterval)
-            case .loading, .error:
-                scheduleBackgroundRefresh(mindfulTimeInterval: 0)
-            }
-            await store.dispatch(action: .startObservingMindfulStoreChanges({ [weak self] in
-                await self?.updateActiveComplicationsIfNeeded()
-            }))
+            await registerBackgroundDelivery()
+        }
+    }
+
+    func applicationDidEnterBackground() {
+        Task {
+            let mindfulTimeInterval = await fetchMindfulTimeInterval() ?? 0
+            scheduleBackgroundRefresh(mindfulTimeInterval: mindfulTimeInterval)
+            updateActiveComplications(shouldReload: true)
         }
     }
     
@@ -39,20 +36,13 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
                 let userInfo = backgroundTask.userInfo as? NSDictionary
                 let cachedTimeInterval = userInfo?[mindfulTimeIntervalKey] as? TimeInterval ?? 0
+                
                 Task {
-                    await store.dispatch(action: .requestHealthStorePermission)
-                    await store.dispatch(action: .fetchMindfulTimeInterval)
-                    switch store.state.mindfulState {
-                    case let .loaded(mindfulTimeInterval):
-                        let shouldReload = mindfulTimeInterval != cachedTimeInterval
-                        updateActiveComplications(shouldReload: shouldReload)
-                        scheduleBackgroundRefresh(mindfulTimeInterval: mindfulTimeInterval)
-                        backgroundTask.setTaskCompletedWithSnapshot(shouldReload)
-                    case .loading, .error:
-                        updateActiveComplications(shouldReload: false)
-                        scheduleBackgroundRefresh(mindfulTimeInterval: cachedTimeInterval)
-                        backgroundTask.setTaskCompletedWithSnapshot(false)
-                    }
+                    let mindfulTimeInterval = await fetchMindfulTimeInterval() ?? cachedTimeInterval
+                    let shouldReload = mindfulTimeInterval != cachedTimeInterval
+                    scheduleBackgroundRefresh(mindfulTimeInterval: mindfulTimeInterval)
+                    updateActiveComplications(shouldReload: shouldReload)
+                    backgroundTask.setTaskCompletedWithSnapshot(shouldReload)
                 }
 
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:
@@ -62,6 +52,17 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
             default:
                 task.setTaskCompletedWithSnapshot(false)
             }
+        }
+    }
+
+    private func fetchMindfulTimeInterval() async -> TimeInterval? {
+        await store.dispatch(action: .requestHealthStorePermission)
+        await store.dispatch(action: .fetchMindfulTimeInterval)
+        switch store.state.mindfulState {
+        case let .loaded(mindfulTimeInterval):
+            return mindfulTimeInterval
+        case .error, .loading:
+            return nil
         }
     }
     
@@ -78,13 +79,15 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
 
-    private func updateActiveComplicationsIfNeeded() async {
-        let currentState = store.state.mindfulState
-        await store.dispatch(action: .requestHealthStorePermission)
-        await store.dispatch(action: .fetchMindfulTimeInterval)
-        if currentState != store.state.mindfulState {
-            updateActiveComplications(shouldReload: true)
-        }
+    private func registerBackgroundDelivery() async {
+        await store.dispatch(action: .startObservingMindfulStoreChanges({ [weak self] in
+            let currentState = self?.store.state.mindfulState
+            await self?.store.dispatch(action: .requestHealthStorePermission)
+            await self?.store.dispatch(action: .fetchMindfulTimeInterval)
+            if currentState != self?.store.state.mindfulState {
+                self?.updateActiveComplications(shouldReload: true)
+            }
+        }))
     }
 
     private func scheduleBackgroundRefresh(mindfulTimeInterval: TimeInterval) {
@@ -95,4 +98,3 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
                                                        scheduledCompletion: { _ in })
     }
 }
-
