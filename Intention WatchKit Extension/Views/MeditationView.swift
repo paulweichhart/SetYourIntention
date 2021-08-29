@@ -80,7 +80,7 @@ struct MeditationProgressView: View {
 
     @ViewBuilder
     var body: some View {
-        Group {
+        ZStack {
             switch store.state.mindfulSessionState {
             case .initial:
                 Text("Set your Intention")
