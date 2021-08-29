@@ -33,8 +33,8 @@ struct IntentionView: View {
 
             case let .loaded(mindfulTimeInterval):
                 VStack {
-                    ProgressBar(progress: store.state.progress ?? 0,
-                                percentage: store.state.percentage ?? 0)
+                    ProgressBar(progress: store.state.mindfulStateProgress ?? 0,
+                                percentage: store.state.mindfulStatePercentage ?? 0)
                     Group {
                         ProgressLabel(timeInterval: mindfulTimeInterval,
                                       text: Texts.mindfulMinutes.localisation,

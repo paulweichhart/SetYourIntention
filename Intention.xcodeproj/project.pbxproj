@@ -32,8 +32,9 @@
 		FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C425449FEE00DE7E6B /* WatchKit.framework */; };
 		FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C625449FFB00DE7E6B /* ClockKit.framework */; };
 		FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B94542544485600DCF314 /* ExtensionDelegate.swift */; };
-		FF90ED8826C709F70010C721 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED8726C709F70010C721 /* ViewState.swift */; };
-		FFC0C1AE26B0B1A6002DA8F5 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0C1AD26B0B1A6002DA8F5 /* PracticeView.swift */; };
+		FF90ED8626C709340010C721 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED8526C709340010C721 /* ViewState.swift */; };
+		FFC0C1AE26B0B1A6002DA8F5 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */; };
+		FFC83E2126CEF77C0062A1D2 /* MindfulSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */; };
 		FFDBA5B126068E53003F076F /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBA5B026068E53003F076F /* Texts.swift */; };
 		FFDBA5BE260691B9003F076F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFDBA5C0260691B9003F076F /* Localizable.strings */; };
 		FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE10BF92541B8B4008209AC /* ErrorView.swift */; };
@@ -122,9 +123,10 @@
 		FF8190C425449FEE00DE7E6B /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8190C625449FFB00DE7E6B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/ClockKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF8B94542544485600DCF314 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		FF90ED8726C709F70010C721 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		FF90ED8526C709340010C721 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		FFAAABDB25ED90DB00534B21 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FFC0C1AD26B0B1A6002DA8F5 /* PracticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
+		FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulSession.swift; sourceTree = "<group>"; };
 		FFDBA5B026068E53003F076F /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		FFDBA5BF260691B9003F076F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FFDBA5C4260691BF003F076F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -176,7 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				FF0A18222675409E00B45A2C /* AppState.swift */,
-				FF90ED8726C709F70010C721 /* ViewState.swift */,
+				FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */,
+				FF90ED8526C709340010C721 /* ViewState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -187,7 +190,7 @@
 				FF562E232546374C00D92C4B /* Colors.swift */,
 				FFE10BF92541B8B4008209AC /* ErrorView.swift */,
 				FF547FD0253CD3D30061F499 /* IntentionView.swift */,
-				FFC0C1AD26B0B1A6002DA8F5 /* PracticeView.swift */,
+				FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */,
 				FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */,
 				FF218779253E26DD004C85CC /* SetIntentionView.swift */,
 				FFDBA5B026068E53003F076F /* Texts.swift */,
@@ -490,11 +493,12 @@
 				FF0A18232675409E00B45A2C /* AppState.swift in Sources */,
 				FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */,
 				FF0A182126753AED00B45A2C /* Store.swift in Sources */,
+				FFC83E2126CEF77C0062A1D2 /* MindfulSession.swift in Sources */,
 				FFDBA5B126068E53003F076F /* Texts.swift in Sources */,
 				FF263CD926A3715800C56B2F /* Converter.swift in Sources */,
 				FF547FAE253CCDF70061F499 /* NotificationController.swift in Sources */,
 				FF547FB2253CCDF70061F499 /* ComplicationController.swift in Sources */,
-				FF90ED8826C709F70010C721 /* ViewState.swift in Sources */,
+				FF90ED8626C709340010C721 /* ViewState.swift in Sources */,
 				FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */,
 				FF5382532540963400FE08E6 /* HealthStore.swift in Sources */,
 				FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */,
@@ -503,7 +507,7 @@
 				FF547FB0253CCDF70061F499 /* NotificationView.swift in Sources */,
 				FF0A18252675420500B45A2C /* Action.swift in Sources */,
 				FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */,
-				FFC0C1AE26B0B1A6002DA8F5 /* PracticeView.swift in Sources */,
+				FFC0C1AE26B0B1A6002DA8F5 /* MeditationView.swift in Sources */,
 				FFFB33C3256C4F4700932CD8 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

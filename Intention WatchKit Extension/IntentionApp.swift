@@ -29,12 +29,13 @@ struct RootView: View {
 
     @EnvironmentObject private var store: Store
 
+    @ViewBuilder
     var body: some View {
         switch store.state.versionTwoOnboardingCompleted {
         case true:
             TabView {
                 IntentionView()
-                PracticeView()
+                MeditationView()
                 SetIntentionView()
             }
             .tabViewStyle(PageTabViewStyle())

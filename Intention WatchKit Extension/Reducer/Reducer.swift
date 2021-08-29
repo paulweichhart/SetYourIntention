@@ -6,14 +6,18 @@
 //
 
 import Foundation
+import WatchKit
+import SwiftUI
 
-struct Reducer {
+final class Reducer {
 
     private let defaultTimeInterval: TimeInterval = Converter.timeInterval(from: 5)
     private let healthStore: HealthStore
+    private let mindfulSession: MindfulSession
 
-    init(healthStore: HealthStore) {
+    init(healthStore: HealthStore, mindfulSession: MindfulSession) {
         self.healthStore = healthStore
+        self.mindfulSession = mindfulSession
     }
 
     func apply(action: Action, to state: AppState) async -> AppState {
@@ -64,12 +68,28 @@ struct Reducer {
             state.versionTwoOnboardingCompleted = true
 
         case .startMeditating:
-            state.isMeditating = true
-            
+            let startDate = mindfulSession.startSession()
+            state.mindfulSessionState = .meditating(startDate)
+
         case .stopMeditating:
-            state.isMeditating = false
+            if case let .meditating(startDate) = state.mindfulSessionState {
+                do {
+                    let endDate = mindfulSession.stopSession()
+                    try await healthStore.storeMindfulTimeInterval(startDate: startDate,
+                                                                   endDate: endDate)
+                    state.mindfulSessionState = .initial
+                } catch {
+                    state.mindfulSessionState = .error(.savingFailed)
+                }
+            }
+
+        case .failedStoringMeditatingSession:
+            state.mindfulSessionState = .error(.savingFailed)
+            
         }
 
         return state
     }
+
+    
 }
