@@ -8,7 +8,7 @@
 import Foundation
 import WatchKit
 
-enum MindfulSessionState {
+enum MindfulSessionState: Equatable {
     case initial
     case meditating(Date)
     case error(HealthStoreError)
@@ -16,21 +16,17 @@ enum MindfulSessionState {
 
 final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
 
-    private let session = WKExtendedRuntimeSession()
-
-    override init() {
-        super.init()
-
-        session.delegate = self
-    }
+    private var session: WKExtendedRuntimeSession?
 
     func startSession() -> Date {
-        session.start()
+        session = WKExtendedRuntimeSession()
+        session?.delegate = self
+        session?.start()
         return Date()
     }
 
     func stopSession() -> Date {
-        session.invalidate()
+        session?.invalidate()
         return Date()
     }
 
@@ -45,7 +41,7 @@ final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
     }
 
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
-        session.notifyUser(hapticType: .failure,
-                           repeatHandler: nil)
+        session?.notifyUser(hapticType: .failure,
+                            repeatHandler: nil)
     }
 }

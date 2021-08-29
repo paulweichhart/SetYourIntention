@@ -7,6 +7,7 @@
 
 import Foundation
 import WatchKit
+import SwiftUI
 
 final class Reducer {
 
@@ -66,7 +67,6 @@ final class Reducer {
         case .startMeditating:
             let startDate = mindfulSession.startSession()
             state.mindfulSessionState = .meditating(startDate)
-            break
 
         case .stopMeditating:
             if case let .meditating(startDate) = state.mindfulSessionState {
