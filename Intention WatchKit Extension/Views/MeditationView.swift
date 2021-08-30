@@ -19,7 +19,7 @@ struct MeditationView: View {
                     await store.dispatch(action: .fetchMindfulTimeInterval)
                 }
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                     Task {
                         await store.dispatch(action: .startMeditating)
                     }
@@ -89,6 +89,7 @@ struct MeditationProgressView: View {
                 TimelineView(.periodic(from: startDate, by: 1)) { context in
                     ProgressBar(progress: store.state.mindfulSessionProgress ?? 0,
                                 percentage: store.state.mindfulSessionPercentage ?? 0)
+                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
                 }
 
             case let .error(error):
@@ -103,7 +104,7 @@ struct MeditationProgressView: View {
 struct PracticeViewPreview: PreviewProvider {
 
     static var previews: some View {
-        MeditationView()
+        MeditationProgressView()
     }
 }
 #endif

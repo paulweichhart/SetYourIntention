@@ -55,7 +55,8 @@ struct AppState {
             guard timeInterval > 0 && intention > 0 else {
                 return 0
             }
-            return timeInterval / intention
+
+            return Double(Converter.minutes(from: timeInterval)) / Double(Converter.minutes(from: intention))
         }
     }
 
