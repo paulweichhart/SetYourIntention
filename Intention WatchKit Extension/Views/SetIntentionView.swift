@@ -29,6 +29,7 @@ struct SetIntentionView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0))
                     }.accessibility(addTraits: .isHeader)
                     HStack {
                         IntentionButton(action: .decrementIntention, systemName: "minus")
@@ -69,13 +70,17 @@ struct IntentionButton: View {
                 await store.dispatch(action: action)
             }
         }, label: {
-            Image(systemName: systemName)
-                .font(.largeTitle)
-                .frame(maxWidth: .infinity, minHeight: 75, alignment: .center)
-                .contentShape(Rectangle())
+            VStack {
+               Image(systemName: systemName)
+                    .font(.title2)
+                    .foregroundColor(Colors.foreground.value)
+                    .frame(width: .infinity, height: 24, alignment: .center)
+                Text(Texts.minutes.localisation)
+                    .fontWeight(.light)
+                    .foregroundColor(.white)
+            }
+                .frame(maxWidth: .infinity, minHeight: 56, alignment: .center)
         })
-        .foregroundColor(Colors.foreground.value)
-        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -83,7 +88,7 @@ struct IntentionButton: View {
 struct SetIntentionViewPreview: PreviewProvider {
 
     static var previews: some View {
-        SetIntentionView()
+        IntentionButton(action: .incrementIntention, systemName: "minus")
     }
 }
 #endif

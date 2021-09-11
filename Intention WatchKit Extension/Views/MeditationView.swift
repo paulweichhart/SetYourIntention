@@ -13,12 +13,7 @@ struct MeditationView: View {
     @EnvironmentObject private var store: Store
     @State private var isMeditating = false {
         willSet {
-            if isMeditating {
-                Task {
-                    await store.dispatch(action: .stopMeditating)
-                    await store.dispatch(action: .fetchMindfulTimeInterval)
-                }
-            } else {
+            if !isMeditating {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                     Task {
                         await store.dispatch(action: .startMeditating)
@@ -50,18 +45,20 @@ struct MeditationView: View {
                     isMeditating.toggle()
                 }, label: {
                     Text(Texts.start.localisation)
-                        .frame(maxWidth: .infinity, minHeight: 42, alignment: .center)
-                        .foregroundColor(.black)
-                        .background(Colors.foreground.value)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
                 })
-                .buttonStyle(PlainButtonStyle())
             }
-        }.background(.cyan)
+        }
         .sheet(isPresented: $isMeditating, content: {
 
             // Extract View https://www.swiftbysundell.com/articles/dismissing-swiftui-modal-and-detail-views/
+
             MeditationProgressView()
+                .onDisappear(perform: {
+                    Task {
+                        await store.dispatch(action: .stopMeditating)
+                        await store.dispatch(action: .fetchMindfulTimeInterval)
+                    }
+                })
                 .toolbar(content: {
                     ToolbarItem(placement: .cancellationAction, content: {
                         Button(Texts.done.localisation, action: {
@@ -104,7 +101,7 @@ struct MeditationProgressView: View {
 struct PracticeViewPreview: PreviewProvider {
 
     static var previews: some View {
-        MeditationProgressView()
+        MeditationView()
     }
 }
 #endif

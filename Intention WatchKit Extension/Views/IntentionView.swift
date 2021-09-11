@@ -64,10 +64,13 @@ struct IntentionView: View {
 
 struct ProgressBar: View {
 
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
+
     let progress: Double
     let percentage: Int
 
-    private let lineWidth: CGFloat = 9.0
+    private let lineWidth = 9.0
+    private let degrees = 270.0
 
     private var strokeStyle: StrokeStyle {
         return StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0)
@@ -77,14 +80,22 @@ struct ProgressBar: View {
         guard progress > 0 else {
             return 0
         }
-
-        let remainder = progress.truncatingRemainder(dividingBy: 1)
-        let progress = remainder == 0 ? 0.99 : remainder
-        return CGFloat(progress)
+        return progress.truncatingRemainder(dividingBy: 1)
     }
 
     private var belowIntention: Bool {
         return progress < 1
+    }
+
+    private var foregroundColor: Color {
+        return isLuminanceReduced ? Colors.dimmedForeground.value : Colors.foreground.value
+    }
+
+    private var rotation: Double {
+        if progress <= 1 {
+            return degrees
+        }
+        return degrees + (360 * visualProgress)
     }
     
     var body: some View {
@@ -92,7 +103,7 @@ struct ProgressBar: View {
             // Background Color
             Circle()
                 .strokeBorder(lineWidth: lineWidth)
-                .foregroundColor(belowIntention ? Colors.background.value : Colors.foreground.value)
+                .foregroundColor(belowIntention ? Colors.background.value : foregroundColor)
 
             // Shadow
             Circle()
@@ -100,18 +111,18 @@ struct ProgressBar: View {
                       to: visualProgress > 0 ? (visualProgress + 0.01) : 0)
                 .stroke(style: strokeStyle)
                 .foregroundColor(Colors.shadow.value)
-                .rotationEffect(Angle(degrees: 270.0))
-                .padding(lineWidth/2)
+                .rotationEffect(Angle(degrees: degrees))
+                .padding(lineWidth / 2)
                 .blur(radius: 3)
             
             // Progress
             Circle()
-                .trim(from: belowIntention ? 0 : (visualProgress - 0.1),
-                      to: visualProgress)
+                .trim(from: belowIntention ? 0 : 0.5,
+                      to: belowIntention ? visualProgress : 1.0)
                 .stroke(style: strokeStyle)
-                .foregroundColor(Colors.foreground.value)
-                .rotationEffect(Angle(degrees: 270.0))
-                .padding(lineWidth/2)
+                .foregroundColor(foregroundColor)
+                .rotationEffect(Angle(degrees: rotation))
+                .padding(lineWidth / 2)
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
         .accessibility(label: Text(Texts.progressInMinutes.localisation))
@@ -141,3 +152,19 @@ struct ProgressLabel: View {
         .accessibility(value: Text("\(Converter.minutes(from: timeInterval))"))
     }
 }
+
+#if DEBUG
+struct ProgressBarPreview: PreviewProvider {
+
+    static var previews: some View {
+        ProgressBar(progress: 1.0, percentage: 50)
+            .environment(\.isLuminanceReduced, true)
+
+        ProgressBar(progress: 0.5, percentage: 50)
+            .environment(\.isLuminanceReduced, true)
+
+        ProgressBar(progress: 2.0, percentage: 50)
+            .environment(\.isLuminanceReduced, false)
+    }
+}
+#endif

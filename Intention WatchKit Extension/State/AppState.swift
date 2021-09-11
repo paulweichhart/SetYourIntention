@@ -89,5 +89,4 @@ struct AppState {
         }
         return Int(progress * 100)
     }
-
 }

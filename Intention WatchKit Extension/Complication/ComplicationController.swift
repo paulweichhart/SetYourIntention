@@ -43,17 +43,19 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
         case let .loaded(timeInterval):
             return complicationTimelineEntry(mindfulTimeInterval: timeInterval,
                                              intention: intention,
+                                             progress: store.state.mindfulStateProgress ?? 0,
                                              family: complication.family)
         case .loading, .error:
             return complicationTimelineEntry(mindfulTimeInterval: 0,
                                              intention: intention,
+                                             progress: 0,
                                              family: complication.family)
         }
     }
 
-    private func complicationTimelineEntry(mindfulTimeInterval: TimeInterval, intention: TimeInterval, family: CLKComplicationFamily) -> CLKComplicationTimelineEntry? {
+    private func complicationTimelineEntry(mindfulTimeInterval: TimeInterval, intention: TimeInterval, progress: Double, family: CLKComplicationFamily) -> CLKComplicationTimelineEntry? {
         let image = family.asset ?? UIImage()
-        let fraction = min(Float(mindfulTimeInterval / intention), 1)
+        let fraction = min(Float(progress), 1)
         let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
                                                    gaugeColor: UIColor(Colors.foreground.value),
                                                    fillFraction: fraction)
