@@ -29,7 +29,7 @@ struct SetIntentionView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0))
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     }.accessibility(addTraits: .isHeader)
                     HStack {
                         IntentionButton(action: .decrementIntention, systemName: "minus")
@@ -71,10 +71,10 @@ struct IntentionButton: View {
             }
         }, label: {
             VStack {
-               Image(systemName: systemName)
+                Image(systemName: systemName)
                     .font(.title2)
                     .foregroundColor(Colors.foreground.value)
-                    .frame(width: .infinity, height: 24, alignment: .center)
+                    .frame(height: 24)
                 Text(Texts.minutes.localisation)
                     .fontWeight(.light)
                     .foregroundColor(.white)

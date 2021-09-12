@@ -70,23 +70,4 @@ struct AppState {
     // Mindful Session State
 
     var mindfulSessionState: MindfulSessionState = .initial
-
-    var mindfulSessionProgress: Double? {
-        switch mindfulSessionState {
-        case .initial, .error:
-            return nil
-        case let .meditating(startDate):
-            guard intention > 0 else {
-                return 0
-            }
-            return Date().timeIntervalSince(startDate) / intention
-        }
-    }
-
-    var mindfulSessionPercentage: Int? {
-        guard let progress = mindfulSessionProgress else {
-            return nil
-        }
-        return Int(progress * 100)
-    }
 }

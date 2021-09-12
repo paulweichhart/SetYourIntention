@@ -14,7 +14,7 @@ struct MeditationView: View {
     @State private var isMeditating = false {
         willSet {
             if !isMeditating {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     Task {
                         await store.dispatch(action: .startMeditating)
                     }
@@ -25,27 +25,29 @@ struct MeditationView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                HStack {
-                    Text(Texts.unguided.localisation)
-                        .font(.body)
-                        .fontWeight(.light)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer()
+            ScrollView {
+                VStack {
+                    HStack {
+                        Text(Texts.unguided.localisation)
+                            .font(.body)
+                            .fontWeight(.light)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Spacer()
+                    }
+                    HStack {
+                        Text(Texts.meditation.localisation)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Spacer()
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
+                    Button(action: {
+                        isMeditating.toggle()
+                    }, label: {
+                        Text(Texts.start.localisation)
+                    })
                 }
-                HStack {
-                    Text(Texts.meditation.localisation)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer()
-                }
-                Spacer()
-                Button(action: {
-                    isMeditating.toggle()
-                }, label: {
-                    Text(Texts.start.localisation)
-                })
             }
         }
         .sheet(isPresented: $isMeditating, content: {
@@ -80,12 +82,14 @@ struct MeditationProgressView: View {
         ZStack {
             switch store.state.mindfulSessionState {
             case .initial:
-                Text("Set your Intention")
+                Text(Texts.setYourIntention.localisation)
 
             case let .meditating(startDate):
-                TimelineView(.periodic(from: startDate, by: 1)) { context in
-                    ProgressBar(progress: store.state.mindfulSessionProgress ?? 0,
-                                percentage: store.state.mindfulSessionPercentage ?? 0)
+                TimelineView(.periodic(from: startDate, by: 1.0)) { _ in
+                    let progress = Date().timeIntervalSince(startDate) / store.state.intention
+                    let percentage = Int(progress * 100)
+                    ProgressBar(progress: progress,
+                                percentage: percentage)
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
                 }
 
@@ -94,6 +98,18 @@ struct MeditationProgressView: View {
             }
         }.animation(.easeInOut(duration: 1),
                     value: store.state.mindfulSessionState)
+    }
+}
+
+struct ProgressTimelineSchedule: TimelineSchedule {
+    var startDate: Date
+
+    init(from startDate: Date) {
+        self.startDate = startDate
+    }
+
+    func entries(from startDate: Date, mode: TimelineScheduleMode) -> PeriodicTimelineSchedule.Entries {
+        PeriodicTimelineSchedule(from: startDate, by: 1.0).entries(from: startDate, mode: mode)
     }
 }
 

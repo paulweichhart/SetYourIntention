@@ -17,8 +17,8 @@ enum Texts: LocalizedStringKey {
     case decreaseIntention = "Decrease Intention"
 
     // Onboarding
-    case welcome = "Practice meditation and mind your mental well being"
-    case info = "Keep track of your daily Mindful Minutes with the supported Complication on your Apple Watch"
+    case welcome = "Practice meditation with your favourite App that supports Apple Health and mind your mental well being"
+    case info = "Keep track of your daily Mindful Minutes with the supported Complications on your Apple Watch"
     case permission = "Please allow the App to access your Mindful Minutes from Apple Health"
     case review = "Review"
     

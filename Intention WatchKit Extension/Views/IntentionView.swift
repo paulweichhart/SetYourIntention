@@ -108,7 +108,7 @@ struct ProgressBar: View {
             // Shadow
             Circle()
                 .trim(from: visualProgress > 0 ? (visualProgress - 0.01) : 0,
-                      to: visualProgress > 0 ? (visualProgress + 0.01) : 0)
+                      to: progress > 0 ? (visualProgress + 0.01) : 0)
                 .stroke(style: strokeStyle)
                 .foregroundColor(Colors.shadow.value)
                 .rotationEffect(Angle(degrees: degrees))
@@ -164,6 +164,12 @@ struct ProgressBarPreview: PreviewProvider {
             .environment(\.isLuminanceReduced, true)
 
         ProgressBar(progress: 2.0, percentage: 50)
+            .environment(\.isLuminanceReduced, false)
+
+        ProgressBar(progress: 1.0, percentage: 50)
+            .environment(\.isLuminanceReduced, false)
+
+        ProgressBar(progress: 0, percentage: 50)
             .environment(\.isLuminanceReduced, false)
     }
 }

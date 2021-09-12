@@ -69,8 +69,7 @@ struct PermissionView: View {
                     Text(Texts.permission.localisation)
                         .font(.body)
                         .fixedSize(horizontal: false, vertical: true)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0))
-                    Spacer()
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     Button(action: {
                         Task {
                             await store.dispatch(action: .requestHealthStorePermission)
