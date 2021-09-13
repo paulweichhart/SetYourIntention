@@ -40,6 +40,7 @@ enum Texts: LocalizedStringKey {
     case unavailable = "Your Device doesn't support Apple Health :("
     case noDataAvailable = "Couldn't load Data from Apple Health :("
     case ctaOpenSettings = "Please allow Intention to access your mindful Session in the Settings"
+    case savingFailed = "Saving your mindful Session failed :("
     
     var localisation: LocalizedStringKey {
         return self.rawValue

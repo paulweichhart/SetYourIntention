@@ -52,6 +52,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FF547F97253CCDF70061F499"
+            BuildableName = "Intention WatchKit App.app"
+            BlueprintName = "Intention WatchKit App"
+            ReferencedContainer = "container:Intention.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

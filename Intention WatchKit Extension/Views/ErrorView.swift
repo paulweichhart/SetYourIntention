@@ -25,8 +25,7 @@ struct ErrorView: View {
             Text(Texts.noDataAvailable.localisation)
 
         case .savingFailed:
-            // TODO: Add text
-            Text(Texts.unavailable.localisation)
+            Text(Texts.savingFailed.localisation)
         }
     }
 }
