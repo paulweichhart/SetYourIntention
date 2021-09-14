@@ -14,11 +14,9 @@ struct MeditationView: View {
     @State private var isMeditating = false {
         willSet {
             if !isMeditating {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                    Task {
-                        await store.dispatch(action: .startMeditating)
-                    }
-                })
+                Task {
+                    await store.dispatch(action: .startMeditating)
+                }
             }
         }
     }
@@ -96,20 +94,9 @@ struct MeditationProgressView: View {
             case let .error(error):
                 ErrorView(error: error)
             }
-        }.animation(.easeInOut(duration: 1),
-                    value: store.state.mindfulSessionState)
-    }
-}
-
-struct ProgressTimelineSchedule: TimelineSchedule {
-    var startDate: Date
-
-    init(from startDate: Date) {
-        self.startDate = startDate
-    }
-
-    func entries(from startDate: Date, mode: TimelineScheduleMode) -> PeriodicTimelineSchedule.Entries {
-        PeriodicTimelineSchedule(from: startDate, by: 1.0).entries(from: startDate, mode: mode)
+        }
+//        .animation(.easeInOut(duration: 1),
+//                    value: store.state.mindfulSessionState)
     }
 }
 

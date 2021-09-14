@@ -82,8 +82,6 @@ struct Reducer {
                     state.mindfulSessionState = .error(.savingFailed)
                 }
             }
-        case .intentionAchieved:
-            mindfulSession.notifyUser(success: true)
 
         case .failedStoringMeditatingSession:
             state.mindfulSessionState = .error(.savingFailed)
