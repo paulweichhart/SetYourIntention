@@ -12,25 +12,36 @@ import WatchKit
 
 @main
 struct IntentionApp: App {
-    
+
     @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
-    @ObservedObject private var intention = Intention()
-    
-    @SceneBuilder var body: some Scene {
-        
-        let coordinator = Coordinator(intention: intention)
-        
+    private let store = Store.shared
+
+    var body: some Scene {
+
         WindowGroup {
-            switch intention.onboardingCompleted {
-            case true:
-                TabView {
-                    coordinator.navigate(to: .intentionView)
-                    coordinator.navigate(to: .setIntentionView)
-                }
-                .tabViewStyle(PageTabViewStyle())
-            case false:
-                coordinator.navigate(to: .onboarding)
-            }
+            RootView()
+                .environmentObject(store)
         }
     }
+}
+
+struct RootView: View {
+
+    @EnvironmentObject private var store: Store
+
+    @ViewBuilder
+    var body: some View {
+        switch store.state.versionTwoOnboardingCompleted {
+        case true:
+            TabView {
+                IntentionView()
+                MeditationView()
+                SetIntentionView()
+            }
+            .tabViewStyle(PageTabViewStyle())
+        case false:
+            OnboardingView()
+        }
+    }
+
 }

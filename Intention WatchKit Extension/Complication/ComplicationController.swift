@@ -9,102 +9,101 @@ import ClockKit
 import Combine
 import Foundation
 
-class ComplicationController: NSObject, CLKComplicationDataSource {
+final class ComplicationController: NSObject, CLKComplicationDataSource {
 
-    private var cancellable = Set<AnyCancellable>()
-    
-    func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
-         let descriptors = [
-             CLKComplicationDescriptor(identifier: "complication",
-                                       displayName: "Intention",
-                                       supportedFamilies: [.circularSmall,
-                                                           .extraLarge,
-                                                           .graphicBezel,
-                                                           .graphicCircular,
-                                                           .graphicCorner,
-                                                           .graphicExtraLarge,
-                                                           .modularSmall,
-                                                           .utilitarianSmall])
-         ]
-         handler(descriptors)
-     }
-    
-    func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
-        handler(.hideOnLockScreen)
+    private let store = Store.shared
+    private let mindfulTimeIntervalKey = "mindfulTimeInterval"
+
+    private var intention: TimeInterval {
+        return store.state.intention
     }
 
-    func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-
-        let intention = Intention().minutes
-        Store.shared.mindfulMinutes()
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { [weak self] storeState in
-                if case .failure = storeState {
-                    let minutes = Minutes(mindful: 0, intention: intention)
-                    if let template = self?.complicationTemplate(minutes: minutes, family: complication.family) {
-                        handler(CLKComplicationTimelineEntry(date: Date(),
-                                                             complicationTemplate: template))
-                    } else {
-                        handler(nil)
-                    }
-                }
-            }, receiveValue: { [weak self] mindfulMinutes in
-                let minutes = Minutes(mindful: mindfulMinutes, intention: intention)
-                if let template = self?.complicationTemplate(minutes: minutes, family: complication.family) {
-                    handler(CLKComplicationTimelineEntry(date: Date(),
-                                                        complicationTemplate: template))
-                } else {
-                    handler(nil)
-                }
-            })
-            .store(in: &cancellable)
+    func complicationDescriptors() async -> [CLKComplicationDescriptor] {
+        return [CLKComplicationDescriptor(identifier: "complication",
+                                          displayName: "Intention",
+                                          supportedFamilies: [.circularSmall,
+                                                              .extraLarge,
+                                                              .graphicBezel,
+                                                              .graphicCircular,
+                                                              .graphicCorner,
+                                                              .graphicExtraLarge,
+                                                              .modularSmall,
+                                                              .utilitarianSmall])]
     }
 
-    private func complicationTemplate(minutes: Minutes, family: CLKComplicationFamily) -> CLKComplicationTemplate? {
+    func privacyBehavior(for complication: CLKComplication) async -> CLKComplicationPrivacyBehavior {
+        return .hideOnLockScreen
+    }
+
+    func currentTimelineEntry(for complication: CLKComplication) async -> CLKComplicationTimelineEntry? {
+        await store.dispatch(action: .requestHealthStorePermission)
+        await store.dispatch(action: .fetchMindfulTimeInterval)
+
+        switch store.state.mindfulState {
+        case let .loaded(timeInterval):
+            return complicationTimelineEntry(mindfulTimeInterval: timeInterval,
+                                             intention: intention,
+                                             progress: store.state.mindfulStateProgress ?? 0,
+                                             family: complication.family)
+        case .loading, .error:
+            return complicationTimelineEntry(mindfulTimeInterval: 0,
+                                             intention: intention,
+                                             progress: 0,
+                                             family: complication.family)
+        }
+    }
+
+    private func complicationTimelineEntry(mindfulTimeInterval: TimeInterval, intention: TimeInterval, progress: Double, family: CLKComplicationFamily) -> CLKComplicationTimelineEntry? {
         let image = family.asset ?? UIImage()
+        let fraction = min(Float(progress), 1)
         let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
-                                              gaugeColor: UIColor(Colors.foreground.value),
-                                              fillFraction: minutes.fraction)
+                                                   gaugeColor: UIColor(Colors.foreground.value),
+                                                   fillFraction: fraction)
         let imageProvider = CLKImageProvider(onePieceImage: image)
         let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: image)
 
+        let template: CLKComplicationTemplate
         switch family {
         case .circularSmall:
-            return CLKComplicationTemplateCircularSmallRingImage(imageProvider: imageProvider,
-                                                                 fillFraction: minutes.fraction,
-                                                                 ringStyle: .closed)
+            template = CLKComplicationTemplateCircularSmallRingImage(imageProvider: imageProvider,
+                                                                     fillFraction: fraction,
+                                                                     ringStyle: .closed)
         case .extraLarge:
-            return CLKComplicationTemplateExtraLargeRingImage(imageProvider: imageProvider,
-                                                              fillFraction: minutes.fraction,
-                                                              ringStyle: .closed)
+            template = CLKComplicationTemplateExtraLargeRingImage(imageProvider: imageProvider,
+                                                                  fillFraction: fraction,
+                                                                  ringStyle: .closed)
         case .graphicBezel:
-            let template = CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
-                                                                                  imageProvider: fullColorImageProvider)
+            let gaugeImage = CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
+                                                                                    imageProvider: fullColorImageProvider)
             let localizedIntention = NSLocalizedString("Intention", comment: "")
             let localizedMindful = NSLocalizedString("Mindful", comment: "")
-            let textProvider = CLKTextProvider(format: "\(localizedMindful) %dMin • \(localizedIntention) %dMin", Int(minutes.mindful), Int(minutes.intention))
-            return CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: template,
-                                                                   textProvider: textProvider)
+            let textProvider = CLKTextProvider(format: "\(localizedMindful) %dMin • \(localizedIntention) %dMin",
+                                               Converter.minutes(from: mindfulTimeInterval),
+                                               Converter.minutes(from: intention))
+            template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: gaugeImage,
+                                                                       textProvider: textProvider)
         case .graphicCircular:
-            return CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
-                                                                          imageProvider: fullColorImageProvider)
+            template = CLKComplicationTemplateGraphicCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
+                                                                              imageProvider: fullColorImageProvider)
         case .graphicCorner:
-            return CLKComplicationTemplateGraphicCornerGaugeImage(gaugeProvider: gaugeProvider,
-                                                                  imageProvider: fullColorImageProvider)
+            template = CLKComplicationTemplateGraphicCornerGaugeImage(gaugeProvider: gaugeProvider,
+                                                                      imageProvider: fullColorImageProvider)
         case .graphicExtraLarge:
-            return CLKComplicationTemplateGraphicExtraLargeCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
-                                                                                    imageProvider: fullColorImageProvider)
+            template = CLKComplicationTemplateGraphicExtraLargeCircularClosedGaugeImage(gaugeProvider: gaugeProvider,
+                                                                                        imageProvider: fullColorImageProvider)
         case .modularSmall:
-            return CLKComplicationTemplateModularSmallRingImage(imageProvider: imageProvider,
-                                                                fillFraction: minutes.fraction,
-                                                                ringStyle: .closed)
-        case .utilitarianSmall:
-            return CLKComplicationTemplateUtilitarianSmallRingImage(imageProvider: imageProvider,
-                                                                    fillFraction: minutes.fraction,
+            template = CLKComplicationTemplateModularSmallRingImage(imageProvider: imageProvider,
+                                                                    fillFraction: fraction,
                                                                     ringStyle: .closed)
+        case .utilitarianSmall:
+            template = CLKComplicationTemplateUtilitarianSmallRingImage(imageProvider: imageProvider,
+                                                                        fillFraction: fraction,
+                                                                        ringStyle: .closed)
         default:
             return nil
         }
+        return CLKComplicationTimelineEntry(date: Date(),
+                                            complicationTemplate: template)
     }
 }
 
@@ -130,7 +129,7 @@ extension CLKComplicationFamily {
         case .modularSmall:
             asset = "Modular"
         case .utilitarianSmall,
-             .utilitarianSmallFlat:
+                .utilitarianSmallFlat:
             asset = "Utilitarian"
         default:
             return nil

@@ -14,9 +14,9 @@
 
 "Decrease Intention" = "Decrease Intention";
 
-"Use your preferred Meditation App with support for Apple Health and mind your mental well being" = "Use your preferred Meditation App with support for Apple Health and mind your mental well being";
+"Practice meditation with your favourite App that supports Apple Health and mind your mental well being" = "Practice meditation with your favourite App that supports Apple Health and mind your mental well being";
 
-"Keep track of your daily Mindful Minutes with the supported Complication on your Apple Watch" = "Keep track of your daily Mindful Minutes with the supported Complication on your Apple Watch";
+"Keep track of your daily Mindful Minutes with the supported Complications on your Apple Watch" = "Keep track of your daily Mindful Minutes with the supported Complications on your Apple Watch";
 
 "Please allow the App to access your Mindful Minutes from Apple Health" = "Please allow the App to access your Mindful Minutes from Apple Health";
 
@@ -26,16 +26,26 @@
 
 "Your Daily Intention" = "Your Daily Intention";
 
+"Meditation" = "Meditation";
+
 "Minutes" = "Minutes";
 
 "Mindful Minutes" = "Mindful Minutes";
 
+"Unguided" = "Unguided";
+
 "Intention" = "Intention";
 
 "Set Your Intention" = "Set Your Intention";
+
+"Start" = "Start";
+
+"Done" = "Done";
 
 "Your Device doesn't support Apple Health :(" = "Your Device doesn't support Apple Health :(";
 
 "Couldn't load Data from Apple Health :(" = "Couldn't load Data from Apple Health :(";
 
 "Please allow Intention to access your mindful Session in the Settings" = "Please allow Intention to access your mindful Session in the Settings";
+
+"Saving your mindful Session failed :(" = "Saving your mindful Session failed :(";

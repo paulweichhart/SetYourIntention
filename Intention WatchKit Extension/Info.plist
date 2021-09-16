@@ -34,6 +34,14 @@
 	</dict>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Set Your Intention would like to access your Mindful Minutes</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Set Your Intention would like to access your Mindful Minutes</string>
+	<key>UIBackgroundModes</key>
+	<array/>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>mindfulness</string>
+	</array>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 	<key>WKWatchOnly</key>

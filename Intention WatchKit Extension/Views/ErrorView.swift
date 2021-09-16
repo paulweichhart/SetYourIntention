@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ErrorView: View {
     
-    let error: StoreError
+    let error: HealthStoreError
     
     var body: some View {
         
@@ -23,6 +23,9 @@ struct ErrorView: View {
 
         case .noDataAvailable:
             Text(Texts.noDataAvailable.localisation)
+
+        case .savingFailed:
+            Text(Texts.savingFailed.localisation)
         }
     }
 }

@@ -10,12 +10,8 @@ import SwiftUI
 
 struct SetIntentionView: View {
     
-    @ObservedObject private var intention: Intention
+    @EnvironmentObject var store: Store
 
-    init(intention: Intention) {
-        self.intention = intention
-    }
-    
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: true) {
@@ -29,15 +25,16 @@ struct SetIntentionView: View {
                             Spacer()
                         }
                         HStack {
-                            MinutesView(minutes: intention.minutes)
+                            MinutesView(timeInterval: store.state.intention)
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     }.accessibility(addTraits: .isHeader)
                     HStack {
-                        IntentionButton(systemName: "minus", action: intention.decrement)
+                        IntentionButton(action: .decrementIntention, systemName: "minus")
                             .accessibility(label: Text(Texts.decreaseIntention.localisation))
-                        IntentionButton(systemName: "plus", action: intention.increment)
+                        IntentionButton(action: .incrementIntention, systemName: "plus")
                             .accessibility(label: Text(Texts.increaseIntention.localisation))
                     }
                 }
@@ -48,34 +45,42 @@ struct SetIntentionView: View {
     
 struct MinutesView: View {
     
-    let minutes: Double
+    let timeInterval: Double
     
     var body: some View {
         Group {
-            Text("\(Int(minutes))").font(.title2).fontWeight(.bold) + Text(" ") + Text(Texts.minutes.localisation).font(.title2).fontWeight(.light)
+            Text("\(Converter.minutes(from: timeInterval))").font(.title2).fontWeight(.bold) + Text(" ") + Text(Texts.minutes.localisation).font(.title2).fontWeight(.light)
         }
         .accessibility(label: Text(Texts.intentionInMinutes.localisation))
-        .accessibility(value: Text("\(Int(minutes))"))
+        .accessibility(value: Text("\(Converter.minutes(from: timeInterval))"))
 
     }
 }
 
 struct IntentionButton: View {
-    
+
+    @EnvironmentObject var store: Store
+
+    let action: Action
     let systemName: String
-    let action: (() -> Void)
     
     var body: some View {
         Button(action: {
-            action()
+            Task {
+                await store.dispatch(action: action)
+            }
         }, label: {
-            Image(systemName: systemName)
-                .font(.largeTitle)
-                .frame(maxWidth: .infinity, minHeight: 75, alignment: .center)
-                .contentShape(Rectangle())
+            VStack {
+                Image(systemName: systemName)
+                    .font(.title2)
+                    .foregroundColor(Colors.foreground.value)
+                    .frame(height: 24)
+                Text(Texts.minutes.localisation)
+                    .fontWeight(.light)
+                    .foregroundColor(.white)
+            }
+                .frame(maxWidth: .infinity, minHeight: 56, alignment: .center)
         })
-        .foregroundColor(Colors.foreground.value)
-        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -83,7 +88,7 @@ struct IntentionButton: View {
 struct SetIntentionViewPreview: PreviewProvider {
 
     static var previews: some View {
-        SetIntentionView(intention: Intention())
+        IntentionButton(action: .incrementIntention, systemName: "minus")
     }
 }
 #endif
