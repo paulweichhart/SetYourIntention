@@ -14,13 +14,12 @@ import WatchKit
 struct IntentionApp: App {
 
     @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
-    private let store = Store.shared
 
     var body: some Scene {
 
         WindowGroup {
             RootView()
-                .environmentObject(store)
+                .environmentObject(Store.shared)
         }
     }
 }
@@ -31,7 +30,7 @@ struct RootView: View {
 
     @ViewBuilder
     var body: some View {
-        switch store.state.versionTwoOnboardingCompleted {
+        switch Store.shared.state.versionTwoOnboardingCompleted {
         case true:
             TabView {
                 IntentionView()

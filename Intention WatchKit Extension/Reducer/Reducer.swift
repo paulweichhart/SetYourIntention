@@ -12,6 +12,7 @@ import SwiftUI
 struct Reducer {
 
     private let defaultTimeInterval: TimeInterval = Converter.timeInterval(from: 5)
+    private let smallTimeInterval: TimeInterval = Converter.timeInterval(from: 1)
     private let healthStore: HealthStore
     private let mindfulSession: MindfulSession
 
@@ -24,11 +25,24 @@ struct Reducer {
         var state = state
         switch action {
         case .incrementIntention:
-            if state.intention < Converter.timeInterval(from: 90) {
+            switch state.intention {
+            case 1...10:
+                state.intention += smallTimeInterval
+            case 11..<90:
                 state.intention += defaultTimeInterval
+            default:
+                break
             }
 
         case .decrementIntention:
+            switch state.intention {
+            case 2...10:
+                state.intention -= smallTimeInterval
+            case 11..<90:
+                state.intention -= defaultTimeInterval
+            default:
+                break
+            }
             if state.intention > Converter.timeInterval(from: 5) {
                 state.intention -= defaultTimeInterval
             }
@@ -50,12 +64,6 @@ struct Reducer {
                 state.mindfulState = .error(.permissionDenied)
             }
 
-        case let .startObservingMindfulStoreChanges(storeDidChange):
-            if !state.didRegisterBackgroundDelivery && state.versionTwoOnboardingCompleted {
-                try? await healthStore.registerMindfulObserver(storeDidChange: storeDidChange)
-                state.didRegisterBackgroundDelivery = true
-            }
-
         case .setupInitialState:
             if state.versionOneOnboardingCompleted && !state.versionTwoOnboardingCompleted {
                 // Convert from Double to TimeInterval
@@ -68,7 +76,7 @@ struct Reducer {
             state.versionTwoOnboardingCompleted = true
 
         case .startMeditating:
-            let startDate = mindfulSession.startSession(with: state.intention)
+            let startDate = mindfulSession.startSession()
             state.mindfulSessionState = .meditating(startDate)
 
         case .stopMeditating:
@@ -85,7 +93,15 @@ struct Reducer {
 
         case .failedStoringMeditatingSession:
             state.mindfulSessionState = .error(.savingFailed)
-            
+
+        case .notifyUser:
+            WKInterfaceDevice.current().play(.success)
+
+        case .tick:
+            let now = Date()
+            if case let .meditating(startDate) = state.mindfulSessionState, startDate.addingTimeInterval(state.intention) >= now && startDate.addingTimeInterval(state.intention + 1.0) <= now {
+                WKInterfaceDevice.current().play(.success)
+            }
         }
 
         return state

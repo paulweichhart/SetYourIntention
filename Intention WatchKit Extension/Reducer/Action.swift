@@ -8,7 +8,6 @@
 import Foundation
 
 typealias Closure = () -> Void
-typealias AsyncClosure = () async -> Void
 
 enum Action {
 
@@ -18,10 +17,11 @@ enum Action {
     case setupInitialState
     case fetchMindfulTimeInterval
     case requestHealthStorePermission
-    case startObservingMindfulStoreChanges(AsyncClosure)
     case versionTwoOnboardingCompleted
 
     case startMeditating
     case stopMeditating
     case failedStoringMeditatingSession
+    case notifyUser
+    case tick
 }

@@ -8,9 +8,9 @@
 import Combine
 import Foundation
 
-@MainActor
 final class Store: ObservableObject {
 
+    @MainActor
     static let shared = Store()
 
     @Published private(set) var state = AppState()

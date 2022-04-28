@@ -10,12 +10,11 @@ import SwiftUI
 
 struct MeditationView: View {
 
-    @EnvironmentObject private var store: Store
     @State private var isMeditating = false {
         willSet {
             if !isMeditating {
                 Task {
-                    await store.dispatch(action: .startMeditating)
+                    await Store.shared.dispatch(action: .startMeditating)
                 }
             }
         }
@@ -55,8 +54,8 @@ struct MeditationView: View {
             MeditationProgressView()
                 .onDisappear(perform: {
                     Task {
-                        await store.dispatch(action: .stopMeditating)
-                        await store.dispatch(action: .fetchMindfulTimeInterval)
+                        await Store.shared.dispatch(action: .stopMeditating)
+                        await Store.shared.dispatch(action: .fetchMindfulTimeInterval)
                     }
                 })
                 .toolbar(content: {
@@ -73,22 +72,20 @@ struct MeditationView: View {
 
 struct MeditationProgressView: View {
 
-    @EnvironmentObject private var store: Store
-
     @ViewBuilder
     var body: some View {
         ZStack {
-            switch store.state.mindfulSessionState {
+            switch Store.shared.state.mindfulSessionState {
             case .initial:
                 Text(Texts.setYourIntention.localisation)
 
             case let .meditating(startDate):
-                TimelineView(.periodic(from: startDate, by: 1.0)) { _ in
-                    let progress = Date().timeIntervalSince(startDate) / store.state.intention
+                TimelineView(.periodic(from: startDate, by: 1.0)) { timeline in
+                    let progress = Date().timeIntervalSince(startDate) / Store.shared.state.intention
                     let percentage = Int(progress * 100)
-                    ProgressBar(progress: progress,
-                                percentage: percentage)
-                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+                    MeditationProgressBar(progress: progress,
+                                          percentage: percentage,
+                                          date: timeline.date)
                 }
 
             case let .error(error):
@@ -97,6 +94,24 @@ struct MeditationProgressView: View {
         }
 //        .animation(.easeInOut(duration: 1),
 //                    value: store.state.mindfulSessionState)
+    }
+}
+
+struct MeditationProgressBar: View {
+
+    let progress: Double
+    let percentage: Int
+    let date: Date
+
+    var body: some View {
+        ProgressBar(progress: progress,
+                    percentage: percentage)
+            .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+            .onChange(of: date) { _ in
+                Task {
+                    await Store.shared.dispatch(action: .tick)
+                }
+            }
     }
 }
 

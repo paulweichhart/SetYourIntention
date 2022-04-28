@@ -7,13 +7,13 @@ This project serves as a Playground for getting started with Apple Health, Combi
 If you have questions please contact me on twitter [@paulweichhart](https://www.twitter.com/paulweichhart)
 
 Releases:
-* Schneeberg      1.2 introduced for more Complications
-* Hoher Dachstein 2.0 added support for Mindful Sessions
+* Schneeberg      1.2 introduced more Complications
+* Hoher Dachstein 2.0 added support for Mindful Sessions & watchOS 8
 
 Upcoming releases:
-* Traunstein      2.1 (Intro, Outro View for Meditation, smaller increments & a11y)
-* Schafberg       2.2 (Animations)
-* Dachstein       2.3 (Streaks)
+* Traunstein      2.1 smaller increments & guided
+* Schafberg       2.2 Animations & Intro, Outro View for Meditation
+* Dachstein       2.3 Streaks
 
 
  
