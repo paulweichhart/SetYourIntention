@@ -26,15 +26,19 @@ enum Texts: LocalizedStringKey {
     case mindful = "Mindful"
     case dailyIntention = "Your Daily Intention"
     case minutes = "Minutes"
+    case minute = "Minute"
     case mindfulMinutes = "Mindful Minutes"
     case intention = "Intention"
     case setYourIntention = "Set Your Intention"
+    case guidedInfoText = "By enabling guided meditation, you will perceive subtle haptics each minute"
 
     // Meditation
     case unguided = "Unguided"
+    case guided = "Guided"
     case meditation = "Meditation"
     case start = "Start"
     case done = "Done"
+    case guidedMeditation = "Guided Meditation"
     
     // Error
     case unavailable = "Your Device doesn't support Apple Health :("

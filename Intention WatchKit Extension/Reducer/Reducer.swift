@@ -12,6 +12,7 @@ import SwiftUI
 struct Reducer {
 
     private let defaultTimeInterval: TimeInterval = Converter.timeInterval(from: 5)
+    private let smallTimeInterval: TimeInterval = Converter.timeInterval(from: 1)
     private let healthStore: HealthStore
     private let mindfulSession: MindfulSession
 
@@ -24,13 +25,27 @@ struct Reducer {
         var state = state
         switch action {
         case .incrementIntention:
-            if state.intention < Converter.timeInterval(from: 90) {
+            switch state.intention {
+            case Converter.timeInterval(from: 1)..<Converter.timeInterval(from: 10):
+                state.intention += smallTimeInterval
+                WKInterfaceDevice.current().play(.click)
+            case Converter.timeInterval(from: 10)..<Converter.timeInterval(from: 90):
                 state.intention += defaultTimeInterval
+                WKInterfaceDevice.current().play(.click)
+            default:
+                break
             }
 
         case .decrementIntention:
-            if state.intention > Converter.timeInterval(from: 5) {
+            switch state.intention {
+            case Converter.timeInterval(from: 2)...Converter.timeInterval(from: 10):
+                state.intention -= smallTimeInterval
+                WKInterfaceDevice.current().play(.click)
+            case Converter.timeInterval(from: 10)...Converter.timeInterval(from: 90):
                 state.intention -= defaultTimeInterval
+                WKInterfaceDevice.current().play(.click)
+            default:
+                break
             }
 
         case .fetchMindfulTimeInterval:
@@ -50,12 +65,6 @@ struct Reducer {
                 state.mindfulState = .error(.permissionDenied)
             }
 
-        case let .startObservingMindfulStoreChanges(storeDidChange):
-            if !state.didRegisterBackgroundDelivery && state.versionTwoOnboardingCompleted {
-                try? await healthStore.registerMindfulObserver(storeDidChange: storeDidChange)
-                state.didRegisterBackgroundDelivery = true
-            }
-
         case .setupInitialState:
             if state.versionOneOnboardingCompleted && !state.versionTwoOnboardingCompleted {
                 // Convert from Double to TimeInterval
@@ -68,7 +77,7 @@ struct Reducer {
             state.versionTwoOnboardingCompleted = true
 
         case .startMeditating:
-            let startDate = mindfulSession.startSession(with: state.intention)
+            let startDate = mindfulSession.startSession()
             state.mindfulSessionState = .meditating(startDate)
 
         case .stopMeditating:
@@ -85,7 +94,24 @@ struct Reducer {
 
         case .failedStoringMeditatingSession:
             state.mindfulSessionState = .error(.savingFailed)
-            
+
+        case .notifyUser:
+            WKInterfaceDevice.current().play(.success)
+
+        case .tick:
+            if case let .meditating(startDate) = state.mindfulSessionState {
+                let timeInterval = floor(Date().timeIntervalSince(startDate))
+                if timeInterval == state.intention {
+                    WKInterfaceDevice.current().play(.success)
+                } else if state.guided && timeInterval.truncatingRemainder(dividingBy: Converter.timeInterval(from: 1)) == 0 && timeInterval > 0 {
+                    WKInterfaceDevice.current().play(.start)
+                }
+            }
+
+        case let .guided(guided):
+            state.guided = guided
+            WKInterfaceDevice.current().play(.click)
+
         }
 
         return state

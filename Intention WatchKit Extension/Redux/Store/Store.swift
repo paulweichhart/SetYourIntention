@@ -8,11 +8,11 @@
 import Combine
 import Foundation
 
-@MainActor
 final class Store: ObservableObject {
 
     static let shared = Store()
 
+    @MainActor
     @Published private(set) var state = AppState()
 
     private var reducer: Reducer = {
@@ -24,6 +24,7 @@ final class Store: ObservableObject {
 
     private init() { }
 
+    @MainActor
     func dispatch(action: Action) async {
         state = await reducer.apply(action: action, to: state)
     }

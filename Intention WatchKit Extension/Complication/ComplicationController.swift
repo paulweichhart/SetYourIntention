@@ -11,11 +11,10 @@ import Foundation
 
 final class ComplicationController: NSObject, CLKComplicationDataSource {
 
-    private let store = Store.shared
     private let mindfulTimeIntervalKey = "mindfulTimeInterval"
 
     private var intention: TimeInterval {
-        return store.state.intention
+        return Store.shared.state.intention
     }
 
     func complicationDescriptors() async -> [CLKComplicationDescriptor] {
@@ -36,14 +35,14 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
     }
 
     func currentTimelineEntry(for complication: CLKComplication) async -> CLKComplicationTimelineEntry? {
-        await store.dispatch(action: .requestHealthStorePermission)
-        await store.dispatch(action: .fetchMindfulTimeInterval)
+        await Store.shared.dispatch(action: .requestHealthStorePermission)
+        await Store.shared.dispatch(action: .fetchMindfulTimeInterval)
 
-        switch store.state.mindfulState {
+        switch Store.shared.state.mindfulState {
         case let .loaded(timeInterval):
             return complicationTimelineEntry(mindfulTimeInterval: timeInterval,
                                              intention: intention,
-                                             progress: store.state.mindfulStateProgress ?? 0,
+                                             progress: Store.shared.state.mindfulStateProgress ?? 0,
                                              family: complication.family)
         case .loading, .error:
             return complicationTimelineEntry(mindfulTimeInterval: 0,

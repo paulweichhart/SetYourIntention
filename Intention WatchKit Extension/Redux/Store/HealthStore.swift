@@ -42,30 +42,6 @@ struct HealthStore {
         }
     }
 
-    func registerMindfulObserver(storeDidChange: @escaping AsyncClosure) async throws {
-        guard let store = store, let mindfulSession = mindfulSession else {
-            throw HealthStoreError.unavailable
-        }
-
-        do {
-            try await store.enableBackgroundDelivery(for: mindfulSession, frequency: .hourly)
-            let query = HKObserverQuery(sampleType: mindfulSession, predicate: nil, updateHandler: { _, completionHandler, error in
-
-                guard error == nil else {
-                    return
-                }
-
-                Task {
-                    await storeDidChange()
-                    completionHandler()
-                }
-            })
-            store.execute(query)
-        } catch {
-            throw HealthStoreError.noDataAvailable
-        }
-    }
-
     func fetchMindfulTimeInterval() async throws -> TimeInterval {
         guard let store = store, let mindfulSession = mindfulSession else {
             throw HealthStoreError.unavailable

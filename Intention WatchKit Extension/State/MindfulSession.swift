@@ -17,27 +17,17 @@ enum MindfulSessionState: Equatable {
 final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
 
     private var session: WKExtendedRuntimeSession?
-    private var timer: Timer?
 
-    func startSession(with interval: TimeInterval) -> Date {
+    func startSession() -> Date {
         session = WKExtendedRuntimeSession()
         session?.delegate = self
-        let startDate = Date()
-        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false, block: { [weak self] _ in
-            self?.notifyUser(success: true)
-        })
         session?.start()
-        return startDate
+        return Date()
     }
 
     func stopSession() -> Date {
         session?.invalidate()
-        timer?.invalidate()
         return Date()
-    }
-
-    func notifyUser(success: Bool) {
-        WKInterfaceDevice.current().play(success ? .success : .failure)
     }
 
     func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
@@ -51,6 +41,8 @@ final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
     }
 
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
-        notifyUser(success: false)
+        Task {
+            await Store.shared.dispatch(action: .notifyUser)
+        }
     }
 }
