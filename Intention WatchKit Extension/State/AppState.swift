@@ -13,6 +13,7 @@ struct AppState {
         case intention = "intention"
         case versionOneOnboardingCompleted = "onboardingCompleted"
         case versionTwoOnboardingCompleted = "versionTwoOnboardingCompleted"
+        case guided = "guided"
     }
 
     // Version State
@@ -40,6 +41,17 @@ struct AppState {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.intention.rawValue)
+        }
+    }
+
+    // Guided State
+
+    var guided: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Keys.guided.rawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.guided.rawValue)
         }
     }
 

@@ -7,25 +7,28 @@
 
 import Foundation
 import SwiftUI
+import WatchKit
 
 struct MeditationView: View {
 
+    @EnvironmentObject private var store: Store
+    @State private var selectedIndex = 0
     @State private var isMeditating = false {
         willSet {
             if !isMeditating {
                 Task {
-                    await Store.shared.dispatch(action: .startMeditating)
+                    await store.dispatch(action: .startMeditating)
                 }
             }
         }
     }
 
     var body: some View {
-        NavigationView {
+         NavigationView {
             ScrollView {
                 VStack {
                     HStack {
-                        Text(Texts.unguided.localisation)
+                        Text(store.state.guided ? Texts.guided.localisation : Texts.unguided.localisation)
                             .font(.body)
                             .fontWeight(.light)
                             .fixedSize(horizontal: false, vertical: true)
@@ -50,7 +53,6 @@ struct MeditationView: View {
         .sheet(isPresented: $isMeditating, content: {
 
             // Extract View https://www.swiftbysundell.com/articles/dismissing-swiftui-modal-and-detail-views/
-
             MeditationProgressView()
                 .onDisappear(perform: {
                     Task {
@@ -80,12 +82,12 @@ struct MeditationProgressView: View {
                 Text(Texts.setYourIntention.localisation)
 
             case let .meditating(startDate):
-                TimelineView(.periodic(from: startDate, by: 1.0)) { timeline in
+                TimelineView(.periodic(from: startDate, by: 1.0)) { _ in
                     let progress = Date().timeIntervalSince(startDate) / Store.shared.state.intention
                     let percentage = Int(progress * 100)
                     MeditationProgressBar(progress: progress,
                                           percentage: percentage,
-                                          date: timeline.date)
+                                          timeInterval: Date().timeIntervalSince(startDate))
                 }
 
             case let .error(error):
@@ -99,17 +101,19 @@ struct MeditationProgressView: View {
 
 struct MeditationProgressBar: View {
 
+    @EnvironmentObject private var store: Store
+
     let progress: Double
     let percentage: Int
-    let date: Date
+    let timeInterval: TimeInterval
 
     var body: some View {
         ProgressBar(progress: progress,
                     percentage: percentage)
             .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
-            .onChange(of: date) { _ in
+            .onChange(of: timeInterval) { _ in
                 Task {
-                    await Store.shared.dispatch(action: .tick)
+                    await store.dispatch(action: .tick)
                 }
             }
     }

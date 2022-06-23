@@ -24,4 +24,6 @@ enum Action {
     case failedStoringMeditatingSession
     case notifyUser
     case tick
+
+    case guided(Bool)
 }

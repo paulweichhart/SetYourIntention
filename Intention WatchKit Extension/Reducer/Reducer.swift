@@ -26,25 +26,26 @@ struct Reducer {
         switch action {
         case .incrementIntention:
             switch state.intention {
-            case 1...10:
+            case Converter.timeInterval(from: 1)..<Converter.timeInterval(from: 10):
                 state.intention += smallTimeInterval
-            case 11..<90:
+                WKInterfaceDevice.current().play(.click)
+            case Converter.timeInterval(from: 10)..<Converter.timeInterval(from: 90):
                 state.intention += defaultTimeInterval
+                WKInterfaceDevice.current().play(.click)
             default:
                 break
             }
 
         case .decrementIntention:
             switch state.intention {
-            case 2...10:
+            case Converter.timeInterval(from: 2)...Converter.timeInterval(from: 10):
                 state.intention -= smallTimeInterval
-            case 11..<90:
+                WKInterfaceDevice.current().play(.click)
+            case Converter.timeInterval(from: 10)...Converter.timeInterval(from: 90):
                 state.intention -= defaultTimeInterval
+                WKInterfaceDevice.current().play(.click)
             default:
                 break
-            }
-            if state.intention > Converter.timeInterval(from: 5) {
-                state.intention -= defaultTimeInterval
             }
 
         case .fetchMindfulTimeInterval:
@@ -98,10 +99,19 @@ struct Reducer {
             WKInterfaceDevice.current().play(.success)
 
         case .tick:
-            let now = Date()
-            if case let .meditating(startDate) = state.mindfulSessionState, startDate.addingTimeInterval(state.intention) >= now && startDate.addingTimeInterval(state.intention + 1.0) <= now {
-                WKInterfaceDevice.current().play(.success)
+            if case let .meditating(startDate) = state.mindfulSessionState {
+                let timeInterval = floor(Date().timeIntervalSince(startDate))
+                if timeInterval == state.intention {
+                    WKInterfaceDevice.current().play(.success)
+                } else if state.guided && timeInterval.truncatingRemainder(dividingBy: Converter.timeInterval(from: 1)) == 0 && timeInterval > 0 {
+                    WKInterfaceDevice.current().play(.start)
+                }
             }
+
+        case let .guided(guided):
+            state.guided = guided
+            WKInterfaceDevice.current().play(.click)
+
         }
 
         return state
