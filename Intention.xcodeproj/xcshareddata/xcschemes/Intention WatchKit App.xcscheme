@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1400"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF547F97253CCDF70061F499"
-               BuildableName = "Intention WatchKit App.app"
-               BlueprintName = "Intention WatchKit App"
+               BuildableName = "Intention App.app"
+               BlueprintName = "Intention App"
                ReferencedContainer = "container:Intention.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,15 +53,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      notificationPayloadFile = "Intention WatchKit Extension/PushNotificationPayload.apns">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF547F97253CCDF70061F499"
-            BuildableName = "Intention WatchKit App.app"
-            BlueprintName = "Intention WatchKit App"
+            BuildableName = "Intention App.app"
+            BlueprintName = "Intention App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -77,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF547F97253CCDF70061F499"
-            BuildableName = "Intention WatchKit App.app"
-            BlueprintName = "Intention WatchKit App"
+            BuildableName = "Intention App.app"
+            BlueprintName = "Intention App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

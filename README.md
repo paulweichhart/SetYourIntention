@@ -11,9 +11,8 @@ Releases:
 * Hoher Dachstein 2.0 added support for Mindful Sessions & watchOS 8
 
 Upcoming releases:
-* Traunstein      2.1 smaller increments & guided
-* Schafberg       2.2 Animations & Intro, Outro View for Meditation
-* Dachstein       2.3 Streaks
+* Schafberg       2.2 Statistics
+* Dachstein       2.3 Animations & Intro, Outro View for Meditation
 
 
  
