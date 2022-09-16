@@ -13,6 +13,7 @@ struct Reducer {
 
     private let defaultTimeInterval: TimeInterval = Converter.timeInterval(from: 5)
     private let smallTimeInterval: TimeInterval = Converter.timeInterval(from: 1)
+    
     private let healthStore: HealthStore
     private let mindfulSession: MindfulSession
 
@@ -24,6 +25,9 @@ struct Reducer {
     func apply(action: Action, to state: AppState) async -> AppState {
         var state = state
         switch action {
+
+        // MARK: - Set Intention
+
         case .incrementIntention:
             switch state.intention {
             case Converter.timeInterval(from: 1)..<Converter.timeInterval(from: 10):
@@ -48,6 +52,8 @@ struct Reducer {
                 break
             }
 
+        // MARK: - Fetch from Store
+
         case .fetchMindfulTimeInterval:
             do {
                 try await healthStore.requestPermission()
@@ -65,16 +71,29 @@ struct Reducer {
                 state.mindfulState = .error(.permissionDenied)
             }
 
-        case .setupInitialState:
-            if state.versionOneOnboardingCompleted && !state.versionTwoOnboardingCompleted {
+        // MARK: - Migration
+
+        case .migrateToLatestVersion:
+            if state.versionAssistant.shouldMigrateFromVersionOne {
                 // Convert from Double to TimeInterval
                 state.intention = Converter.timeInterval(from: Int(state.intention))
-            } else if !state.versionOneOnboardingCompleted && !state.versionTwoOnboardingCompleted {
+                state.versionAssistant.versionTwoOnboardingCompleted = true
+                state.versionAssistant.versionThreeOnboardingCompleted = true
+
+            } else if state.versionAssistant.shouldShowOnboarding {
+                // Set initial State
                 state.intention = 2 * defaultTimeInterval
+                state.versionAssistant.versionTwoOnboardingCompleted = true
+                state.versionAssistant.versionThreeOnboardingCompleted = true
+
+            } else if state.versionAssistant.shouldMigrateFromVersionTwo {
+                // Store values from UserDefaults in AppGroup
+                state.guided = UserDefaults.standard.bool(forKey: Constants.guided.rawValue)
+                state.intention = UserDefaults.standard.double(forKey: Constants.intention.rawValue)
+                state.versionAssistant.versionThreeOnboardingCompleted = true
             }
 
-        case .versionTwoOnboardingCompleted:
-            state.versionTwoOnboardingCompleted = true
+        // MARK: - Mindful Session
 
         case .startMeditating:
             let startDate = mindfulSession.startSession()

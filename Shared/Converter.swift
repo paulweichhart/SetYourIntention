@@ -18,4 +18,15 @@ enum Converter {
         let measurement = Measurement(value: timeInterval, unit: UnitDuration.seconds)
         return Int(measurement.converted(to: .minutes).value)
     }
+
+    static func progress(mindfulTimeInterval: TimeInterval, intentionTimeInterval: TimeInterval) -> Double {
+        guard mindfulTimeInterval > 0 && intentionTimeInterval > 0 else {
+            return 0
+        }
+        return Double(Converter.minutes(from: mindfulTimeInterval)) / Double(Converter.minutes(from: intentionTimeInterval))
+    }
+
+    static func percentage(progress: Double) -> Int {
+        return Int(progress * 100)
+    }
 }

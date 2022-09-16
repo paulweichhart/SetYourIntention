@@ -7,17 +7,15 @@
 
 import Foundation
 
-typealias Closure = () -> Void
-
 enum Action {
 
     case incrementIntention
     case decrementIntention
 
-    case setupInitialState
-    case fetchMindfulTimeInterval
+    case migrateToLatestVersion
+
     case requestHealthStorePermission
-    case versionTwoOnboardingCompleted
+    case fetchMindfulTimeInterval
 
     case startMeditating
     case stopMeditating

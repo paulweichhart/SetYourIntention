@@ -9,38 +9,20 @@ import Foundation
 
 struct AppState {
 
-    private enum Keys: String {
-        case intention = "intention"
-        case versionOneOnboardingCompleted = "onboardingCompleted"
-        case versionTwoOnboardingCompleted = "versionTwoOnboardingCompleted"
-        case guided = "guided"
-    }
+    private let sharedUserDefaults = UserDefaults(suiteName: Constants.appGroup.rawValue)
 
     // Version State
 
-    var didRegisterBackgroundDelivery: Bool = false
-
-    var versionOneOnboardingCompleted: Bool {
-        return UserDefaults.standard.bool(forKey: Keys.versionOneOnboardingCompleted.rawValue)
-    }
-
-    var versionTwoOnboardingCompleted: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: Keys.versionTwoOnboardingCompleted.rawValue)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: Keys.versionTwoOnboardingCompleted.rawValue)
-        }
-    }
+    var versionAssistant = VersionAssistant()
 
     // Intention State
 
     var intention: TimeInterval {
         get {
-            return UserDefaults.standard.double(forKey: Keys.intention.rawValue)
+            return sharedUserDefaults?.double(forKey: Constants.intention.rawValue) ?? 0
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Keys.intention.rawValue)
+            sharedUserDefaults?.set(newValue, forKey: Constants.intention.rawValue)
         }
     }
 
@@ -48,10 +30,10 @@ struct AppState {
 
     var guided: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.guided.rawValue)
+            return sharedUserDefaults?.bool(forKey: Constants.guided.rawValue) ?? false
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Keys.guided.rawValue)
+            sharedUserDefaults?.set(newValue, forKey: Constants.guided.rawValue)
         }
     }
 
@@ -59,27 +41,9 @@ struct AppState {
 
     var mindfulState: ViewState<TimeInterval, HealthStoreError> = .loading
 
-    var mindfulStateProgress: Double? {
-        switch mindfulState {
-        case .loading, .error:
-            return nil
-        case let .loaded(timeInterval):
-            guard timeInterval > 0 && intention > 0 else {
-                return 0
-            }
-
-            return Double(Converter.minutes(from: timeInterval)) / Double(Converter.minutes(from: intention))
-        }
-    }
-
-    var mindfulStatePercentage: Int? {
-        guard let progress = mindfulStateProgress else {
-            return nil
-        }
-        return Int(progress * 100)
-    }
-
     // Mindful Session State
 
     var mindfulSessionState: MindfulSessionState = .initial
 }
+
+

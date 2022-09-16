@@ -30,16 +30,21 @@ struct RootView: View {
 
     @ViewBuilder
     var body: some View {
-        switch Store.shared.state.versionTwoOnboardingCompleted {
+        switch Store.shared.state.versionAssistant.shouldShowOnboarding {
         case true:
+            OnboardingView()
+        case false:
             TabView {
                 IntentionView()
                 MeditationView()
                 SetIntentionView()
             }
             .tabViewStyle(PageTabViewStyle())
-        case false:
-            OnboardingView()
+            .onAppear() {
+                Task {
+                    await store.dispatch(action: .migrateToLatestVersion)
+                }
+            }
         }
     }
 

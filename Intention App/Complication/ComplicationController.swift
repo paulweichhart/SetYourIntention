@@ -9,9 +9,11 @@ import ClockKit
 import Combine
 import Foundation
 
-final class ComplicationController: NSObject, CLKComplicationDataSource {
+final class ComplicationController: NSObject, CLKComplicationDataSource, CLKComplicationWidgetMigrator {
 
-    private let mindfulTimeIntervalKey = "mindfulTimeInterval"
+    var widgetMigrator: CLKComplicationWidgetMigrator {
+        return self
+    }
 
     private var intention: TimeInterval {
         return Store.shared.state.intention
@@ -39,10 +41,11 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
         await Store.shared.dispatch(action: .fetchMindfulTimeInterval)
 
         switch Store.shared.state.mindfulState {
-        case let .loaded(timeInterval):
-            return complicationTimelineEntry(mindfulTimeInterval: timeInterval,
+        case let .loaded(mindfulTimeInterval):
+            return complicationTimelineEntry(mindfulTimeInterval: mindfulTimeInterval,
                                              intention: intention,
-                                             progress: Store.shared.state.mindfulStateProgress ?? 0,
+                                             progress: Converter.progress(mindfulTimeInterval: mindfulTimeInterval,
+                                                                          intentionTimeInterval: intention),
                                              family: complication.family)
         case .loading, .error:
             return complicationTimelineEntry(mindfulTimeInterval: 0,
@@ -50,6 +53,12 @@ final class ComplicationController: NSObject, CLKComplicationDataSource {
                                              progress: 0,
                                              family: complication.family)
         }
+    }
+
+    func widgetConfiguration(from complicationDescriptor: CLKComplicationDescriptor) async -> CLKComplicationWidgetMigrationConfiguration? {
+
+        return CLKComplicationStaticWidgetMigrationConfiguration(kind: Constants.complication.rawValue,
+                                                                 extensionBundleIdentifier: Constants.complication.rawValue)
     }
 
     private func complicationTimelineEntry(mindfulTimeInterval: TimeInterval, intention: TimeInterval, progress: Double, family: CLKComplicationFamily) -> CLKComplicationTimelineEntry? {
