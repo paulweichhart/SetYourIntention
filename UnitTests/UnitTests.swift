@@ -7,7 +7,7 @@
 
 import XCTest
 
-@testable import Intention_WatchKit_Extension
+@testable import Intention_App
 
 class UnitTests: XCTestCase {
 
