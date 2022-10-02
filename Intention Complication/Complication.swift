@@ -141,11 +141,12 @@ struct ComplicationEntryView : View {
 struct Complication: Widget {
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: Constants.complication.rawValue, provider: ComplicationProvider()) { entry in
+        StaticConfiguration(kind: Constants.complication.rawValue,
+                            provider: ComplicationProvider()) { entry in
             ComplicationEntryView(entry: entry)
         }
         .configurationDisplayName("Intention")
-        .description("Intention Widget")
+        .description("Intention Complication")
         .supportedFamilies([.accessoryCircular,
                             .accessoryCorner,
                             .accessoryInline])

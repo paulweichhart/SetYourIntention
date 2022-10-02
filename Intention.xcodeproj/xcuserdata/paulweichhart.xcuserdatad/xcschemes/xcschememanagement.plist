@@ -46,7 +46,7 @@
 		<key>TestExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<key>UnitTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -67,6 +67,11 @@
 			<true/>
 		</dict>
 		<key>FF547F97253CCDF70061F499</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFEE3D7B28CA93AF00A22348</key>
 		<dict>
 			<key>primary</key>
 			<true/>
