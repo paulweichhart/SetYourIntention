@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1400"
+   wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF547F97253CCDF70061F499"
-               BuildableName = "Intention App.app"
-               BlueprintName = "Intention App"
+               BlueprintIdentifier = "FFEE3D7B28CA93AF00A22348"
+               BuildableName = "Complication.appex"
+               BlueprintName = "Complication"
                ReferencedContainer = "container:Intention.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF547F93253CCDF70061F499"
-               BuildableName = "Intention.app"
-               BlueprintName = "Intention"
+               BlueprintIdentifier = "FF547F97253CCDF70061F499"
+               BuildableName = "Intention App.app"
+               BlueprintName = "Intention App"
                ReferencedContainer = "container:Intention.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,15 +47,16 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
+      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "32">
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -65,21 +67,37 @@
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "_XCWidgetKind"
+            value = ""
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "_XCWidgetDefaultView"
+            value = "timeline"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "_XCWidgetFamily"
+            value = "medium"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "32">
+      debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF547F97253CCDF70061F499"
-            BuildableName = "Intention App.app"
-            BlueprintName = "Intention App"
+            BlueprintIdentifier = "FFEE3D7B28CA93AF00A22348"
+            BuildableName = "Complication.appex"
+            BlueprintName = "Complication"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

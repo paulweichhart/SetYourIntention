@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1300"
+   LastUpgradeVersion = "1400"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -33,15 +33,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      notificationPayloadFile = "Intention WatchKit Extension/PushNotificationPayload.apns">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF547F97253CCDF70061F499"
-            BuildableName = "Intention WatchKit App.app"
-            BlueprintName = "Intention WatchKit App"
+            BuildableName = "Intention App.app"
+            BlueprintName = "Intention App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -52,15 +51,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF547F97253CCDF70061F499"
-            BuildableName = "Intention WatchKit App.app"
-            BlueprintName = "Intention WatchKit App"
-            ReferencedContainer = "container:Intention.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

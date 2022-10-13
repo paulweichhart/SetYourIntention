@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1400"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF547F97253CCDF70061F499"
-               BuildableName = "Intention WatchKit App.app"
-               BlueprintName = "Intention WatchKit App"
+               BuildableName = "Intention App.app"
+               BlueprintName = "Intention App"
                ReferencedContainer = "container:Intention.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -54,15 +54,14 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "8"
-      notificationPayloadFile = "Intention WatchKit Extension/PushNotificationPayload.apns">
+      launchAutomaticallySubstyle = "8">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF547F97253CCDF70061F499"
-            BuildableName = "Intention WatchKit App.app"
-            BlueprintName = "Intention WatchKit App"
+            BuildableName = "Intention App.app"
+            BlueprintName = "Intention App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -73,15 +72,14 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "8"
-      notificationPayloadFile = "Intention WatchKit Extension/PushNotificationPayload.apns">
+      launchAutomaticallySubstyle = "8">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF547F97253CCDF70061F499"
-            BuildableName = "Intention WatchKit App.app"
-            BlueprintName = "Intention WatchKit App"
+            BuildableName = "Intention App.app"
+            BlueprintName = "Intention App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
