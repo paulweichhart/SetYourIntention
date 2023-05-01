@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF547F93253CCDF70061F499"
+               BlueprintIdentifier = "FF9CB1122A003DF80015E8DD"
                BuildableName = "Intention.app"
                BlueprintName = "Intention"
                ReferencedContainer = "container:Intention.xcodeproj">

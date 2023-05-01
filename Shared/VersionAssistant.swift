@@ -21,7 +21,7 @@ struct VersionAssistant {
         return versionTwoOnboardingCompleted == false && versionThreeOnboardingCompleted == false
     }
 
-    // Version 3.0 introduced AppGroup
+    // Version 3.0 introduced
     var shouldMigrateFromVersionTwo: Bool {
         return versionTwoOnboardingCompleted && versionThreeOnboardingCompleted == false
     }

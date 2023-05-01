@@ -38,6 +38,7 @@
 		FF90ED8626C709340010C721 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED8526C709340010C721 /* ViewState.swift */; };
 		FF9CAF2428CD41FD00F8A6EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFDBA5C0260691B9003F076F /* Localizable.strings */; };
 		FF9CAF2528CD420000F8A6EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */; };
+		FF9CB1532A003F120015E8DD /* Intention App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF547F98253CCDF70061F499 /* Intention App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FFC0C1AE26B0B1A6002DA8F5 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */; };
 		FFC83E2126CEF77C0062A1D2 /* MindfulSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */; };
 		FFDBA5B126068E53003F076F /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBA5B026068E53003F076F /* Texts.swift */; };
@@ -65,6 +66,13 @@
 			remoteGlobalIDString = FFEE3D7B28CA93AF00A22348;
 			remoteInfo = Complication;
 		};
+		FF9CB1512A003EF60015E8DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF547F8E253CCDF60061F499 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF547F97253CCDF70061F499;
+			remoteInfo = "Intention App";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +85,17 @@
 				FF79494128CC97EE00D6EAAD /* Complication.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9CB1282A003DF90015E8DD /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				FF9CB1532A003F120015E8DD /* Intention App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -112,6 +131,7 @@
 		FF8C7BD828D381C700CB8651 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		FF90ED8526C709340010C721 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		FF9CAF2228CD3DE900F8A6EE /* Complication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Complication.entitlements; sourceTree = "<group>"; };
+		FF9CB1132A003DF80015E8DD /* Intention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intention.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAAABDB25ED90DB00534B21 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulSession.swift; sourceTree = "<group>"; };
@@ -234,6 +254,7 @@
 				FF547F98253CCDF70061F499 /* Intention App.app */,
 				FF263CDE26A3732200C56B2F /* UnitTests.xctest */,
 				FFEE3D7C28CA93AF00A22348 /* Complication.appex */,
+				FF9CB1132A003DF80015E8DD /* Intention.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,6 +375,23 @@
 			productReference = FF547F98253CCDF70061F499 /* Intention App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FF9CB1122A003DF80015E8DD /* Intention */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF9CB12C2A003DF90015E8DD /* Build configuration list for PBXNativeTarget "Intention" */;
+			buildPhases = (
+				FF9CB1112A003DF80015E8DD /* Resources */,
+				FF9CB1282A003DF90015E8DD /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF9CB1522A003EF60015E8DD /* PBXTargetDependency */,
+			);
+			name = Intention;
+			productName = Intention;
+			productReference = FF9CB1132A003DF80015E8DD /* Intention.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
 		FFEE3D7B28CA93AF00A22348 /* Complication */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFEE3D8828CA93B000A22348 /* Build configuration list for PBXNativeTarget "Complication" */;
@@ -377,7 +415,7 @@
 		FF547F8E253CCDF60061F499 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					FF263CDD26A3732200C56B2F = {
@@ -386,6 +424,9 @@
 					};
 					FF547F97253CCDF70061F499 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					FF9CB1122A003DF80015E8DD = {
+						CreatedOnToolsVersion = 14.3;
 					};
 					FFEE3D7B28CA93AF00A22348 = {
 						CreatedOnToolsVersion = 14.0;
@@ -406,6 +447,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				FF9CB1122A003DF80015E8DD /* Intention */,
 				FF547F97253CCDF70061F499 /* Intention App */,
 				FFEE3D7B28CA93AF00A22348 /* Complication */,
 				FF263CDD26A3732200C56B2F /* UnitTests */,
@@ -428,6 +470,13 @@
 				FFDBA5BE260691B9003F076F /* Localizable.strings in Resources */,
 				FF5A20CF2623AFC900C4B2B0 /* InfoPlist.strings in Resources */,
 				FF547F9E253CCDF70061F499 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9CB1112A003DF80015E8DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +555,11 @@
 			isa = PBXTargetDependency;
 			target = FFEE3D7B28CA93AF00A22348 /* Complication */;
 			targetProxy = FF79494228CC97EE00D6EAAD /* PBXContainerItemProxy */;
+		};
+		FF9CB1522A003EF60015E8DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF547F97253CCDF70061F499 /* Intention App */;
+			targetProxy = FF9CB1512A003EF60015E8DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -711,23 +765,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = Intention;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Intention Resources/Intention WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_FILE = "Intention Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
@@ -738,26 +793,59 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = Intention;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Intention Resources/Intention WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_FILE = "Intention Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		FF9CB1262A003DF90015E8DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				INFOPLIST_KEY_CFBundleDisplayName = Intention;
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FF9CB1272A003DF90015E8DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				INFOPLIST_KEY_CFBundleDisplayName = Intention;
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -769,7 +857,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "Intention Complication/Complication.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intention Complication/Info.plist";
@@ -783,7 +871,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp.ComplicationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -791,6 +879,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -802,7 +891,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "Intention Complication/Complication.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intention Complication/Info.plist";
@@ -816,7 +905,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp.ComplicationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -824,6 +913,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -853,6 +943,15 @@
 			buildConfigurations = (
 				FF547FC1253CCDF80061F499 /* Debug */,
 				FF547FC2253CCDF80061F499 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF9CB12C2A003DF90015E8DD /* Build configuration list for PBXNativeTarget "Intention" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9CB1262A003DF90015E8DD /* Debug */,
+				FF9CB1272A003DF90015E8DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
