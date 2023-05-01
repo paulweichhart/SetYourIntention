@@ -3,334 +3,294 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF0767A428CBB03B00680FA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0767A328CBB03B00680FA3 /* Constants.swift */; };
-		FF0767A528CBB03B00680FA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0767A328CBB03B00680FA3 /* Constants.swift */; };
-		FF0767A828CBB5F800680FA3 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5382522540963400FE08E6 /* HealthStore.swift */; };
-		FF0767AB28CBBFB900680FA3 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBA5B026068E53003F076F /* Texts.swift */; };
-		FF0767AC28CBC4E300680FA3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF562E232546374C00D92C4B /* Colors.swift */; };
-		FF0767AE28CBDD5A00680FA3 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0767AD28CBDD5A00680FA3 /* ComplicationController.swift */; };
-		FF0A182126753AED00B45A2C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A182026753AED00B45A2C /* Store.swift */; };
-		FF0A18232675409E00B45A2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A18222675409E00B45A2C /* AppState.swift */; };
-		FF0A18252675420500B45A2C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A18242675420500B45A2C /* Action.swift */; };
-		FF0A18272675437900B45A2C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A18262675437900B45A2C /* Reducer.swift */; };
-		FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF218779253E26DD004C85CC /* SetIntentionView.swift */; };
-		FF263CD926A3715800C56B2F /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF263CD826A3715800C56B2F /* Converter.swift */; };
-		FF263CE126A3732200C56B2F /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF263CE026A3732200C56B2F /* UnitTests.swift */; };
-		FF28A47828CC9FEA004D91F7 /* Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79493628CC973C00D6EAAD /* Complication.swift */; };
-		FF5382532540963400FE08E6 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5382522540963400FE08E6 /* HealthStore.swift */; };
-		FF547F9E253CCDF70061F499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF547F9D253CCDF70061F499 /* Assets.xcassets */; };
-		FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FA9253CCDF70061F499 /* IntentionApp.swift */; };
-		FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF547FD0253CD3D30061F499 /* IntentionView.swift */; };
-		FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF547FDF253CD4480061F499 /* HealthKit.framework */; };
-		FF562E242546374C00D92C4B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF562E232546374C00D92C4B /* Colors.swift */; };
-		FF5A20CF2623AFC900C4B2B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */; };
-		FF79494028CC97B000D6EAAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFEE3D6E28CA8F9400A22348 /* Assets.xcassets */; };
-		FF79494128CC97EE00D6EAAD /* Complication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FFEE3D7C28CA93AF00A22348 /* Complication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C425449FEE00DE7E6B /* WatchKit.framework */; };
-		FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8190C625449FFB00DE7E6B /* ClockKit.framework */; };
-		FF88750728CFD0B800B31814 /* VersionAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88750628CFD0B800B31814 /* VersionAssistant.swift */; };
-		FF88750828CFD0B800B31814 /* VersionAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88750628CFD0B800B31814 /* VersionAssistant.swift */; };
-		FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B94542544485600DCF314 /* ExtensionDelegate.swift */; };
-		FF90ED8626C709340010C721 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED8526C709340010C721 /* ViewState.swift */; };
-		FF9CAF2428CD41FD00F8A6EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFDBA5C0260691B9003F076F /* Localizable.strings */; };
-		FF9CAF2528CD420000F8A6EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */; };
-		FF9CB1532A003F120015E8DD /* Intention App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF547F98253CCDF70061F499 /* Intention App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FFC0C1AE26B0B1A6002DA8F5 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */; };
-		FFC83E2126CEF77C0062A1D2 /* MindfulSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */; };
-		FFDBA5B126068E53003F076F /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDBA5B026068E53003F076F /* Texts.swift */; };
-		FFDBA5BE260691B9003F076F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFDBA5C0260691B9003F076F /* Localizable.strings */; };
-		FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE10BF92541B8B4008209AC /* ErrorView.swift */; };
-		FFEE3D7D28CA93AF00A22348 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEE3D6728CA8F9300A22348 /* WidgetKit.framework */; };
-		FFEE3D7E28CA93AF00A22348 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEE3D6928CA8F9300A22348 /* SwiftUI.framework */; };
-		FFEE3D8B28CA9AAE00A22348 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF263CD826A3715800C56B2F /* Converter.swift */; };
-		FFEE3D8D28CA9C2C00A22348 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A18242675420500B45A2C /* Action.swift */; };
-		FFFB33C3256C4F4700932CD8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */; };
+		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */; };
+		FF96C2D52A005A7100D5C0EB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF96C2D42A005A7100D5C0EB /* README.md */; };
+		FF96C2DE2A005A9600D5C0EB /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2D92A005A9600D5C0EB /* Texts.swift */; };
+		FF96C2DF2A005A9600D5C0EB /* VersionAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */; };
+		FF96C2E02A005A9600D5C0EB /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DB2A005A9600D5C0EB /* Converter.swift */; };
+		FF96C2E12A005A9600D5C0EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DC2A005A9600D5C0EB /* Constants.swift */; };
+		FF96C2E22A005A9600D5C0EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DD2A005A9600D5C0EB /* Colors.swift */; };
+		FF96C2EB2A005AF800D5C0EB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF96C2EA2A005AF800D5C0EB /* WidgetKit.framework */; };
+		FF96C2ED2A005AF800D5C0EB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF96C2EC2A005AF800D5C0EB /* SwiftUI.framework */; };
+		FF96C2F02A005AF800D5C0EB /* Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2EF2A005AF800D5C0EB /* Complication.swift */; };
+		FF96C2F92A005AF900D5C0EB /* ComplicationExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FF96C2E82A005AF800D5C0EB /* ComplicationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FF96C2FE2A005B3D00D5C0EB /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DB2A005A9600D5C0EB /* Converter.swift */; };
+		FF96C2FF2A005B3D00D5C0EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DC2A005A9600D5C0EB /* Constants.swift */; };
+		FF96C3002A005B3D00D5C0EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DD2A005A9600D5C0EB /* Colors.swift */; };
+		FF96C3012A005B3D00D5C0EB /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2D92A005A9600D5C0EB /* Texts.swift */; };
+		FF96C3022A005B3D00D5C0EB /* VersionAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */; };
+		FF96C3132A005B8600D5C0EB /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3042A005B8600D5C0EB /* Reducer.swift */; };
+		FF96C3142A005B8600D5C0EB /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3052A005B8600D5C0EB /* Action.swift */; };
+		FF96C3152A005B8600D5C0EB /* SetIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3072A005B8600D5C0EB /* SetIntentionView.swift */; };
+		FF96C3162A005B8600D5C0EB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3082A005B8600D5C0EB /* OnboardingView.swift */; };
+		FF96C3172A005B8600D5C0EB /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3092A005B8600D5C0EB /* MeditationView.swift */; };
+		FF96C3182A005B8600D5C0EB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30A2A005B8600D5C0EB /* ErrorView.swift */; };
+		FF96C3192A005B8600D5C0EB /* IntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30B2A005B8600D5C0EB /* IntentionView.swift */; };
+		FF96C31A2A005B8600D5C0EB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30D2A005B8600D5C0EB /* Store.swift */; };
+		FF96C31B2A005B8600D5C0EB /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30E2A005B8600D5C0EB /* HealthStore.swift */; };
+		FF96C31C2A005B8600D5C0EB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3102A005B8600D5C0EB /* AppState.swift */; };
+		FF96C31D2A005B8600D5C0EB /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3112A005B8600D5C0EB /* ViewState.swift */; };
+		FF96C31E2A005B8600D5C0EB /* MindfulSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3122A005B8600D5C0EB /* MindfulSession.swift */; };
+		FF96C3212A005BA800D5C0EB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3202A005BA800D5C0EB /* ExtensionDelegate.swift */; };
+		FF96C3222A005BD000D5C0EB /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30E2A005B8600D5C0EB /* HealthStore.swift */; };
+		FF96C3242A005E0F00D5C0EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3232A005E0F00D5C0EB /* Assets.xcassets */; };
+		FF96C32E2A0063A200D5C0EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96C32D2A0063A200D5C0EB /* Assets.xcassets */; };
+		FF96C3362A00656C00D5C0EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3302A00656B00D5C0EB /* Localizable.strings */; };
+		FF96C3372A00656C00D5C0EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3302A00656B00D5C0EB /* Localizable.strings */; };
+		FF96C3382A00656C00D5C0EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3322A00656C00D5C0EB /* InfoPlist.strings */; };
+		FF96C3392A00656C00D5C0EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3322A00656C00D5C0EB /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FF3B383A28D42576006967CD /* PBXContainerItemProxy */ = {
+		FF96C2AA2A0059BB00D5C0EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FF547F8E253CCDF60061F499 /* Project object */;
+			containerPortal = FF96C29C2A0059BB00D5C0EB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FF547F97253CCDF70061F499;
-			remoteInfo = "Intention App";
+			remoteGlobalIDString = FF96C2A72A0059BB00D5C0EB;
+			remoteInfo = "Intention Watch App";
 		};
-		FF79494228CC97EE00D6EAAD /* PBXContainerItemProxy */ = {
+		FF96C2F72A005AF900D5C0EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FF547F8E253CCDF60061F499 /* Project object */;
+			containerPortal = FF96C29C2A0059BB00D5C0EB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FFEE3D7B28CA93AF00A22348;
-			remoteInfo = Complication;
-		};
-		FF9CB1512A003EF60015E8DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF547F8E253CCDF60061F499 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF547F97253CCDF70061F499;
-			remoteInfo = "Intention App";
+			remoteGlobalIDString = FF96C2E72A005AF800D5C0EB;
+			remoteInfo = ComplicationExtension;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FF79494428CC97EE00D6EAAD /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				FF79494128CC97EE00D6EAAD /* Complication.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9CB1282A003DF90015E8DD /* Embed Watch Content */ = {
+		FF96C2BB2A0059BC00D5C0EB /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				FF9CB1532A003F120015E8DD /* Intention App.app in Embed Watch Content */,
+				FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF96C2FD2A005AF900D5C0EB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FF96C2F92A005AF900D5C0EB /* ComplicationExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF0767A328CBB03B00680FA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FF0767AD28CBDD5A00680FA3 /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		FF0A182026753AED00B45A2C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		FF0A18222675409E00B45A2C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		FF0A18242675420500B45A2C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		FF0A18262675437900B45A2C /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
-		FF218779253E26DD004C85CC /* SetIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetIntentionView.swift; sourceTree = "<group>"; };
-		FF263CD826A3715800C56B2F /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		FF263CDE26A3732200C56B2F /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF263CE026A3732200C56B2F /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
-		FF5382522540963400FE08E6 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
-		FF547F98253CCDF70061F499 /* Intention App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intention App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF547F9D253CCDF70061F499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FF547FA9253CCDF70061F499 /* IntentionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionApp.swift; sourceTree = "<group>"; };
-		FF547FB8253CCDF80061F499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF547FD0253CD3D30061F499 /* IntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionView.swift; sourceTree = "<group>"; };
-		FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intention WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		FF547FDF253CD4480061F499 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		FF562E232546374C00D92C4B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		FF5A20D02623AFC900C4B2B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FF5A20D52623AFCE00C4B2B0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FF79493628CC973C00D6EAAD /* Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complication.swift; sourceTree = "<group>"; };
-		FF79493A28CC973E00D6EAAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF8190C425449FEE00DE7E6B /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
-		FF8190C625449FFB00DE7E6B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/ClockKit.framework; sourceTree = DEVELOPER_DIR; };
-		FF88750628CFD0B800B31814 /* VersionAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionAssistant.swift; sourceTree = "<group>"; };
-		FF8B94542544485600DCF314 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		FF8C7BD828D381C700CB8651 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
-		FF90ED8526C709340010C721 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		FF9CAF2228CD3DE900F8A6EE /* Complication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Complication.entitlements; sourceTree = "<group>"; };
-		FF9CB1132A003DF80015E8DD /* Intention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intention.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFAAABDB25ED90DB00534B21 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
-		FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulSession.swift; sourceTree = "<group>"; };
-		FFDBA5B026068E53003F076F /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
-		FFDBA5BF260691B9003F076F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FFDBA5C4260691BF003F076F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FFE10BF92541B8B4008209AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		FFEE3D6728CA8F9300A22348 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		FFEE3D6928CA8F9300A22348 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		FFEE3D6E28CA8F9400A22348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ComplicationExtension/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		FFEE3D7C28CA93AF00A22348 /* Complication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Complication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		FF96C2A22A0059BB00D5C0EB /* Intention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intention.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intention Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntentionApp.swift; sourceTree = "<group>"; };
+		FF96C2CF2A005A3100D5C0EB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF96C2D42A005A7100D5C0EB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FF96C2D92A005A9600D5C0EB /* Texts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
+		FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionAssistant.swift; sourceTree = "<group>"; };
+		FF96C2DB2A005A9600D5C0EB /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		FF96C2DC2A005A9600D5C0EB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FF96C2DD2A005A9600D5C0EB /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FF96C2E82A005AF800D5C0EB /* ComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF96C2EA2A005AF800D5C0EB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		FF96C2EC2A005AF800D5C0EB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		FF96C2EF2A005AF800D5C0EB /* Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complication.swift; sourceTree = "<group>"; };
+		FF96C3042A005B8600D5C0EB /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		FF96C3052A005B8600D5C0EB /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		FF96C3072A005B8600D5C0EB /* SetIntentionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetIntentionView.swift; sourceTree = "<group>"; };
+		FF96C3082A005B8600D5C0EB /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		FF96C3092A005B8600D5C0EB /* MeditationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
+		FF96C30A2A005B8600D5C0EB /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		FF96C30B2A005B8600D5C0EB /* IntentionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntentionView.swift; sourceTree = "<group>"; };
+		FF96C30D2A005B8600D5C0EB /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FF96C30E2A005B8600D5C0EB /* HealthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		FF96C3102A005B8600D5C0EB /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		FF96C3112A005B8600D5C0EB /* ViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		FF96C3122A005B8600D5C0EB /* MindfulSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfulSession.swift; sourceTree = "<group>"; };
+		FF96C3202A005BA800D5C0EB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		FF96C3232A005E0F00D5C0EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF96C3252A005F3500D5C0EB /* Intention Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intention Watch App.entitlements"; sourceTree = "<group>"; };
+		FF96C3262A005F7600D5C0EB /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.4.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
+		FF96C3282A005F9A00D5C0EB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.4.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
+		FF96C32A2A00604200D5C0EB /* ComplicationExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ComplicationExtension.entitlements; sourceTree = "<group>"; };
+		FF96C32C2A00612700D5C0EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF96C32D2A0063A200D5C0EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF96C3312A00656C00D5C0EB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF96C3332A00656C00D5C0EB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF96C3342A00656C00D5C0EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF96C3352A00656C00D5C0EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FF263CDB26A3732200C56B2F /* Frameworks */ = {
+		FF96C2A52A0059BB00D5C0EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF547FA1253CCDF70061F499 /* Frameworks */ = {
+		FF96C2E52A005AF800D5C0EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF547FE0253CD4480061F499 /* HealthKit.framework in Frameworks */,
-				FF8190C725449FFB00DE7E6B /* ClockKit.framework in Frameworks */,
-				FF8190C525449FEE00DE7E6B /* WatchKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFEE3D7928CA93AF00A22348 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FFEE3D7E28CA93AF00A22348 /* SwiftUI.framework in Frameworks */,
-				FFEE3D7D28CA93AF00A22348 /* WidgetKit.framework in Frameworks */,
+				FF96C2ED2A005AF800D5C0EB /* SwiftUI.framework in Frameworks */,
+				FF96C2EB2A005AF800D5C0EB /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF0A181B26753A3B00B45A2C /* Reducer */ = {
+		FF96C29B2A0059BB00D5C0EB = {
 			isa = PBXGroup;
 			children = (
-				FF0A18242675420500B45A2C /* Action.swift */,
-				FF0A18262675437900B45A2C /* Reducer.swift */,
-			);
-			path = Reducer;
-			sourceTree = "<group>";
-		};
-		FF0A181D26753A5800B45A2C /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				FF5382522540963400FE08E6 /* HealthStore.swift */,
-				FF0A182026753AED00B45A2C /* Store.swift */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
-		FF0A181E26753A6500B45A2C /* State */ = {
-			isa = PBXGroup;
-			children = (
-				FF0A18222675409E00B45A2C /* AppState.swift */,
-				FFC83E2026CEF77C0062A1D2 /* MindfulSession.swift */,
-				FF90ED8526C709340010C721 /* ViewState.swift */,
-			);
-			path = State;
-			sourceTree = "<group>";
-		};
-		FF0A181F26753A8200B45A2C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FFE10BF92541B8B4008209AC /* ErrorView.swift */,
-				FF547FD0253CD3D30061F499 /* IntentionView.swift */,
-				FFC0C1AD26B0B1A6002DA8F5 /* MeditationView.swift */,
-				FFFB33C2256C4F4700932CD8 /* OnboardingView.swift */,
-				FF218779253E26DD004C85CC /* SetIntentionView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		FF263CDF26A3732200C56B2F /* UnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				FF263CE026A3732200C56B2F /* UnitTests.swift */,
-			);
-			path = UnitTests;
-			sourceTree = "<group>";
-		};
-		FF308E492677FDCD00378A09 /* ExtensionDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				FF8B94542544485600DCF314 /* ExtensionDelegate.swift */,
-			);
-			path = ExtensionDelegate;
-			sourceTree = "<group>";
-		};
-		FF547F8D253CCDF60061F499 = {
-			isa = PBXGroup;
-			children = (
-				FF8C7BD828D381C700CB8651 /* WidgetExtension.entitlements */,
-				FFAAABDB25ED90DB00534B21 /* README.md */,
-				FF547F9C253CCDF70061F499 /* Intention App */,
-				FF79493528CC973C00D6EAAD /* Intention Complication */,
-				FFACFA8C28B8219F00D122C6 /* Intention Resources */,
-				FF9CAF2328CD40F000F8A6EE /* Shared */,
-				FF547FDE253CD4480061F499 /* Frameworks */,
-				FFDBA5B526069114003F076F /* Localization */,
-				FF263CDF26A3732200C56B2F /* UnitTests */,
-				FF547F95253CCDF70061F499 /* Products */,
+				FF96C2D42A005A7100D5C0EB /* README.md */,
+				FF96C2EE2A005AF800D5C0EB /* Complication */,
+				FF96C2AC2A0059BB00D5C0EB /* Intention Watch App */,
+				FF96C32F2A00656B00D5C0EB /* Localization */,
+				FF96C2D82A005A8800D5C0EB /* Shared */,
+				FF96C2E92A005AF800D5C0EB /* Frameworks */,
+				FF96C2A32A0059BB00D5C0EB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FF547F95253CCDF70061F499 /* Products */ = {
+		FF96C2A32A0059BB00D5C0EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF547F98253CCDF70061F499 /* Intention App.app */,
-				FF263CDE26A3732200C56B2F /* UnitTests.xctest */,
-				FFEE3D7C28CA93AF00A22348 /* Complication.appex */,
-				FF9CB1132A003DF80015E8DD /* Intention.app */,
+				FF96C2A22A0059BB00D5C0EB /* Intention.app */,
+				FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */,
+				FF96C2E82A005AF800D5C0EB /* ComplicationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FF547F9C253CCDF70061F499 /* Intention App */ = {
+		FF96C2AC2A0059BB00D5C0EB /* Intention Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				FF547F9D253CCDF70061F499 /* Assets.xcassets */,
-				FF547FA9253CCDF70061F499 /* IntentionApp.swift */,
-				FF547FCE253CD3A80061F499 /* Complication */,
-				FF308E492677FDCD00378A09 /* ExtensionDelegate */,
-				FF0A181B26753A3B00B45A2C /* Reducer */,
-				FF0A181E26753A6500B45A2C /* State */,
-				FF0A181D26753A5800B45A2C /* Store */,
-				FF0A181F26753A8200B45A2C /* Views */,
+				FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */,
+				FF96C31F2A005BA800D5C0EB /* ExtensionDelegate */,
+				FF96C3032A005B8600D5C0EB /* Reducer */,
+				FF96C30F2A005B8600D5C0EB /* State */,
+				FF96C30C2A005B8600D5C0EB /* Store */,
+				FF96C3062A005B8600D5C0EB /* Views */,
+				FF96C2D12A005A3900D5C0EB /* Resources */,
 			);
-			path = "Intention App";
+			path = "Intention Watch App";
 			sourceTree = "<group>";
 		};
-		FF547FCE253CD3A80061F499 /* Complication */ = {
+		FF96C2D12A005A3900D5C0EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FF0767AD28CBDD5A00680FA3 /* ComplicationController.swift */,
+				FF96C3252A005F3500D5C0EB /* Intention Watch App.entitlements */,
+				FF96C3232A005E0F00D5C0EB /* Assets.xcassets */,
+				FF96C2CF2A005A3100D5C0EB /* Info.plist */,
 			);
-			path = Complication;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		FF547FDE253CD4480061F499 /* Frameworks */ = {
+		FF96C2D82A005A8800D5C0EB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				FF8190C625449FFB00DE7E6B /* ClockKit.framework */,
-				FF8190C425449FEE00DE7E6B /* WatchKit.framework */,
-				FF547FDF253CD4480061F499 /* HealthKit.framework */,
-				FFEE3D6728CA8F9300A22348 /* WidgetKit.framework */,
-				FFEE3D6928CA8F9300A22348 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FF79493528CC973C00D6EAAD /* Intention Complication */ = {
-			isa = PBXGroup;
-			children = (
-				FF9CAF2228CD3DE900F8A6EE /* Complication.entitlements */,
-				FF79493628CC973C00D6EAAD /* Complication.swift */,
-				FFEE3D6E28CA8F9400A22348 /* Assets.xcassets */,
-				FF79493A28CC973E00D6EAAD /* Info.plist */,
-			);
-			path = "Intention Complication";
-			sourceTree = "<group>";
-		};
-		FF9CAF2328CD40F000F8A6EE /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				FF562E232546374C00D92C4B /* Colors.swift */,
-				FF0767A328CBB03B00680FA3 /* Constants.swift */,
-				FF263CD826A3715800C56B2F /* Converter.swift */,
-				FFDBA5B026068E53003F076F /* Texts.swift */,
-				FF88750628CFD0B800B31814 /* VersionAssistant.swift */,
+				FF96C2DD2A005A9600D5C0EB /* Colors.swift */,
+				FF96C2DC2A005A9600D5C0EB /* Constants.swift */,
+				FF96C2DB2A005A9600D5C0EB /* Converter.swift */,
+				FF96C2D92A005A9600D5C0EB /* Texts.swift */,
+				FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		FFACFA8C28B8219F00D122C6 /* Intention Resources */ = {
+		FF96C2E92A005AF800D5C0EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF547FDD253CD4480061F499 /* Intention WatchKit Extension.entitlements */,
-				FF547FB8253CCDF80061F499 /* Info.plist */,
+				FF96C3282A005F9A00D5C0EB /* SwiftUI.framework */,
+				FF96C3262A005F7600D5C0EB /* WatchKit.framework */,
+				FF96C2EA2A005AF800D5C0EB /* WidgetKit.framework */,
+				FF96C2EC2A005AF800D5C0EB /* SwiftUI.framework */,
 			);
-			path = "Intention Resources";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FFDBA5B526069114003F076F /* Localization */ = {
+		FF96C2EE2A005AF800D5C0EB /* Complication */ = {
 			isa = PBXGroup;
 			children = (
-				FFDBA5C0260691B9003F076F /* Localizable.strings */,
-				FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */,
+				FF96C2EF2A005AF800D5C0EB /* Complication.swift */,
+				FF96C32B2A00606300D5C0EB /* Resources */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
+		FF96C3032A005B8600D5C0EB /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				FF96C3042A005B8600D5C0EB /* Reducer.swift */,
+				FF96C3052A005B8600D5C0EB /* Action.swift */,
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
+		FF96C3062A005B8600D5C0EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF96C3072A005B8600D5C0EB /* SetIntentionView.swift */,
+				FF96C3082A005B8600D5C0EB /* OnboardingView.swift */,
+				FF96C3092A005B8600D5C0EB /* MeditationView.swift */,
+				FF96C30A2A005B8600D5C0EB /* ErrorView.swift */,
+				FF96C30B2A005B8600D5C0EB /* IntentionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF96C30C2A005B8600D5C0EB /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				FF96C30D2A005B8600D5C0EB /* Store.swift */,
+				FF96C30E2A005B8600D5C0EB /* HealthStore.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		FF96C30F2A005B8600D5C0EB /* State */ = {
+			isa = PBXGroup;
+			children = (
+				FF96C3102A005B8600D5C0EB /* AppState.swift */,
+				FF96C3112A005B8600D5C0EB /* ViewState.swift */,
+				FF96C3122A005B8600D5C0EB /* MindfulSession.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		FF96C31F2A005BA800D5C0EB /* ExtensionDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FF96C3202A005BA800D5C0EB /* ExtensionDelegate.swift */,
+			);
+			path = ExtensionDelegate;
+			sourceTree = "<group>";
+		};
+		FF96C32B2A00606300D5C0EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF96C32D2A0063A200D5C0EB /* Assets.xcassets */,
+				FF96C32A2A00604200D5C0EB /* ComplicationExtension.entitlements */,
+				FF96C32C2A00612700D5C0EB /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FF96C32F2A00656B00D5C0EB /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				FF96C3302A00656B00D5C0EB /* Localizable.strings */,
+				FF96C3322A00656C00D5C0EB /* InfoPlist.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -338,103 +298,83 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF263CDD26A3732200C56B2F /* UnitTests */ = {
+		FF96C2A12A0059BB00D5C0EB /* Intention */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF263CE426A3732200C56B2F /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildConfigurationList = FF96C2BC2A0059BC00D5C0EB /* Build configuration list for PBXNativeTarget "Intention" */;
 			buildPhases = (
-				FF263CDA26A3732200C56B2F /* Sources */,
-				FF263CDB26A3732200C56B2F /* Frameworks */,
-				FF263CDC26A3732200C56B2F /* Resources */,
+				FF96C2A02A0059BB00D5C0EB /* Resources */,
+				FF96C2BB2A0059BC00D5C0EB /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FF3B383B28D42576006967CD /* PBXTargetDependency */,
-			);
-			name = UnitTests;
-			productName = UnitTests;
-			productReference = FF263CDE26A3732200C56B2F /* UnitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		FF547F97253CCDF70061F499 /* Intention App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF547FC0253CCDF80061F499 /* Build configuration list for PBXNativeTarget "Intention App" */;
-			buildPhases = (
-				FF547F96253CCDF70061F499 /* Resources */,
-				FF547FA0253CCDF70061F499 /* Sources */,
-				FF547FA1253CCDF70061F499 /* Frameworks */,
-				FF79494428CC97EE00D6EAAD /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FF79494328CC97EE00D6EAAD /* PBXTargetDependency */,
-			);
-			name = "Intention App";
-			productName = "Intention WatchKit App";
-			productReference = FF547F98253CCDF70061F499 /* Intention App.app */;
-			productType = "com.apple.product-type.application";
-		};
-		FF9CB1122A003DF80015E8DD /* Intention */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF9CB12C2A003DF90015E8DD /* Build configuration list for PBXNativeTarget "Intention" */;
-			buildPhases = (
-				FF9CB1112A003DF80015E8DD /* Resources */,
-				FF9CB1282A003DF90015E8DD /* Embed Watch Content */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FF9CB1522A003EF60015E8DD /* PBXTargetDependency */,
+				FF96C2AB2A0059BB00D5C0EB /* PBXTargetDependency */,
 			);
 			name = Intention;
 			productName = Intention;
-			productReference = FF9CB1132A003DF80015E8DD /* Intention.app */;
+			productReference = FF96C2A22A0059BB00D5C0EB /* Intention.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
 		};
-		FFEE3D7B28CA93AF00A22348 /* Complication */ = {
+		FF96C2A72A0059BB00D5C0EB /* Intention Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FFEE3D8828CA93B000A22348 /* Build configuration list for PBXNativeTarget "Complication" */;
+			buildConfigurationList = FF96C2B82A0059BC00D5C0EB /* Build configuration list for PBXNativeTarget "Intention Watch App" */;
 			buildPhases = (
-				FFEE3D7828CA93AF00A22348 /* Sources */,
-				FFEE3D7928CA93AF00A22348 /* Frameworks */,
-				FFEE3D7A28CA93AF00A22348 /* Resources */,
+				FF96C2A42A0059BB00D5C0EB /* Sources */,
+				FF96C2A52A0059BB00D5C0EB /* Frameworks */,
+				FF96C2A62A0059BB00D5C0EB /* Resources */,
+				FF96C2FD2A005AF900D5C0EB /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF96C2F82A005AF900D5C0EB /* PBXTargetDependency */,
+			);
+			name = "Intention Watch App";
+			productName = "Intention Watch App";
+			productReference = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FF96C2E72A005AF800D5C0EB /* ComplicationExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF96C2FA2A005AF900D5C0EB /* Build configuration list for PBXNativeTarget "ComplicationExtension" */;
+			buildPhases = (
+				FF96C2E42A005AF800D5C0EB /* Sources */,
+				FF96C2E52A005AF800D5C0EB /* Frameworks */,
+				FF96C2E62A005AF800D5C0EB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Complication;
-			productName = IntentionExtensionExtension;
-			productReference = FFEE3D7C28CA93AF00A22348 /* Complication.appex */;
+			name = ComplicationExtension;
+			productName = ComplicationExtension;
+			productReference = FF96C2E82A005AF800D5C0EB /* ComplicationExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FF547F8E253CCDF60061F499 /* Project object */ = {
+		FF96C29C2A0059BB00D5C0EB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					FF263CDD26A3732200C56B2F = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = FF547F97253CCDF70061F499;
-					};
-					FF547F97253CCDF70061F499 = {
-						CreatedOnToolsVersion = 12.0;
-					};
-					FF9CB1122A003DF80015E8DD = {
+					FF96C2A12A0059BB00D5C0EB = {
 						CreatedOnToolsVersion = 14.3;
 					};
-					FFEE3D7B28CA93AF00A22348 = {
-						CreatedOnToolsVersion = 14.0;
+					FF96C2A72A0059BB00D5C0EB = {
+						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
+					};
+					FF96C2E72A005AF800D5C0EB = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
-			buildConfigurationList = FF547F91253CCDF60061F499 /* Build configuration list for PBXProject "Intention" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = FF96C29F2A0059BB00D5C0EB /* Build configuration list for PBXProject "Intention" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -442,210 +382,134 @@
 				Base,
 				de,
 			);
-			mainGroup = FF547F8D253CCDF60061F499;
-			productRefGroup = FF547F95253CCDF70061F499 /* Products */;
+			mainGroup = FF96C29B2A0059BB00D5C0EB;
+			productRefGroup = FF96C2A32A0059BB00D5C0EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF9CB1122A003DF80015E8DD /* Intention */,
-				FF547F97253CCDF70061F499 /* Intention App */,
-				FFEE3D7B28CA93AF00A22348 /* Complication */,
-				FF263CDD26A3732200C56B2F /* UnitTests */,
+				FF96C2A12A0059BB00D5C0EB /* Intention */,
+				FF96C2A72A0059BB00D5C0EB /* Intention Watch App */,
+				FF96C2E72A005AF800D5C0EB /* ComplicationExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FF263CDC26A3732200C56B2F /* Resources */ = {
+		FF96C2A02A0059BB00D5C0EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF547F96253CCDF70061F499 /* Resources */ = {
+		FF96C2A62A0059BB00D5C0EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFDBA5BE260691B9003F076F /* Localizable.strings in Resources */,
-				FF5A20CF2623AFC900C4B2B0 /* InfoPlist.strings in Resources */,
-				FF547F9E253CCDF70061F499 /* Assets.xcassets in Resources */,
+				FF96C2D52A005A7100D5C0EB /* README.md in Resources */,
+				FF96C3382A00656C00D5C0EB /* InfoPlist.strings in Resources */,
+				FF96C3362A00656C00D5C0EB /* Localizable.strings in Resources */,
+				FF96C3242A005E0F00D5C0EB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF9CB1112A003DF80015E8DD /* Resources */ = {
+		FF96C2E62A005AF800D5C0EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFEE3D7A28CA93AF00A22348 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF79494028CC97B000D6EAAD /* Assets.xcassets in Resources */,
-				FF9CAF2528CD420000F8A6EE /* InfoPlist.strings in Resources */,
-				FF9CAF2428CD41FD00F8A6EE /* Localizable.strings in Resources */,
+				FF96C32E2A0063A200D5C0EB /* Assets.xcassets in Resources */,
+				FF96C3392A00656C00D5C0EB /* InfoPlist.strings in Resources */,
+				FF96C3372A00656C00D5C0EB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FF263CDA26A3732200C56B2F /* Sources */ = {
+		FF96C2A42A0059BB00D5C0EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF263CE126A3732200C56B2F /* UnitTests.swift in Sources */,
+				FF96C2E12A005A9600D5C0EB /* Constants.swift in Sources */,
+				FF96C31B2A005B8600D5C0EB /* HealthStore.swift in Sources */,
+				FF96C3152A005B8600D5C0EB /* SetIntentionView.swift in Sources */,
+				FF96C3172A005B8600D5C0EB /* MeditationView.swift in Sources */,
+				FF96C2E22A005A9600D5C0EB /* Colors.swift in Sources */,
+				FF96C3162A005B8600D5C0EB /* OnboardingView.swift in Sources */,
+				FF96C3192A005B8600D5C0EB /* IntentionView.swift in Sources */,
+				FF96C2DE2A005A9600D5C0EB /* Texts.swift in Sources */,
+				FF96C31A2A005B8600D5C0EB /* Store.swift in Sources */,
+				FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */,
+				FF96C3182A005B8600D5C0EB /* ErrorView.swift in Sources */,
+				FF96C31C2A005B8600D5C0EB /* AppState.swift in Sources */,
+				FF96C3212A005BA800D5C0EB /* ExtensionDelegate.swift in Sources */,
+				FF96C3132A005B8600D5C0EB /* Reducer.swift in Sources */,
+				FF96C3142A005B8600D5C0EB /* Action.swift in Sources */,
+				FF96C2E02A005A9600D5C0EB /* Converter.swift in Sources */,
+				FF96C31D2A005B8600D5C0EB /* ViewState.swift in Sources */,
+				FF96C31E2A005B8600D5C0EB /* MindfulSession.swift in Sources */,
+				FF96C2DF2A005A9600D5C0EB /* VersionAssistant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF547FA0253CCDF70061F499 /* Sources */ = {
+		FF96C2E42A005AF800D5C0EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF547FD1253CD3D30061F499 /* IntentionView.swift in Sources */,
-				FF88750728CFD0B800B31814 /* VersionAssistant.swift in Sources */,
-				FF0767A428CBB03B00680FA3 /* Constants.swift in Sources */,
-				FF0A18232675409E00B45A2C /* AppState.swift in Sources */,
-				FF8B94552544485600DCF314 /* ExtensionDelegate.swift in Sources */,
-				FF0A182126753AED00B45A2C /* Store.swift in Sources */,
-				FFC83E2126CEF77C0062A1D2 /* MindfulSession.swift in Sources */,
-				FFDBA5B126068E53003F076F /* Texts.swift in Sources */,
-				FF0767AE28CBDD5A00680FA3 /* ComplicationController.swift in Sources */,
-				FF263CD926A3715800C56B2F /* Converter.swift in Sources */,
-				FF90ED8626C709340010C721 /* ViewState.swift in Sources */,
-				FF21877A253E26DD004C85CC /* SetIntentionView.swift in Sources */,
-				FF5382532540963400FE08E6 /* HealthStore.swift in Sources */,
-				FF547FAA253CCDF70061F499 /* IntentionApp.swift in Sources */,
-				FF0A18272675437900B45A2C /* Reducer.swift in Sources */,
-				FF562E242546374C00D92C4B /* Colors.swift in Sources */,
-				FF0A18252675420500B45A2C /* Action.swift in Sources */,
-				FFE10BFA2541B8B4008209AC /* ErrorView.swift in Sources */,
-				FFC0C1AE26B0B1A6002DA8F5 /* MeditationView.swift in Sources */,
-				FFFB33C3256C4F4700932CD8 /* OnboardingView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFEE3D7828CA93AF00A22348 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF0767A528CBB03B00680FA3 /* Constants.swift in Sources */,
-				FF88750828CFD0B800B31814 /* VersionAssistant.swift in Sources */,
-				FF0767AC28CBC4E300680FA3 /* Colors.swift in Sources */,
-				FF0767AB28CBBFB900680FA3 /* Texts.swift in Sources */,
-				FFEE3D8D28CA9C2C00A22348 /* Action.swift in Sources */,
-				FF28A47828CC9FEA004D91F7 /* Complication.swift in Sources */,
-				FFEE3D8B28CA9AAE00A22348 /* Converter.swift in Sources */,
-				FF0767A828CBB5F800680FA3 /* HealthStore.swift in Sources */,
+				FF96C2FE2A005B3D00D5C0EB /* Converter.swift in Sources */,
+				FF96C3002A005B3D00D5C0EB /* Colors.swift in Sources */,
+				FF96C2F02A005AF800D5C0EB /* Complication.swift in Sources */,
+				FF96C3012A005B3D00D5C0EB /* Texts.swift in Sources */,
+				FF96C2FF2A005B3D00D5C0EB /* Constants.swift in Sources */,
+				FF96C3022A005B3D00D5C0EB /* VersionAssistant.swift in Sources */,
+				FF96C3222A005BD000D5C0EB /* HealthStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FF3B383B28D42576006967CD /* PBXTargetDependency */ = {
+		FF96C2AB2A0059BB00D5C0EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF547F97253CCDF70061F499 /* Intention App */;
-			targetProxy = FF3B383A28D42576006967CD /* PBXContainerItemProxy */;
+			target = FF96C2A72A0059BB00D5C0EB /* Intention Watch App */;
+			targetProxy = FF96C2AA2A0059BB00D5C0EB /* PBXContainerItemProxy */;
 		};
-		FF79494328CC97EE00D6EAAD /* PBXTargetDependency */ = {
+		FF96C2F82A005AF900D5C0EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FFEE3D7B28CA93AF00A22348 /* Complication */;
-			targetProxy = FF79494228CC97EE00D6EAAD /* PBXContainerItemProxy */;
-		};
-		FF9CB1522A003EF60015E8DD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF547F97253CCDF70061F499 /* Intention App */;
-			targetProxy = FF9CB1512A003EF60015E8DD /* PBXContainerItemProxy */;
+			target = FF96C2E72A005AF800D5C0EB /* ComplicationExtension */;
+			targetProxy = FF96C2F72A005AF900D5C0EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FF5A20D12623AFC900C4B2B0 /* InfoPlist.strings */ = {
+		FF96C3302A00656B00D5C0EB /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FF5A20D02623AFC900C4B2B0 /* en */,
-				FF5A20D52623AFCE00C4B2B0 /* de */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FFDBA5C0260691B9003F076F /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFDBA5BF260691B9003F076F /* en */,
-				FFDBA5C4260691BF003F076F /* de */,
+				FF96C3312A00656C00D5C0EB /* de */,
+				FF96C3342A00656C00D5C0EB /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		FF96C3322A00656C00D5C0EB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF96C3332A00656C00D5C0EB /* de */,
+				FF96C3352A00656C00D5C0EB /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FF263CE526A3732200C56B2F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M5E86B9E63;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.UnitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intention App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Intention App";
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		FF263CE626A3732200C56B2F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M5E86B9E63;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.UnitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intention App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Intention App";
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		FF547FBA253CCDF80061F499 /* Debug */ = {
+		FF96C2B62A0059BC00D5C0EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -689,28 +553,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_STRICT_CONCURRENCY = minimal;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
-		FF547FBB253CCDF80061F499 /* Release */ = {
+		FF96C2B72A0059BC00D5C0EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -748,122 +605,130 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_STRICT_CONCURRENCY = minimal;
+			};
+			name = Release;
+		};
+		FF96C2B92A0059BC00D5C0EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Intention Watch App/Resources/Intention Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Intention Watch App/Resources/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Intention;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		FF96C2BA2A0059BC00D5C0EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Intention Watch App/Resources/Intention Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Intention Watch App/Resources/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Intention;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
-		FF547FC1253CCDF80061F499 /* Debug */ = {
+		FF96C2BD2A0059BC00D5C0EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Intention Resources/Intention WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = M5E86B9E63;
-				INFOPLIST_FILE = "Intention Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		FF547FC2253CCDF80061F499 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Intention Resources/Intention WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = M5E86B9E63;
-				INFOPLIST_FILE = "Intention Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		FF9CB1262A003DF90015E8DD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_KEY_CFBundleDisplayName = Intention;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		FF9CB1272A003DF90015E8DD /* Release */ = {
+		FF96C2BE2A0059BC00D5C0EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_KEY_CFBundleDisplayName = Intention;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		FFEE3D8928CA93B000A22348 /* Debug */ = {
+		FF96C2FB2A005AF900D5C0EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "Intention Complication/Complication.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Complication/Resources/ComplicationExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Intention Complication/Info.plist";
+				INFOPLIST_FILE = Complication/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Complication;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Set Your Intention would like to access your Mindful Minutes";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Set Your Intention would like to access your Mindful Minutes";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -871,7 +736,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp.ComplicationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -883,21 +748,18 @@
 			};
 			name = Debug;
 		};
-		FFEE3D8A28CA93B000A22348 /* Release */ = {
+		FF96C2FC2A005AF900D5C0EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "Intention Complication/Complication.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Complication/Resources/ComplicationExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Intention Complication/Info.plist";
+				INFOPLIST_FILE = Complication/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Complication;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Set Your Intention would like to access your Mindful Minutes";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Set Your Intention would like to access your Mindful Minutes";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -905,7 +767,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp.ComplicationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -913,6 +775,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
@@ -920,52 +783,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF263CE426A3732200C56B2F /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+		FF96C29F2A0059BB00D5C0EB /* Build configuration list for PBXProject "Intention" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF263CE526A3732200C56B2F /* Debug */,
-				FF263CE626A3732200C56B2F /* Release */,
+				FF96C2B62A0059BC00D5C0EB /* Debug */,
+				FF96C2B72A0059BC00D5C0EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF547F91253CCDF60061F499 /* Build configuration list for PBXProject "Intention" */ = {
+		FF96C2B82A0059BC00D5C0EB /* Build configuration list for PBXNativeTarget "Intention Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF547FBA253CCDF80061F499 /* Debug */,
-				FF547FBB253CCDF80061F499 /* Release */,
+				FF96C2B92A0059BC00D5C0EB /* Debug */,
+				FF96C2BA2A0059BC00D5C0EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF547FC0253CCDF80061F499 /* Build configuration list for PBXNativeTarget "Intention App" */ = {
+		FF96C2BC2A0059BC00D5C0EB /* Build configuration list for PBXNativeTarget "Intention" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF547FC1253CCDF80061F499 /* Debug */,
-				FF547FC2253CCDF80061F499 /* Release */,
+				FF96C2BD2A0059BC00D5C0EB /* Debug */,
+				FF96C2BE2A0059BC00D5C0EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF9CB12C2A003DF90015E8DD /* Build configuration list for PBXNativeTarget "Intention" */ = {
+		FF96C2FA2A005AF900D5C0EB /* Build configuration list for PBXNativeTarget "ComplicationExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF9CB1262A003DF90015E8DD /* Debug */,
-				FF9CB1272A003DF90015E8DD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FFEE3D8828CA93B000A22348 /* Build configuration list for PBXNativeTarget "Complication" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FFEE3D8928CA93B000A22348 /* Debug */,
-				FFEE3D8A28CA93B000A22348 /* Release */,
+				FF96C2FB2A005AF900D5C0EB /* Debug */,
+				FF96C2FC2A005AF900D5C0EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FF547F8E253CCDF60061F499 /* Project object */;
+	rootObject = FF96C29C2A0059BB00D5C0EB /* Project object */;
 }
