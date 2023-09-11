@@ -11,10 +11,11 @@ Releases:
 * Hoher Dachstein 2.0 added support for Mindful Sessions & watchOS 8
 * Traunstein      2.1 smaller increments & guided meditation
 * Schafberg       3.0 Migrated to WidgetKit & watchOS 9
+* Priel           3.1 Updated for watchOS 10
 
 Upcoming releases:
-* Dachstein       3.1 Statistics
-* Priel           3.2 Animations & Intro, Outro View for Meditation
+* Dachstein       3.2 Statistics
+* Kasberg         3.3 Animations & Intro, Outro View for Meditation
 
 
  
