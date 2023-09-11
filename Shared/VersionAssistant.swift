@@ -11,7 +11,7 @@ struct VersionAssistant {
 
     private let sharedUserDefaults = UserDefaults(suiteName: Constants.appGroup.rawValue)
 
-    // Version 1.0 is using the wrong format
+    // Version 1.0 is using the wrong format min vs. seconds
     var shouldMigrateFromVersionOne: Bool {
         return versionOneOnboardingCompleted && versionTwoOnboardingCompleted == false
     }
@@ -21,7 +21,7 @@ struct VersionAssistant {
         return versionTwoOnboardingCompleted == false && versionThreeOnboardingCompleted == false
     }
 
-    // Version 3.0 introduced
+    // Version 3.0 introduced for AppGroups of Extension
     var shouldMigrateFromVersionTwo: Bool {
         return versionTwoOnboardingCompleted && versionThreeOnboardingCompleted == false
     }

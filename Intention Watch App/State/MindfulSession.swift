@@ -42,7 +42,7 @@ final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
 
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
         Task {
-            await Store.shared.dispatch(action: .notifyUser)
+            await Store.shared.dispatch(action: .stopMeditating)
         }
     }
 }
