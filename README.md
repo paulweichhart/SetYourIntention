@@ -4,8 +4,6 @@ This is the Repository of the Standalone Apple Watch App **Set Your Intention**.
 
 This project serves as a Playground for getting started with Apple Health, Combine (now async/await), SwiftUI & MVVM (now Redux).
 
-If you have questions please contact me on twitter [@paulweichhart](https://www.twitter.com/paulweichhart)
-
 Releases:
 * Schneeberg      1.2 introduced more Complications
 * Hoher Dachstein 2.0 added support for Mindful Sessions & watchOS 8
@@ -14,8 +12,6 @@ Releases:
 * Priel           3.1 Updated for watchOS 10
 
 Upcoming releases:
-* Dachstein       3.2 Statistics
-* Kasberg         3.3 Animations & Intro, Outro View for Meditation
-
-
- 
+* Drachenwand     3.2 Smart Stack
+* Dachstein       3.3 Statistics
+* Kasberg         3.4 Animations & Intro, Outro View for Meditation

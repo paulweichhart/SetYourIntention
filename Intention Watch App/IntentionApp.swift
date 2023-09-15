@@ -46,30 +46,6 @@ struct RootView: View {
                         await store.dispatch(action: .migrateToLatestVersion)
                     }
                 }
-                /*
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            // NavigationLink("Settings", value: 2)
-                        } label: {
-                            Image(systemName: Icons.stats.rawValue)
-                        }
-                    }
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        Button {
-                            // NavigationLink("Settings", value: 2)
-                        } label: {
-                            Image(systemName: Icons.leaf.rawValue)
-                        }
-                        
-                        Button {
-                            // NavigationLink("Settings", value: 2)
-                        } label: {
-                            Image(systemName: Icons.gear.rawValue)
-                        }
-                    }
-                }
-                 */
             }
         }
     }
