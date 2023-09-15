@@ -33,9 +33,9 @@ struct SetIntentionView: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     }.accessibility(addTraits: .isHeader)
                     HStack {
-                        IntentionButton(action: .decrementIntention, systemName: "minus")
+                        IntentionButton(action: .decrementIntention, systemName: Icons.minus.rawValue)
                             .accessibility(label: Text(Texts.decreaseIntention.localisation))
-                        IntentionButton(action: .incrementIntention, systemName: "plus")
+                        IntentionButton(action: .incrementIntention, systemName: Icons.plus.rawValue)
                             .accessibility(label: Text(Texts.increaseIntention.localisation))
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
@@ -51,13 +51,14 @@ struct SetIntentionView: View {
                                 .multilineTextAlignment(.leading)
                         })
                         .tint(Colors.foreground.value)
-                        .onChange(of: guided) { value in
+                        .onChange(of: guided) { oldValue, newValue in
                             Task {
-                                await store.dispatch(action: .guided(value))
+                                await store.dispatch(action: .guided(newValue))
                             }
                         }
                     })
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
+                    .buttonBorderShape(.roundedRectangle(radius: Layout.buttonBorderRadius.rawValue))
                     Text(Texts.guidedInfoText.localisation)
                         .font(.footnote)
                         .fontWeight(.light)
@@ -113,6 +114,7 @@ struct IntentionButton: View {
             }
                 .frame(maxWidth: .infinity, minHeight: 56, alignment: .center)
         })
+        .buttonBorderShape(.roundedRectangle(radius: Layout.buttonBorderRadius.rawValue))
     }
 }
 
@@ -120,7 +122,8 @@ struct IntentionButton: View {
 struct SetIntentionViewPreview: PreviewProvider {
 
     static var previews: some View {
-        IntentionButton(action: .incrementIntention, systemName: "minus")
+        IntentionButton(action: .incrementIntention, 
+                        systemName: "minus")
     }
 }
 #endif

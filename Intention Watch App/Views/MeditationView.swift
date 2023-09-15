@@ -47,6 +47,7 @@ struct MeditationView: View {
                     }, label: {
                         Text(Texts.start.localisation)
                     })
+                    .buttonBorderShape(.roundedRectangle(radius: Layout.buttonBorderRadius.rawValue))
                 }
             }
         }
@@ -61,11 +62,12 @@ struct MeditationView: View {
                     }
                 })
                 .toolbar(content: {
-                    ToolbarItem(placement: .cancellationAction, content: {
+                    ToolbarItem(placement: .topBarLeading, content: {
                         Button(Texts.done.localisation, action: {
                             isMeditating.toggle()
                         })
                         .foregroundColor(Colors.foreground.value)
+                        .buttonStyle(.plain)
                     })
                 })
         })
@@ -111,7 +113,7 @@ struct MeditationProgressBar: View {
         ProgressBar(progress: progress,
                     percentage: percentage)
             .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
-            .onChange(of: timeInterval) { _ in
+            .onChange(of: timeInterval) { _, _ in
                 Task {
                     await store.dispatch(action: .tick)
                 }

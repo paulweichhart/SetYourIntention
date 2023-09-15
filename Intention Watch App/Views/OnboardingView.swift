@@ -78,6 +78,7 @@ struct PermissionView: View {
                     }, label: {
                         Text(Texts.review.localisation)
                     })
+                    .buttonBorderShape(.roundedRectangle(radius: Layout.buttonBorderRadius.rawValue))
                 }
             }
         }

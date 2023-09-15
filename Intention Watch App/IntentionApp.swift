@@ -34,16 +34,42 @@ struct RootView: View {
         case true:
             OnboardingView()
         case false:
-            TabView {
-                IntentionView()
-                MeditationView()
-                SetIntentionView()
-            }
-            .tabViewStyle(PageTabViewStyle())
-            .onAppear() {
-                Task {
-                    await store.dispatch(action: .migrateToLatestVersion)
+            NavigationStack {
+                TabView {
+                    IntentionView()
+                    MeditationView()
+                    SetIntentionView()
                 }
+                .tabViewStyle(.verticalPage)
+                .onAppear() {
+                    Task {
+                        await store.dispatch(action: .migrateToLatestVersion)
+                    }
+                }
+                /*
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            // NavigationLink("Settings", value: 2)
+                        } label: {
+                            Image(systemName: Icons.stats.rawValue)
+                        }
+                    }
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        Button {
+                            // NavigationLink("Settings", value: 2)
+                        } label: {
+                            Image(systemName: Icons.leaf.rawValue)
+                        }
+                        
+                        Button {
+                            // NavigationLink("Settings", value: 2)
+                        } label: {
+                            Image(systemName: Icons.gear.rawValue)
+                        }
+                    }
+                }
+                 */
             }
         }
     }

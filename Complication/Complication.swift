@@ -24,11 +24,12 @@ struct ComplicationProvider: TimelineProvider {
             completion(entry)
         }
     }
-
+    
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         Task {
+            let now = Date()
             let entry = await intentionEntry()
-            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: Date()) ?? Date().addingTimeInterval(Converter.timeInterval(from: 15))
+            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(Converter.timeInterval(from: 15))
             let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
             completion(timeline)
         }
@@ -101,7 +102,10 @@ struct ComplicationEntryView : View {
                 }
                 .progressViewStyle(.automatic)
                 .tint(Colors.foreground.value)
-            }.tint(Colors.foreground.value).progressViewStyle(.circular)
+            }.containerBackground(for: .widget) {
+                Colors.foreground.value
+            }
+            .tint(Colors.foreground.value).progressViewStyle(.circular)
 
         case .accessoryInline:
             ViewThatFits {
@@ -125,7 +129,10 @@ struct ComplicationEntryView : View {
                     }
                 }
 
-            }.progressViewStyle(.circular).tint(Colors.foreground.value)
+            }.containerBackground(for: .widget) {
+                Colors.foreground.value
+            }
+            .progressViewStyle(.circular).tint(Colors.foreground.value)
                 .widgetLabel(label: { Text(Texts.mindful.localisation) + Text(" \(mindful)M • ") +  Text(Texts.intention.localisation) + Text(" \(intention)M")
                 })
 
@@ -173,9 +180,6 @@ struct IntentionExtension_Previews: PreviewProvider {
             ComplicationEntryView(entry: entry)
                 .previewContext(WidgetPreviewContext(family: .accessoryInline))
                 .previewDisplayName("Inline")
-            ComplicationEntryView(entry: entry)
-                .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-                .previewDisplayName("Rect")
         }
     }
 }
