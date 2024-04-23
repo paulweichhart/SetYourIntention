@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF8B45D72BD85602004A6198 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */; };
 		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */; };
 		FF96C2D52A005A7100D5C0EB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF96C2D42A005A7100D5C0EB /* README.md */; };
@@ -89,6 +90,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FF8B45D82BD857BD004A6198 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF8B45D92BD857BD004A6198 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF8B45DA2BD857CA004A6198 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF8B45DB2BD857CA004A6198 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF96C2A22A0059BB00D5C0EB /* Intention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intention.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intention Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntentionApp.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 		FF96C29B2A0059BB00D5C0EB = {
 			isa = PBXGroup;
 			children = (
+				FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */,
 				FF96C2D42A005A7100D5C0EB /* README.md */,
 				FF96C2EE2A005AF800D5C0EB /* Complication */,
 				FF96C2AC2A0059BB00D5C0EB /* Intention Watch App */,
@@ -381,6 +388,8 @@
 				en,
 				Base,
 				de,
+				fr,
+				es,
 			);
 			mainGroup = FF96C29B2A0059BB00D5C0EB;
 			productRefGroup = FF96C2A32A0059BB00D5C0EB /* Products */;
@@ -419,6 +428,7 @@
 			files = (
 				FF96C32E2A0063A200D5C0EB /* Assets.xcassets in Resources */,
 				FF96C3392A00656C00D5C0EB /* InfoPlist.strings in Resources */,
+				FF8B45D72BD85602004A6198 /* PrivacyInfo.xcprivacy in Resources */,
 				FF96C3372A00656C00D5C0EB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +497,8 @@
 			children = (
 				FF96C3312A00656C00D5C0EB /* de */,
 				FF96C3342A00656C00D5C0EB /* en */,
+				FF8B45D82BD857BD004A6198 /* fr */,
+				FF8B45DA2BD857CA004A6198 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -496,6 +508,8 @@
 			children = (
 				FF96C3332A00656C00D5C0EB /* de */,
 				FF96C3352A00656C00D5C0EB /* en */,
+				FF8B45D92BD857BD004A6198 /* fr */,
+				FF8B45DB2BD857CA004A6198 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

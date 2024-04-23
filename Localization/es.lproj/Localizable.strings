@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  Intention
+
+  Created by Paul Weichhart on 20.03.21.
+  
+*/
+
+"Progress in percentage" = "Progreso en porcentaje";
+
+"Intention in Minutes" = "Intención en minutos";
+
+"Increase Intention" = "Aumentar intención";
+
+"Decrease Intention" = "Disminuir intención";
+
+"Practice meditation with your favourite App that supports Apple Health and mind your mental well being" = "Practica la meditación con tu aplicación favorita que soporte Apple Health y cuida tu bienestar mental";
+
+"Keep track of your daily Mindful Minutes with the supported Complications on your Apple Watch" = "Mantén un registro de tus Minutos Conscientes diarios con las Complicaciones compatibles en tu Apple Watch";
+
+"Please allow the App to access your Mindful Minutes from Apple Health" = "Por favor permite que la aplicación acceda a tus Minutos Conscientes de Apple Health";
+
+"Review" = "Revisión";
+
+"Mindful" = "Consciente";
+
+"Your Daily Intention" = "Tu intención diaria";
+
+"Meditation" = "Meditación";
+
+"Minutes" = "Minutos";
+
+"Minute" = "Minuto";
+
+"Mindful Minutes" = "Minutos Conscientes";
+
+"Unguided" = "Sin guía";
+
+"Guided" = "Con guía";
+
+"By enabling guided meditation, you will perceive subtle haptics each minute" = "Al habilitar la meditación guiada, percibirás sutiles hápticos cada minuto";
+
+"Guided Meditation" = "Meditación guiada";
+
+"Intention" = "Intención";
+
+"Set Your Intention" = "Set Your Intention";
+
+"Start" = "Comenzar";
+
+"Done" = "Hecho";
+
+"Your Device doesn't support Apple Health :(" = "Tu dispositivo no admite Apple Health :(";
+
+"Couldn't load Data from Apple Health :(" = "No se pudo cargar los datos de Apple Health :(";
+
+"Please allow Intention to access your mindful Session in the Settings" = "Por favor permite que Intention acceda a tu sesión consciente en la configuración";
+
+"Saving your mindful Session failed :(" = "Error al guardar tu sesión consciente :("

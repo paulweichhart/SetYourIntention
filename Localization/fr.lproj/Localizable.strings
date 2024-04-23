@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Intention
+
+  Created by Paul Weichhart on 20.03.21.
+  
+*/
+
+"Progress in percentage" = "Progression en pourcentage";
+
+"Intention in Minutes" = "Intention en minutes";
+"Increase Intention" = "Augmenter l'intention";
+"Decrease Intention" = "Diminuer l'intention";
+
+"Practice meditation with your favourite App that supports Apple Health and mind your mental well being" = "Pratiquez la méditation avec votre application préférée qui prend en charge Apple Health et veillez à votre bien-être mental";
+
+"Keep track of your daily Mindful Minutes with the supported Complications on your Apple Watch" = "Suivez vos minutes de pleine conscience quotidiennes avec les complications prises en charge sur votre Apple Watch";
+
+"Please allow the App to access your Mindful Minutes from Apple Health" = "Veuillez autoriser l'application à accéder à vos minutes de pleine conscience depuis Apple Health";
+
+"Review" = "Examiner";
+
+"Mindful" = "Conscient";
+
+"Your Daily Intention" = "Votre intention quotidienne";
+
+"Meditation" = "Méditation";
+
+"Minutes" = "Minutes";
+
+"Minute" = "Minute";
+
+"Mindful Minutes" = "Minutes de pleine conscience";
+
+"Unguided" = "Non guidée";
+
+"Guided" = "Guidée";
+
+"By enabling guided meditation, you will perceive subtle haptics each minute" = "En activant la méditation guidée, vous percevrez des haptiques subtils chaque minute";
+
+"Guided Meditation" = "Méditation guidée";
+
+"Intention" = "Intention";
+
+"Set Your Intention" = "Set Your Intention";
+
+"Start" = "Commencer";
+
+"Done" = "Terminé";
+
+"Your Device doesn't support Apple Health :(" = "Votre appareil ne prend pas en charge Apple Health :(";
+
+"Couldn't load Data from Apple Health :(" = "Impossible de charger les données depuis Apple Health :(";
+
+"Please allow Intention to access your mindful Session in the Settings" = "Veuillez autoriser Intention à accéder à votre session de pleine conscience dans les paramètres";
+
+"Saving your mindful Session failed :(" = "Échec de l'enregistrement de votre session de pleine conscience :("

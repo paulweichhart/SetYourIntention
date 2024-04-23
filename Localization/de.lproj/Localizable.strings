@@ -5,6 +5,10 @@
   Created by Paul Weichhart on 20.03.21.
   
 */
+FROM 
+"EN" = "DE";
+to 
+"EN" = "ES";
 
 "Progress in percentage" = "Fortschritt in Prozent";
 

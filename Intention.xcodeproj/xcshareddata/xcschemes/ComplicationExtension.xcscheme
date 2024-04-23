@@ -74,12 +74,21 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FF96C2E72A005AF800D5C0EB"
+            BuildableName = "ComplicationExtension.appex"
+            BlueprintName = "ComplicationExtension"
+            ReferencedContainer = "container:Intention.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF96C2A72A0059BB00D5C0EB"
             BuildableName = "Intention Watch App.app"
             BlueprintName = "Intention Watch App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCWidgetKind"
