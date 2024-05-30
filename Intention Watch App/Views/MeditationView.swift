@@ -54,22 +54,27 @@ struct MeditationView: View {
         .sheet(isPresented: $isMeditating, content: {
 
             // Extract View https://www.swiftbysundell.com/articles/dismissing-swiftui-modal-and-detail-views/
-            MeditationProgressView()
-                .onDisappear(perform: {
-                    Task {
-                        await Store.shared.dispatch(action: .stopMeditating)
-                        await Store.shared.dispatch(action: .fetchMindfulTimeInterval)
-                    }
-                })
-                .toolbar(content: {
-                    ToolbarItem(placement: .topBarLeading, content: {
-                        Button(Texts.done.localisation, action: {
-                            isMeditating.toggle()
-                        })
-                        .foregroundColor(Colors.foreground.value)
-                        .buttonStyle(.plain)
+            TabView {
+                MeditationProgressView()
+                    .onDisappear(perform: {
+                        Task {
+                            await Store.shared.dispatch(action: .stopMeditating)
+                            await Store.shared.dispatch(action: .fetchMindfulTimeInterval)
+                        }
                     })
-                })
+                    .toolbar(content: {
+                        ToolbarItem(placement: .topBarLeading, content: {
+                            Button(Texts.done.localisation, action: {
+                                isMeditating.toggle()
+                            })
+                            .foregroundColor(Colors.foreground.value)
+                            .buttonStyle(.plain)
+                        })
+                    })
+                NowPlayingView()
+            }
+            .tabViewStyle(.automatic)
+            
         })
     }
 }

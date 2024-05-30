@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  Intention
+
+  Created by Paul Weichhart on 12.04.21.
+  
+*/
+
+"NSHealthShareUsageDescription" = "Set Your Intention souhaite accéder à vos Minutes de Pleine Conscience";
+
+"NSHealthUpdateUsageDescription" = "Set Your Intention souhaite accéder à vos Minutes de Pleine Conscience";

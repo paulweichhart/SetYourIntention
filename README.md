@@ -10,6 +10,7 @@ Releases:
 * Traunstein      2.1 smaller increments & guided meditation
 * Schafberg       3.0 Migrated to WidgetKit & watchOS 9
 * Priel           3.1 Updated for watchOS 10
+* Drachenwand     3.2 More languages, now playing view & Privacy Info
 
 Upcoming releases:
 * Drachenwand     3.2 Smart Stack
