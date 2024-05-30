@@ -13,6 +13,6 @@ Releases:
 * Drachenwand     3.2 More languages, now playing view & Privacy Info
 
 Upcoming releases:
-* Drachenwand     3.2 Smart Stack
-* Dachstein       3.3 Statistics
-* Kasberg         3.4 Animations & Intro, Outro View for Meditation
+* Schoberstein    3.3 Smart Stack
+* Dachstein       3.4 Statistics
+* Kasberg         3.5 Animations & Intro, Outro View for Meditation
