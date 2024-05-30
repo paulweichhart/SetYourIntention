@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF8B45D72BD85602004A6198 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */; };
 		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */; };
 		FF96C2D52A005A7100D5C0EB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF96C2D42A005A7100D5C0EB /* README.md */; };
@@ -45,6 +44,7 @@
 		FF96C3372A00656C00D5C0EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3302A00656B00D5C0EB /* Localizable.strings */; };
 		FF96C3382A00656C00D5C0EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3322A00656C00D5C0EB /* InfoPlist.strings */; };
 		FF96C3392A00656C00D5C0EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3322A00656C00D5C0EB /* InfoPlist.strings */; };
+		FFD385E42BE593A100D6D549 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,7 +158,6 @@
 		FF96C29B2A0059BB00D5C0EB = {
 			isa = PBXGroup;
 			children = (
-				FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */,
 				FF96C2D42A005A7100D5C0EB /* README.md */,
 				FF96C2EE2A005AF800D5C0EB /* Complication */,
 				FF96C2AC2A0059BB00D5C0EB /* Intention Watch App */,
@@ -196,9 +195,10 @@
 		FF96C2D12A005A3900D5C0EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FF96C3252A005F3500D5C0EB /* Intention Watch App.entitlements */,
 				FF96C3232A005E0F00D5C0EB /* Assets.xcassets */,
 				FF96C2CF2A005A3100D5C0EB /* Info.plist */,
+				FF96C3252A005F3500D5C0EB /* Intention Watch App.entitlements */,
+				FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -366,7 +366,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					FF96C2A12A0059BB00D5C0EB = {
 						CreatedOnToolsVersion = 14.3;
@@ -418,6 +418,7 @@
 				FF96C2D52A005A7100D5C0EB /* README.md in Resources */,
 				FF96C3382A00656C00D5C0EB /* InfoPlist.strings in Resources */,
 				FF96C3362A00656C00D5C0EB /* Localizable.strings in Resources */,
+				FFD385E42BE593A100D6D549 /* PrivacyInfo.xcprivacy in Resources */,
 				FF96C3242A005E0F00D5C0EB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,7 +429,6 @@
 			files = (
 				FF96C32E2A0063A200D5C0EB /* Assets.xcassets in Resources */,
 				FF96C3392A00656C00D5C0EB /* InfoPlist.strings in Resources */,
-				FF8B45D72BD85602004A6198 /* PrivacyInfo.xcprivacy in Resources */,
 				FF96C3372A00656C00D5C0EB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -570,11 +571,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -582,6 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -625,10 +630,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -654,7 +662,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -689,7 +696,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -711,7 +717,6 @@
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_KEY_CFBundleDisplayName = Intention;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -728,7 +733,6 @@
 				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_KEY_CFBundleDisplayName = Intention;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -756,7 +760,6 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp.ComplicationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -787,7 +790,6 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention.watchkitapp.ComplicationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
