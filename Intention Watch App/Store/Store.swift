@@ -5,16 +5,16 @@
 //  Created by Paul Weichhart on 12.06.21.
 //
 
-import Combine
 import Foundation
 
-final class Store: ObservableObject {
+final actor Store: ObservableObject {
 
     static let shared = Store()
 
     @MainActor
     @Published private(set) var state = AppState()
 
+    @MainActor
     private var reducer: Reducer = {
         let healthStore = HealthStore()
         let mindfulSession = MindfulSession()

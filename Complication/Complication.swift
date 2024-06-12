@@ -14,7 +14,7 @@ struct ComplicationProvider: TimelineProvider {
         return placeholderEntry()
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (IntentionEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping @Sendable (IntentionEntry) -> ()) {
         if context.isPreview {
             completion(placeholderEntry())
             return
@@ -25,7 +25,7 @@ struct ComplicationProvider: TimelineProvider {
         }
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<Entry>) -> Void) {
         Task {
             let now = Date()
             let entry = await intentionEntry()
@@ -59,7 +59,7 @@ struct ComplicationProvider: TimelineProvider {
     }
 }
 
-struct IntentionEntry: TimelineEntry {
+struct IntentionEntry: TimelineEntry, Sendable {
     let date: Date
 
     let progress: Double
