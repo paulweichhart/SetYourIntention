@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF3E238E2CAB43D200DE398B /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E238D2CAB43D200DE398B /* ConverterTests.swift */; };
+		FF3E239E2CAB4A6800DE398B /* IntentionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */; };
 		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */; };
 		FF96C2D52A005A7100D5C0EB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF96C2D42A005A7100D5C0EB /* README.md */; };
@@ -48,6 +50,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FF3E238F2CAB43D200DE398B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF96C29C2A0059BB00D5C0EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF96C2A72A0059BB00D5C0EB;
+			remoteInfo = "Intention Watch App";
+		};
+		FF3E23A12CAB4A6800DE398B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF96C29C2A0059BB00D5C0EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF96C2A72A0059BB00D5C0EB;
+			remoteInfo = "Intention Watch App";
+		};
 		FF96C2AA2A0059BB00D5C0EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF96C29C2A0059BB00D5C0EB /* Project object */;
@@ -90,6 +106,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF3E238D2CAB43D200DE398B /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
+		FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionUITests.swift; sourceTree = "<group>"; };
 		FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FF8B45D82BD857BD004A6198 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF8B45D92BD857BD004A6198 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -136,6 +156,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FF3E23882CAB43D200DE398B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF3E23982CAB4A6800DE398B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF96C2A52A0059BB00D5C0EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +189,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF0D2B572CC1B8C60084E5CE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FF3E23942CAB442000DE398B /* Intention Tests */,
+				FF3E23A62CAB4A6F00DE398B /* Intention UI Tests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		FF3E23942CAB442000DE398B /* Intention Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FF3E238D2CAB43D200DE398B /* ConverterTests.swift */,
+			);
+			path = "Intention Tests";
+			sourceTree = "<group>";
+		};
+		FF3E23A62CAB4A6F00DE398B /* Intention UI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */,
+			);
+			path = "Intention UI Tests";
+			sourceTree = "<group>";
+		};
 		FF96C29B2A0059BB00D5C0EB = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +222,7 @@
 				FF96C2AC2A0059BB00D5C0EB /* Intention Watch App */,
 				FF96C32F2A00656B00D5C0EB /* Localization */,
 				FF96C2D82A005A8800D5C0EB /* Shared */,
+				FF0D2B572CC1B8C60084E5CE /* Tests */,
 				FF96C2E92A005AF800D5C0EB /* Frameworks */,
 				FF96C2A32A0059BB00D5C0EB /* Products */,
 			);
@@ -174,6 +234,8 @@
 				FF96C2A22A0059BB00D5C0EB /* Intention.app */,
 				FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */,
 				FF96C2E82A005AF800D5C0EB /* ComplicationExtension.appex */,
+				FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */,
+				FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,6 +367,46 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FF3E238A2CAB43D200DE398B /* Intention Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF3E23912CAB43D200DE398B /* Build configuration list for PBXNativeTarget "Intention Tests" */;
+			buildPhases = (
+				FF3E23872CAB43D200DE398B /* Sources */,
+				FF3E23882CAB43D200DE398B /* Frameworks */,
+				FF3E23892CAB43D200DE398B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF3E23902CAB43D200DE398B /* PBXTargetDependency */,
+			);
+			name = "Intention Tests";
+			packageProductDependencies = (
+			);
+			productName = "Intention Tests";
+			productReference = FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF3E239A2CAB4A6800DE398B /* Intention UI Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF3E23A32CAB4A6800DE398B /* Build configuration list for PBXNativeTarget "Intention UI Tests" */;
+			buildPhases = (
+				FF3E23972CAB4A6800DE398B /* Sources */,
+				FF3E23982CAB4A6800DE398B /* Frameworks */,
+				FF3E23992CAB4A6800DE398B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF3E23A22CAB4A6800DE398B /* PBXTargetDependency */,
+			);
+			name = "Intention UI Tests";
+			packageProductDependencies = (
+			);
+			productName = "Intention UI Tests";
+			productReference = FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		FF96C2A12A0059BB00D5C0EB /* Intention */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF96C2BC2A0059BC00D5C0EB /* Build configuration list for PBXNativeTarget "Intention" */;
@@ -365,9 +467,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					FF3E238A2CAB43D200DE398B = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = FF96C2A72A0059BB00D5C0EB;
+					};
+					FF3E239A2CAB4A6800DE398B = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = FF96C2A72A0059BB00D5C0EB;
+					};
 					FF96C2A12A0059BB00D5C0EB = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -399,11 +509,27 @@
 				FF96C2A12A0059BB00D5C0EB /* Intention */,
 				FF96C2A72A0059BB00D5C0EB /* Intention Watch App */,
 				FF96C2E72A005AF800D5C0EB /* ComplicationExtension */,
+				FF3E238A2CAB43D200DE398B /* Intention Tests */,
+				FF3E239A2CAB4A6800DE398B /* Intention UI Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FF3E23892CAB43D200DE398B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF3E23992CAB4A6800DE398B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF96C2A02A0059BB00D5C0EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +562,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FF3E23872CAB43D200DE398B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF3E238E2CAB43D200DE398B /* ConverterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF3E23972CAB4A6800DE398B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF3E239E2CAB4A6800DE398B /* IntentionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF96C2A42A0059BB00D5C0EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,6 +621,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FF3E23902CAB43D200DE398B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF96C2A72A0059BB00D5C0EB /* Intention Watch App */;
+			targetProxy = FF3E238F2CAB43D200DE398B /* PBXContainerItemProxy */;
+		};
+		FF3E23A22CAB4A6800DE398B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF96C2A72A0059BB00D5C0EB /* Intention Watch App */;
+			targetProxy = FF3E23A12CAB4A6800DE398B /* PBXContainerItemProxy */;
+		};
 		FF96C2AB2A0059BB00D5C0EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FF96C2A72A0059BB00D5C0EB /* Intention Watch App */;
@@ -517,6 +669,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FF3E23922CAB43D200DE398B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulweichhart.Intention-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intention Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Intention Watch App";
+			};
+			name = Debug;
+		};
+		FF3E23932CAB43D200DE398B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulweichhart.Intention-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intention Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Intention Watch App";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF3E23A42CAB4A6800DE398B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulweichhart.Intention-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Intention Watch App";
+			};
+			name = Debug;
+		};
+		FF3E23A52CAB4A6800DE398B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5E86B9E63;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulweichhart.Intention-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Intention Watch App";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FF96C2B62A0059BC00D5C0EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -572,12 +802,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
@@ -631,11 +863,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
@@ -668,7 +902,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -701,7 +934,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -764,7 +996,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -795,7 +1026,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -805,6 +1035,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FF3E23912CAB43D200DE398B /* Build configuration list for PBXNativeTarget "Intention Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF3E23922CAB43D200DE398B /* Debug */,
+				FF3E23932CAB43D200DE398B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF3E23A32CAB4A6800DE398B /* Build configuration list for PBXNativeTarget "Intention UI Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF3E23A42CAB4A6800DE398B /* Debug */,
+				FF3E23A52CAB4A6800DE398B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FF96C29F2A0059BB00D5C0EB /* Build configuration list for PBXProject "Intention" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

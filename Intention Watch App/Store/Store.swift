@@ -7,14 +7,13 @@
 
 import Foundation
 
-final actor Store: ObservableObject {
+@MainActor
+final class Store: ObservableObject {
 
     static let shared = Store()
 
-    @MainActor
     @Published private(set) var state = AppState()
 
-    @MainActor
     private var reducer: Reducer = {
         let healthStore = HealthStore()
         let mindfulSession = MindfulSession()
@@ -24,7 +23,6 @@ final actor Store: ObservableObject {
 
     private init() { }
 
-    @MainActor
     func dispatch(action: Action) async {
         state = await reducer.apply(action: action, to: state)
     }

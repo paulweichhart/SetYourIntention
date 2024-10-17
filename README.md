@@ -13,6 +13,7 @@ Releases:
 * Drachenwand     3.2 More languages, now playing view & Privacy Info
 
 Upcoming releases:
-* Schoberstein    3.3 Smart Stack
-* Dachstein       3.4 Statistics
-* Kasberg         3.5 Animations & Intro, Outro View for Meditation
+* Schoberstein    3.3 Swift 6 Language Mode
+* Feuerkogel      3.4 Smart Stack
+* Dachstein       3.5 Statistics
+* Kasberg         3.6 Animations & Intro, Outro View for Meditation
