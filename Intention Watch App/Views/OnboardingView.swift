@@ -71,7 +71,7 @@ struct PermissionView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     Button(action: {
-                        Task {
+                        Task { @MainActor in
                             await store.dispatch(action: .requestHealthStorePermission)
                             await store.dispatch(action: .migrateToLatestVersion)
                         }

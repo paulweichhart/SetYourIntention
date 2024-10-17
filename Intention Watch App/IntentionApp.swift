@@ -42,7 +42,7 @@ struct RootView: View {
                 }
                 .tabViewStyle(.verticalPage)
                 .onAppear() {
-                    Task {
+                    Task { @MainActor in
                         await store.dispatch(action: .migrateToLatestVersion)
                     }
                 }

@@ -12,16 +12,8 @@ import WatchKit
 struct MeditationView: View {
 
     @EnvironmentObject private var store: Store
-    @State private var selectedIndex = 0
-    @State private var isMeditating = false {
-        willSet {
-            if !isMeditating {
-                Task {
-                    await store.dispatch(action: .startMeditating)
-                }
-            }
-        }
-    }
+
+    @State private var isMeditating = Store.shared.state.isMeditating == true
 
     var body: some View {
          NavigationView {
@@ -43,7 +35,9 @@ struct MeditationView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     Button(action: {
-                        isMeditating.toggle()
+                        Task { @MainActor in
+                            await Store.shared.dispatch(action: .startMeditating)
+                        }
                     }, label: {
                         Text(Texts.start.localisation)
                     })
@@ -57,7 +51,7 @@ struct MeditationView: View {
             TabView {
                 MeditationProgressView()
                     .onDisappear(perform: {
-                        Task {
+                        Task { @MainActor in
                             await Store.shared.dispatch(action: .stopMeditating)
                             await Store.shared.dispatch(action: .fetchMindfulTimeInterval)
                         }
@@ -65,7 +59,9 @@ struct MeditationView: View {
                     .toolbar(content: {
                         ToolbarItem(placement: .topBarLeading, content: {
                             Button(Texts.done.localisation, action: {
-                                isMeditating.toggle()
+                                Task { @MainActor in
+                                    await Store.shared.dispatch(action: .stopMeditating)
+                                }
                             })
                             .foregroundColor(Colors.foreground.value)
                             .buttonStyle(.plain)
@@ -74,7 +70,6 @@ struct MeditationView: View {
                 NowPlayingView()
             }
             .tabViewStyle(.automatic)
-            
         })
     }
 }
@@ -119,10 +114,22 @@ struct MeditationProgressBar: View {
                     percentage: percentage)
             .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
             .onChange(of: timeInterval) { _, _ in
-                Task {
+                Task { @MainActor in
                     await store.dispatch(action: .tick)
                 }
             }
+    }
+}
+
+extension AppState {
+    
+    var isMeditating: Bool {
+        switch mindfulSessionState {
+        case .initial, .error:
+            return false
+        case .meditating:
+            return true
+        }
     }
 }
 

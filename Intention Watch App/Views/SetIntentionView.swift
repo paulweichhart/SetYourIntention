@@ -52,7 +52,7 @@ struct SetIntentionView: View {
                         })
                         .tint(Colors.foreground.value)
                         .onChange(of: guided) { oldValue, newValue in
-                            Task {
+                            Task { @MainActor in
                                 await store.dispatch(action: .guided(newValue))
                             }
                         }
@@ -99,7 +99,7 @@ struct IntentionButton: View {
     
     var body: some View {
         Button(action: {
-            Task {
+            Task { @MainActor in
                 await store.dispatch(action: action)
             }
         }, label: {

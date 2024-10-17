@@ -16,7 +16,8 @@ enum HealthStoreError: Error, Equatable {
     case unavailable
 }
 
-struct HealthStore {
+@MainActor
+final class HealthStore {
 
     private var mindfulSession: HKSampleType? {
         return HKObjectType.categoryType(forIdentifier: .mindfulSession)

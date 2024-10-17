@@ -19,14 +19,14 @@ struct ComplicationProvider: TimelineProvider {
             completion(placeholderEntry())
             return
         }
-        Task {
+        Task { @MainActor in
             let entry = await intentionEntry()
             completion(entry)
         }
     }
     
     func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<Entry>) -> Void) {
-        Task {
+        Task { @MainActor in
             let now = Date()
             let entry = await intentionEntry()
             let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(Converter.timeInterval(from: 15))

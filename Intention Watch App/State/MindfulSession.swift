@@ -31,7 +31,7 @@ final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
     }
 
     func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
-        Task {
+        Task { @MainActor in
             await Store.shared.dispatch(action: .failedStoringMeditatingSession)
         }
     }
@@ -41,7 +41,7 @@ final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
     }
 
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
-        Task {
+        Task { @MainActor in
             await Store.shared.dispatch(action: .stopMeditating)
         }
     }

@@ -52,12 +52,12 @@ struct IntentionView: View {
                 ErrorView(error: error)
             }
         }.onAppear() {
-            Task {
+            Task { @MainActor in
                 await store.dispatch(action: .fetchMindfulTimeInterval)
             }
         }.onChange(of: scenePhase) { oldScenePhase, newScenePhase in
             if case .active = newScenePhase {
-                Task {
+                Task { @MainActor in
                     await store.dispatch(action: .fetchMindfulTimeInterval)
                 }
             }
