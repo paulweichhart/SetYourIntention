@@ -13,7 +13,7 @@ struct MeditationView: View {
 
     @EnvironmentObject private var store: Store
 
-    @State private var isMeditating = Store.shared.state.isMeditating == true
+    @State private var isMeditating = false
 
     var body: some View {
          NavigationView {
@@ -37,6 +37,7 @@ struct MeditationView: View {
                     Button(action: {
                         Task { @MainActor in
                             await Store.shared.dispatch(action: .startMeditating)
+                            isMeditating.toggle()
                         }
                     }, label: {
                         Text(Texts.start.localisation)
@@ -50,27 +51,31 @@ struct MeditationView: View {
             // Extract View https://www.swiftbysundell.com/articles/dismissing-swiftui-modal-and-detail-views/
             TabView {
                 MeditationProgressView()
-                    .onDisappear(perform: {
-                        Task { @MainActor in
-                            await Store.shared.dispatch(action: .stopMeditating)
-                            await Store.shared.dispatch(action: .fetchMindfulTimeInterval)
-                        }
-                    })
                     .toolbar(content: {
-                        ToolbarItem(placement: .topBarLeading, content: {
-                            Button(Texts.done.localisation, action: {
-                                Task { @MainActor in
-                                    await Store.shared.dispatch(action: .stopMeditating)
-                                }
+                        ToolbarItem(placement: .primaryAction) {
+                            Button(action: {
+                                
+                            }, label: {
+                                Text(Texts.done.localisation)
                             })
                             .foregroundColor(Colors.foreground.value)
                             .buttonStyle(.plain)
-                        })
+                        }
                     })
                 NowPlayingView()
             }
             .tabViewStyle(.automatic)
-        })
+            .onDisappear() {
+                Task { @MainActor in
+                    await store.dispatch(action: .stopMeditating)
+                    await store.dispatch(action: .fetchMindfulTimeInterval)
+                }
+            }
+        }).onChange(of: store.state.mindfulSessionState) {
+            if case .initial = store.state.mindfulSessionState, isMeditating == true {
+                isMeditating.toggle()
+            }
+        }
     }
 }
 

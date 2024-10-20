@@ -16,7 +16,7 @@ struct IntentionView: View {
     var body: some View {
         NavigationView {
             switch store.state.mindfulState {
-
+                
             case .loading:
                 VStack {
                     ProgressBar(progress: 0,
@@ -30,7 +30,7 @@ struct IntentionView: View {
                                       accessibilityText: Texts.intentionInMinutes.localisation)
                     }.accessibility(addTraits: .isHeader)
                 }
-
+                
             case let .loaded(mindfulTimeInterval):
                 let progress = Converter.progress(mindfulTimeInterval: mindfulTimeInterval,
                                                   intentionTimeInterval: store.state.intention)
@@ -47,19 +47,9 @@ struct IntentionView: View {
                                       accessibilityText: Texts.intentionInMinutes.localisation)
                     }.accessibility(addTraits: .isHeader)
                 }
-
+                
             case let .error(error):
                 ErrorView(error: error)
-            }
-        }.onAppear() {
-            Task { @MainActor in
-                await store.dispatch(action: .fetchMindfulTimeInterval)
-            }
-        }.onChange(of: scenePhase) { oldScenePhase, newScenePhase in
-            if case .active = newScenePhase {
-                Task { @MainActor in
-                    await store.dispatch(action: .fetchMindfulTimeInterval)
-                }
             }
         }
     }

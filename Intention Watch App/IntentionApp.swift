@@ -30,7 +30,7 @@ struct RootView: View {
 
     @ViewBuilder
     var body: some View {
-        switch Store.shared.state.versionAssistant.shouldShowOnboarding {
+        switch store.state.versionAssistant.shouldShowOnboarding {
         case true:
             OnboardingView()
         case false:
@@ -44,6 +44,7 @@ struct RootView: View {
                 .onAppear() {
                     Task { @MainActor in
                         await store.dispatch(action: .migrateToLatestVersion)
+                        await store.dispatch(action: .fetchMindfulTimeInterval)
                     }
                 }
             }

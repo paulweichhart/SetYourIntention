@@ -64,14 +64,13 @@ struct Reducer {
                 let healthStoreError = error as? HealthStoreError ?? .unavailable
                 state.mindfulState = .error(healthStoreError)
             }
-
         case .requestHealthStorePermission:
             do {
                 try await healthStore.requestPermission()
             } catch {
                 state.mindfulState = .error(.permissionDenied)
             }
-
+            
         // MARK: - Migration
 
         case .migrateToLatestVersion:
