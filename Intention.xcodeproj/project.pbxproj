@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0F06642CCAF5670008392B /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F06632CCAF55D0008392B /* NavigationState.swift */; };
 		FF3E238E2CAB43D200DE398B /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E238D2CAB43D200DE398B /* ConverterTests.swift */; };
 		FF3E239E2CAB4A6800DE398B /* IntentionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */; };
 		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -106,6 +107,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF0F06632CCAF55D0008392B /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3E238D2CAB43D200DE398B /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
 		FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,6 +332,7 @@
 		FF96C30F2A005B8600D5C0EB /* State */ = {
 			isa = PBXGroup;
 			children = (
+				FF0F06632CCAF55D0008392B /* NavigationState.swift */,
 				FF96C3102A005B8600D5C0EB /* AppState.swift */,
 				FF96C3112A005B8600D5C0EB /* ViewState.swift */,
 				FF96C3122A005B8600D5C0EB /* MindfulSession.swift */,
@@ -591,6 +594,7 @@
 				FF96C3192A005B8600D5C0EB /* IntentionView.swift in Sources */,
 				FF96C2DE2A005A9600D5C0EB /* Texts.swift in Sources */,
 				FF96C31A2A005B8600D5C0EB /* Store.swift in Sources */,
+				FF0F06642CCAF5670008392B /* NavigationState.swift in Sources */,
 				FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */,
 				FF96C3182A005B8600D5C0EB /* ErrorView.swift in Sources */,
 				FF96C31C2A005B8600D5C0EB /* AppState.swift in Sources */,

@@ -11,12 +11,7 @@ struct AppState {
 
     private let sharedUserDefaults = UserDefaults(suiteName: Constants.appGroup.rawValue)
 
-    // Version State
-
-    var versionAssistant = VersionAssistant()
-
     // Intention State
-
     var intention: TimeInterval {
         get {
             return sharedUserDefaults?.double(forKey: Constants.intention.rawValue) ?? 0
@@ -27,7 +22,6 @@ struct AppState {
     }
 
     // Guided State
-
     var guided: Bool {
         get {
             return sharedUserDefaults?.bool(forKey: Constants.guided.rawValue) ?? false
@@ -36,14 +30,18 @@ struct AppState {
             sharedUserDefaults?.set(newValue, forKey: Constants.guided.rawValue)
         }
     }
+    
+    // Version State
+    var versionState = VersionState()
 
     // Mindful State
-
     var mindfulState: ViewState<TimeInterval, HealthStoreError> = .loading
 
     // Mindful Session State
-
     var mindfulSessionState: MindfulSessionState = .initial
+    
+    // Navigation State
+    var navigationState: NavigationState = .loading
 }
 
 

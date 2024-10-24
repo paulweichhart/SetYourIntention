@@ -1,5 +1,5 @@
 //
-//  VersionAssistant.swift
+//  VersionState.swift
 //  Intention
 //
 //  Created by Paul Weichhart on 12.09.22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VersionAssistant {
+struct VersionState {
 
     private let sharedUserDefaults = UserDefaults(suiteName: Constants.appGroup.rawValue)
 
@@ -28,10 +28,6 @@ struct VersionAssistant {
 
     // MARK: Versions
 
-    var versionOneOnboardingCompleted: Bool {
-        return UserDefaults.standard.bool(forKey: Constants.versionOneOnboardingCompleted.rawValue)
-    }
-
     var versionTwoOnboardingCompleted: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Constants.versionTwoOnboardingCompleted.rawValue)
@@ -48,5 +44,9 @@ struct VersionAssistant {
         set {
             sharedUserDefaults?.set(newValue, forKey: Constants.versionThreeOnboardingCompleted.rawValue)
         }
+    }
+    
+    private var versionOneOnboardingCompleted: Bool {
+        return UserDefaults.standard.bool(forKey: Constants.versionOneOnboardingCompleted.rawValue)
     }
 }

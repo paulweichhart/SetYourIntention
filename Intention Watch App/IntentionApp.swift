@@ -14,41 +14,69 @@ import WatchKit
 struct IntentionApp: App {
 
     @WKApplicationDelegateAdaptor(ExtensionDelegate.self) var delegate
+    
+    private let store = Store.shared
 
     var body: some Scene {
 
         WindowGroup {
             RootView()
-                .environmentObject(Store.shared)
+                .environmentObject(store)
+                .onAppear() {
+                       Task { @MainActor in
+                            await store.dispatch(action: .setupInitialState)
+                        }
+                    }
         }
     }
 }
 
 struct RootView: View {
-
+    
     @EnvironmentObject private var store: Store
-
+    
     @ViewBuilder
     var body: some View {
-        switch store.state.versionAssistant.shouldShowOnboarding {
-        case true:
-            OnboardingView()
-        case false:
-            NavigationStack {
-                TabView {
-                    IntentionView()
-                    MeditationView()
-                    SetIntentionView()
+        switch store.state.navigationState {
+        case .loading:
+            ZStack {
+                Image("Loading")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+                    .scaledToFill()
+                VStack {
+                    Spacer()
+                    Text(Texts.setYourIntention.localisation)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                 }
-                .tabViewStyle(.verticalPage)
-                .onAppear() {
-                    Task { @MainActor in
-                        await store.dispatch(action: .migrateToLatestVersion)
-                        await store.dispatch(action: .fetchMindfulTimeInterval)
-                    }
+            }
+        case .presentOnboarding:
+            OnboardingView()
+        default:
+            IntentionAppView()
+        }
+    }
+}
+    
+struct IntentionAppView: View {
+    
+    @EnvironmentObject private var store: Store
+ 
+    var body: some View {
+        NavigationStack {
+            TabView {
+                IntentionView()
+                MeditationView()
+                SetIntentionView()
+            }
+            .tabViewStyle(.verticalPage)
+            .onAppear() {
+                Task { @MainActor in
+                    await store.dispatch(action: .migrateToLatestVersion)
+                    await store.dispatch(action: .fetchMindfulTimeInterval)
                 }
             }
         }
     }
-
 }

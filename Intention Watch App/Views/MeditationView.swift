@@ -13,7 +13,7 @@ struct MeditationView: View {
 
     @EnvironmentObject private var store: Store
 
-    @State private var isMeditating = false
+    @State private var isMeditating = store.state.navigationState == .presentMeditationSession
 
     var body: some View {
          NavigationView {
@@ -37,7 +37,7 @@ struct MeditationView: View {
                     Button(action: {
                         Task { @MainActor in
                             await Store.shared.dispatch(action: .startMeditating)
-                            isMeditating.toggle()
+                            await Store.shared.dispatch(action: .presentMeditationSession)
                         }
                     }, label: {
                         Text(Texts.start.localisation)
@@ -68,6 +68,7 @@ struct MeditationView: View {
             .onDisappear() {
                 Task { @MainActor in
                     await store.dispatch(action: .stopMeditating)
+                    await store.dispatch(action: .dismissPresentation)
                     await store.dispatch(action: .fetchMindfulTimeInterval)
                 }
             }

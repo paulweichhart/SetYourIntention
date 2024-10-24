@@ -26,7 +26,18 @@ struct Reducer {
     func apply(action: Action, to state: AppState) async -> AppState {
         var state = state
         switch action {
-
+            
+        // MARK: - Setup
+            
+        case .setupInitialState:
+            switch state.versionState.shouldShowOnboarding {
+            case true:
+                state.intention = 2 * defaultTimeInterval
+                state.navigationState = .presentOnboarding
+            case false:
+                state.navigationState = .default
+            }
+            
         // MARK: - Set Intention
 
         case .incrementIntention:
@@ -71,26 +82,32 @@ struct Reducer {
                 state.mindfulState = .error(.permissionDenied)
             }
             
+        // MARK: - Navigation
+            
+        case .dismissPresentation:
+            state.navigationState = .default
+        
+        case .presentMeditationSession:
+            state.navigationState = .presentMeditationSession
+            
         // MARK: - Migration
 
         case .migrateToLatestVersion:
-            if state.versionAssistant.shouldMigrateFromVersionOne {
+            if state.versionState.shouldMigrateFromVersionOne {
                 // Convert from Double to TimeInterval
                 state.intention = Converter.timeInterval(from: Int(state.intention))
-                state.versionAssistant.versionTwoOnboardingCompleted = true
-                state.versionAssistant.versionThreeOnboardingCompleted = true
+                state.versionState.versionTwoOnboardingCompleted = true
+                state.versionState.versionThreeOnboardingCompleted = true
 
-            } else if state.versionAssistant.shouldShowOnboarding {
-                // Set initial State
-                state.intention = 2 * defaultTimeInterval
-                state.versionAssistant.versionTwoOnboardingCompleted = true
-                state.versionAssistant.versionThreeOnboardingCompleted = true
+            } else if state.versionState.shouldShowOnboarding {
+                state.versionState.versionTwoOnboardingCompleted = true
+                state.versionState.versionThreeOnboardingCompleted = true
 
-            } else if state.versionAssistant.shouldMigrateFromVersionTwo {
+            } else if state.versionState.shouldMigrateFromVersionTwo {
                 // Store values from UserDefaults in AppGroup
                 state.guided = UserDefaults.standard.bool(forKey: Constants.guided.rawValue)
                 state.intention = UserDefaults.standard.double(forKey: Constants.intention.rawValue)
-                state.versionAssistant.versionThreeOnboardingCompleted = true
+                state.versionState.versionThreeOnboardingCompleted = true
             }
 
         // MARK: - Mindful Session
