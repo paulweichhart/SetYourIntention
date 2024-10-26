@@ -22,11 +22,6 @@ struct IntentionApp: App {
         WindowGroup {
             RootView()
                 .environmentObject(store)
-                .onAppear() {
-                       Task { @MainActor in
-                            await store.dispatch(action: .setupInitialState)
-                        }
-                    }
         }
     }
 }
@@ -37,44 +32,24 @@ struct RootView: View {
     
     @ViewBuilder
     var body: some View {
-        switch store.state.navigationState {
-        case .loading:
-            ZStack {
-                Image("Loading")
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all)
-                    .scaledToFill()
-                VStack {
-                    Spacer()
-                    Text(Texts.setYourIntention.localisation)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                }
-            }
-        case .presentOnboarding:
+        switch store.state.app {
+            
+        case .onboarding:
             OnboardingView()
+        
         default:
-            IntentionAppView()
-        }
-    }
-}
-    
-struct IntentionAppView: View {
-    
-    @EnvironmentObject private var store: Store
- 
-    var body: some View {
-        NavigationStack {
-            TabView {
-                IntentionView()
-                MeditationView()
-                SetIntentionView()
-            }
-            .tabViewStyle(.verticalPage)
-            .onAppear() {
-                Task { @MainActor in
-                    await store.dispatch(action: .migrateToLatestVersion)
-                    await store.dispatch(action: .fetchMindfulTimeInterval)
+            NavigationStack {
+                TabView {
+                    IntentionView()
+                    MeditationView()
+                    SetIntentionView()
+                }
+                .tabViewStyle(.verticalPage)
+                .onAppear() {
+                    Task { @MainActor in
+                        await store.dispatch(action: .setup)
+                        await store.dispatch(action: .fetchMindfulTimeInterval)
+                    }
                 }
             }
         }

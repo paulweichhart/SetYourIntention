@@ -8,12 +8,6 @@
 import Foundation
 import WatchKit
 
-enum MindfulSessionState: Equatable {
-    case initial
-    case meditating(Date)
-    case error(HealthStoreError)
-}
-
 final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
 
     private var session: WKExtendedRuntimeSession?
@@ -42,7 +36,7 @@ final class MindfulSession: NSObject, WKExtendedRuntimeSessionDelegate {
 
     func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
         Task { @MainActor in
-            await Store.shared.dispatch(action: .stopMeditating)
+            await Store.shared.dispatch(action: .stopMeditatingAndFetchMindfulTimeInterval)
         }
     }
 }

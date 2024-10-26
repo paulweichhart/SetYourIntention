@@ -8,21 +8,17 @@
 import Foundation
 
 enum Action {
-    
-    case setupInitialState
 
+    case setup
+    
     case incrementIntention
     case decrementIntention
 
     case requestHealthStorePermission
     case fetchMindfulTimeInterval
-    
-    case presentMeditationSession
-    case dismissPresentation
 
-    case migrateToLatestVersion
-    case stopMeditating
     case startMeditating
+    case stopMeditatingAndFetchMindfulTimeInterval
     case failedStoringMeditatingSession
     case notifyUser
     case tick

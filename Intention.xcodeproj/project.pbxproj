@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF0F06642CCAF5670008392B /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F06632CCAF55D0008392B /* NavigationState.swift */; };
 		FF3E238E2CAB43D200DE398B /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E238D2CAB43D200DE398B /* ConverterTests.swift */; };
 		FF3E239E2CAB4A6800DE398B /* IntentionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */; };
 		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */; };
 		FF96C2D52A005A7100D5C0EB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF96C2D42A005A7100D5C0EB /* README.md */; };
 		FF96C2DE2A005A9600D5C0EB /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2D92A005A9600D5C0EB /* Texts.swift */; };
-		FF96C2DF2A005A9600D5C0EB /* VersionAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */; };
+		FF96C2DF2A005A9600D5C0EB /* VersionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DA2A005A9600D5C0EB /* VersionState.swift */; };
 		FF96C2E02A005A9600D5C0EB /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DB2A005A9600D5C0EB /* Converter.swift */; };
 		FF96C2E12A005A9600D5C0EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DC2A005A9600D5C0EB /* Constants.swift */; };
 		FF96C2E22A005A9600D5C0EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DD2A005A9600D5C0EB /* Colors.swift */; };
@@ -26,7 +25,7 @@
 		FF96C2FF2A005B3D00D5C0EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DC2A005A9600D5C0EB /* Constants.swift */; };
 		FF96C3002A005B3D00D5C0EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DD2A005A9600D5C0EB /* Colors.swift */; };
 		FF96C3012A005B3D00D5C0EB /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2D92A005A9600D5C0EB /* Texts.swift */; };
-		FF96C3022A005B3D00D5C0EB /* VersionAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */; };
+		FF96C3022A005B3D00D5C0EB /* VersionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2DA2A005A9600D5C0EB /* VersionState.swift */; };
 		FF96C3132A005B8600D5C0EB /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3042A005B8600D5C0EB /* Reducer.swift */; };
 		FF96C3142A005B8600D5C0EB /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3052A005B8600D5C0EB /* Action.swift */; };
 		FF96C3152A005B8600D5C0EB /* SetIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3072A005B8600D5C0EB /* SetIntentionView.swift */; };
@@ -37,7 +36,6 @@
 		FF96C31A2A005B8600D5C0EB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30D2A005B8600D5C0EB /* Store.swift */; };
 		FF96C31B2A005B8600D5C0EB /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30E2A005B8600D5C0EB /* HealthStore.swift */; };
 		FF96C31C2A005B8600D5C0EB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3102A005B8600D5C0EB /* AppState.swift */; };
-		FF96C31D2A005B8600D5C0EB /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3112A005B8600D5C0EB /* ViewState.swift */; };
 		FF96C31E2A005B8600D5C0EB /* MindfulSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3122A005B8600D5C0EB /* MindfulSession.swift */; };
 		FF96C3212A005BA800D5C0EB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3202A005BA800D5C0EB /* ExtensionDelegate.swift */; };
 		FF96C3222A005BD000D5C0EB /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30E2A005B8600D5C0EB /* HealthStore.swift */; };
@@ -107,7 +105,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF0F06632CCAF55D0008392B /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3E238D2CAB43D200DE398B /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
 		FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +120,7 @@
 		FF96C2CF2A005A3100D5C0EB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF96C2D42A005A7100D5C0EB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF96C2D92A005A9600D5C0EB /* Texts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
-		FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionAssistant.swift; sourceTree = "<group>"; };
+		FF96C2DA2A005A9600D5C0EB /* VersionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionState.swift; sourceTree = "<group>"; };
 		FF96C2DB2A005A9600D5C0EB /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		FF96C2DC2A005A9600D5C0EB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FF96C2DD2A005A9600D5C0EB /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -141,7 +138,6 @@
 		FF96C30D2A005B8600D5C0EB /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FF96C30E2A005B8600D5C0EB /* HealthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		FF96C3102A005B8600D5C0EB /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		FF96C3112A005B8600D5C0EB /* ViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		FF96C3122A005B8600D5C0EB /* MindfulSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfulSession.swift; sourceTree = "<group>"; };
 		FF96C3202A005BA800D5C0EB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		FF96C3232A005E0F00D5C0EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,7 +270,7 @@
 				FF96C2DC2A005A9600D5C0EB /* Constants.swift */,
 				FF96C2DB2A005A9600D5C0EB /* Converter.swift */,
 				FF96C2D92A005A9600D5C0EB /* Texts.swift */,
-				FF96C2DA2A005A9600D5C0EB /* VersionAssistant.swift */,
+				FF96C2DA2A005A9600D5C0EB /* VersionState.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -332,9 +328,7 @@
 		FF96C30F2A005B8600D5C0EB /* State */ = {
 			isa = PBXGroup;
 			children = (
-				FF0F06632CCAF55D0008392B /* NavigationState.swift */,
 				FF96C3102A005B8600D5C0EB /* AppState.swift */,
-				FF96C3112A005B8600D5C0EB /* ViewState.swift */,
 				FF96C3122A005B8600D5C0EB /* MindfulSession.swift */,
 			);
 			path = State;
@@ -594,7 +588,6 @@
 				FF96C3192A005B8600D5C0EB /* IntentionView.swift in Sources */,
 				FF96C2DE2A005A9600D5C0EB /* Texts.swift in Sources */,
 				FF96C31A2A005B8600D5C0EB /* Store.swift in Sources */,
-				FF0F06642CCAF5670008392B /* NavigationState.swift in Sources */,
 				FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */,
 				FF96C3182A005B8600D5C0EB /* ErrorView.swift in Sources */,
 				FF96C31C2A005B8600D5C0EB /* AppState.swift in Sources */,
@@ -602,9 +595,8 @@
 				FF96C3132A005B8600D5C0EB /* Reducer.swift in Sources */,
 				FF96C3142A005B8600D5C0EB /* Action.swift in Sources */,
 				FF96C2E02A005A9600D5C0EB /* Converter.swift in Sources */,
-				FF96C31D2A005B8600D5C0EB /* ViewState.swift in Sources */,
 				FF96C31E2A005B8600D5C0EB /* MindfulSession.swift in Sources */,
-				FF96C2DF2A005A9600D5C0EB /* VersionAssistant.swift in Sources */,
+				FF96C2DF2A005A9600D5C0EB /* VersionState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +609,7 @@
 				FF96C2F02A005AF800D5C0EB /* Complication.swift in Sources */,
 				FF96C3012A005B3D00D5C0EB /* Texts.swift in Sources */,
 				FF96C2FF2A005B3D00D5C0EB /* Constants.swift in Sources */,
-				FF96C3022A005B3D00D5C0EB /* VersionAssistant.swift in Sources */,
+				FF96C3022A005B3D00D5C0EB /* VersionState.swift in Sources */,
 				FF96C3222A005BD000D5C0EB /* HealthStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
