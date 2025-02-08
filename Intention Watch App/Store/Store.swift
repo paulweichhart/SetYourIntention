@@ -12,7 +12,7 @@ final class Store: ObservableObject {
 
     static let shared = Store()
 
-    @Published private(set) var state = AppState()
+    @Published private(set) var state = AppState(versionState: VersionState())
 
     private var reducer: Reducer = {
         let healthStore = HealthStore()

@@ -72,6 +72,7 @@ final class HealthStore {
               let mindfulSession = mindfulSession as? HKCategoryType else {
             throw HealthStoreError.unavailable
         }
+
         let mindfulSample = HKCategorySample(type: mindfulSession,
                                              value: 0 ,
                                              start: startDate,

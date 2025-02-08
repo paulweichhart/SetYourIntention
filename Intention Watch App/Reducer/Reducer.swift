@@ -26,7 +26,29 @@ struct Reducer {
     func apply(action: Action, to state: AppState) async -> AppState {
         var state = state
         switch action {
+            
+            // MARK: - Setup
 
+            case .setup:
+                if state.versionState.shouldMigrateFromVersionOne {
+                    // Convert from Double to TimeInterval
+                    state.intention = Converter.timeInterval(from: Int(state.intention))
+                    state.versionState.versionTwoOnboardingCompleted = true
+                    state.versionState.versionThreeOnboardingCompleted = true
+
+                } else if state.versionState.shouldShowOnboarding {
+                    state.versionState.versionTwoOnboardingCompleted = true
+                    state.versionState.versionThreeOnboardingCompleted = true
+                    state.intention = 2 * defaultTimeInterval
+
+                } else if state.versionState.shouldMigrateFromVersionTwo {
+                    // Store values from UserDefaults in AppGroup
+                    state.guided = UserDefaults.standard.bool(forKey: Constants.guided.rawValue)
+                    state.intention = UserDefaults.standard.double(forKey: Constants.intention.rawValue)
+                    state.versionState.versionThreeOnboardingCompleted = true
+                }
+                state.app = .loading
+            
         // MARK: - Set Intention
 
         case .incrementIntention:
@@ -59,66 +81,43 @@ struct Reducer {
             do {
                 try await healthStore.requestPermission()
                 let timeInterval = try await healthStore.fetchMindfulTimeInterval()
-                state.mindfulState = .loaded(timeInterval)
+                state.app = .mindfulState(timeInterval)
             } catch {
                 let healthStoreError = error as? HealthStoreError ?? .unavailable
-                state.mindfulState = .error(healthStoreError)
+                state.app = .error(healthStoreError)
             }
+
         case .requestHealthStorePermission:
             do {
                 try await healthStore.requestPermission()
             } catch {
-                state.mindfulState = .error(.permissionDenied)
-            }
-            
-        // MARK: - Migration
-
-        case .migrateToLatestVersion:
-            if state.versionAssistant.shouldMigrateFromVersionOne {
-                // Convert from Double to TimeInterval
-                state.intention = Converter.timeInterval(from: Int(state.intention))
-                state.versionAssistant.versionTwoOnboardingCompleted = true
-                state.versionAssistant.versionThreeOnboardingCompleted = true
-
-            } else if state.versionAssistant.shouldShowOnboarding {
-                // Set initial State
-                state.intention = 2 * defaultTimeInterval
-                state.versionAssistant.versionTwoOnboardingCompleted = true
-                state.versionAssistant.versionThreeOnboardingCompleted = true
-
-            } else if state.versionAssistant.shouldMigrateFromVersionTwo {
-                // Store values from UserDefaults in AppGroup
-                state.guided = UserDefaults.standard.bool(forKey: Constants.guided.rawValue)
-                state.intention = UserDefaults.standard.double(forKey: Constants.intention.rawValue)
-                state.versionAssistant.versionThreeOnboardingCompleted = true
+                state.app = .error(.permissionDenied)
             }
 
         // MARK: - Mindful Session
 
         case .startMeditating:
             let startDate = mindfulSession.startSession()
-            state.mindfulSessionState = .meditating(startDate)
+            state.app = .meditating(startDate)
 
-        case .stopMeditating:
-            if case let .meditating(startDate) = state.mindfulSessionState {
+        case .stopMeditatingAndFetchMindfulTimeInterval:
+            if case let .meditating(startDate) = state.app {
                 do {
                     let endDate = mindfulSession.stopSession()
                     try await healthStore.storeMindfulTimeInterval(startDate: startDate,
                                                                    endDate: endDate)
-                    state.mindfulSessionState = .initial
+                    let timeInterval = try await healthStore.fetchMindfulTimeInterval()
+                    state.app = .mindfulState(timeInterval)
                 } catch {
-                    state.mindfulSessionState = .error(.savingFailed)
+                    state.app = .error(.savingFailed)
                 }
             }
 
         case .failedStoringMeditatingSession:
-            state.mindfulSessionState = .error(.savingFailed)
-
-        case .notifyUser:
-            WKInterfaceDevice.current().play(.success)
+            state.app = .error(.savingFailed)
 
         case .tick:
-            if case let .meditating(startDate) = state.mindfulSessionState {
+            if case let .meditating(startDate) = state.app {
                 let timeInterval = floor(Date().timeIntervalSince(startDate))
                 if timeInterval == state.intention {
                     WKInterfaceDevice.current().play(.success)

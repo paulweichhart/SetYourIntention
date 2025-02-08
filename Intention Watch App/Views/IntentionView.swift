@@ -15,23 +15,9 @@ struct IntentionView: View {
         
     var body: some View {
         NavigationView {
-            switch store.state.mindfulState {
+            switch store.state.app {
                 
-            case .loading:
-                VStack {
-                    ProgressBar(progress: 0,
-                                percentage: 0)
-                    Group {
-                        ProgressLabel(timeInterval: 0,
-                                      text: Texts.mindfulMinutes.localisation,
-                                      accessibilityText: Texts.mindfulMinutes.localisation)
-                        ProgressLabel(timeInterval: 0,
-                                      text: Texts.intention.localisation,
-                                      accessibilityText: Texts.intentionInMinutes.localisation)
-                    }.accessibility(addTraits: .isHeader)
-                }
-                
-            case let .loaded(mindfulTimeInterval):
+            case let .mindfulState(mindfulTimeInterval):
                 let progress = Converter.progress(mindfulTimeInterval: mindfulTimeInterval,
                                                   intentionTimeInterval: store.state.intention)
                 let percentage = Converter.percentage(progress: progress)
@@ -50,6 +36,20 @@ struct IntentionView: View {
                 
             case let .error(error):
                 ErrorView(error: error)
+                
+            default: // loading
+                VStack {
+                    ProgressBar(progress: 0,
+                                percentage: 0)
+                    Group {
+                        ProgressLabel(timeInterval: 0,
+                                      text: Texts.mindfulMinutes.localisation,
+                                      accessibilityText: Texts.mindfulMinutes.localisation)
+                        ProgressLabel(timeInterval: 0,
+                                      text: Texts.intention.localisation,
+                                      accessibilityText: Texts.intentionInMinutes.localisation)
+                    }.accessibility(addTraits: .isHeader)
+                }
             }
         }
     }

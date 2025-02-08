@@ -11,6 +11,7 @@ import SwiftUI
 struct SetIntentionView: View {
     
     @EnvironmentObject private var store: Store
+
     @State private var guided = Store.shared.state.guided
 
     var body: some View {

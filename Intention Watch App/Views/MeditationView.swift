@@ -37,7 +37,6 @@ struct MeditationView: View {
                     Button(action: {
                         Task { @MainActor in
                             await Store.shared.dispatch(action: .startMeditating)
-                            isMeditating.toggle()
                         }
                     }, label: {
                         Text(Texts.start.localisation)
@@ -67,28 +66,28 @@ struct MeditationView: View {
             .tabViewStyle(.automatic)
             .onDisappear() {
                 Task { @MainActor in
-                    await store.dispatch(action: .stopMeditating)
-                    await store.dispatch(action: .fetchMindfulTimeInterval)
+                    await store.dispatch(action: .stopMeditatingAndFetchMindfulTimeInterval)
                 }
             }
-        }).onChange(of: store.state.mindfulSessionState) {
-            if case .initial = store.state.mindfulSessionState, isMeditating == true {
-                isMeditating.toggle()
+        }).onChange(of: store.state.app) {
+            switch store.state.app {
+            case .meditating:
+                isMeditating = true
+            default:
+                isMeditating = false
             }
         }
     }
 }
 
 struct MeditationProgressView: View {
+    
+    @EnvironmentObject private var store: Store
 
     @ViewBuilder
     var body: some View {
         ZStack {
-            switch Store.shared.state.mindfulSessionState {
-            case .initial:
-                Text(Texts.setYourIntention.localisation)
-
-            case let .meditating(startDate):
+            if case let .meditating(startDate) = store.state.app {
                 TimelineView(.periodic(from: startDate, by: 1.0)) { _ in
                     let progress = Date().timeIntervalSince(startDate) / Store.shared.state.intention
                     let percentage = Int(progress * 100)
@@ -96,13 +95,8 @@ struct MeditationProgressView: View {
                                           percentage: percentage,
                                           timeInterval: Date().timeIntervalSince(startDate))
                 }
-
-            case let .error(error):
-                ErrorView(error: error)
             }
         }
-//        .animation(.easeInOut(duration: 1),
-//                    value: store.state.mindfulSessionState)
     }
 }
 
@@ -123,18 +117,6 @@ struct MeditationProgressBar: View {
                     await store.dispatch(action: .tick)
                 }
             }
-    }
-}
-
-extension AppState {
-    
-    var isMeditating: Bool {
-        switch mindfulSessionState {
-        case .initial, .error:
-            return false
-        case .meditating:
-            return true
-        }
     }
 }
 

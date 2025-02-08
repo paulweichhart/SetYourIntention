@@ -14,26 +14,30 @@ import WatchKit
 struct IntentionApp: App {
 
     @WKApplicationDelegateAdaptor(ExtensionDelegate.self) var delegate
+    
+    private let store = Store.shared
 
     var body: some Scene {
 
         WindowGroup {
             RootView()
-                .environmentObject(Store.shared)
+                .environmentObject(store)
         }
     }
 }
 
 struct RootView: View {
-
+    
     @EnvironmentObject private var store: Store
-
+    
     @ViewBuilder
     var body: some View {
-        switch store.state.versionAssistant.shouldShowOnboarding {
-        case true:
+        switch store.state.app {
+            
+        case .onboarding:
             OnboardingView()
-        case false:
+        
+        default:
             NavigationStack {
                 TabView {
                     IntentionView()
@@ -43,12 +47,10 @@ struct RootView: View {
                 .tabViewStyle(.verticalPage)
                 .onAppear() {
                     Task { @MainActor in
-                        await store.dispatch(action: .migrateToLatestVersion)
                         await store.dispatch(action: .fetchMindfulTimeInterval)
                     }
                 }
             }
         }
     }
-
 }

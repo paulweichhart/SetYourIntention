@@ -73,7 +73,7 @@ struct PermissionView: View {
                     Button(action: {
                         Task { @MainActor in
                             await store.dispatch(action: .requestHealthStorePermission)
-                            await store.dispatch(action: .migrateToLatestVersion)
+                            await store.dispatch(action: .setup)
                         }
                     }, label: {
                         Text(Texts.review.localisation)

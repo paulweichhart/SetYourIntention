@@ -8,15 +8,18 @@
 import Foundation
 
 struct AppState {
-
+    
+    enum State: Equatable {
+        case loading
+        case onboarding
+        case meditating(Date)
+        case mindfulState(TimeInterval)
+        case error(HealthStoreError)
+    }
+    
     private let sharedUserDefaults = UserDefaults(suiteName: Constants.appGroup.rawValue)
-
-    // Version State
-
-    var versionAssistant = VersionAssistant()
-
+    
     // Intention State
-
     var intention: TimeInterval {
         get {
             return sharedUserDefaults?.double(forKey: Constants.intention.rawValue) ?? 0
@@ -25,9 +28,8 @@ struct AppState {
             sharedUserDefaults?.set(newValue, forKey: Constants.intention.rawValue)
         }
     }
-
+    
     // Guided State
-
     var guided: Bool {
         get {
             return sharedUserDefaults?.bool(forKey: Constants.guided.rawValue) ?? false
@@ -36,14 +38,15 @@ struct AppState {
             sharedUserDefaults?.set(newValue, forKey: Constants.guided.rawValue)
         }
     }
-
-    // Mindful State
-
-    var mindfulState: ViewState<TimeInterval, HealthStoreError> = .loading
-
-    // Mindful Session State
-
-    var mindfulSessionState: MindfulSessionState = .initial
+    
+    // Version State
+    var versionState: VersionState
+    
+    // App State
+    var app: State
+    
+    init(versionState: VersionState) {
+        self.versionState = versionState
+        self.app = versionState.shouldShowOnboarding ? .onboarding : .loading
+    }
 }
-
-
