@@ -11,9 +11,9 @@ Releases:
 * Schafberg       3.0 Migrated to WidgetKit & watchOS 9
 * Priel           3.1 Updated for watchOS 10
 * Drachenwand     3.2 More languages, now playing view & Privacy Info
+* Schoberstein    3.3 Swift 6 Language Mode
 
 Upcoming releases:
-* Schoberstein    3.3 Swift 6 Language Mode
 * Feuerkogel      3.4 Smart Stack
 * Dachstein       3.5 Statistics
 * Kasberg         3.6 Animations & Intro, Outro View for Meditation

@@ -21,7 +21,7 @@ struct VersionState {
         return versionTwoOnboardingCompleted == false && versionThreeOnboardingCompleted == false
     }
     
-    // Version 3.0 introduced for AppGroups of Extension
+    // Version 3.0 introduced AppGroups for Extensions
     var shouldMigrateFromVersionTwo: Bool {
         return versionTwoOnboardingCompleted && versionThreeOnboardingCompleted == false
     }

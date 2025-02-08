@@ -20,7 +20,6 @@ enum Action {
     case startMeditating
     case stopMeditatingAndFetchMindfulTimeInterval
     case failedStoringMeditatingSession
-    case notifyUser
     case tick
 
     case guided(Bool)

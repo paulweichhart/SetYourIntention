@@ -47,7 +47,7 @@ struct Reducer {
                     state.intention = UserDefaults.standard.double(forKey: Constants.intention.rawValue)
                     state.versionState.versionThreeOnboardingCompleted = true
                 }
-            state.app = .loading
+                state.app = .loading
             
         // MARK: - Set Intention
 
@@ -115,9 +115,6 @@ struct Reducer {
 
         case .failedStoringMeditatingSession:
             state.app = .error(.savingFailed)
-
-        case .notifyUser:
-            WKInterfaceDevice.current().play(.success)
 
         case .tick:
             if case let .meditating(startDate) = state.app {

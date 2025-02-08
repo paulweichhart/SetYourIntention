@@ -47,7 +47,6 @@ struct RootView: View {
                 .tabViewStyle(.verticalPage)
                 .onAppear() {
                     Task { @MainActor in
-                        await store.dispatch(action: .setup)
                         await store.dispatch(action: .fetchMindfulTimeInterval)
                     }
                 }
