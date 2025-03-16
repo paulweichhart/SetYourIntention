@@ -9,6 +9,9 @@ import WidgetKit
 import SwiftUI
 
 struct ComplicationProvider: TimelineProvider {
+    
+    @MainActor
+    private let store = HealthStore()
 
     func placeholder(in context: Context) -> IntentionEntry {
         return placeholderEntry()
@@ -42,8 +45,8 @@ struct ComplicationProvider: TimelineProvider {
                               mindfulTimeInterval: Converter.timeInterval(from: 3))
     }
 
+    @MainActor
     private func intentionEntry() async -> IntentionEntry {
-        let store = HealthStore()
         do {
             let mindfulTimeInterval = try await store.fetchMindfulTimeInterval()
             let intentionTimeInterval = UserDefaults(suiteName: Constants.appGroup.rawValue)?.double(forKey: Constants.intention.rawValue) ?? 0
