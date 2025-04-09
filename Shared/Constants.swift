@@ -15,7 +15,7 @@ enum Constants: String {
     case versionTwoOnboardingCompleted = "versionTwoOnboardingCompleted"
     case versionThreeOnboardingCompleted = "versionThreeOnboardingCompleted"
 
-    case complication = "com.paulweichhart.Intention.watchkitapp.ComplicationExtension"
+    case complication = "com.paulweichhart.Intention.watchkitapp.watchkitextension"
     case appGroup = "group.com.paulweichhart.Intention.appgroup"
 }
 

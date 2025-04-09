@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 import UIKit
 
 enum HealthStoreError: Error, Equatable {
@@ -51,19 +51,15 @@ final class HealthStore {
         let startDate = Calendar.current.startOfDay(for: Date())
         let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-
-        return try await withCheckedThrowingContinuation { continuation in
-            let query = HKSampleQuery(sampleType: mindfulSession, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: { _, samples, error in
-                if let _ = error {
-                    continuation.resume(throwing: HealthStoreError.noDataAvailable)
-                }
-                let mindfulTimeInterval = samples?.reduce(0, { seconds, sample in
-                    return seconds + sample.endDate.timeIntervalSince(sample.startDate)
-                }) ?? 0
-                continuation.resume(returning: mindfulTimeInterval)
+        let anchorDescriptor = HKAnchoredObjectQueryDescriptor(predicates: [.sample(type: mindfulSession, predicate: predicate)],
+                                                               anchor: nil)
+        do {
+            let samples = try await anchorDescriptor.result(for: store)
+            return samples.addedSamples.reduce(0, { seconds, sample in
+                return seconds + sample.endDate.timeIntervalSince(sample.startDate)
             })
-            store.execute(query)
+        } catch {
+            throw HealthStoreError.noDataAvailable
         }
     }
 
