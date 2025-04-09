@@ -37,9 +37,9 @@ struct ComplicationProvider: TimelineProvider {
 
     private func placeholderEntry() -> IntentionEntry {
         return IntentionEntry(date: Date(),
-                              progress: 0.3,
+                              progress: 0.0,
                               intentionTimeInterval: Converter.timeInterval(from: 10),
-                              mindfulTimeInterval: Converter.timeInterval(from: 3))
+                              mindfulTimeInterval: Converter.timeInterval(from: 0))
     }
 
     @MainActor

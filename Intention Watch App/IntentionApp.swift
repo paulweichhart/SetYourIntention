@@ -41,15 +41,15 @@ struct RootView: View {
             NavigationStack {
                 TabView {
                     IntentionView()
+                        .onAppear() {
+                            Task { @MainActor in
+                                await store.dispatch(action: .fetchMindfulTimeInterval)
+                            }
+                        }
                     MeditationView()
                     SetIntentionView()
                 }
                 .tabViewStyle(.verticalPage)
-                .onAppear() {
-                    Task { @MainActor in
-                        await store.dispatch(action: .fetchMindfulTimeInterval)
-                    }
-                }
             }
         }
     }

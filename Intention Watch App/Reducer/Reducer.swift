@@ -79,7 +79,6 @@ struct Reducer {
 
         case .fetchMindfulTimeInterval:
             do {
-                try await healthStore.requestPermission()
                 let timeInterval = try await healthStore.fetchMindfulTimeInterval()
                 state.app = .mindfulState(timeInterval)
             } catch {
