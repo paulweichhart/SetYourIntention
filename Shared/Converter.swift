@@ -23,10 +23,14 @@ enum Converter {
         guard mindfulTimeInterval > 0 && intentionTimeInterval > 0 else {
             return 0
         }
-        return Double(Converter.minutes(from: mindfulTimeInterval)) / Double(Converter.minutes(from: intentionTimeInterval))
+        return mindfulTimeInterval / intentionTimeInterval
     }
 
     static func percentage(progress: Double) -> Int {
         return Int(progress * 100)
+    }
+    
+    static func truncate(progress: Double) -> Double {
+        return Double(Int(progress * 10.0)) / 10.0
     }
 }

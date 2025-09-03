@@ -22,7 +22,6 @@ struct Reducer {
         self.mindfulSession = mindfulSession
     }
 
-    @MainActor
     func apply(action: Action, to state: AppState) async -> AppState {
         var state = state
         switch action {

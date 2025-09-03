@@ -16,7 +16,6 @@ enum HealthStoreError: Error, Equatable {
     case unavailable
 }
 
-@MainActor
 final class HealthStore {
 
     private var mindfulSession: HKSampleType? {

@@ -22,8 +22,10 @@ struct IntentionView: View {
                                                   intentionTimeInterval: store.state.intention)
                 let percentage = Converter.percentage(progress: progress)
                 VStack {
-                    ProgressBar(progress: progress,
-                                percentage: percentage)
+                    IntentionProgressView(progress: progress,
+                                          percentage: percentage,
+                                          isMeditating: false)
+                    .padding(.all, Style.spacing)
                     Group {
                         ProgressLabel(timeInterval: mindfulTimeInterval,
                                       text: Texts.mindfulMinutes.localisation,
@@ -39,8 +41,9 @@ struct IntentionView: View {
                 
             default: // loading
                 VStack {
-                    ProgressBar(progress: 0,
-                                percentage: 0)
+                    IntentionProgressView(progress: 0,
+                                          percentage: 0,
+                                          isMeditating: false)
                     Group {
                         ProgressLabel(timeInterval: 0,
                                       text: Texts.mindfulMinutes.localisation,
@@ -52,75 +55,11 @@ struct IntentionView: View {
                 }
             }
         }
-    }
-}
-
-struct ProgressBar: View {
-
-    @Environment(\.isLuminanceReduced) var isLuminanceReduced
-
-    let progress: Double
-    let percentage: Int
-
-    private let lineWidth = 9.0
-    private let degrees = 270.0
-
-    private var strokeStyle: StrokeStyle {
-        return StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0)
-    }
-
-    private var visualProgress: CGFloat {
-        guard progress > 0 else {
-            return 0
+        .onAppear() {
+            Task {
+                await store.dispatch(action: .fetchMindfulTimeInterval)
+            }
         }
-        return progress.truncatingRemainder(dividingBy: 1)
-    }
-
-    private var belowIntention: Bool {
-        return progress < 1
-    }
-
-    private var foregroundColor: Color {
-        return isLuminanceReduced ? Colors.dimmedForeground.value : Colors.foreground.value
-    }
-
-    private var rotation: Double {
-        if progress <= 1 {
-            return degrees
-        }
-        return degrees + (360 * visualProgress)
-    }
-    
-    var body: some View {
-        ZStack{
-            // Background Color
-            Circle()
-                .strokeBorder(lineWidth: lineWidth)
-                .foregroundColor(belowIntention ? Colors.background.value : foregroundColor)
-
-            // Shadow
-            Circle()
-                .trim(from: visualProgress > 0 ? (visualProgress - 0.01) : 0,
-                      to: progress > 0 ? (visualProgress + 0.01) : 0)
-                .stroke(style: strokeStyle)
-                .foregroundColor(Colors.shadow.value)
-                .rotationEffect(Angle(degrees: degrees))
-                .padding(lineWidth / 2)
-                .blur(radius: 3)
-            
-            // Progress
-            Circle()
-                .trim(from: belowIntention ? 0 : 0.5,
-                      to: belowIntention ? visualProgress : 1.0)
-                .stroke(style: strokeStyle)
-                .foregroundColor(foregroundColor)
-                .rotationEffect(Angle(degrees: rotation))
-                .padding(lineWidth / 2)
-        }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
-        .accessibility(label: Text(Texts.progressInMinutes.localisation))
-        .accessibility(value: Text("\(percentage)"))
-        .accessibility(addTraits: .isHeader)
     }
 }
 
@@ -145,25 +84,3 @@ struct ProgressLabel: View {
         .accessibility(value: Text("\(Converter.minutes(from: timeInterval))"))
     }
 }
-
-#if DEBUG
-struct ProgressBarPreview: PreviewProvider {
-
-    static var previews: some View {
-        ProgressBar(progress: 1.0, percentage: 50)
-            .environment(\.isLuminanceReduced, true)
-
-        ProgressBar(progress: 0.5, percentage: 50)
-            .environment(\.isLuminanceReduced, true)
-
-        ProgressBar(progress: 2.0, percentage: 50)
-            .environment(\.isLuminanceReduced, false)
-
-        ProgressBar(progress: 1.0, percentage: 50)
-            .environment(\.isLuminanceReduced, false)
-
-        ProgressBar(progress: 0, percentage: 50)
-            .environment(\.isLuminanceReduced, false)
-    }
-}
-#endif

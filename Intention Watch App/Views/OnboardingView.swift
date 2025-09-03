@@ -71,7 +71,7 @@ struct PermissionView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     Button(action: {
-                        Task { @MainActor in
+                        Task {
                             await store.dispatch(action: .requestHealthStorePermission)
                             await store.dispatch(action: .setup)
                         }
@@ -79,6 +79,11 @@ struct PermissionView: View {
                         Text(Texts.review.localisation)
                     })
                     .buttonBorderShape(.roundedRectangle(radius: Layout.buttonBorderRadius.rawValue))
+                    .apply {
+                        if #available(watchOS 26.0, *) {
+                            $0.buttonStyle(.glass)
+                        }
+                    }
                 }
             }
         }

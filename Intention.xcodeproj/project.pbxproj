@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1827B82E17380C00340D7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1827B72E17380400340D7D /* Extensions.swift */; };
+		FF1827B92E17380C00340D7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1827B72E17380400340D7D /* Extensions.swift */; };
+		FF3DB3F42E3E35DA008E308A /* IntentionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3DB3F32E3E35CF008E308A /* IntentionProgressView.swift */; };
 		FF3E238E2CAB43D200DE398B /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E238D2CAB43D200DE398B /* ConverterTests.swift */; };
 		FF3E239E2CAB4A6800DE398B /* IntentionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */; };
 		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -45,6 +48,8 @@
 		FF96C3372A00656C00D5C0EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3302A00656B00D5C0EB /* Localizable.strings */; };
 		FF96C3382A00656C00D5C0EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3322A00656C00D5C0EB /* InfoPlist.strings */; };
 		FF96C3392A00656C00D5C0EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3322A00656C00D5C0EB /* InfoPlist.strings */; };
+		FFCB9B392E566C9300AE0EC3 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCB9B382E566C9000AE0EC3 /* Style.swift */; };
+		FFCB9B3A2E566C9300AE0EC3 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCB9B382E566C9000AE0EC3 /* Style.swift */; };
 		FFD385E42BE593A100D6D549 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +110,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF1827B72E17380400340D7D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FF3DB3F32E3E35CF008E308A /* IntentionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionProgressView.swift; sourceTree = "<group>"; };
 		FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3E238D2CAB43D200DE398B /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
 		FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +158,7 @@
 		FF96C3332A00656C00D5C0EB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF96C3342A00656C00D5C0EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF96C3352A00656C00D5C0EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FFCB9B382E566C9000AE0EC3 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +277,8 @@
 				FF96C2DD2A005A9600D5C0EB /* Colors.swift */,
 				FF96C2DC2A005A9600D5C0EB /* Constants.swift */,
 				FF96C2DB2A005A9600D5C0EB /* Converter.swift */,
+				FF1827B72E17380400340D7D /* Extensions.swift */,
+				FFCB9B382E566C9000AE0EC3 /* Style.swift */,
 				FF96C2D92A005A9600D5C0EB /* Texts.swift */,
 				FF96C2DA2A005A9600D5C0EB /* VersionState.swift */,
 			);
@@ -298,8 +308,8 @@
 		FF96C3032A005B8600D5C0EB /* Reducer */ = {
 			isa = PBXGroup;
 			children = (
-				FF96C3042A005B8600D5C0EB /* Reducer.swift */,
 				FF96C3052A005B8600D5C0EB /* Action.swift */,
+				FF96C3042A005B8600D5C0EB /* Reducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -307,11 +317,12 @@
 		FF96C3062A005B8600D5C0EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FF96C3072A005B8600D5C0EB /* SetIntentionView.swift */,
-				FF96C3082A005B8600D5C0EB /* OnboardingView.swift */,
-				FF96C3092A005B8600D5C0EB /* MeditationView.swift */,
-				FF96C30A2A005B8600D5C0EB /* ErrorView.swift */,
+				FF3DB3F32E3E35CF008E308A /* IntentionProgressView.swift */,
 				FF96C30B2A005B8600D5C0EB /* IntentionView.swift */,
+				FF96C30A2A005B8600D5C0EB /* ErrorView.swift */,
+				FF96C3092A005B8600D5C0EB /* MeditationView.swift */,
+				FF96C3082A005B8600D5C0EB /* OnboardingView.swift */,
+				FF96C3072A005B8600D5C0EB /* SetIntentionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,8 +330,8 @@
 		FF96C30C2A005B8600D5C0EB /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				FF96C30D2A005B8600D5C0EB /* Store.swift */,
 				FF96C30E2A005B8600D5C0EB /* HealthStore.swift */,
+				FF96C30D2A005B8600D5C0EB /* Store.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -465,7 +476,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					FF3E238A2CAB43D200DE398B = {
 						CreatedOnToolsVersion = 16.1;
@@ -586,6 +597,7 @@
 				FF96C2E22A005A9600D5C0EB /* Colors.swift in Sources */,
 				FF96C3162A005B8600D5C0EB /* OnboardingView.swift in Sources */,
 				FF96C3192A005B8600D5C0EB /* IntentionView.swift in Sources */,
+				FF1827B92E17380C00340D7D /* Extensions.swift in Sources */,
 				FF96C2DE2A005A9600D5C0EB /* Texts.swift in Sources */,
 				FF96C31A2A005B8600D5C0EB /* Store.swift in Sources */,
 				FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */,
@@ -595,7 +607,9 @@
 				FF96C3132A005B8600D5C0EB /* Reducer.swift in Sources */,
 				FF96C3142A005B8600D5C0EB /* Action.swift in Sources */,
 				FF96C2E02A005A9600D5C0EB /* Converter.swift in Sources */,
+				FF3DB3F42E3E35DA008E308A /* IntentionProgressView.swift in Sources */,
 				FF96C31E2A005B8600D5C0EB /* MindfulSession.swift in Sources */,
+				FFCB9B3A2E566C9300AE0EC3 /* Style.swift in Sources */,
 				FF96C2DF2A005A9600D5C0EB /* VersionState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,9 +621,11 @@
 				FF96C2FE2A005B3D00D5C0EB /* Converter.swift in Sources */,
 				FF96C3002A005B3D00D5C0EB /* Colors.swift in Sources */,
 				FF96C2F02A005AF800D5C0EB /* Complication.swift in Sources */,
+				FF1827B82E17380C00340D7D /* Extensions.swift in Sources */,
 				FF96C3012A005B3D00D5C0EB /* Texts.swift in Sources */,
 				FF96C2FF2A005B3D00D5C0EB /* Constants.swift in Sources */,
 				FF96C3022A005B3D00D5C0EB /* VersionState.swift in Sources */,
+				FFCB9B392E566C9300AE0EC3 /* Style.swift in Sources */,
 				FF96C3222A005BD000D5C0EB /* HealthStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,7 +686,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -689,7 +704,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -707,7 +721,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -725,7 +738,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -777,6 +789,7 @@
 				CURRENT_PROJECT_VERSION = 19;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = M5E86B9E63;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -794,16 +807,19 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 3.3.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.6;
 			};
 			name = Debug;
 		};
@@ -845,6 +861,7 @@
 				CURRENT_PROJECT_VERSION = 19;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = M5E86B9E63;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -856,15 +873,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 3.3.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.6;
 			};
 			name = Release;
 		};
@@ -877,7 +897,6 @@
 				CODE_SIGN_ENTITLEMENTS = "Intention Watch App/Resources/Intention Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Intention Watch App/Resources/Info.plist";
@@ -896,6 +915,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
 				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
 			};
 			name = Debug;
 		};
@@ -908,7 +928,6 @@
 				CODE_SIGN_ENTITLEMENTS = "Intention Watch App/Resources/Intention Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Intention Watch App/Resources/Info.plist";
@@ -927,6 +946,7 @@
 				SWIFT_STRICT_CONCURRENCY = complete;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
 			};
 			name = Release;
 		};
@@ -934,9 +954,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_KEY_CFBundleDisplayName = Intention;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -948,9 +966,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				INFOPLIST_KEY_CFBundleDisplayName = Intention;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulweichhart.Intention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -966,7 +982,6 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = Complication/Resources/ComplicationExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Complication/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Complication;
@@ -994,7 +1009,6 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = Complication/Resources/ComplicationExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M5E86B9E63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Complication/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Complication;

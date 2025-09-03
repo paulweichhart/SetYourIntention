@@ -29,4 +29,5 @@ enum Icons: String {
     case gear = "gearshape"
     case leaf = "leaf"
     case stats = "chart.bar"
+    case meditation = "brain.head.profile"
 }

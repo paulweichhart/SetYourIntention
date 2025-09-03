@@ -25,7 +25,6 @@ final class IntentionUITests: XCTestCase {
         throw XCTSkip("Skipped for now")
     }
 
-    @MainActor
     func testOnboarding() throws {
         // UI tests must launch the application that they test.
         
