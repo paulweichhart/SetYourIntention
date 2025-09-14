@@ -43,7 +43,6 @@ struct IntentionView: View {
                    IntentionProgressView(progress: 0,
                                          percentage: 0)
                         .padding(.all, Style.spacing)
-                        .alignmentGuide(HorizontalAlignment.center, computeValue: { d in d[HorizontalAlignment.center] })
                     Group {
                         ProgressLabel(timeInterval: 0,
                                       text: Texts.mindfulMinutes.localisation,
