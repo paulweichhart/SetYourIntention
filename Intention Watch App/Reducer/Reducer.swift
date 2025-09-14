@@ -22,7 +22,6 @@ struct Reducer {
         self.mindfulSession = mindfulSession
     }
 
-    @MainActor
     func apply(action: Action, to state: AppState) async -> AppState {
         var state = state
         switch action {
@@ -121,7 +120,7 @@ struct Reducer {
                 if timeInterval == state.intention {
                     WKInterfaceDevice.current().play(.success)
                 } else if state.guided && timeInterval.truncatingRemainder(dividingBy: Converter.timeInterval(from: 1)) == 0 && timeInterval > 0 {
-                    WKInterfaceDevice.current().play(.start)
+                    WKInterfaceDevice.current().play(.click)
                 }
             }
 

@@ -40,7 +40,7 @@ struct SetIntentionView: View {
                             .accessibility(label: Text(Texts.increaseIntention.localisation))
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
-
+                    
                     Button(action: {
                         guided.toggle()
                     }, label: {
@@ -53,13 +53,20 @@ struct SetIntentionView: View {
                         })
                         .tint(Colors.foreground.value)
                         .onChange(of: guided) { oldValue, newValue in
-                            Task { @MainActor in
+                            Task {
                                 await store.dispatch(action: .guided(newValue))
                             }
                         }
                     })
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
                     .buttonBorderShape(.roundedRectangle(radius: Layout.buttonBorderRadius.rawValue))
+                    .apply {
+                        if #available(watchOS 26.0, *) {
+                            $0.buttonStyle(.glass)
+                        } else {
+                            $0
+                        }
+                    }
                     Text(Texts.guidedInfoText.localisation)
                         .font(.footnote)
                         .fontWeight(.light)
@@ -100,7 +107,7 @@ struct IntentionButton: View {
     
     var body: some View {
         Button(action: {
-            Task { @MainActor in
+            Task {
                 await store.dispatch(action: action)
             }
         }, label: {
@@ -116,15 +123,19 @@ struct IntentionButton: View {
                 .frame(maxWidth: .infinity, minHeight: 56, alignment: .center)
         })
         .buttonBorderShape(.roundedRectangle(radius: Layout.buttonBorderRadius.rawValue))
+        .apply {
+            if #available(watchOS 26.0, *) {
+                $0.buttonStyle(.glass)
+            } else {
+                $0
+            }
+        }
     }
 }
 
 #if DEBUG
-struct SetIntentionViewPreview: PreviewProvider {
-
-    static var previews: some View {
-        IntentionButton(action: .incrementIntention, 
+#Preview {
+    IntentionButton(action: .incrementIntention,
                         systemName: "minus")
-    }
 }
 #endif

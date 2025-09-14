@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class Store: ObservableObject {
 
     static let shared = Store()

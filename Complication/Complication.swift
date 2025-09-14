@@ -42,7 +42,6 @@ struct ComplicationProvider: TimelineProvider {
                               mindfulTimeInterval: Converter.timeInterval(from: 0))
     }
 
-    @MainActor
     private func intentionEntry() async -> IntentionEntry {
         let store = HealthStore()
         do {
