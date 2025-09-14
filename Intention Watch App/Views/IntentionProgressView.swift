@@ -2,11 +2,14 @@ import SwiftUI
 
 struct IntentionProgressView: View {
     
-    // TODO: implement
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     
     let progress: Double
     let percentage: Int
+    
+    private var foregroundColor: Color {
+        return isLuminanceReduced ? Colors.dimmedForeground.value : Colors.foreground.value
+    }
     
     private let width = Style.size
     
@@ -19,14 +22,14 @@ struct IntentionProgressView: View {
                 
                 // Background ring
                 Circle()
-                    .stroke(progress >= 1.0 ? Colors.foreground.value : Colors.background.value,
+                    .stroke(progress >= 1.0 ? foregroundColor : Colors.background.value,
                             style: StrokeStyle(lineWidth: width, lineCap: .round))
                     .frame(width: diameter, height: diameter)
                 
                 // Progress
                 Circle()
                     .trim(from: 0, to: progress.truncatingRemainder(dividingBy: 1))
-                    .stroke(Colors.foreground.value,
+                    .stroke(foregroundColor,
                             style: StrokeStyle(lineWidth: width, lineCap: .round))
                     .frame(width: diameter, height: diameter)
                     .rotationEffect(.degrees(-90))
@@ -36,7 +39,7 @@ struct IntentionProgressView: View {
                     .frame(width: width, height: width)
                     .position(x: diameter / 2 + (diameter / 2) * cos(angle * .pi / 180),
                               y: diameter / 2 + (diameter / 2) * sin(angle * .pi / 180))
-                    .foregroundStyle(Colors.foreground.value)
+                    .foregroundStyle(foregroundColor)
                     .rotationEffect(.degrees(-90))
                     .shadow(color: Colors.shadow.value,
                             radius: 0.7,
