@@ -40,7 +40,7 @@ struct SetIntentionView: View {
                             .accessibility(label: Text(Texts.increaseIntention.localisation))
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
-
+                    
                     Button(action: {
                         guided.toggle()
                     }, label: {
@@ -63,6 +63,8 @@ struct SetIntentionView: View {
                     .apply {
                         if #available(watchOS 26.0, *) {
                             $0.buttonStyle(.glass)
+                        } else {
+                            $0
                         }
                     }
                     Text(Texts.guidedInfoText.localisation)
@@ -124,6 +126,8 @@ struct IntentionButton: View {
         .apply {
             if #available(watchOS 26.0, *) {
                 $0.buttonStyle(.glass)
+            } else {
+                $0
             }
         }
     }

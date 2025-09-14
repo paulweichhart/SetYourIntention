@@ -23,9 +23,8 @@ struct IntentionView: View {
                 let percentage = Converter.percentage(progress: progress)
                 VStack {
                     IntentionProgressView(progress: progress,
-                                          percentage: percentage,
-                                          isMeditating: false)
-                    .padding(.all, Style.spacing)
+                                          percentage: percentage)
+                        .padding(.all, Style.spacing)
                     Group {
                         ProgressLabel(timeInterval: mindfulTimeInterval,
                                       text: Texts.mindfulMinutes.localisation,
@@ -41,9 +40,10 @@ struct IntentionView: View {
                 
             default: // loading
                 VStack {
-                    IntentionProgressView(progress: 0,
-                                          percentage: 0,
-                                          isMeditating: false)
+                   IntentionProgressView(progress: 0,
+                                         percentage: 0)
+                        .padding(.all, Style.spacing)
+                        .alignmentGuide(HorizontalAlignment.center, computeValue: { d in d[HorizontalAlignment.center] })
                     Group {
                         ProgressLabel(timeInterval: 0,
                                       text: Texts.mindfulMinutes.localisation,

@@ -33,7 +33,7 @@ struct MeditationView: View {
                             .fixedSize(horizontal: false, vertical: true)
                         Spacer()
                     }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: Style.size * 2, trailing: 0))
                     Button(action: {
                         Task {
                             await Store.shared.dispatch(action: .startMeditating)
@@ -45,6 +45,8 @@ struct MeditationView: View {
                     .apply {
                         if #available(watchOS 26.0, *) {
                             $0.buttonStyle(.glass)
+                        } else {
+                            $0
                         }
                     }
                 }
@@ -84,40 +86,24 @@ struct MeditationProgressView: View {
 
     @ViewBuilder
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             if case let .meditating(startDate) = store.state.app {
-                withAnimation {
-                    TimelineView(.periodic(from: startDate, by: 1.0)) { _ in
-                        let progress = Date().timeIntervalSince(startDate) / store.state.intention
-                        let percentage = Int(progress * 100)
-                        MeditationProgressBar(timeInterval: Date().timeIntervalSince(startDate),
-                                              progress: progress,
+                TimelineView(.periodic(from: startDate, by: 1.0)) { _ in
+                    let progress = Date().timeIntervalSince(startDate) / store.state.intention
+                    let percentage = Int(progress * 100)
+                    withAnimation {
+                        IntentionProgressView(progress: progress,
                                               percentage: percentage)
+                        .padding(EdgeInsets(top: Style.size, leading: 0, bottom: 0, trailing: 0))
+                        .onChange(of: progress) { _, _ in
+                            Task {
+                                await store.dispatch(action: .tick)
+                            }
+                        }
                     }
                 }
             }
         }
-    }
-}
-
-struct MeditationProgressBar: View {
-
-    @EnvironmentObject private var store: Store
-
-    let timeInterval: TimeInterval
-    let progress: Double
-    let percentage: Int
-
-    var body: some View {
-        IntentionProgressView(progress: progress,
-                              percentage: percentage,
-                              isMeditating: true)
-            .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
-            .onChange(of: timeInterval) { _, _ in
-                Task {
-                    await store.dispatch(action: .tick)
-                }
-            }
     }
 }
 

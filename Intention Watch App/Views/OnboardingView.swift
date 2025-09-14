@@ -82,6 +82,8 @@ struct PermissionView: View {
                     .apply {
                         if #available(watchOS 26.0, *) {
                             $0.buttonStyle(.glass)
+                        } else {
+                            $0
                         }
                     }
                 }

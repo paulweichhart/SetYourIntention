@@ -11,7 +11,6 @@
 		FF1827B92E17380C00340D7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1827B72E17380400340D7D /* Extensions.swift */; };
 		FF3DB3F42E3E35DA008E308A /* IntentionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3DB3F32E3E35CF008E308A /* IntentionProgressView.swift */; };
 		FF3E238E2CAB43D200DE398B /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E238D2CAB43D200DE398B /* ConverterTests.swift */; };
-		FF3E239E2CAB4A6800DE398B /* IntentionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */; };
 		FF96C2A92A0059BB00D5C0EB /* Intention Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C2C22A005A1A00D5C0EB /* IntentionApp.swift */; };
 		FF96C2D52A005A7100D5C0EB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF96C2D42A005A7100D5C0EB /* README.md */; };
@@ -55,13 +54,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		FF3E238F2CAB43D200DE398B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF96C29C2A0059BB00D5C0EB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF96C2A72A0059BB00D5C0EB;
-			remoteInfo = "Intention Watch App";
-		};
-		FF3E23A12CAB4A6800DE398B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF96C29C2A0059BB00D5C0EB /* Project object */;
 			proxyType = 1;
@@ -114,8 +106,6 @@
 		FF3DB3F32E3E35CF008E308A /* IntentionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionProgressView.swift; sourceTree = "<group>"; };
 		FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3E238D2CAB43D200DE398B /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
-		FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Intention UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionUITests.swift; sourceTree = "<group>"; };
 		FF8B45D62BD85602004A6198 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FF8B45D82BD857BD004A6198 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF8B45D92BD857BD004A6198 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -169,13 +159,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF3E23982CAB4A6800DE398B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF96C2A52A0059BB00D5C0EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -199,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				FF3E23942CAB442000DE398B /* Intention Tests */,
-				FF3E23A62CAB4A6F00DE398B /* Intention UI Tests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -210,14 +192,6 @@
 				FF3E238D2CAB43D200DE398B /* ConverterTests.swift */,
 			);
 			path = "Intention Tests";
-			sourceTree = "<group>";
-		};
-		FF3E23A62CAB4A6F00DE398B /* Intention UI Tests */ = {
-			isa = PBXGroup;
-			children = (
-				FF3E239D2CAB4A6800DE398B /* IntentionUITests.swift */,
-			);
-			path = "Intention UI Tests";
 			sourceTree = "<group>";
 		};
 		FF96C29B2A0059BB00D5C0EB = {
@@ -241,7 +215,6 @@
 				FF96C2A82A0059BB00D5C0EB /* Intention Watch App.app */,
 				FF96C2E82A005AF800D5C0EB /* ComplicationExtension.appex */,
 				FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */,
-				FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,26 +368,6 @@
 			productReference = FF3E238B2CAB43D200DE398B /* Intention Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FF3E239A2CAB4A6800DE398B /* Intention UI Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF3E23A32CAB4A6800DE398B /* Build configuration list for PBXNativeTarget "Intention UI Tests" */;
-			buildPhases = (
-				FF3E23972CAB4A6800DE398B /* Sources */,
-				FF3E23982CAB4A6800DE398B /* Frameworks */,
-				FF3E23992CAB4A6800DE398B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FF3E23A22CAB4A6800DE398B /* PBXTargetDependency */,
-			);
-			name = "Intention UI Tests";
-			packageProductDependencies = (
-			);
-			productName = "Intention UI Tests";
-			productReference = FF3E239B2CAB4A6800DE398B /* Intention UI Tests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		FF96C2A12A0059BB00D5C0EB /* Intention */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF96C2BC2A0059BC00D5C0EB /* Build configuration list for PBXNativeTarget "Intention" */;
@@ -482,10 +435,6 @@
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = FF96C2A72A0059BB00D5C0EB;
 					};
-					FF3E239A2CAB4A6800DE398B = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = FF96C2A72A0059BB00D5C0EB;
-					};
 					FF96C2A12A0059BB00D5C0EB = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -518,20 +467,12 @@
 				FF96C2A72A0059BB00D5C0EB /* Intention Watch App */,
 				FF96C2E72A005AF800D5C0EB /* ComplicationExtension */,
 				FF3E238A2CAB43D200DE398B /* Intention Tests */,
-				FF3E239A2CAB4A6800DE398B /* Intention UI Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FF3E23892CAB43D200DE398B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF3E23992CAB4A6800DE398B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -575,14 +516,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3E238E2CAB43D200DE398B /* ConverterTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF3E23972CAB4A6800DE398B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF3E239E2CAB4A6800DE398B /* IntentionUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,11 +570,6 @@
 			isa = PBXTargetDependency;
 			target = FF96C2A72A0059BB00D5C0EB /* Intention Watch App */;
 			targetProxy = FF3E238F2CAB43D200DE398B /* PBXContainerItemProxy */;
-		};
-		FF3E23A22CAB4A6800DE398B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF96C2A72A0059BB00D5C0EB /* Intention Watch App */;
-			targetProxy = FF3E23A12CAB4A6800DE398B /* PBXContainerItemProxy */;
 		};
 		FF96C2AB2A0059BB00D5C0EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -713,40 +641,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intention Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Intention Watch App";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		FF3E23A42CAB4A6800DE398B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.paulweichhart.Intention-UI-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "Intention Watch App";
-			};
-			name = Debug;
-		};
-		FF3E23A52CAB4A6800DE398B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.paulweichhart.Intention-UI-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "Intention Watch App";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1038,15 +932,6 @@
 			buildConfigurations = (
 				FF3E23922CAB43D200DE398B /* Debug */,
 				FF3E23932CAB43D200DE398B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF3E23A32CAB4A6800DE398B /* Build configuration list for PBXNativeTarget "Intention UI Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF3E23A42CAB4A6800DE398B /* Debug */,
-				FF3E23A52CAB4A6800DE398B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
