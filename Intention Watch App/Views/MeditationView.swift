@@ -84,18 +84,20 @@ struct MeditationProgressView: View {
     
     @EnvironmentObject private var store: Store
 
-    @ViewBuilder
     var body: some View {
-        ZStack(alignment: .center) {
+        ZStack {
             if case let .meditating(startDate) = store.state.app {
-                TimelineView(.periodic(from: startDate, by: 1.0)) { _ in
+                TimelineView(.periodic(from: startDate, by: 1)) { _ in
+                    let timeInterval = floor(Date().timeIntervalSince(startDate))
                     let progress = Date().timeIntervalSince(startDate) / store.state.intention
                     let percentage = Int(progress * 100)
                     withAnimation {
                         IntentionProgressView(progress: progress,
                                               percentage: percentage)
                         .padding(EdgeInsets(top: Style.size, leading: 0, bottom: 0, trailing: 0))
-                        .onChange(of: progress) { _, _ in
+                    }
+                    .onChange(of: timeInterval) { _, _ in
+                        if timeInterval.truncatingRemainder(dividingBy: Converter.timeInterval(from: 1)) == 0 {
                             Task {
                                 await store.dispatch(action: .tick)
                             }

@@ -12,8 +12,8 @@ Releases:
 * Priel           3.1 Updated for watchOS 10
 * Drachenwand     3.2 More languages, now playing view & Privacy Info
 * Schoberstein    3.3 Swift 6 Language Mode
-* Feuerkogel      3.4 watchOS 26, redesign & animations
+* Feuerkogel      3.4 watchOS 26, redesign
 
 Upcoming releases:
-* Dachstein       3.5 Statistics, Smart Stack
+* Dachstein       3.5 Statistics, Smart Stack & animations
 * Kasberg         3.6 Intro & Outro View for Meditation

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VersionState {
+struct VersionState: Equatable {
     
     private let sharedUserDefaults = UserDefaults(suiteName: Constants.appGroup.rawValue)
     

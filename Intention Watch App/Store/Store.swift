@@ -8,20 +8,20 @@
 import Foundation
 
 final class Store: ObservableObject {
-
+    
     static let shared = Store()
-
+    
     @Published private(set) var state = AppState(versionState: VersionState())
-
+    
     private var reducer: Reducer = {
         let healthStore = HealthStore()
         let mindfulSession = MindfulSession()
         return Reducer(healthStore: healthStore,
                        mindfulSession: mindfulSession)
     }()
-
+    
     private init() { }
-
+    
     func dispatch(action: Action) async {
         state = await reducer.apply(action: action, to: state)
     }

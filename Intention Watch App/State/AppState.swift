@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AppState {
+struct AppState: Equatable {
     
     enum State: Equatable {
         case loading
