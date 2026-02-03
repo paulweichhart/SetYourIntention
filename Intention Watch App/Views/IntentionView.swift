@@ -54,9 +54,11 @@ struct IntentionView: View {
                 }
             }
         }
-        .onAppear() {
-            Task {
-                await store.dispatch(action: .fetchMindfulTimeInterval)
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                Task {
+                    await store.dispatch(action: .fetchMindfulTimeInterval)
+                }
             }
         }
     }
