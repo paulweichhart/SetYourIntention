@@ -54,6 +54,9 @@ struct IntentionView: View {
                 }
             }
         }
+        .task {
+            await store.dispatch(action: .fetchMindfulTimeInterval)
+        }
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 Task {
