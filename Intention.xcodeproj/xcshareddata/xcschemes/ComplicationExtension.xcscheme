@@ -98,7 +98,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF96C2E72A005AF800D5C0EB"
             BuildableName = "ComplicationExtension.appex"
-            BlueprintName = "ComplicationExtension"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -141,7 +140,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF96C2E72A005AF800D5C0EB"
             BuildableName = "ComplicationExtension.appex"
-            BlueprintName = "ComplicationExtension"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

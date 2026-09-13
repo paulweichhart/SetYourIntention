@@ -83,7 +83,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF96C2A72A0059BB00D5C0EB"
             BuildableName = "Intention Watch App.app"
-            BlueprintName = "Intention Watch App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -100,7 +99,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF96C2A72A0059BB00D5C0EB"
             BuildableName = "Intention Watch App.app"
-            BlueprintName = "Intention Watch App"
             ReferencedContainer = "container:Intention.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -13,7 +13,8 @@ Releases:
 * Drachenwand     3.2 More languages, now playing view & Privacy Info
 * Schoberstein    3.3 Swift 6 Language Mode
 * Feuerkogel      3.4 watchOS 26, redesign
+- Großer Pyhrgas  3.5 watchOS 27
 
 Upcoming releases:
-* Dachstein       3.5 Statistics, Smart Stack & animations
-* Kasberg         3.6 Intro & Outro View for Meditation
+* Dachstein       Statistics, Smart Stack & animations
+* Kasberg         Intro & Outro View for Meditation
