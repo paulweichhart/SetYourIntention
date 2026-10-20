@@ -17,8 +17,8 @@ struct IntentionView: View {
         NavigationView {
             switch store.state.app {
                 
-            case let .mindfulState(mindfulTimeInterval):
-                let progress = Converter.progress(mindfulTimeInterval: mindfulTimeInterval,
+            case let .mindfulState(mindfulState):
+                let progress = Converter.progress(mindfulTimeInterval: mindfulState.timeInterval,
                                                   intentionTimeInterval: store.state.intention)
                 let percentage = Converter.percentage(progress: progress)
                 VStack {
@@ -26,7 +26,7 @@ struct IntentionView: View {
                                           percentage: percentage)
                         .padding(.all, Style.spacing)
                     Group {
-                        ProgressLabel(timeInterval: mindfulTimeInterval,
+                        ProgressLabel(timeInterval: mindfulState.timeInterval,
                                       text: Texts.mindfulMinutes.localisation,
                                       accessibilityText: Texts.mindfulMinutes.localisation)
                         ProgressLabel(timeInterval: store.state.intention,

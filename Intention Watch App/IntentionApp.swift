@@ -41,6 +41,7 @@ struct RootView: View {
             NavigationStack {
                 TabView {
                     IntentionView()
+                    StatisticsView()
                     MeditationView()
                     SetIntentionView()
                 }

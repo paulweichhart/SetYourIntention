@@ -38,9 +38,12 @@
 		FF96C31A2A005B8600D5C0EB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30D2A005B8600D5C0EB /* Store.swift */; };
 		FF96C31B2A005B8600D5C0EB /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30E2A005B8600D5C0EB /* HealthStore.swift */; };
 		FF96C31C2A005B8600D5C0EB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3102A005B8600D5C0EB /* AppState.swift */; };
+		AA11C0032F00000000000001 /* MindfulState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11C0012F00000000000001 /* MindfulState.swift */; };
+		AA11C0042F00000000000001 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11C0022F00000000000001 /* StatisticsView.swift */; };
 		FF96C31E2A005B8600D5C0EB /* MindfulSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3122A005B8600D5C0EB /* MindfulSession.swift */; };
 		FF96C3212A005BA800D5C0EB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C3202A005BA800D5C0EB /* ExtensionDelegate.swift */; };
 		FF96C3222A005BD000D5C0EB /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96C30E2A005B8600D5C0EB /* HealthStore.swift */; };
+		AA11C0052F00000000000001 /* MindfulState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11C0012F00000000000001 /* MindfulState.swift */; };
 		FF96C3242A005E0F00D5C0EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3232A005E0F00D5C0EB /* Assets.xcassets */; };
 		FF96C32E2A0063A200D5C0EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96C32D2A0063A200D5C0EB /* Assets.xcassets */; };
 		FF96C3362A00656C00D5C0EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF96C3302A00656B00D5C0EB /* Localizable.strings */; };
@@ -135,6 +138,8 @@
 		FF96C30D2A005B8600D5C0EB /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FF96C30E2A005B8600D5C0EB /* HealthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		FF96C3102A005B8600D5C0EB /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AA11C0012F00000000000001 /* MindfulState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfulState.swift; sourceTree = "<group>"; };
+		AA11C0022F00000000000001 /* StatisticsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		FF96C3122A005B8600D5C0EB /* MindfulSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfulSession.swift; sourceTree = "<group>"; };
 		FF96C3202A005BA800D5C0EB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		FF96C3232A005E0F00D5C0EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -296,6 +301,7 @@
 				FF96C3092A005B8600D5C0EB /* MeditationView.swift */,
 				FF96C3082A005B8600D5C0EB /* OnboardingView.swift */,
 				FF96C3072A005B8600D5C0EB /* SetIntentionView.swift */,
+				AA11C0022F00000000000001 /* StatisticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				FF96C3102A005B8600D5C0EB /* AppState.swift */,
+				AA11C0012F00000000000001 /* MindfulState.swift */,
 				FF96C3122A005B8600D5C0EB /* MindfulSession.swift */,
 			);
 			path = State;
@@ -536,6 +543,8 @@
 				FF96C2CA2A005A1A00D5C0EB /* IntentionApp.swift in Sources */,
 				FF96C3182A005B8600D5C0EB /* ErrorView.swift in Sources */,
 				FF96C31C2A005B8600D5C0EB /* AppState.swift in Sources */,
+				AA11C0032F00000000000001 /* MindfulState.swift in Sources */,
+				AA11C0042F00000000000001 /* StatisticsView.swift in Sources */,
 				FF96C3212A005BA800D5C0EB /* ExtensionDelegate.swift in Sources */,
 				FF96C3132A005B8600D5C0EB /* Reducer.swift in Sources */,
 				FF96C3142A005B8600D5C0EB /* Action.swift in Sources */,
@@ -560,6 +569,7 @@
 				FF96C3022A005B3D00D5C0EB /* VersionState.swift in Sources */,
 				FFCB9B392E566C9300AE0EC3 /* Style.swift in Sources */,
 				FF96C3222A005BD000D5C0EB /* HealthStore.swift in Sources */,
+				AA11C0052F00000000000001 /* MindfulState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

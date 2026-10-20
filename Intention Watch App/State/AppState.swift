@@ -13,7 +13,7 @@ struct AppState: Equatable {
         case loading
         case onboarding
         case meditating(Date)
-        case mindfulState(TimeInterval)
+        case mindfulState(MindfulState)
         case error(HealthStoreError)
     }
     

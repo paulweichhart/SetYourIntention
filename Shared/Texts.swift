@@ -32,6 +32,9 @@ enum Texts: LocalizedStringKey {
     case setYourIntention = "Set Your Intention"
     case guidedInfoText = "By enabling guided meditation, you will perceive subtle haptics each minute"
 
+    // Statistics
+    case lastSevenDays = "Last 7 Days"
+
     // Meditation
     case unguided = "Unguided"
     case guided = "Guided"

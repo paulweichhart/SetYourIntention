@@ -62,6 +62,32 @@ final class HealthStore {
         }
     }
 
+    func fetchMindfulHStatistics(days: Int = 7) async throws -> [MindfulEntry] {
+        guard let store = store, let mindfulSession = mindfulSession else {
+            throw HealthStoreError.unavailable
+        }
+
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let dates = (0..<days).reversed().compactMap { calendar.date(byAdding: .day, value: -$0, to: today) }
+        guard let startDate = dates.first,
+              let endDate = calendar.date(byAdding: .day, value: 1, to: today) else {
+            throw HealthStoreError.noDataAvailable
+        }
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        let anchorDescriptor = HKAnchoredObjectQueryDescriptor(predicates: [.sample(type: mindfulSession, predicate: predicate)],
+                                                               anchor: nil)
+        do {
+            let samples = try await anchorDescriptor.result(for: store)
+            let seconds = samples.addedSamples.reduce(into: [Date: TimeInterval](), { seconds, sample in
+                seconds[calendar.startOfDay(for: sample.startDate), default: 0] += sample.endDate.timeIntervalSince(sample.startDate)
+            })
+            return dates.map { MindfulEntry(date: $0, timeInterval: seconds[$0] ?? 0) }
+        } catch {
+            throw HealthStoreError.noDataAvailable
+        }
+    }
+
     func storeMindfulTimeInterval(startDate: Date, endDate: Date) async throws {
         guard let store = store,
               let mindfulSession = mindfulSession as? HKCategoryType else {

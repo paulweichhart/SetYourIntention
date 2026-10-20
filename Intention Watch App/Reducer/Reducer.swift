@@ -78,8 +78,10 @@ struct Reducer {
 
         case .fetchMindfulTimeInterval:
             do {
-                let timeInterval = try await healthStore.fetchMindfulTimeInterval()
-                state.app = .mindfulState(timeInterval)
+                let statistics = try await healthStore.fetchMindfulHStatistics()
+                let mindfulState = MindfulState(timeInterval: statistics.last?.timeInterval ?? 0,
+                                                statistics: statistics)
+                state.app = .mindfulState(mindfulState)
             } catch {
                 let healthStoreError = error as? HealthStoreError ?? .unavailable
                 state.app = .error(healthStoreError)
@@ -104,8 +106,10 @@ struct Reducer {
                     let endDate = mindfulSession.stopSession()
                     try await healthStore.storeMindfulTimeInterval(startDate: startDate,
                                                                    endDate: endDate)
-                    let timeInterval = try await healthStore.fetchMindfulTimeInterval()
-                    state.app = .mindfulState(timeInterval)
+                    let statistics = try await healthStore.fetchMindfulHStatistics()
+                    let mindfulState = MindfulState(timeInterval: statistics.last?.timeInterval ?? 0,
+                                                    statistics: statistics)
+                    state.app = .mindfulState(mindfulState)
                 } catch {
                     state.app = .error(.savingFailed)
                 }
