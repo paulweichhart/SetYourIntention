@@ -20,7 +20,7 @@ xcodebuild -project Intention.xcodeproj -scheme "Intention Watch App" \
   -destination 'platform=watchOS Simulator,name=Apple Watch Series 12 (46mm)' test
 
 # Run a single test
-xcodebuild ... test -only-testing:"Intention Tests/ConverterTests/testMinutes"
+xcodebuild ... test -only-testing:"Intention Tests/ConverterTests/minutes()"
 ```
 
 List available simulators with `xcrun simctl list devices available | grep -i watch`.
@@ -28,7 +28,8 @@ List available simulators with `xcrun simctl list devices available | grep -i wa
 ## Build settings to respect
 
 - Swift 6 language mode with `SWIFT_STRICT_CONCURRENCY = complete`; deployment target watchOS 26.6. New code must compile cleanly under strict concurrency (e.g. HealthKit is imported with `@preconcurrency`, complication callbacks are `@Sendable`).
-- Tests use `@testable import Intention_Watch_App`, so anything tested must be in the watch app target.
+- The project sets `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`, so all targets (tests included) default to `@MainActor`.
+- Tests use Swift Testing (`import Testing`, `@Test`, `#expect`), not XCTest. Subclasses of `XCTestCase` won't compile under the `MainActor` default. Tests use `@testable import Intention_Watch_App`, so anything tested must be in the watch app target.
 
 ## Architecture
 
